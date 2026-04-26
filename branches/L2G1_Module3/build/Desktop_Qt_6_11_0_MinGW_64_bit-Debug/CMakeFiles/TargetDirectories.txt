@@ -1,0 +1,9 @@
+C:/Users/pc/Desktop/2025-l2g1/branches/L2G1_Module3/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/L2G1_Module3.dir
+C:/Users/pc/Desktop/2025-l2g1/branches/L2G1_Module3/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/pc/Desktop/2025-l2g1/branches/L2G1_Module3/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/pc/Desktop/2025-l2g1/branches/L2G1_Module3/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+C:/Users/pc/Desktop/2025-l2g1/branches/L2G1_Module3/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/install.dir
+C:/Users/pc/Desktop/2025-l2g1/branches/L2G1_Module3/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+C:/Users/pc/Desktop/2025-l2g1/branches/L2G1_Module3/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+C:/Users/pc/Desktop/2025-l2g1/branches/L2G1_Module3/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/L2G1_Module3_autogen_timestamp_deps.dir
+C:/Users/pc/Desktop/2025-l2g1/branches/L2G1_Module3/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/L2G1_Module3_autogen.dir

@@ -1,0 +1,902 @@
+\doxysection{Référence de la classe Vue\+Graphe\+Tracabilite}
+\hypertarget{class_vue_graphe_tracabilite}{}\label{class_vue_graphe_tracabilite}\index{VueGrapheTracabilite@{VueGrapheTracabilite}}
+
+
+{\ttfamily \+\#include $<$Vue\+Graphe\+Tracabilite.\+h$>$}
+
+Graphe d\textquotesingle{}héritage de Vue\+Graphe\+Tracabilite:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_vue_graphe_tracabilite}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Connecteurs publics}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a}{appliquer\+Filtre}} (const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&filtre)
+\begin{DoxyCompactList}\small\item\em Applique un filtre sur les nœuds et arêtes du graphe. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75}{toggle\+Filtres}} ()
+\begin{DoxyCompactList}\small\item\em Affiche ou masque le panneau de filtres latéral. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a73442ef30572e2cabaff828a8a7590a8}{on\+Filtre\+Rapide\+Change}} (int index)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a}{appliquer\+Filtre}} (const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&filtre)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75}{toggle\+Filtres}} ()
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a}{appliquer\+Filtre}} (const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&filtre)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75}{toggle\+Filtres}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e}{Vue\+Graphe\+Tracabilite}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur de la vue graphe de traçabilité. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6}{construire\+Graphe}} (const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&rapport, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd)
+\begin{DoxyCompactList}\small\item\em Construit le graphe à partir du rapport de traçabilité et des exigences. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa042e5fd69ce9fe954f7d46894c87b02}{set\+Liste\+Noms\+Fichiers}} (const QString\+List \&noms)
+\item 
+\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e}{Vue\+Graphe\+Tracabilite}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6}{construire\+Graphe}} (const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&rapport, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd)
+\item 
+\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e}{Vue\+Graphe\+Tracabilite}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6}{construire\+Graphe}} (const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&rapport, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres protégées}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Redessine le graphe complet. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31}{wheel\+Event}} (QWheel\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gère le zoom à la molette. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0a3d4ecb04e059edf208e9704103a3b5}{mouse\+Move\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6}{mouse\+Press\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Gère le clic sur un nœud pour afficher ses détails. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e}{resize\+Event}} (QResize\+Event \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Redimensionne le panneau de filtres et le panneau détail avec le widget. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31}{wheel\+Event}} (QWheel\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6}{mouse\+Press\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e}{resize\+Event}} (QResize\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3}{paint\+Event}} (QPaint\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31}{wheel\+Event}} (QWheel\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6}{mouse\+Press\+Event}} (QMouse\+Event \texorpdfstring{$\ast$}{*}event) override
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e}{resize\+Event}} (QResize\+Event \texorpdfstring{$\ast$}{*}event) override
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres privées}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a66353430fd5e258a991fa9a011c0495b}{dessiner\+Noeud}} (QPainter \&painter, const \doxymbox{\hyperlink{struct_noeud_fichier}{Noeud\+Fichier}} \&noeud, bool survole, bool selectionne)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aed631ceecdc101800c087b50c29a66f9}{dessiner\+Lien}} (QPainter \&painter, const \doxymbox{\hyperlink{struct_lien_fichier}{Lien\+Fichier}} \&lien, bool survole)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a2c304c9229ea427953e3a72a82f96907}{dessiner\+Badge\+Pct}} (QPainter \&painter, QPointF centre, double pct, QColor couleur)
+\item 
+int \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4}{noeud\+APosition}} (const QPointF \&pos) const
+\begin{DoxyCompactList}\small\item\em Retourne le nœud à la position donnée, nullptr si aucun. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a2e4835baf95fa3994366a7e41354c990}{lien\+APosition}} (const QPointF \&pos) const
+\item 
+bool \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ae30aaadfb55ff2bcba802ed13329239c}{noeud\+Visible}} (int index) const
+\item 
+QString \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a79d1c974f5ad101e76faad3bcb853fbf}{nom\+Court\+Fichier}} (const std::\+string \&chemin) const
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a21769a5c8e50bbd04efd5f2cdf29ea52}{style\+Bouton\+Actif}} (QPush\+Button \texorpdfstring{$\ast$}{*}btn, QColor couleur)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a8134f852dfdf4f9dc059d5a8a3922c14}{style\+Bouton\+Inactif}} (QPush\+Button \texorpdfstring{$\ast$}{*}btn)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a75390672119da8c934529c05602892f5}{dessiner\+Noeud}} (QPainter \&painter, const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&noeud)
+\begin{DoxyCompactList}\small\item\em Dessine un nœud coloré avec son identifiant et son pourcentage de couverture. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a6b783657aeae6805a044e207bba5c510}{dessiner\+Arete}} (QPainter \&painter, const \doxymbox{\hyperlink{struct_arete_graphe}{Arete\+Graphe}} \&arete)
+\begin{DoxyCompactList}\small\item\em Dessine une arête avec une flèche et le pourcentage de couverture au milieu. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a9bb3ab4027d789a07571ff9cce39fde0}{afficher\+Detail\+Noeud}} (const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&noeud)
+\begin{DoxyCompactList}\small\item\em Affiche les détails d\textquotesingle{}un nœud dans le panneau de détail. \end{DoxyCompactList}\item 
+QColor \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a3294526d59df6b342ba621d79f5a066a}{couleur\+Statut}} (\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}} statut) const
+\begin{DoxyCompactList}\small\item\em Retourne la couleur d\textquotesingle{}un nœud selon son statut de couverture. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4}{noeud\+APosition}} (const QPointF \&pos) const
+\item 
+bool \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ad411f3bbfd3efce7c62038e99d3179df}{noeud\+Visible}} (const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&n) const
+\begin{DoxyCompactList}\small\item\em Vérifie si un nœud doit être affiché selon le filtre actif. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a75390672119da8c934529c05602892f5}{dessiner\+Noeud}} (QPainter \&painter, const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&noeud)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a6b783657aeae6805a044e207bba5c510}{dessiner\+Arete}} (QPainter \&painter, const \doxymbox{\hyperlink{struct_arete_graphe}{Arete\+Graphe}} \&arete)
+\item 
+void \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a9bb3ab4027d789a07571ff9cce39fde0}{afficher\+Detail\+Noeud}} (const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&noeud)
+\item 
+QColor \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a3294526d59df6b342ba621d79f5a066a}{couleur\+Statut}} (\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}} statut) const
+\item 
+const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4}{noeud\+APosition}} (const QPointF \&pos) const
+\item 
+bool \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ad411f3bbfd3efce7c62038e99d3179df}{noeud\+Visible}} (const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&n) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_noeud_fichier}{Noeud\+Fichier}} $>$ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ab11f8857cef31d33d5ec682349a73b76}{noeuds}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_lien_fichier}{Lien\+Fichier}} $>$ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa0cedb7d27a6217ce91e3e0396eaa612}{liens}}
+\item 
+QString\+List \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a1ddb6526a6c23d8067aab910e771c4b1}{liens\+Brises}}
+\item 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a9aba5251058a2b1c25ac246209ef2f48}{rapport\+Courant}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a04eb2dd4252fa09a757cd6aa23ed4941}{srs\+Analyses}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0b7755a1a1d4b534a1ec6a6a3c6eb937}{sdd\+Analyses}}
+\item 
+bool \doxymbox{\hyperlink{class_vue_graphe_tracabilite_abe598f5f9007e5e8ce768f8f93f149ab}{vue\+Indirecte}}
+\item 
+int \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a5976aec884d3e66c9769c69be05b22e4}{filtre\+Rapide}}
+\item 
+\doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a87800b9bdabc40fb959201655458a8f2}{filtre\+Actif}}
+\item 
+double \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a63380973a0fc8f367a0319127319afdf}{niveau\+Zoom}}
+\item 
+int \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aefc179e03628042521686511e8527a5d}{noeud\+Survole}}
+\item 
+int \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a15c70b7cd10acd0d180a81c7a23dc67e}{noeud\+Selectionne}}
+\item 
+int \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a8802cee259d32e570d4fa985fad0ebe3}{lien\+Survole}}
+\item 
+QPush\+Button \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0d6baa1906b123a11a6ca39478d0d2ee}{bouton\+Vue\+Directe}}
+\item 
+QPush\+Button \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a610aae075295c89aadae3dfa0442b113}{bouton\+Vue\+Indirecte}}
+\item 
+QCombo\+Box \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a449e2156cb4833f530787be8d86047d2}{combo\+Filtre\+Rapide}}
+\item 
+QFrame \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a8584f67e4345860d52e6a1fcab1f4175}{panneau\+Filtres}}
+\item 
+QPush\+Button \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a6d11a251abd00165fc5309b22df79240}{bouton\+Filtres}}
+\item 
+\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i}{Gestionnaire\+Filtres\+GUI}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_acaf18939d7b8664c60aa42fddfd64c33}{gestionnaire\+Filtres}}
+\item 
+QFrame \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a4dc99fa5df2b6393f2272af0b9604e4d}{panneau\+Info}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a44ee56c335a09c8c6d98797b979fe81b}{label\+Taux\+SSS\+\_\+\+SRS}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aec5fc5d2141209f60a495c19a3b3270f}{label\+Taux\+SRS\+\_\+\+SDD}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a2e83aa102edccd5f110102c2e4a04018}{label\+Taux\+Global}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0dcdd24009dea4da3bab34b55acac081}{label\+Taux\+Complet}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa7a50a18b4945aaa300234da8d12db77}{label\+Liens\+Brises}}
+\item 
+QFrame \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a8303ba54328986dfcb40909de817205d}{panneau\+Detail}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_adadefd96f0ad0963fa637785756872f5}{label\+Detail\+Titre}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_afe1e63d73f6f9c61514d76051f7d78a1}{label\+Detail\+Stats}}
+\item 
+QList\+Widget \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a267d850bb86a972552c20c7bc90c18ca}{liste\+Detail\+Exigences}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} $>$ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a24b3dac0ab7c5ccc3c10a3c13463af07}{noeuds}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_arete_graphe}{Arete\+Graphe}} $>$ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a66cbc93466da7969a8cb8b19bc63b43b}{aretes}}
+\item 
+std::\+string \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a15c70b7cd10acd0d180a81c7a23dc67e}{noeud\+Selectionne}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a07145e2d227022e84e6984de9447f595}{label\+Detail\+Id}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a03e6bb15dbf6c49a4c2e61c6f4618521}{label\+Detail\+Type}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a4fbb40d45201528f9527d94f3dbd0c90}{label\+Detail\+Statut}}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ad828a8539e6c2f5f054e19d9fdbd520f}{label\+Detail\+Liens}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs privés statiques}
+\begin{DoxyCompactItemize}
+\item 
+static const QColor \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0931f3824473e4929936fc07b7deb11b}{COULEUR\+\_\+\+SSS}} = QColor("{}\+\#0\+D2\+B45"{})
+\item 
+static const QColor \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a93345d0e8b0e5590eb8170ca92463256}{COULEUR\+\_\+\+SRS}} = QColor("{}\+\#1A6\+FA8"{})
+\item 
+static const QColor \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ae8f1d2c36683ef8edfdeaf22d8cd64fc}{COULEUR\+\_\+\+SDD}} = QColor("{}\+\#7EC8\+E3"{})
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_vue_graphe_tracabilite_doc-constructors}
+\doxysubsection{Documentation des constructeurs et destructeur}
+\Hypertarget{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\index{VueGrapheTracabilite@{VueGrapheTracabilite}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{VueGrapheTracabilite()}{VueGrapheTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e} 
+Vue\+Graphe\+Tracabilite::\+\+Vue\+Graphe\+Tracabilite (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur de la vue graphe de traçabilité. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em parent} & Widget parent Qt. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\index{VueGrapheTracabilite@{VueGrapheTracabilite}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{VueGrapheTracabilite()}{VueGrapheTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e} 
+Vue\+Graphe\+Tracabilite::\+\+Vue\+Graphe\+Tracabilite (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\index{VueGrapheTracabilite@{VueGrapheTracabilite}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{VueGrapheTracabilite()}{VueGrapheTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e} 
+Vue\+Graphe\+Tracabilite::\+\+Vue\+Graphe\+Tracabilite (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_vue_graphe_tracabilite_doc-func-members}
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{class_vue_graphe_tracabilite_a9bb3ab4027d789a07571ff9cce39fde0}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!afficherDetailNoeud@{afficherDetailNoeud}}
+\index{afficherDetailNoeud@{afficherDetailNoeud}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{afficherDetailNoeud()}{afficherDetailNoeud()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a9bb3ab4027d789a07571ff9cce39fde0} 
+void Vue\+Graphe\+Tracabilite::\+afficher\+Detail\+Noeud (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&}]{noeud}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Affiche les détails d\textquotesingle{}un nœud dans le panneau de détail. 
+
+Affiche l\textquotesingle{}identifiant, le type (SSS/\+\+SRS/\+\+SDD), le statut et les liens associés (SRS couvrant ce SSS, ou SDD couvrant ce SRS).
+
+
+\begin{DoxyParams}{Paramètres}
+{\em noeud} & Le nœud sélectionné. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_a9bb3ab4027d789a07571ff9cce39fde0}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!afficherDetailNoeud@{afficherDetailNoeud}}
+\index{afficherDetailNoeud@{afficherDetailNoeud}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{afficherDetailNoeud()}{afficherDetailNoeud()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a9bb3ab4027d789a07571ff9cce39fde0} 
+void Vue\+Graphe\+Tracabilite::\+afficher\+Detail\+Noeud (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&}]{noeud}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!appliquerFiltre@{appliquerFiltre}}
+\index{appliquerFiltre@{appliquerFiltre}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{appliquerFiltre}{appliquerFiltre}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a} 
+void Vue\+Graphe\+Tracabilite::\+appliquer\+Filtre (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&}]{filtre}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Applique un filtre sur les nœuds et arêtes du graphe. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filtre} & Le filtre à appliquer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!appliquerFiltre@{appliquerFiltre}}
+\index{appliquerFiltre@{appliquerFiltre}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{appliquerFiltre}{appliquerFiltre}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a} 
+void Vue\+Graphe\+Tracabilite::\+appliquer\+Filtre (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&}]{filtre}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!appliquerFiltre@{appliquerFiltre}}
+\index{appliquerFiltre@{appliquerFiltre}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{appliquerFiltre}{appliquerFiltre}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a} 
+void Vue\+Graphe\+Tracabilite::\+appliquer\+Filtre (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&}]{filtre}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!construireGraphe@{construireGraphe}}
+\index{construireGraphe@{construireGraphe}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{construireGraphe()}{construireGraphe()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6} 
+void Vue\+Graphe\+Tracabilite::\+construire\+Graphe (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&}]{rapport}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{}\end{DoxyParamCaption})}
+
+
+
+Construit le graphe à partir du rapport de traçabilité et des exigences. 
+
+Crée un nœud par exigence (SSS à gauche, SRS au centre, SDD à droite), et une arête par lien de traçabilité avec le pourcentage de couverture calculé. Le pourcentage sur chaque arête est réparti équitablement entre tous les liens qui couvrent la même exigence source.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par le \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}. \\
+\hline
+{\em srs} & Vecteur des exigences SRS analysées. \\
+\hline
+{\em sdd} & Vecteur des exigences SDD analysées. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!construireGraphe@{construireGraphe}}
+\index{construireGraphe@{construireGraphe}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{construireGraphe()}{construireGraphe()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6} 
+void Vue\+Graphe\+Tracabilite::\+construire\+Graphe (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&}]{rapport}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!construireGraphe@{construireGraphe}}
+\index{construireGraphe@{construireGraphe}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{construireGraphe()}{construireGraphe()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6} 
+void Vue\+Graphe\+Tracabilite::\+construire\+Graphe (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&}]{rapport}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_vue_graphe_tracabilite_a3294526d59df6b342ba621d79f5a066a}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!couleurStatut@{couleurStatut}}
+\index{couleurStatut@{couleurStatut}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{couleurStatut()}{couleurStatut()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a3294526d59df6b342ba621d79f5a066a} 
+QColor Vue\+Graphe\+Tracabilite::\+couleur\+Statut (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}}}]{statut}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retourne la couleur d\textquotesingle{}un nœud selon son statut de couverture. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em statut} & Le statut de l\textquotesingle{}exigence. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La couleur correspondante. 
+\end{DoxyReturn}
+\Hypertarget{class_vue_graphe_tracabilite_a3294526d59df6b342ba621d79f5a066a}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!couleurStatut@{couleurStatut}}
+\index{couleurStatut@{couleurStatut}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{couleurStatut()}{couleurStatut()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a3294526d59df6b342ba621d79f5a066a} 
+QColor Vue\+Graphe\+Tracabilite::\+couleur\+Statut (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}}}]{statut}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a6b783657aeae6805a044e207bba5c510}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!dessinerArete@{dessinerArete}}
+\index{dessinerArete@{dessinerArete}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{dessinerArete()}{dessinerArete()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a6b783657aeae6805a044e207bba5c510} 
+void Vue\+Graphe\+Tracabilite::\+dessiner\+Arete (\begin{DoxyParamCaption}\item[{QPainter \&}]{painter}{, }\item[{const \doxymbox{\hyperlink{struct_arete_graphe}{Arete\+Graphe}} \&}]{arete}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dessine une arête avec une flèche et le pourcentage de couverture au milieu. 
+
+Le pourcentage affiché représente la contribution de ce lien à la couverture de l\textquotesingle{}exigence source. Si plusieurs liens couvrent la même exigence, le pourcentage est réparti équitablement (ex:\+ 3 liens → 33\% chacun). Les liens brisés sont affichés en pointillés orange avec 0\%.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em painter} & Le QPainter actif. \\
+\hline
+{\em arete} & L\textquotesingle{}arête à dessiner. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_a6b783657aeae6805a044e207bba5c510}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!dessinerArete@{dessinerArete}}
+\index{dessinerArete@{dessinerArete}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{dessinerArete()}{dessinerArete()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a6b783657aeae6805a044e207bba5c510} 
+void Vue\+Graphe\+Tracabilite::\+dessiner\+Arete (\begin{DoxyParamCaption}\item[{QPainter \&}]{painter}{, }\item[{const \doxymbox{\hyperlink{struct_arete_graphe}{Arete\+Graphe}} \&}]{arete}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a2c304c9229ea427953e3a72a82f96907}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!dessinerBadgePct@{dessinerBadgePct}}
+\index{dessinerBadgePct@{dessinerBadgePct}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{dessinerBadgePct()}{dessinerBadgePct()}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a2c304c9229ea427953e3a72a82f96907} 
+void Vue\+Graphe\+Tracabilite::\+dessiner\+Badge\+Pct (\begin{DoxyParamCaption}\item[{QPainter \&}]{painter}{, }\item[{QPointF}]{centre}{, }\item[{double}]{pct}{, }\item[{QColor}]{couleur}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_aed631ceecdc101800c087b50c29a66f9}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!dessinerLien@{dessinerLien}}
+\index{dessinerLien@{dessinerLien}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{dessinerLien()}{dessinerLien()}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_aed631ceecdc101800c087b50c29a66f9} 
+void Vue\+Graphe\+Tracabilite::\+dessiner\+Lien (\begin{DoxyParamCaption}\item[{QPainter \&}]{painter}{, }\item[{const \doxymbox{\hyperlink{struct_lien_fichier}{Lien\+Fichier}} \&}]{lien}{, }\item[{bool}]{survole}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a66353430fd5e258a991fa9a011c0495b}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!dessinerNoeud@{dessinerNoeud}}
+\index{dessinerNoeud@{dessinerNoeud}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{dessinerNoeud()}{dessinerNoeud()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a66353430fd5e258a991fa9a011c0495b} 
+void Vue\+Graphe\+Tracabilite::\+dessiner\+Noeud (\begin{DoxyParamCaption}\item[{QPainter \&}]{painter}{, }\item[{const \doxymbox{\hyperlink{struct_noeud_fichier}{Noeud\+Fichier}} \&}]{noeud}{, }\item[{bool}]{survole}{, }\item[{bool}]{selectionne}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a75390672119da8c934529c05602892f5}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!dessinerNoeud@{dessinerNoeud}}
+\index{dessinerNoeud@{dessinerNoeud}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{dessinerNoeud()}{dessinerNoeud()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a75390672119da8c934529c05602892f5} 
+void Vue\+Graphe\+Tracabilite::\+dessiner\+Noeud (\begin{DoxyParamCaption}\item[{QPainter \&}]{painter}{, }\item[{const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&}]{noeud}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dessine un nœud coloré avec son identifiant et son pourcentage de couverture. 
+
+Code couleur :\+
+\begin{DoxyItemize}
+\item Vert :\+ exigence couverte (100\%)
+\item Rouge :\+ exigence non couverte (0\%)
+\item Orange :\+ lien brisé
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em painter} & Le QPainter actif. \\
+\hline
+{\em noeud} & Le nœud à dessiner. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_a75390672119da8c934529c05602892f5}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!dessinerNoeud@{dessinerNoeud}}
+\index{dessinerNoeud@{dessinerNoeud}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{dessinerNoeud()}{dessinerNoeud()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a75390672119da8c934529c05602892f5} 
+void Vue\+Graphe\+Tracabilite::\+dessiner\+Noeud (\begin{DoxyParamCaption}\item[{QPainter \&}]{painter}{, }\item[{const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&}]{noeud}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a2e4835baf95fa3994366a7e41354c990}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!lienAPosition@{lienAPosition}}
+\index{lienAPosition@{lienAPosition}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{lienAPosition()}{lienAPosition()}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a2e4835baf95fa3994366a7e41354c990} 
+int Vue\+Graphe\+Tracabilite::\+lien\+APosition (\begin{DoxyParamCaption}\item[{const QPointF \&}]{pos}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a0a3d4ecb04e059edf208e9704103a3b5}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!mouseMoveEvent@{mouseMoveEvent}}
+\index{mouseMoveEvent@{mouseMoveEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{mouseMoveEvent()}{mouseMoveEvent()}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a0a3d4ecb04e059edf208e9704103a3b5} 
+void Vue\+Graphe\+Tracabilite::\+mouse\+Move\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6} 
+void Vue\+Graphe\+Tracabilite::\+mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gère le clic sur un nœud pour afficher ses détails. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & Événement souris Qt. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6} 
+void Vue\+Graphe\+Tracabilite::\+mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6} 
+void Vue\+Graphe\+Tracabilite::\+mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{QMouse\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeudAPosition@{noeudAPosition}}
+\index{noeudAPosition@{noeudAPosition}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeudAPosition()}{noeudAPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4} 
+const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+noeud\+APosition (\begin{DoxyParamCaption}\item[{const QPointF \&}]{pos}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retourne le nœud à la position donnée, nullptr si aucun. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pos} & Position du clic en coordonnées du graphe. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Pointeur vers le nœud ou nullptr. 
+\end{DoxyReturn}
+\Hypertarget{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeudAPosition@{noeudAPosition}}
+\index{noeudAPosition@{noeudAPosition}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeudAPosition()}{noeudAPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4} 
+const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+noeud\+APosition (\begin{DoxyParamCaption}\item[{const QPointF \&}]{pos}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeudAPosition@{noeudAPosition}}
+\index{noeudAPosition@{noeudAPosition}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeudAPosition()}{noeudAPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4} 
+const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+noeud\+APosition (\begin{DoxyParamCaption}\item[{const QPointF \&}]{pos}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_ad411f3bbfd3efce7c62038e99d3179df}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeudVisible@{noeudVisible}}
+\index{noeudVisible@{noeudVisible}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeudVisible()}{noeudVisible()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_ad411f3bbfd3efce7c62038e99d3179df} 
+bool Vue\+Graphe\+Tracabilite::\+noeud\+Visible (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&}]{n}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vérifie si un nœud doit être affiché selon le filtre actif. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Le nœud à tester. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le nœud est visible, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_vue_graphe_tracabilite_ad411f3bbfd3efce7c62038e99d3179df}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeudVisible@{noeudVisible}}
+\index{noeudVisible@{noeudVisible}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeudVisible()}{noeudVisible()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_ad411f3bbfd3efce7c62038e99d3179df} 
+bool Vue\+Graphe\+Tracabilite::\+noeud\+Visible (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} \&}]{n}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_ae30aaadfb55ff2bcba802ed13329239c}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeudVisible@{noeudVisible}}
+\index{noeudVisible@{noeudVisible}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeudVisible()}{noeudVisible()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_ae30aaadfb55ff2bcba802ed13329239c} 
+bool Vue\+Graphe\+Tracabilite::\+noeud\+Visible (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a79d1c974f5ad101e76faad3bcb853fbf}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!nomCourtFichier@{nomCourtFichier}}
+\index{nomCourtFichier@{nomCourtFichier}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{nomCourtFichier()}{nomCourtFichier()}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a79d1c974f5ad101e76faad3bcb853fbf} 
+QString Vue\+Graphe\+Tracabilite::\+nom\+Court\+Fichier (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{chemin}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a73442ef30572e2cabaff828a8a7590a8}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!onFiltreRapideChange@{onFiltreRapideChange}}
+\index{onFiltreRapideChange@{onFiltreRapideChange}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{onFiltreRapideChange}{onFiltreRapideChange}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a73442ef30572e2cabaff828a8a7590a8} 
+void Vue\+Graphe\+Tracabilite::\+on\+Filtre\+Rapide\+Change (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3} 
+void Vue\+Graphe\+Tracabilite::\+paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Redessine le graphe complet. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & Événement de peinture Qt. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3} 
+void Vue\+Graphe\+Tracabilite::\+paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!paintEvent@{paintEvent}}
+\index{paintEvent@{paintEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{paintEvent()}{paintEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3} 
+void Vue\+Graphe\+Tracabilite::\+paint\+Event (\begin{DoxyParamCaption}\item[{QPaint\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!resizeEvent@{resizeEvent}}
+\index{resizeEvent@{resizeEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{resizeEvent()}{resizeEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e} 
+void Vue\+Graphe\+Tracabilite::\+resize\+Event (\begin{DoxyParamCaption}\item[{QResize\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Redimensionne le panneau de filtres et le panneau détail avec le widget. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & Événement de redimensionnement Qt. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!resizeEvent@{resizeEvent}}
+\index{resizeEvent@{resizeEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{resizeEvent()}{resizeEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e} 
+void Vue\+Graphe\+Tracabilite::\+resize\+Event (\begin{DoxyParamCaption}\item[{QResize\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!resizeEvent@{resizeEvent}}
+\index{resizeEvent@{resizeEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{resizeEvent()}{resizeEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e} 
+void Vue\+Graphe\+Tracabilite::\+resize\+Event (\begin{DoxyParamCaption}\item[{QResize\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_aa042e5fd69ce9fe954f7d46894c87b02}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!setListeNomsFichiers@{setListeNomsFichiers}}
+\index{setListeNomsFichiers@{setListeNomsFichiers}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{setListeNomsFichiers()}{setListeNomsFichiers()}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_aa042e5fd69ce9fe954f7d46894c87b02} 
+void Vue\+Graphe\+Tracabilite::\+set\+Liste\+Noms\+Fichiers (\begin{DoxyParamCaption}\item[{const QString\+List \&}]{noms}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_vue_graphe_tracabilite_a21769a5c8e50bbd04efd5f2cdf29ea52}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!styleBoutonActif@{styleBoutonActif}}
+\index{styleBoutonActif@{styleBoutonActif}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{styleBoutonActif()}{styleBoutonActif()}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a21769a5c8e50bbd04efd5f2cdf29ea52} 
+void Vue\+Graphe\+Tracabilite::\+style\+Bouton\+Actif (\begin{DoxyParamCaption}\item[{QPush\+Button \texorpdfstring{$\ast$}{*}}]{btn}{, }\item[{QColor}]{couleur}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a8134f852dfdf4f9dc059d5a8a3922c14}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!styleBoutonInactif@{styleBoutonInactif}}
+\index{styleBoutonInactif@{styleBoutonInactif}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{styleBoutonInactif()}{styleBoutonInactif()}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a8134f852dfdf4f9dc059d5a8a3922c14} 
+void Vue\+Graphe\+Tracabilite::\+style\+Bouton\+Inactif (\begin{DoxyParamCaption}\item[{QPush\+Button \texorpdfstring{$\ast$}{*}}]{btn}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!toggleFiltres@{toggleFiltres}}
+\index{toggleFiltres@{toggleFiltres}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{toggleFiltres}{toggleFiltres}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75} 
+void Vue\+Graphe\+Tracabilite::\+toggle\+Filtres (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Affiche ou masque le panneau de filtres latéral. 
+
+\Hypertarget{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!toggleFiltres@{toggleFiltres}}
+\index{toggleFiltres@{toggleFiltres}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{toggleFiltres}{toggleFiltres}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75} 
+void Vue\+Graphe\+Tracabilite::\+toggle\+Filtres (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!toggleFiltres@{toggleFiltres}}
+\index{toggleFiltres@{toggleFiltres}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{toggleFiltres}{toggleFiltres}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75} 
+void Vue\+Graphe\+Tracabilite::\+toggle\+Filtres (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!wheelEvent@{wheelEvent}}
+\index{wheelEvent@{wheelEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{wheelEvent()}{wheelEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31} 
+void Vue\+Graphe\+Tracabilite::\+wheel\+Event (\begin{DoxyParamCaption}\item[{QWheel\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+Gère le zoom à la molette. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em event} & Événement molette Qt. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!wheelEvent@{wheelEvent}}
+\index{wheelEvent@{wheelEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{wheelEvent()}{wheelEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31} 
+void Vue\+Graphe\+Tracabilite::\+wheel\+Event (\begin{DoxyParamCaption}\item[{QWheel\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!wheelEvent@{wheelEvent}}
+\index{wheelEvent@{wheelEvent}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{wheelEvent()}{wheelEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31} 
+void Vue\+Graphe\+Tracabilite::\+wheel\+Event (\begin{DoxyParamCaption}\item[{QWheel\+Event \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_vue_graphe_tracabilite_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{class_vue_graphe_tracabilite_a66cbc93466da7969a8cb8b19bc63b43b}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!aretes@{aretes}}
+\index{aretes@{aretes}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{aretes}{aretes}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a66cbc93466da7969a8cb8b19bc63b43b} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_arete_graphe}{Arete\+Graphe}} $>$ Vue\+Graphe\+Tracabilite::\+aretes\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a6d11a251abd00165fc5309b22df79240}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!boutonFiltres@{boutonFiltres}}
+\index{boutonFiltres@{boutonFiltres}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{boutonFiltres}{boutonFiltres}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a6d11a251abd00165fc5309b22df79240} 
+QPush\+Button \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+bouton\+Filtres\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a0d6baa1906b123a11a6ca39478d0d2ee}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!boutonVueDirecte@{boutonVueDirecte}}
+\index{boutonVueDirecte@{boutonVueDirecte}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{boutonVueDirecte}{boutonVueDirecte}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a0d6baa1906b123a11a6ca39478d0d2ee} 
+QPush\+Button\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+bouton\+Vue\+Directe\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a610aae075295c89aadae3dfa0442b113}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!boutonVueIndirecte@{boutonVueIndirecte}}
+\index{boutonVueIndirecte@{boutonVueIndirecte}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{boutonVueIndirecte}{boutonVueIndirecte}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a610aae075295c89aadae3dfa0442b113} 
+QPush\+Button\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+bouton\+Vue\+Indirecte\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a449e2156cb4833f530787be8d86047d2}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!comboFiltreRapide@{comboFiltreRapide}}
+\index{comboFiltreRapide@{comboFiltreRapide}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{comboFiltreRapide}{comboFiltreRapide}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a449e2156cb4833f530787be8d86047d2} 
+QCombo\+Box\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+combo\+Filtre\+Rapide\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_ae8f1d2c36683ef8edfdeaf22d8cd64fc}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!COULEUR\_SDD@{COULEUR\_SDD}}
+\index{COULEUR\_SDD@{COULEUR\_SDD}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{COULEUR\_SDD}{COULEUR\_SDD}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_ae8f1d2c36683ef8edfdeaf22d8cd64fc} 
+const QColor Vue\+Graphe\+Tracabilite::\+\+COULEUR\+\_\+\+SDD = QColor("{}\+\#7EC8\+E3"{})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a93345d0e8b0e5590eb8170ca92463256}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!COULEUR\_SRS@{COULEUR\_SRS}}
+\index{COULEUR\_SRS@{COULEUR\_SRS}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{COULEUR\_SRS}{COULEUR\_SRS}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a93345d0e8b0e5590eb8170ca92463256} 
+const QColor Vue\+Graphe\+Tracabilite::\+\+COULEUR\+\_\+\+SRS = QColor("{}\+\#1A6\+FA8"{})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a0931f3824473e4929936fc07b7deb11b}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!COULEUR\_SSS@{COULEUR\_SSS}}
+\index{COULEUR\_SSS@{COULEUR\_SSS}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{COULEUR\_SSS}{COULEUR\_SSS}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a0931f3824473e4929936fc07b7deb11b} 
+const QColor Vue\+Graphe\+Tracabilite::\+\+COULEUR\+\_\+\+SSS = QColor("{}\+\#0\+D2\+B45"{})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a87800b9bdabc40fb959201655458a8f2}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!filtreActif@{filtreActif}}
+\index{filtreActif@{filtreActif}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{filtreActif}{filtreActif}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a87800b9bdabc40fb959201655458a8f2} 
+\doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} Vue\+Graphe\+Tracabilite::\+filtre\+Actif\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a5976aec884d3e66c9769c69be05b22e4}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!filtreRapide@{filtreRapide}}
+\index{filtreRapide@{filtreRapide}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{filtreRapide}{filtreRapide}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a5976aec884d3e66c9769c69be05b22e4} 
+int Vue\+Graphe\+Tracabilite::\+filtre\+Rapide\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_acaf18939d7b8664c60aa42fddfd64c33}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!gestionnaireFiltres@{gestionnaireFiltres}}
+\index{gestionnaireFiltres@{gestionnaireFiltres}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{gestionnaireFiltres}{gestionnaireFiltres}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_acaf18939d7b8664c60aa42fddfd64c33} 
+\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i}{Gestionnaire\+Filtres\+GUI}} \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+gestionnaire\+Filtres\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a07145e2d227022e84e6984de9447f595}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelDetailId@{labelDetailId}}
+\index{labelDetailId@{labelDetailId}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelDetailId}{labelDetailId}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a07145e2d227022e84e6984de9447f595} 
+QLabel \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Detail\+Id\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_ad828a8539e6c2f5f054e19d9fdbd520f}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelDetailLiens@{labelDetailLiens}}
+\index{labelDetailLiens@{labelDetailLiens}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelDetailLiens}{labelDetailLiens}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_ad828a8539e6c2f5f054e19d9fdbd520f} 
+QLabel \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Detail\+Liens\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_afe1e63d73f6f9c61514d76051f7d78a1}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelDetailStats@{labelDetailStats}}
+\index{labelDetailStats@{labelDetailStats}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelDetailStats}{labelDetailStats}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_afe1e63d73f6f9c61514d76051f7d78a1} 
+QLabel\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Detail\+Stats\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a4fbb40d45201528f9527d94f3dbd0c90}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelDetailStatut@{labelDetailStatut}}
+\index{labelDetailStatut@{labelDetailStatut}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelDetailStatut}{labelDetailStatut}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a4fbb40d45201528f9527d94f3dbd0c90} 
+QLabel \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Detail\+Statut\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_adadefd96f0ad0963fa637785756872f5}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelDetailTitre@{labelDetailTitre}}
+\index{labelDetailTitre@{labelDetailTitre}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelDetailTitre}{labelDetailTitre}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_adadefd96f0ad0963fa637785756872f5} 
+QLabel\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Detail\+Titre\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a03e6bb15dbf6c49a4c2e61c6f4618521}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelDetailType@{labelDetailType}}
+\index{labelDetailType@{labelDetailType}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelDetailType}{labelDetailType}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a03e6bb15dbf6c49a4c2e61c6f4618521} 
+QLabel \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Detail\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_aa7a50a18b4945aaa300234da8d12db77}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelLiensBrises@{labelLiensBrises}}
+\index{labelLiensBrises@{labelLiensBrises}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelLiensBrises}{labelLiensBrises}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_aa7a50a18b4945aaa300234da8d12db77} 
+QLabel\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Liens\+Brises\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a0dcdd24009dea4da3bab34b55acac081}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelTauxComplet@{labelTauxComplet}}
+\index{labelTauxComplet@{labelTauxComplet}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelTauxComplet}{labelTauxComplet}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a0dcdd24009dea4da3bab34b55acac081} 
+QLabel\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Taux\+Complet\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a2e83aa102edccd5f110102c2e4a04018}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelTauxGlobal@{labelTauxGlobal}}
+\index{labelTauxGlobal@{labelTauxGlobal}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelTauxGlobal}{labelTauxGlobal}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a2e83aa102edccd5f110102c2e4a04018} 
+QLabel\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Taux\+Global\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_aec5fc5d2141209f60a495c19a3b3270f}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelTauxSRS\_SDD@{labelTauxSRS\_SDD}}
+\index{labelTauxSRS\_SDD@{labelTauxSRS\_SDD}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelTauxSRS\_SDD}{labelTauxSRS\_SDD}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_aec5fc5d2141209f60a495c19a3b3270f} 
+QLabel\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Taux\+SRS\+\_\+\+SDD\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a44ee56c335a09c8c6d98797b979fe81b}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!labelTauxSSS\_SRS@{labelTauxSSS\_SRS}}
+\index{labelTauxSSS\_SRS@{labelTauxSSS\_SRS}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{labelTauxSSS\_SRS}{labelTauxSSS\_SRS}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a44ee56c335a09c8c6d98797b979fe81b} 
+QLabel\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+label\+Taux\+SSS\+\_\+\+SRS\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_aa0cedb7d27a6217ce91e3e0396eaa612}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!liens@{liens}}
+\index{liens@{liens}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{liens}{liens}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_aa0cedb7d27a6217ce91e3e0396eaa612} 
+std::\+vector$<$\doxymbox{\hyperlink{struct_lien_fichier}{Lien\+Fichier}}$>$ Vue\+Graphe\+Tracabilite::\+liens\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a1ddb6526a6c23d8067aab910e771c4b1}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!liensBrises@{liensBrises}}
+\index{liensBrises@{liensBrises}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{liensBrises}{liensBrises}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a1ddb6526a6c23d8067aab910e771c4b1} 
+QString\+List Vue\+Graphe\+Tracabilite::\+liens\+Brises\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a8802cee259d32e570d4fa985fad0ebe3}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!lienSurvole@{lienSurvole}}
+\index{lienSurvole@{lienSurvole}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{lienSurvole}{lienSurvole}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a8802cee259d32e570d4fa985fad0ebe3} 
+int Vue\+Graphe\+Tracabilite::\+lien\+Survole\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a267d850bb86a972552c20c7bc90c18ca}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!listeDetailExigences@{listeDetailExigences}}
+\index{listeDetailExigences@{listeDetailExigences}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{listeDetailExigences}{listeDetailExigences}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a267d850bb86a972552c20c7bc90c18ca} 
+QList\+Widget\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+liste\+Detail\+Exigences\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a63380973a0fc8f367a0319127319afdf}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!niveauZoom@{niveauZoom}}
+\index{niveauZoom@{niveauZoom}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{niveauZoom}{niveauZoom}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a63380973a0fc8f367a0319127319afdf} 
+double Vue\+Graphe\+Tracabilite::\+niveau\+Zoom\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_ab11f8857cef31d33d5ec682349a73b76}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeuds@{noeuds}}
+\index{noeuds@{noeuds}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeuds}{noeuds}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_ab11f8857cef31d33d5ec682349a73b76} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}} $>$ Vue\+Graphe\+Tracabilite::\+noeuds\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a24b3dac0ab7c5ccc3c10a3c13463af07}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeuds@{noeuds}}
+\index{noeuds@{noeuds}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeuds}{noeuds}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a24b3dac0ab7c5ccc3c10a3c13463af07} 
+std::\+vector$<$\doxymbox{\hyperlink{struct_noeud_graphe}{Noeud\+Graphe}}$>$ Vue\+Graphe\+Tracabilite::\+noeuds\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a15c70b7cd10acd0d180a81c7a23dc67e}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeudSelectionne@{noeudSelectionne}}
+\index{noeudSelectionne@{noeudSelectionne}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeudSelectionne}{noeudSelectionne}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a15c70b7cd10acd0d180a81c7a23dc67e} 
+std::\+string Vue\+Graphe\+Tracabilite::\+noeud\+Selectionne\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a15c70b7cd10acd0d180a81c7a23dc67e}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeudSelectionne@{noeudSelectionne}}
+\index{noeudSelectionne@{noeudSelectionne}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeudSelectionne}{noeudSelectionne}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a15c70b7cd10acd0d180a81c7a23dc67e} 
+std::\+string Vue\+Graphe\+Tracabilite::\+noeud\+Selectionne\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_aefc179e03628042521686511e8527a5d}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!noeudSurvole@{noeudSurvole}}
+\index{noeudSurvole@{noeudSurvole}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{noeudSurvole}{noeudSurvole}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_aefc179e03628042521686511e8527a5d} 
+int Vue\+Graphe\+Tracabilite::\+noeud\+Survole\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a8303ba54328986dfcb40909de817205d}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!panneauDetail@{panneauDetail}}
+\index{panneauDetail@{panneauDetail}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{panneauDetail}{panneauDetail}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a8303ba54328986dfcb40909de817205d} 
+QFrame \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+panneau\+Detail\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a8584f67e4345860d52e6a1fcab1f4175}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!panneauFiltres@{panneauFiltres}}
+\index{panneauFiltres@{panneauFiltres}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{panneauFiltres}{panneauFiltres}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a8584f67e4345860d52e6a1fcab1f4175} 
+QFrame \texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+panneau\+Filtres\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a4dc99fa5df2b6393f2272af0b9604e4d}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!panneauInfo@{panneauInfo}}
+\index{panneauInfo@{panneauInfo}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{panneauInfo}{panneauInfo}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a4dc99fa5df2b6393f2272af0b9604e4d} 
+QFrame\texorpdfstring{$\ast$}{*} Vue\+Graphe\+Tracabilite::\+panneau\+Info\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a9aba5251058a2b1c25ac246209ef2f48}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!rapportCourant@{rapportCourant}}
+\index{rapportCourant@{rapportCourant}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{rapportCourant}{rapportCourant}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a9aba5251058a2b1c25ac246209ef2f48} 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} Vue\+Graphe\+Tracabilite::\+rapport\+Courant\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a0b7755a1a1d4b534a1ec6a6a3c6eb937}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!sddAnalyses@{sddAnalyses}}
+\index{sddAnalyses@{sddAnalyses}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{sddAnalyses}{sddAnalyses}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a0b7755a1a1d4b534a1ec6a6a3c6eb937} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ Vue\+Graphe\+Tracabilite::\+sdd\+Analyses\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_a04eb2dd4252fa09a757cd6aa23ed4941}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!srsAnalyses@{srsAnalyses}}
+\index{srsAnalyses@{srsAnalyses}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{srsAnalyses}{srsAnalyses}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_a04eb2dd4252fa09a757cd6aa23ed4941} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ Vue\+Graphe\+Tracabilite::\+srs\+Analyses\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_vue_graphe_tracabilite_abe598f5f9007e5e8ce768f8f93f149ab}\index{VueGrapheTracabilite@{VueGrapheTracabilite}!vueIndirecte@{vueIndirecte}}
+\index{vueIndirecte@{vueIndirecte}!VueGrapheTracabilite@{VueGrapheTracabilite}}
+\doxysubsubsection{\texorpdfstring{vueIndirecte}{vueIndirecte}}
+{\footnotesize\ttfamily \label{class_vue_graphe_tracabilite_abe598f5f9007e5e8ce768f8f93f149ab} 
+bool Vue\+Graphe\+Tracabilite::\+vue\+Indirecte\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants :\+\begin{DoxyCompactItemize}
+\item 
+branches/\+\+L2\+G1\+\_\+\+Module3/\+headers/\+\doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h}{Vue\+Graphe\+Tracabilite.\+h}}\item 
+tags/\+\+A0/\+\+L2\+G1\+\_\+\+Module3/\+headers/\+\doxymbox{\hyperlink{tags_2_a0_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h}{Vue\+Graphe\+Tracabilite.\+h}}\item 
+trunk/\+headers/\+\doxymbox{\hyperlink{trunk_2headers_2_vue_graphe_tracabilite_8h}{Vue\+Graphe\+Tracabilite.\+h}}\item 
+branches/\+\+L2\+G1\+\_\+\+Module3/\+sources/\+\doxymbox{\hyperlink{branches_2_l2_g1___module3_2sources_2_vue_graphe_tracabilite_8cpp}{Vue\+Graphe\+Tracabilite.\+cpp}}\item 
+tags/\+\+A0/\+\+L2\+G1\+\_\+\+Module3/\+sources/\+\doxymbox{\hyperlink{tags_2_a0_2_l2_g1___module3_2sources_2_vue_graphe_tracabilite_8cpp}{Vue\+Graphe\+Tracabilite.\+cpp}}\item 
+trunk/\+sources/\+\doxymbox{\hyperlink{trunk_2sources_2_vue_graphe_tracabilite_8cpp}{Vue\+Graphe\+Tracabilite.\+cpp}}\end{DoxyCompactItemize}

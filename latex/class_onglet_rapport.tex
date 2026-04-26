@@ -1,0 +1,1187 @@
+\doxysection{Référence de la classe Onglet\+Rapport}
+\hypertarget{class_onglet_rapport}{}\label{class_onglet_rapport}\index{OngletRapport@{OngletRapport}}
+
+
+Onglet Qt qui affiche le rapport de tracabilite complet produit par le Module 2.  
+
+
+
+
+{\ttfamily \+\#include $<$Ongletrapport.\+h$>$}
+
+Graphe d\textquotesingle{}héritage de Onglet\+Rapport:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_onglet_rapport}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Connecteurs publics}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba}{appliquer\+Filtre}} (const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&filtre)
+\begin{DoxyCompactList}\small\item\em Applique les criteres de filtre sur les deux matrices. Cache les lignes qui ne correspondent pas au filtre. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_onglet_rapport_a6b9dac6fe8b8eccb6c22c91e03000cb6}{event\+Filter}} (QObject \texorpdfstring{$\ast$}{*}obj, QEvent \texorpdfstring{$\ast$}{*}event) override
+\begin{DoxyCompactList}\small\item\em Intercepte les evenements souris sur les badges liens brises et orphelines. Un clic sur ces badges affiche ou cache le panneau correspondant. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba}{appliquer\+Filtre}} (const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&filtre)
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Applique un filtre sur les matrices. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba}{appliquer\+Filtre}} (const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&filtre)
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Applique un filtre sur les matrices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818}{Onglet\+Rapport}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur :\+ cree l\textquotesingle{}onglet et initialise tous ses widgets. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6}{afficher\+Rapport}} (const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&rapport)
+\begin{DoxyCompactList}\small\item\em Affiche un rapport sans donnees SRS/\+\+SDD detaillees. Appelle afficher\+Rapport\+Complet avec des vecteurs vides. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_aa0f83abd74aeb7975e0267caced15582}{afficher\+Rapport\+Complet}} (const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&rapport, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd, const std::\+vector$<$ std::\+string $>$ \&orphelines)
+\begin{DoxyCompactList}\small\item\em Affiche le rapport complet avec toutes les matrices et panneaux. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818}{Onglet\+Rapport}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6}{afficher\+Rapport}} (const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&rapport)
+\begin{DoxyCompactList}\small\item\em Charge et affiche un rapport de traçabilité sans données SRS/\+\+SDD détaillées. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a0a05dec64300b1063034cec4dd143888}{afficher\+Rapport\+Complet}} (const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&rapport, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd)
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Charge et affiche le rapport avec les vraies matrices bidimensionnelles. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818}{Onglet\+Rapport}} (QWidget \texorpdfstring{$\ast$}{*}parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6}{afficher\+Rapport}} (const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&rapport)
+\begin{DoxyCompactList}\small\item\em Charge et affiche un rapport de traçabilité sans données SRS/\+\+SDD détaillées. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a0a05dec64300b1063034cec4dd143888}{afficher\+Rapport\+Complet}} (const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&rapport, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd)
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Charge et affiche le rapport avec les vraies matrices bidimensionnelles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Connecteurs privés}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4}{exporter\+CSV}} ()
+\begin{DoxyCompactList}\small\item\em Exporte le rapport au format CSV avec taux, matrices et liens brises. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8}{exporter\+HTML}} ()
+\begin{DoxyCompactList}\small\item\em Exporte le rapport au format HTML interactif. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ad88782c71eff53019c29c9bee024d273}{exporter\+PDF}} ()
+\begin{DoxyCompactList}\small\item\em Exporte le rapport au format PDF via QText\+Document et QPrinter. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3}{toggle\+Filtres}} ()
+\begin{DoxyCompactList}\small\item\em Affiche ou cache le panneau de filtres lateral. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4}{exporter\+CSV}} ()
+\begin{DoxyCompactList}\small\item\em Exporte le rapport au format CSV. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8}{exporter\+HTML}} ()
+\begin{DoxyCompactList}\small\item\em Exporte le rapport au format HTML. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3}{toggle\+Filtres}} ()
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Affiche ou masque le panneau de filtres latéral. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4}{exporter\+CSV}} ()
+\begin{DoxyCompactList}\small\item\em Exporte le rapport au format CSV. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8}{exporter\+HTML}} ()
+\begin{DoxyCompactList}\small\item\em Exporte le rapport au format HTML. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3}{toggle\+Filtres}} ()
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Affiche ou masque le panneau de filtres latéral. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres privées}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804}{initialiser\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Construit et place tous les widgets dans l\textquotesingle{}onglet. Appelee une seule fois dans le constructeur. \end{DoxyCompactList}\item 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a761820647193743906d8a29a35531415}{creer\+Barre}} (const QString \&couleur)
+\begin{DoxyCompactList}\small\item\em Cree une barre de progression stylisee avec la couleur donnee. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c}{styliser\+Tableau}} (QTable\+Widget \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em Applique un style visuel coherent a un tableau Qt. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804}{initialiser\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Initialise la mise en page et tous les widgets de l\textquotesingle{}onglet. \end{DoxyCompactList}\item 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a761820647193743906d8a29a35531415}{creer\+Barre}} (const QString \&couleur)
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Crée une barre de progression stylisée. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c}{styliser\+Tableau}} (QTable\+Widget \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Applique un style cohérent à un QTable\+Widget. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804}{initialiser\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Initialise la mise en page et tous les widgets de l\textquotesingle{}onglet. \end{DoxyCompactList}\item 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a761820647193743906d8a29a35531415}{creer\+Barre}} (const QString \&couleur)
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Crée une barre de progression stylisée. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c}{styliser\+Tableau}} (QTable\+Widget \texorpdfstring{$\ast$}{*}table)
+\begin{DoxyCompactList}\small\item\em AJOUT :\+ Applique un style cohérent à un QTable\+Widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_af7f370e171006d74535cd3f54c938a47}{label\+Taux\+SSS\+\_\+\+SRS}}
+\begin{DoxyCompactList}\small\item\em Label "{}\+Taux SSS-\/$>$\+SRS :\+ X \%"{} a gauche de la barre. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a1912bd0119c1e6ee4619d807e468e11d}{label\+Taux\+SRS\+\_\+\+SDD}}
+\begin{DoxyCompactList}\small\item\em Label "{}\+Taux SRS-\/$>$\+SDD :\+ X \%"{} a gauche de la barre. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a82f8f2cdb7ac56b6364162a5d3c02325}{label\+Taux\+Global}}
+\begin{DoxyCompactList}\small\item\em Label "{}\+Taux global :\+ X \%"{} a gauche de la barre. \end{DoxyCompactList}\item 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a08600dce6969bb44417df5d5f8282f30}{barre\+SSS\+\_\+\+SRS}}
+\begin{DoxyCompactList}\small\item\em Barre de progression pour le taux SSS-\/\texorpdfstring{$>$}{>}SRS. \end{DoxyCompactList}\item 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a1b3867e58380cf22da33fb65fab0615c}{barre\+SRS\+\_\+\+SDD}}
+\begin{DoxyCompactList}\small\item\em Barre de progression pour le taux SRS-\/\texorpdfstring{$>$}{>}SDD. \end{DoxyCompactList}\item 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a6a47ec106861b2b1eecd7b34d7aa4e50}{barre\+Global}}
+\begin{DoxyCompactList}\small\item\em Barre de progression pour le taux global. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a44a30164fcb71c6e9d9437a0b02350ed}{label\+Badge\+Couverts}}
+\begin{DoxyCompactList}\small\item\em Badge vert :\+ nombre d\textquotesingle{}exigences couvertes (SSS + SRS). \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a3c24ab7fe5d0e85eab63f74158c5eeba}{label\+Badge\+Non\+Couverts}}
+\begin{DoxyCompactList}\small\item\em Badge rouge :\+ nombre d\textquotesingle{}exigences non couvertes. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a9d9818f3b333c4d82d7d35e5ef16f82d}{label\+Badge\+Liens\+Brises}}
+\begin{DoxyCompactList}\small\item\em Badge orange cliquable :\+ nombre de liens brises. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a08b7c90d423f4fdf6f49782ec474c9f1}{label\+Badge\+Orphelines}}
+\begin{DoxyCompactList}\small\item\em Badge violet cliquable :\+ nombre d\textquotesingle{}exigences orphelines. \end{DoxyCompactList}\item 
+QTable\+Widget \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a9febc078f7c7c585bd07fccd3e5a0ce6}{table\+Matrice\+SSS\+\_\+\+SRS}}
+\begin{DoxyCompactList}\small\item\em Matrice SSS x SRS — 3 colonnes :\+ \doxylink{class_exigence}{Exigence} \texorpdfstring{$\vert$}{|} \doxylink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut} \texorpdfstring{$\vert$}{|} Couverte par (SRS). \end{DoxyCompactList}\item 
+QTable\+Widget \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_ab7ae76a7fbdcce24d43c327bd544fee6}{table\+Matrice\+SRS\+\_\+\+SDD}}
+\begin{DoxyCompactList}\small\item\em Matrice SRS x SDD — 3 colonnes :\+ \doxylink{class_exigence}{Exigence} \texorpdfstring{$\vert$}{|} \doxylink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut} \texorpdfstring{$\vert$}{|} Couverte par (SDD). \end{DoxyCompactList}\item 
+QFrame \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a6b2128766e24629ca56027af6cd1a8c3}{panneau\+Detail}}
+\begin{DoxyCompactList}\small\item\em Cadre qui s\textquotesingle{}affiche au clic sur une ligne de matrice. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_ad9a888355f5ed489e24ba3fed114d0be}{label\+Detail\+Id}}
+\begin{DoxyCompactList}\small\item\em Identifiant de l\textquotesingle{}exigence selectionnee. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a5d640bfa67288baa93a100f9406f4bc3}{label\+Detail\+Type}}
+\begin{DoxyCompactList}\small\item\em Badge type :\+ "{}\+SSS"{} (bleu) ou "{}\+SRS"{} (orange). \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a36271cc1572f979177a7dfdf1027101d}{label\+Detail\+Statut}}
+\begin{DoxyCompactList}\small\item\em Badge statut colore selon la couverture. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_ad85c99840ac1f829a3339b38ee7abcf3}{label\+Detail\+Liens}}
+\begin{DoxyCompactList}\small\item\em Liste des identifiants des exigences liees. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a329948ba21c38c343d8b49cfc3312929}{label\+Detail\+Fichier}}
+\begin{DoxyCompactList}\small\item\em Chemin du fichier source (italic gris). \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a1c5e310d9b1fe66b336c2b524bdcdd14}{label\+Detail\+Description}}
+\begin{DoxyCompactList}\small\item\em Contenu textuel de l\textquotesingle{}exigence. \end{DoxyCompactList}\item 
+QLabel \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a2f1cd888b8655d5fb2475eb449c3ecf5}{label\+Detail\+Etat}}
+\begin{DoxyCompactList}\small\item\em Etat de developpement :\+ Developpe /\+ Non developpe. \end{DoxyCompactList}\item 
+QTool\+Button \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a37325c6c7892d1ed774761efc58e48e3}{bouton\+Export}}
+\begin{DoxyCompactList}\small\item\em Bouton vert "{}\+Exporter"{} avec menu deroulant. \end{DoxyCompactList}\item 
+QMenu \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_ab3a6c2c747381058a25d871ae92d3374}{menu\+Export}}
+\begin{DoxyCompactList}\small\item\em Menu :\+ CSV, HTML interactif, PDF. \end{DoxyCompactList}\item 
+QFrame \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_ac3d2cedd4765281542c8aeed0e42daa4}{panneau\+Filtres}}
+\begin{DoxyCompactList}\small\item\em Cadre lateral qui se glisse depuis la droite. \end{DoxyCompactList}\item 
+QPush\+Button \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a39c4cea08e8afe1a7265389a08ca590c}{bouton\+Filtres}}
+\begin{DoxyCompactList}\small\item\em Bouton "{}\+Filtres"{} ouvre/\+ferme le panneau. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i}{Gestionnaire\+Filtres\+GUI}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_ada2b30c0663b8d386e3314038d9b9349}{gestionnaire\+Filtres}}
+\begin{DoxyCompactList}\small\item\em Widget interne avec les champs de filtre. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \doxymbox{\hyperlink{class_onglet_rapport_ab4ff6350ad14a8d11cc5d7c2150bc286}{rapport\+Courant}}
+\begin{DoxyCompactList}\small\item\em Copie du dernier rapport charge. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \doxymbox{\hyperlink{class_onglet_rapport_a65a64cad20ad7b9d386e23cd5bc1525b}{srs\+Analyses}}
+\begin{DoxyCompactList}\small\item\em Exigences SRS du dernier rapport. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \doxymbox{\hyperlink{class_onglet_rapport_a4c245859a692c4678b072920f10383af}{sdd\+Analyses}}
+\begin{DoxyCompactList}\small\item\em Elements SDD du dernier rapport. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_onglet_rapport_a9c5af3a7aa597e50f44d26dd63d4c902}{orphelines\+Analyses}}
+\begin{DoxyCompactList}\small\item\em IDs des exigences orphelines. \end{DoxyCompactList}\item 
+QFrame \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_af36529bc577117a2c613937ad3085b8e}{panneau\+Liens\+Brises}}
+\begin{DoxyCompactList}\small\item\em Cadre orange listant les liens brises. \end{DoxyCompactList}\item 
+QWidget \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a29846db8e7ec124501f1bf2a4177d387}{liste\+Liens\+Brises}}
+\begin{DoxyCompactList}\small\item\em Conteneur interne des lignes. \end{DoxyCompactList}\item 
+QVBox\+Layout \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_a10beacaa38c62655de993ff0734ace18}{layout\+Liste\+LB}}
+\begin{DoxyCompactList}\small\item\em Layout vertical des lignes de liens brises. \end{DoxyCompactList}\item 
+QFrame \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_ad0a5c16249a69b2790e3e5484f266745}{panneau\+Orphelines}}
+\begin{DoxyCompactList}\small\item\em Cadre violet listant les exigences orphelines. \end{DoxyCompactList}\item 
+QWidget \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_aa1b50c62747589226a192b99af65a116}{liste\+Orphelines}}
+\begin{DoxyCompactList}\small\item\em Conteneur interne des lignes. \end{DoxyCompactList}\item 
+QVBox\+Layout \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_onglet_rapport_aab82d66d1f48c915ad9d23dd816726fe}{layout\+Liste\+Orph}}
+\begin{DoxyCompactList}\small\item\em Layout vertical des lignes d\textquotesingle{}orphelines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Onglet Qt qui affiche le rapport de tracabilite complet produit par le Module 2. 
+
+AJOUT :\+ menu déroulant pour l\textquotesingle{}export.
+
+Contenu de l\textquotesingle{}onglet :\+
+\begin{DoxyItemize}
+\item Taux de couverture SSS-\/\texorpdfstring{$>$}{>}SRS, SRS-\/\texorpdfstring{$>$}{>}SDD et global avec barres de progression
+\item Badges de resume :\+ couvertes, non couvertes, liens brises, orphelines
+\item Matrice SSS x SRS (3 colonnes :\+ \doxylink{class_exigence}{Exigence} \texorpdfstring{$\vert$}{|} \doxylink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut} \texorpdfstring{$\vert$}{|} Couverte par)
+\item Matrice SRS x SDD (3 colonnes :\+ \doxylink{class_exigence}{Exigence} \texorpdfstring{$\vert$}{|} \doxylink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut} \texorpdfstring{$\vert$}{|} Couverte par)
+\item Panneau de detail au clic sur une exigence
+\item Panneau de liens brises (cadre orange, clic sur badge)
+\item Panneau d\textquotesingle{}orphelines (cadre violet, clic sur badge)
+\item Export CSV, HTML interactif, PDF
+\item Panneau de filtres lateral
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Auteur}
+Lamia Arrahmane (interface, matrices, filtres, CSV, PDF) 
+
+Amel Kheloul (export HTML interactif v2.\+1)
+\end{DoxyAuthor}
+AJOUT :\+ include du gestionnaire de filtres
+
+AJOUT :\+ includes pour les vraies matrices
+
+Onglet Qt affichant le rapport de traçabilité complet produit par le Module 2.
+
+Affiche :\+
+\begin{DoxyItemize}
+\item Les taux de couverture avec barres de progression bleues
+\item Badges résumé (couverts, non couverts, liens brisés)
+\item Matrice SSS×\+SRS et matrice SRS×\+SDD avec zoom/\+dézoom
+\item Panneau détail d\textquotesingle{}une exigence au clic
+\item Menu déroulant export (CSV, HTML)
+\item Panneau de filtres déroulant à droite 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{class_onglet_rapport_doc-constructors}
+\doxysubsection{Documentation des constructeurs et destructeur}
+\Hypertarget{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818}\index{OngletRapport@{OngletRapport}!OngletRapport@{OngletRapport}}
+\index{OngletRapport@{OngletRapport}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{OngletRapport()}{OngletRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818} 
+Onglet\+Rapport::\+\+Onglet\+Rapport (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur :\+ cree l\textquotesingle{}onglet et initialise tous ses widgets. 
+
+Constructeur de l\textquotesingle{}onglet rapport.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em parent} & Le widget parent (peut etre nullptr).\\
+\hline
+\end{DoxyParams}
+Cree l\textquotesingle{}onglet et appelle initialiser\+UI pour construire tous les widgets.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em parent} & Le widget parent Qt. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818}\index{OngletRapport@{OngletRapport}!OngletRapport@{OngletRapport}}
+\index{OngletRapport@{OngletRapport}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{OngletRapport()}{OngletRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818} 
+Onglet\+Rapport::\+\+Onglet\+Rapport (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em parent} & Widget parent Qt. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818}\index{OngletRapport@{OngletRapport}!OngletRapport@{OngletRapport}}
+\index{OngletRapport@{OngletRapport}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{OngletRapport()}{OngletRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818} 
+Onglet\+Rapport::\+\+Onglet\+Rapport (\begin{DoxyParamCaption}\item[{QWidget \texorpdfstring{$\ast$}{*}}]{parent}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructeur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em parent} & Widget parent Qt. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_onglet_rapport_doc-func-members}
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6}\index{OngletRapport@{OngletRapport}!afficherRapport@{afficherRapport}}
+\index{afficherRapport@{afficherRapport}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{afficherRapport()}{afficherRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6} 
+void Onglet\+Rapport::\+afficher\+Rapport (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&}]{rapport}{}\end{DoxyParamCaption})}
+
+
+
+Affiche un rapport sans donnees SRS/\+\+SDD detaillees. Appelle afficher\+Rapport\+Complet avec des vecteurs vides. 
+
+Affiche un rapport sans les vecteurs SRS et SDD détaillés.
+
+Surcharge simplifiee sans donnees SRS/\+\+SDD.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par le moteur de tracabilite.\\
+\hline
+\end{DoxyParams}
+Appelle afficher\+Rapport\+Complet avec des vecteurs vides.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}.\\
+\hline
+{\em rapport} & Le rapport produit par le \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6}\index{OngletRapport@{OngletRapport}!afficherRapport@{afficherRapport}}
+\index{afficherRapport@{afficherRapport}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{afficherRapport()}{afficherRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6} 
+void Onglet\+Rapport::\+afficher\+Rapport (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&}]{rapport}{}\end{DoxyParamCaption})}
+
+
+
+Charge et affiche un rapport de traçabilité sans données SRS/\+\+SDD détaillées. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par le \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6}\index{OngletRapport@{OngletRapport}!afficherRapport@{afficherRapport}}
+\index{afficherRapport@{afficherRapport}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{afficherRapport()}{afficherRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6} 
+void Onglet\+Rapport::\+afficher\+Rapport (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&}]{rapport}{}\end{DoxyParamCaption})}
+
+
+
+Charge et affiche un rapport de traçabilité sans données SRS/\+\+SDD détaillées. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par le \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a0a05dec64300b1063034cec4dd143888}\index{OngletRapport@{OngletRapport}!afficherRapportComplet@{afficherRapportComplet}}
+\index{afficherRapportComplet@{afficherRapportComplet}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{afficherRapportComplet()}{afficherRapportComplet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a0a05dec64300b1063034cec4dd143888} 
+void Onglet\+Rapport::\+afficher\+Rapport\+Complet (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&}]{rapport}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{}\end{DoxyParamCaption})}
+
+
+
+AJOUT :\+ Charge et affiche le rapport avec les vraies matrices bidimensionnelles. 
+
+Affiche le rapport complet avec les vraies matrices bidimensionnelles.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par le \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}. \\
+\hline
+{\em srs} & Vecteur des exigences SRS analysées. \\
+\hline
+{\em sdd} & Vecteur des exigences SDD analysées.\\
+\hline
+\end{DoxyParams}
+Construit :\+
+\begin{DoxyItemize}
+\item La matrice SSS (lignes) × SRS (colonnes) avec code couleur
+\item La matrice SRS (lignes) × SDD (colonnes) avec code couleur
+\item Les badges résumé (couverts, non couverts, liens brisés)
+\item Les barres de progression des taux
+\item La section liens brisés
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par le \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}. \\
+\hline
+{\em srs} & Vecteur des exigences SRS analysées. \\
+\hline
+{\em sdd} & Vecteur des exigences SDD analysées. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a0a05dec64300b1063034cec4dd143888}\index{OngletRapport@{OngletRapport}!afficherRapportComplet@{afficherRapportComplet}}
+\index{afficherRapportComplet@{afficherRapportComplet}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{afficherRapportComplet()}{afficherRapportComplet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a0a05dec64300b1063034cec4dd143888} 
+void Onglet\+Rapport::\+afficher\+Rapport\+Complet (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&}]{rapport}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{}\end{DoxyParamCaption})}
+
+
+
+AJOUT :\+ Charge et affiche le rapport avec les vraies matrices bidimensionnelles. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par le \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}. \\
+\hline
+{\em srs} & Vecteur des exigences SRS analysées. \\
+\hline
+{\em sdd} & Vecteur des exigences SDD analysées. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_aa0f83abd74aeb7975e0267caced15582}\index{OngletRapport@{OngletRapport}!afficherRapportComplet@{afficherRapportComplet}}
+\index{afficherRapportComplet@{afficherRapportComplet}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{afficherRapportComplet()}{afficherRapportComplet()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_aa0f83abd74aeb7975e0267caced15582} 
+void Onglet\+Rapport::\+afficher\+Rapport\+Complet (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \&}]{rapport}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{, }\item[{const std::\+vector$<$ std::\+string $>$ \&}]{orphelines}{}\end{DoxyParamCaption})}
+
+
+
+Affiche le rapport complet avec toutes les matrices et panneaux. 
+
+Remplit tous les widgets de l\textquotesingle{}onglet avec les donnees du rapport.
+
+Met a jour les taux, les matrices SSS x SRS et SRS x SDD, les badges de resume, les panneaux liens brises et orphelines.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}. \\
+\hline
+{\em srs} & Liste des exigences SRS analysees. \\
+\hline
+{\em sdd} & Liste des elements de conception SDD analyses. \\
+\hline
+{\em orphelines} & Liste des identifiants d\textquotesingle{}exigences orphelines (sans parent SSS).\\
+\hline
+\end{DoxyParams}
+Met a jour les taux, les matrices SSS x SRS et SRS x SDD (3 colonnes chacune), les badges de resume, les panneaux liens brises et orphelines, et connecte le clic sur les lignes au panneau detail.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rapport} & Le rapport produit par \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}. \\
+\hline
+{\em srs} & Les exigences SRS analysees. \\
+\hline
+{\em sdd} & Les elements SDD analyses. \\
+\hline
+{\em orphelines} & Les IDs des exigences SRS sans parent SSS. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba}\index{OngletRapport@{OngletRapport}!appliquerFiltre@{appliquerFiltre}}
+\index{appliquerFiltre@{appliquerFiltre}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{appliquerFiltre}{appliquerFiltre}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba} 
+void Onglet\+Rapport::\+appliquer\+Filtre (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&}]{filtre}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Applique les criteres de filtre sur les deux matrices. Cache les lignes qui ne correspondent pas au filtre. 
+
+Applique un filtre sur les matrices.
+
+Applique les criteres de filtre sur les deux matrices.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filtre} & L\textquotesingle{}objet filtre contenant les criteres :\+ identifiant, statut, etat, orpheline.\\
+\hline
+\end{DoxyParams}
+Cache les lignes qui ne correspondent pas aux criteres actifs. Criteres possibles :\+ identifiant (texte libre), statut (Couverte/\+\+Non\+Couverte), etat de developpement, et orpheline.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filtre} & L\textquotesingle{}objet \doxylink{struct_filtre_g_u_i}{Filtre\+GUI} contenant tous les criteres actifs.\\
+\hline
+{\em filtre} & Le filtre à appliquer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba}\index{OngletRapport@{OngletRapport}!appliquerFiltre@{appliquerFiltre}}
+\index{appliquerFiltre@{appliquerFiltre}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{appliquerFiltre}{appliquerFiltre}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba} 
+void Onglet\+Rapport::\+appliquer\+Filtre (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&}]{filtre}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+AJOUT :\+ Applique un filtre sur les matrices. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filtre} & Le filtre à appliquer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba}\index{OngletRapport@{OngletRapport}!appliquerFiltre@{appliquerFiltre}}
+\index{appliquerFiltre@{appliquerFiltre}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{appliquerFiltre}{appliquerFiltre}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba} 
+void Onglet\+Rapport::\+appliquer\+Filtre (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_filtre_g_u_i}{Filtre\+GUI}} \&}]{filtre}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+AJOUT :\+ Applique un filtre sur les matrices. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em filtre} & Le filtre à appliquer. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_a761820647193743906d8a29a35531415}\index{OngletRapport@{OngletRapport}!creerBarre@{creerBarre}}
+\index{creerBarre@{creerBarre}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{creerBarre()}{creerBarre()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a761820647193743906d8a29a35531415} 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+creer\+Barre (\begin{DoxyParamCaption}\item[{const QString \&}]{couleur}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cree une barre de progression stylisee avec la couleur donnee. 
+
+Crée une barre de progression stylisée.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em couleur} & Couleur de remplissage en hexadecimal (ex:\+ "{}\+\#4\+A90\+D9"{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Pointeur vers la barre creee.
+\end{DoxyReturn}
+La barre va de 0 a 100, avec un style arrondi et la couleur passee en parametre.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em couleur} & Couleur de remplissage en hexadecimal, ex "{}\+\#4\+A90\+D9"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur vers la barre de progression creee.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em couleur} & Couleur de la barre en format hex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La barre de progression créée. 
+\end{DoxyReturn}
+\Hypertarget{class_onglet_rapport_a761820647193743906d8a29a35531415}\index{OngletRapport@{OngletRapport}!creerBarre@{creerBarre}}
+\index{creerBarre@{creerBarre}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{creerBarre()}{creerBarre()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a761820647193743906d8a29a35531415} 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+creer\+Barre (\begin{DoxyParamCaption}\item[{const QString \&}]{couleur}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+AJOUT :\+ Crée une barre de progression stylisée. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em couleur} & Couleur de la barre en format hex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La barre de progression créée. 
+\end{DoxyReturn}
+\Hypertarget{class_onglet_rapport_a761820647193743906d8a29a35531415}\index{OngletRapport@{OngletRapport}!creerBarre@{creerBarre}}
+\index{creerBarre@{creerBarre}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{creerBarre()}{creerBarre()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a761820647193743906d8a29a35531415} 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+creer\+Barre (\begin{DoxyParamCaption}\item[{const QString \&}]{couleur}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+AJOUT :\+ Crée une barre de progression stylisée. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em couleur} & Couleur de la barre en format hex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La barre de progression créée. 
+\end{DoxyReturn}
+\Hypertarget{class_onglet_rapport_a6b9dac6fe8b8eccb6c22c91e03000cb6}\index{OngletRapport@{OngletRapport}!eventFilter@{eventFilter}}
+\index{eventFilter@{eventFilter}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{eventFilter}{eventFilter}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a6b9dac6fe8b8eccb6c22c91e03000cb6} 
+bool Onglet\+Rapport::\+event\+Filter (\begin{DoxyParamCaption}\item[{QObject \texorpdfstring{$\ast$}{*}}]{obj}{, }\item[{QEvent \texorpdfstring{$\ast$}{*}}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [slot]}}
+
+
+
+Intercepte les evenements souris sur les badges liens brises et orphelines. Un clic sur ces badges affiche ou cache le panneau correspondant. 
+
+Intercepte les clics sur les badges "{}\+Lien brise"{} et "{}\+Orpheline"{}.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em obj} & Le widget sur lequel l\textquotesingle{}evenement s\textquotesingle{}est produit. \\
+\hline
+{\em event} & L\textquotesingle{}evenement intercepte. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si l\textquotesingle{}evenement a ete traite ici, false sinon.
+\end{DoxyReturn}
+Un clic sur le badge orange affiche ou cache le panneau liens brises. Un clic sur le badge violet affiche ou cache le panneau orphelines.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em obj} & Le widget sur lequel l\textquotesingle{}evenement s\textquotesingle{}est produit. \\
+\hline
+{\em event} & L\textquotesingle{}evenement intercepte. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si l\textquotesingle{}evenement a ete traite, false sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4}\index{OngletRapport@{OngletRapport}!exporterCSV@{exporterCSV}}
+\index{exporterCSV@{exporterCSV}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{exporterCSV}{exporterCSV}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4} 
+void Onglet\+Rapport::\+exporter\+CSV (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Exporte le rapport au format CSV avec taux, matrices et liens brises. 
+
+Exporte le rapport au format CSV.
+
+Exporte le rapport complet au format CSV.
+
+Le fichier contient les taux, la matrice SSS x SRS, la matrice SRS x SDD, et la liste des liens brises si presents. Ouvre une boite de dialogue "{}\+Enregistrer sous"{} avant d\textquotesingle{}ecrire. \Hypertarget{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4}\index{OngletRapport@{OngletRapport}!exporterCSV@{exporterCSV}}
+\index{exporterCSV@{exporterCSV}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{exporterCSV}{exporterCSV}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4} 
+void Onglet\+Rapport::\+exporter\+CSV (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Exporte le rapport au format CSV. 
+
+\Hypertarget{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4}\index{OngletRapport@{OngletRapport}!exporterCSV@{exporterCSV}}
+\index{exporterCSV@{exporterCSV}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{exporterCSV}{exporterCSV}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4} 
+void Onglet\+Rapport::\+exporter\+CSV (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Exporte le rapport au format CSV. 
+
+\Hypertarget{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8}\index{OngletRapport@{OngletRapport}!exporterHTML@{exporterHTML}}
+\index{exporterHTML@{exporterHTML}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{exporterHTML}{exporterHTML}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8} 
+void Onglet\+Rapport::\+exporter\+HTML (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Exporte le rapport au format HTML interactif. 
+
+Exporte le rapport au format HTML.
+
+Genere une page HTML avec :\+
+\begin{DoxyItemize}
+\item Tableau 3 colonnes :\+ \doxylink{class_exigence}{Exigence} \texorpdfstring{$\vert$}{|} \doxylink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut} \texorpdfstring{$\vert$}{|} Couverte par
+\item Recherche en temps reel par identifiant
+\item Filtres :\+ Tout /\+ Couvert /\+ Non couvert /\+ Lien brise /\+ Orpheline
+\item Onglets SSS-\/\texorpdfstring{$>$}{>}SRS et SRS-\/\texorpdfstring{$>$}{>}SDD
+\item Barres de progression animees
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Auteur}
+Amel Kheloul
+\end{DoxyAuthor}
+La page generee contient un tableau a 3 colonnes :\+ \doxylink{class_exigence}{Exigence} :\+ identifiant de l\textquotesingle{}exigence \doxylink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut} :\+ Couvert, Non couvert, Lien brise, Orpheline avec code couleur Couverte par :\+ IDs des exigences du niveau suivant
+
+Fonctionnalites Java\+Script incluses dans la page :\+ Recherche en temps reel par identifiant Filtres rapides :\+ Tout, Couvert, Non couvert, Lien brise, Orpheline Onglets SSS-\/\texorpdfstring{$>$}{>}SRS et SRS-\/\texorpdfstring{$>$}{>}SDD Compteur d\textquotesingle{}exigences affichees Barres de progression animees pour les taux
+
+\begin{DoxyAuthor}{Auteur}
+Amel Kheloul 
+\end{DoxyAuthor}
+\Hypertarget{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8}\index{OngletRapport@{OngletRapport}!exporterHTML@{exporterHTML}}
+\index{exporterHTML@{exporterHTML}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{exporterHTML}{exporterHTML}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8} 
+void Onglet\+Rapport::\+exporter\+HTML (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Exporte le rapport au format HTML. 
+
+\Hypertarget{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8}\index{OngletRapport@{OngletRapport}!exporterHTML@{exporterHTML}}
+\index{exporterHTML@{exporterHTML}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{exporterHTML}{exporterHTML}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8} 
+void Onglet\+Rapport::\+exporter\+HTML (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Exporte le rapport au format HTML. 
+
+\Hypertarget{class_onglet_rapport_ad88782c71eff53019c29c9bee024d273}\index{OngletRapport@{OngletRapport}!exporterPDF@{exporterPDF}}
+\index{exporterPDF@{exporterPDF}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{exporterPDF}{exporterPDF}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ad88782c71eff53019c29c9bee024d273} 
+void Onglet\+Rapport::\+exporter\+PDF (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Exporte le rapport au format PDF via QText\+Document et QPrinter. 
+
+Genere un fichier PDF du rapport via QText\+Document et QPrinter.
+
+Format A4 paysage, police Arial 8pt, cellules compactes. Contenu :\+ en-\/tete avec titre et date, matrice SSS x SRS avec statuts colores. \Hypertarget{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804}\index{OngletRapport@{OngletRapport}!initialiserUI@{initialiserUI}}
+\index{initialiserUI@{initialiserUI}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{initialiserUI()}{initialiserUI()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804} 
+void Onglet\+Rapport::\+initialiser\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Construit et place tous les widgets dans l\textquotesingle{}onglet. Appelee une seule fois dans le constructeur. 
+
+Initialise la mise en page et tous les widgets de l\textquotesingle{}onglet rapport.
+
+Construit et place tous les widgets de l\textquotesingle{}onglet rapport.
+
+Appelee une seule fois dans le constructeur.
+
+Structure de l\textquotesingle{}interface :\+ Layout global horizontal :\+ contenu principal \texorpdfstring{$\vert$}{|} panneau filtres lateral Contenu principal :\+ En-\/tete :\+ titre + 4 badges + boutons Export/\+\+Filtres Section taux :\+ 3 barres de progression (SSS-\/\texorpdfstring{$>$}{>}SRS, SRS-\/\texorpdfstring{$>$}{>}SDD, Global) Boutons zoom :\+ Zoom+, Zoom-\/, Reset Onglets matrices :\+ SSS-\/\texorpdfstring{$>$}{>}SRS \texorpdfstring{$\vert$}{|} SRS-\/\texorpdfstring{$>$}{>}SDD (chacun 3 colonnes) Panneau liens brises (orange, visible si liens brises detectes) Panneau orphelines (violet, visible si orphelines detectees) Panneau detail (blanc, visible au clic sur une ligne de matrice) Panneau filtres :\+ \doxylink{class_gestionnaire_filtres_g_u_i}{Gestionnaire\+Filtres\+GUI} lateral droit, cache par defaut
+
+Construit :\+
+\begin{DoxyItemize}
+\item L\textquotesingle{}entête avec titre, badges résumé, menu export et bouton filtres
+\item La section des taux de couverture avec barres de progression bleues
+\item Les deux matrices (SSS×\+SRS et SRS×\+SDD) avec boutons zoom/\+dézoom
+\item La section liens brisés
+\item Le panneau détail d\textquotesingle{}une exigence au clic
+\item Le panneau de filtres déroulant à droite 
+\end{DoxyItemize}\Hypertarget{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804}\index{OngletRapport@{OngletRapport}!initialiserUI@{initialiserUI}}
+\index{initialiserUI@{initialiserUI}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{initialiserUI()}{initialiserUI()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804} 
+void Onglet\+Rapport::\+initialiser\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initialise la mise en page et tous les widgets de l\textquotesingle{}onglet. 
+
+\Hypertarget{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804}\index{OngletRapport@{OngletRapport}!initialiserUI@{initialiserUI}}
+\index{initialiserUI@{initialiserUI}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{initialiserUI()}{initialiserUI()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804} 
+void Onglet\+Rapport::\+initialiser\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initialise la mise en page et tous les widgets de l\textquotesingle{}onglet. 
+
+\Hypertarget{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c}\index{OngletRapport@{OngletRapport}!styliserTableau@{styliserTableau}}
+\index{styliserTableau@{styliserTableau}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{styliserTableau()}{styliserTableau()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c} 
+void Onglet\+Rapport::\+styliser\+Tableau (\begin{DoxyParamCaption}\item[{QTable\+Widget \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Applique un style visuel coherent a un tableau Qt. 
+
+Applique un style cohérent à un QTable\+Widget.
+
+Applique un style visuel coherent a un QTable\+Widget.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em table} & Le QTable\+Widget a styliser.\\
+\hline
+\end{DoxyParams}
+Toutes les matrices de l\textquotesingle{}onglet utilisent ce style commun :\+ fond blanc, en-\/tetes bleus, lignes non editables.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em table} & Le tableau Qt a styliser.\\
+\hline
+{\em table} & Le tableau à styliser. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c}\index{OngletRapport@{OngletRapport}!styliserTableau@{styliserTableau}}
+\index{styliserTableau@{styliserTableau}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{styliserTableau()}{styliserTableau()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c} 
+void Onglet\+Rapport::\+styliser\+Tableau (\begin{DoxyParamCaption}\item[{QTable\+Widget \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+AJOUT :\+ Applique un style cohérent à un QTable\+Widget. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em table} & Le tableau à styliser. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c}\index{OngletRapport@{OngletRapport}!styliserTableau@{styliserTableau}}
+\index{styliserTableau@{styliserTableau}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{styliserTableau()}{styliserTableau()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c} 
+void Onglet\+Rapport::\+styliser\+Tableau (\begin{DoxyParamCaption}\item[{QTable\+Widget \texorpdfstring{$\ast$}{*}}]{table}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+AJOUT :\+ Applique un style cohérent à un QTable\+Widget. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em table} & Le tableau à styliser. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3}\index{OngletRapport@{OngletRapport}!toggleFiltres@{toggleFiltres}}
+\index{toggleFiltres@{toggleFiltres}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{toggleFiltres}{toggleFiltres}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3} 
+void Onglet\+Rapport::\+toggle\+Filtres (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Affiche ou cache le panneau de filtres lateral. 
+
+Affiche ou masque le panneau de filtres latéral.
+
+Met aussi a jour le texte du bouton selon l\textquotesingle{}etat (\texorpdfstring{$>$}{>} ou \texorpdfstring{$<$}{<}). \Hypertarget{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3}\index{OngletRapport@{OngletRapport}!toggleFiltres@{toggleFiltres}}
+\index{toggleFiltres@{toggleFiltres}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{toggleFiltres}{toggleFiltres}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3} 
+void Onglet\+Rapport::\+toggle\+Filtres (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+AJOUT :\+ Affiche ou masque le panneau de filtres latéral. 
+
+\Hypertarget{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3}\index{OngletRapport@{OngletRapport}!toggleFiltres@{toggleFiltres}}
+\index{toggleFiltres@{toggleFiltres}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{toggleFiltres}{toggleFiltres}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3} 
+void Onglet\+Rapport::\+toggle\+Filtres (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+AJOUT :\+ Affiche ou masque le panneau de filtres latéral. 
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_onglet_rapport_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{class_onglet_rapport_a6a47ec106861b2b1eecd7b34d7aa4e50}\index{OngletRapport@{OngletRapport}!barreGlobal@{barreGlobal}}
+\index{barreGlobal@{barreGlobal}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{barreGlobal}{barreGlobal}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a6a47ec106861b2b1eecd7b34d7aa4e50} 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+barre\+Global\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Barre de progression pour le taux global. 
+
+AJOUT :\+ barre de progression globale (bleue). \Hypertarget{class_onglet_rapport_a1b3867e58380cf22da33fb65fab0615c}\index{OngletRapport@{OngletRapport}!barreSRS\_SDD@{barreSRS\_SDD}}
+\index{barreSRS\_SDD@{barreSRS\_SDD}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{barreSRS\_SDD}{barreSRS\_SDD}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a1b3867e58380cf22da33fb65fab0615c} 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+barre\+SRS\+\_\+\+SDD\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Barre de progression pour le taux SRS-\/\texorpdfstring{$>$}{>}SDD. 
+
+AJOUT :\+ barre de progression SRS→\+SDD (bleue). \Hypertarget{class_onglet_rapport_a08600dce6969bb44417df5d5f8282f30}\index{OngletRapport@{OngletRapport}!barreSSS\_SRS@{barreSSS\_SRS}}
+\index{barreSSS\_SRS@{barreSSS\_SRS}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{barreSSS\_SRS}{barreSSS\_SRS}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a08600dce6969bb44417df5d5f8282f30} 
+QProgress\+Bar \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+barre\+SSS\+\_\+\+SRS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Barre de progression pour le taux SSS-\/\texorpdfstring{$>$}{>}SRS. 
+
+AJOUT :\+ barre de progression SSS→\+SRS (bleue). \Hypertarget{class_onglet_rapport_a37325c6c7892d1ed774761efc58e48e3}\index{OngletRapport@{OngletRapport}!boutonExport@{boutonExport}}
+\index{boutonExport@{boutonExport}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{boutonExport}{boutonExport}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a37325c6c7892d1ed774761efc58e48e3} 
+QTool\+Button \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+bouton\+Export\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bouton vert "{}\+Exporter"{} avec menu deroulant. 
+
+AJOUT :\+ bouton export avec menu déroulant. \Hypertarget{class_onglet_rapport_a39c4cea08e8afe1a7265389a08ca590c}\index{OngletRapport@{OngletRapport}!boutonFiltres@{boutonFiltres}}
+\index{boutonFiltres@{boutonFiltres}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{boutonFiltres}{boutonFiltres}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a39c4cea08e8afe1a7265389a08ca590c} 
+QPush\+Button \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+bouton\+Filtres\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bouton "{}\+Filtres"{} ouvre/\+ferme le panneau. 
+
+AJOUT :\+ bouton ouvrir/\+fermer les filtres. \Hypertarget{class_onglet_rapport_ada2b30c0663b8d386e3314038d9b9349}\index{OngletRapport@{OngletRapport}!gestionnaireFiltres@{gestionnaireFiltres}}
+\index{gestionnaireFiltres@{gestionnaireFiltres}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{gestionnaireFiltres}{gestionnaireFiltres}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ada2b30c0663b8d386e3314038d9b9349} 
+\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i}{Gestionnaire\+Filtres\+GUI}} \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+gestionnaire\+Filtres\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Widget interne avec les champs de filtre. 
+
+AJOUT :\+ gestionnaire de filtres intégré. \Hypertarget{class_onglet_rapport_a44a30164fcb71c6e9d9437a0b02350ed}\index{OngletRapport@{OngletRapport}!labelBadgeCouverts@{labelBadgeCouverts}}
+\index{labelBadgeCouverts@{labelBadgeCouverts}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelBadgeCouverts}{labelBadgeCouverts}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a44a30164fcb71c6e9d9437a0b02350ed} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Badge\+Couverts\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Badge vert :\+ nombre d\textquotesingle{}exigences couvertes (SSS + SRS). 
+
+AJOUT :\+ badge nombre d\textquotesingle{}exigences couvertes. \Hypertarget{class_onglet_rapport_a9d9818f3b333c4d82d7d35e5ef16f82d}\index{OngletRapport@{OngletRapport}!labelBadgeLiensBrises@{labelBadgeLiensBrises}}
+\index{labelBadgeLiensBrises@{labelBadgeLiensBrises}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelBadgeLiensBrises}{labelBadgeLiensBrises}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a9d9818f3b333c4d82d7d35e5ef16f82d} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Badge\+Liens\+Brises\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Badge orange cliquable :\+ nombre de liens brises. 
+
+AJOUT :\+ badge nombre de liens brisés. \Hypertarget{class_onglet_rapport_a3c24ab7fe5d0e85eab63f74158c5eeba}\index{OngletRapport@{OngletRapport}!labelBadgeNonCouverts@{labelBadgeNonCouverts}}
+\index{labelBadgeNonCouverts@{labelBadgeNonCouverts}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelBadgeNonCouverts}{labelBadgeNonCouverts}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a3c24ab7fe5d0e85eab63f74158c5eeba} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Badge\+Non\+Couverts\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Badge rouge :\+ nombre d\textquotesingle{}exigences non couvertes. 
+
+AJOUT :\+ badge nombre d\textquotesingle{}exigences non couvertes. \Hypertarget{class_onglet_rapport_a08b7c90d423f4fdf6f49782ec474c9f1}\index{OngletRapport@{OngletRapport}!labelBadgeOrphelines@{labelBadgeOrphelines}}
+\index{labelBadgeOrphelines@{labelBadgeOrphelines}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelBadgeOrphelines}{labelBadgeOrphelines}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a08b7c90d423f4fdf6f49782ec474c9f1} 
+QLabel\texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Badge\+Orphelines\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Badge violet cliquable :\+ nombre d\textquotesingle{}exigences orphelines. 
+
+\Hypertarget{class_onglet_rapport_a1c5e310d9b1fe66b336c2b524bdcdd14}\index{OngletRapport@{OngletRapport}!labelDetailDescription@{labelDetailDescription}}
+\index{labelDetailDescription@{labelDetailDescription}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelDetailDescription}{labelDetailDescription}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a1c5e310d9b1fe66b336c2b524bdcdd14} 
+QLabel\texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Detail\+Description\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Contenu textuel de l\textquotesingle{}exigence. 
+
+\Hypertarget{class_onglet_rapport_a2f1cd888b8655d5fb2475eb449c3ecf5}\index{OngletRapport@{OngletRapport}!labelDetailEtat@{labelDetailEtat}}
+\index{labelDetailEtat@{labelDetailEtat}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelDetailEtat}{labelDetailEtat}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a2f1cd888b8655d5fb2475eb449c3ecf5} 
+QLabel\texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Detail\+Etat\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Etat de developpement :\+ Developpe /\+ Non developpe. 
+
+\Hypertarget{class_onglet_rapport_a329948ba21c38c343d8b49cfc3312929}\index{OngletRapport@{OngletRapport}!labelDetailFichier@{labelDetailFichier}}
+\index{labelDetailFichier@{labelDetailFichier}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelDetailFichier}{labelDetailFichier}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a329948ba21c38c343d8b49cfc3312929} 
+QLabel\texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Detail\+Fichier\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Chemin du fichier source (italic gris). 
+
+\Hypertarget{class_onglet_rapport_ad9a888355f5ed489e24ba3fed114d0be}\index{OngletRapport@{OngletRapport}!labelDetailId@{labelDetailId}}
+\index{labelDetailId@{labelDetailId}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelDetailId}{labelDetailId}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ad9a888355f5ed489e24ba3fed114d0be} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Detail\+Id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Identifiant de l\textquotesingle{}exigence selectionnee. 
+
+AJOUT :\+ identifiant de l\textquotesingle{}exigence sélectionnée. \Hypertarget{class_onglet_rapport_ad85c99840ac1f829a3339b38ee7abcf3}\index{OngletRapport@{OngletRapport}!labelDetailLiens@{labelDetailLiens}}
+\index{labelDetailLiens@{labelDetailLiens}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelDetailLiens}{labelDetailLiens}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ad85c99840ac1f829a3339b38ee7abcf3} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Detail\+Liens\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Liste des identifiants des exigences liees. 
+
+AJOUT :\+ liens associés à l\textquotesingle{}exigence sélectionnée. \Hypertarget{class_onglet_rapport_a36271cc1572f979177a7dfdf1027101d}\index{OngletRapport@{OngletRapport}!labelDetailStatut@{labelDetailStatut}}
+\index{labelDetailStatut@{labelDetailStatut}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelDetailStatut}{labelDetailStatut}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a36271cc1572f979177a7dfdf1027101d} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Detail\+Statut\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Badge statut colore selon la couverture. 
+
+AJOUT :\+ statut de l\textquotesingle{}exigence sélectionnée. \Hypertarget{class_onglet_rapport_a5d640bfa67288baa93a100f9406f4bc3}\index{OngletRapport@{OngletRapport}!labelDetailType@{labelDetailType}}
+\index{labelDetailType@{labelDetailType}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelDetailType}{labelDetailType}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a5d640bfa67288baa93a100f9406f4bc3} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Detail\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Badge type :\+ "{}\+SSS"{} (bleu) ou "{}\+SRS"{} (orange). 
+
+AJOUT :\+ type (SSS/\+\+SRS/\+\+SDD) de l\textquotesingle{}exigence. \Hypertarget{class_onglet_rapport_a82f8f2cdb7ac56b6364162a5d3c02325}\index{OngletRapport@{OngletRapport}!labelTauxGlobal@{labelTauxGlobal}}
+\index{labelTauxGlobal@{labelTauxGlobal}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelTauxGlobal}{labelTauxGlobal}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a82f8f2cdb7ac56b6364162a5d3c02325} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Taux\+Global\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label "{}\+Taux global :\+ X \%"{} a gauche de la barre. 
+
+Label du taux global. \Hypertarget{class_onglet_rapport_a1912bd0119c1e6ee4619d807e468e11d}\index{OngletRapport@{OngletRapport}!labelTauxSRS\_SDD@{labelTauxSRS\_SDD}}
+\index{labelTauxSRS\_SDD@{labelTauxSRS\_SDD}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelTauxSRS\_SDD}{labelTauxSRS\_SDD}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a1912bd0119c1e6ee4619d807e468e11d} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Taux\+SRS\+\_\+\+SDD\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label "{}\+Taux SRS-\/$>$\+SDD :\+ X \%"{} a gauche de la barre. 
+
+Label du taux SRS→\+SDD. \Hypertarget{class_onglet_rapport_af7f370e171006d74535cd3f54c938a47}\index{OngletRapport@{OngletRapport}!labelTauxSSS\_SRS@{labelTauxSSS\_SRS}}
+\index{labelTauxSSS\_SRS@{labelTauxSSS\_SRS}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{labelTauxSSS\_SRS}{labelTauxSSS\_SRS}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_af7f370e171006d74535cd3f54c938a47} 
+QLabel \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+label\+Taux\+SSS\+\_\+\+SRS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Label "{}\+Taux SSS-\/$>$\+SRS :\+ X \%"{} a gauche de la barre. 
+
+Label du taux SSS→\+SRS. \Hypertarget{class_onglet_rapport_a10beacaa38c62655de993ff0734ace18}\index{OngletRapport@{OngletRapport}!layoutListeLB@{layoutListeLB}}
+\index{layoutListeLB@{layoutListeLB}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{layoutListeLB}{layoutListeLB}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a10beacaa38c62655de993ff0734ace18} 
+QVBox\+Layout \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+layout\+Liste\+LB\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Layout vertical des lignes de liens brises. 
+
+\Hypertarget{class_onglet_rapport_aab82d66d1f48c915ad9d23dd816726fe}\index{OngletRapport@{OngletRapport}!layoutListeOrph@{layoutListeOrph}}
+\index{layoutListeOrph@{layoutListeOrph}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{layoutListeOrph}{layoutListeOrph}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_aab82d66d1f48c915ad9d23dd816726fe} 
+QVBox\+Layout\texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+layout\+Liste\+Orph\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Layout vertical des lignes d\textquotesingle{}orphelines. 
+
+\Hypertarget{class_onglet_rapport_a29846db8e7ec124501f1bf2a4177d387}\index{OngletRapport@{OngletRapport}!listeLiensBrises@{listeLiensBrises}}
+\index{listeLiensBrises@{listeLiensBrises}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{listeLiensBrises}{listeLiensBrises}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a29846db8e7ec124501f1bf2a4177d387} 
+QWidget \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+liste\+Liens\+Brises\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Conteneur interne des lignes. 
+
+\Hypertarget{class_onglet_rapport_aa1b50c62747589226a192b99af65a116}\index{OngletRapport@{OngletRapport}!listeOrphelines@{listeOrphelines}}
+\index{listeOrphelines@{listeOrphelines}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{listeOrphelines}{listeOrphelines}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_aa1b50c62747589226a192b99af65a116} 
+QWidget\texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+liste\+Orphelines\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Conteneur interne des lignes. 
+
+\Hypertarget{class_onglet_rapport_ab3a6c2c747381058a25d871ae92d3374}\index{OngletRapport@{OngletRapport}!menuExport@{menuExport}}
+\index{menuExport@{menuExport}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{menuExport}{menuExport}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ab3a6c2c747381058a25d871ae92d3374} 
+QMenu \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+menu\+Export\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Menu :\+ CSV, HTML interactif, PDF. 
+
+AJOUT :\+ menu déroulant avec les formats d\textquotesingle{}export. \Hypertarget{class_onglet_rapport_a9c5af3a7aa597e50f44d26dd63d4c902}\index{OngletRapport@{OngletRapport}!orphelinesAnalyses@{orphelinesAnalyses}}
+\index{orphelinesAnalyses@{orphelinesAnalyses}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{orphelinesAnalyses}{orphelinesAnalyses}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a9c5af3a7aa597e50f44d26dd63d4c902} 
+std::\+vector$<$std::\+string$>$ Onglet\+Rapport::\+orphelines\+Analyses\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+IDs des exigences orphelines. 
+
+\Hypertarget{class_onglet_rapport_a6b2128766e24629ca56027af6cd1a8c3}\index{OngletRapport@{OngletRapport}!panneauDetail@{panneauDetail}}
+\index{panneauDetail@{panneauDetail}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{panneauDetail}{panneauDetail}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a6b2128766e24629ca56027af6cd1a8c3} 
+QFrame \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+panneau\+Detail\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cadre qui s\textquotesingle{}affiche au clic sur une ligne de matrice. 
+
+AJOUT :\+ panneau affichant le détail d\textquotesingle{}une exigence. \Hypertarget{class_onglet_rapport_ac3d2cedd4765281542c8aeed0e42daa4}\index{OngletRapport@{OngletRapport}!panneauFiltres@{panneauFiltres}}
+\index{panneauFiltres@{panneauFiltres}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{panneauFiltres}{panneauFiltres}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ac3d2cedd4765281542c8aeed0e42daa4} 
+QFrame \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+panneau\+Filtres\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cadre lateral qui se glisse depuis la droite. 
+
+AJOUT :\+ panneau de filtres déroulant. \Hypertarget{class_onglet_rapport_af36529bc577117a2c613937ad3085b8e}\index{OngletRapport@{OngletRapport}!panneauLiensBrises@{panneauLiensBrises}}
+\index{panneauLiensBrises@{panneauLiensBrises}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{panneauLiensBrises}{panneauLiensBrises}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_af36529bc577117a2c613937ad3085b8e} 
+QFrame \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+panneau\+Liens\+Brises\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cadre orange listant les liens brises. 
+
+\Hypertarget{class_onglet_rapport_ad0a5c16249a69b2790e3e5484f266745}\index{OngletRapport@{OngletRapport}!panneauOrphelines@{panneauOrphelines}}
+\index{panneauOrphelines@{panneauOrphelines}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{panneauOrphelines}{panneauOrphelines}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ad0a5c16249a69b2790e3e5484f266745} 
+QFrame\texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+panneau\+Orphelines\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Cadre violet listant les exigences orphelines. 
+
+\Hypertarget{class_onglet_rapport_ab4ff6350ad14a8d11cc5d7c2150bc286}\index{OngletRapport@{OngletRapport}!rapportCourant@{rapportCourant}}
+\index{rapportCourant@{rapportCourant}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{rapportCourant}{rapportCourant}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ab4ff6350ad14a8d11cc5d7c2150bc286} 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} Onglet\+Rapport::\+rapport\+Courant\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Copie du dernier rapport charge. 
+
+Rapport courant pour l\textquotesingle{}export. \Hypertarget{class_onglet_rapport_a4c245859a692c4678b072920f10383af}\index{OngletRapport@{OngletRapport}!sddAnalyses@{sddAnalyses}}
+\index{sddAnalyses@{sddAnalyses}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{sddAnalyses}{sddAnalyses}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a4c245859a692c4678b072920f10383af} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ Onglet\+Rapport::\+sdd\+Analyses\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Elements SDD du dernier rapport. 
+
+AJOUT :\+ exigences SDD pour les matrices. \Hypertarget{class_onglet_rapport_a65a64cad20ad7b9d386e23cd5bc1525b}\index{OngletRapport@{OngletRapport}!srsAnalyses@{srsAnalyses}}
+\index{srsAnalyses@{srsAnalyses}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{srsAnalyses}{srsAnalyses}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a65a64cad20ad7b9d386e23cd5bc1525b} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ Onglet\+Rapport::\+srs\+Analyses\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Exigences SRS du dernier rapport. 
+
+AJOUT :\+ exigences SRS pour les matrices. \Hypertarget{class_onglet_rapport_ab7ae76a7fbdcce24d43c327bd544fee6}\index{OngletRapport@{OngletRapport}!tableMatriceSRS\_SDD@{tableMatriceSRS\_SDD}}
+\index{tableMatriceSRS\_SDD@{tableMatriceSRS\_SDD}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{tableMatriceSRS\_SDD}{tableMatriceSRS\_SDD}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_ab7ae76a7fbdcce24d43c327bd544fee6} 
+QTable\+Widget \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+table\+Matrice\+SRS\+\_\+\+SDD\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Matrice SRS x SDD — 3 colonnes :\+ \doxylink{class_exigence}{Exigence} \texorpdfstring{$\vert$}{|} \doxylink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut} \texorpdfstring{$\vert$}{|} Couverte par (SDD). 
+
+AJOUT :\+ Matrice SRS (lignes) × SDD (colonnes). \Hypertarget{class_onglet_rapport_a9febc078f7c7c585bd07fccd3e5a0ce6}\index{OngletRapport@{OngletRapport}!tableMatriceSSS\_SRS@{tableMatriceSSS\_SRS}}
+\index{tableMatriceSSS\_SRS@{tableMatriceSSS\_SRS}!OngletRapport@{OngletRapport}}
+\doxysubsubsection{\texorpdfstring{tableMatriceSSS\_SRS}{tableMatriceSSS\_SRS}}
+{\footnotesize\ttfamily \label{class_onglet_rapport_a9febc078f7c7c585bd07fccd3e5a0ce6} 
+QTable\+Widget \texorpdfstring{$\ast$}{*} Onglet\+Rapport::\+table\+Matrice\+SSS\+\_\+\+SRS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Matrice SSS x SRS — 3 colonnes :\+ \doxylink{class_exigence}{Exigence} \texorpdfstring{$\vert$}{|} \doxylink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut} \texorpdfstring{$\vert$}{|} Couverte par (SRS). 
+
+AJOUT :\+ Matrice SSS (lignes) × SRS (colonnes). 
+
+La documentation de cette classe a été générée à partir des fichiers suivants :\+\begin{DoxyCompactItemize}
+\item 
+branches/\+\+L2\+G1\+\_\+\+Module3/\+headers/\+\doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_ongletrapport_8h}{Ongletrapport.\+h}}\item 
+tags/\+\+A0/\+\+L2\+G1\+\_\+\+Module3/\+headers/\+\doxymbox{\hyperlink{tags_2_a0_2_l2_g1___module3_2headers_2_ongletrapport_8h}{Ongletrapport.\+h}}\item 
+trunk/\+headers/\+\doxymbox{\hyperlink{trunk_2headers_2_ongletrapport_8h}{Ongletrapport.\+h}}\item 
+branches/\+\+L2\+G1\+\_\+\+Module3/\+sources/\+\doxymbox{\hyperlink{branches_2_l2_g1___module3_2sources_2_ongletrapport_8cpp}{Ongletrapport.\+cpp}}\item 
+tags/\+\+A0/\+\+L2\+G1\+\_\+\+Module3/\+sources/\+\doxymbox{\hyperlink{tags_2_a0_2_l2_g1___module3_2sources_2_ongletrapport_8cpp}{Ongletrapport.\+cpp}}\item 
+trunk/\+sources/\+\doxymbox{\hyperlink{trunk_2sources_2_ongletrapport_8cpp}{Ongletrapport.\+cpp}}\end{DoxyCompactItemize}

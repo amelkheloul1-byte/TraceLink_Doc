@@ -1,0 +1,107 @@
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
+#include <QMainWindow>
+#include <QTabWidget>
+#include <QWidget>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QTextEdit>
+#include <QListWidget>
+#include <QProgressBar>
+#include <QStringList>
+#include <QTimer>
+
+#include "OngletRapport.h"
+#include "VueGrapheTracabilite.h"
+#include "GestionnaireFiltresGUI.h"
+#include "ExtracteurFichier.h"
+#include "ConvertisseurExigence.h"
+#include "MoteurTracabilite.h"
+#include "ThreadManager.h"
+
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
+
+private slots:
+    void parcourirSSS();
+    void parcourirSRS();
+    void parcourirSDD();
+    void verifierFichiersSelectionnes();
+    void reinitialiser();
+    void lancerAnalyse();
+    void filtrerApercu(const QString &texte);
+
+private:
+    // Onglets principaux
+    QTabWidget             *tabWidget;
+    QWidget                *ongletImport;
+    OngletRapport          *ongletRapport;
+    VueGrapheTracabilite   *ongletGraphe;
+    GestionnaireFiltresGUI *gestionnaireFiltres;
+    QWidget                *ongletGrapheConteneur;
+    QWidget                *ongletRapportConteneur;
+
+    // Onglets fichiers
+    QTabWidget  *ongletsFichiers;
+    QLineEdit   *champSSS;
+    QLineEdit   *champSRS;
+    QLineEdit   *champSDD;
+    QPushButton *btnParcourirSSS;
+    QPushButton *btnParcourirSRS;
+    QPushButton *btnParcourirSDD;
+    QLabel      *badgeSSS;
+    QLabel      *badgeSRS;
+    QLabel      *badgeSDD;
+    QLabel      *erreurSSS;
+    QLabel      *erreurSRS;
+    QLabel      *erreurSDD;
+    QListWidget *listeSSS;
+    QListWidget *listeSRS;
+    QListWidget *listeSDD;
+
+    // Boutons + statut
+    QPushButton *btnLancer;
+    QPushButton *btnReinitialiser;
+    QLabel      *labelStatut;
+
+    // Terminal + progression
+    QTextEdit    *terminal;
+    QProgressBar *barreProgression;
+
+    // Aperçu exigences
+    QListWidget *listeExigences;
+    QLineEdit   *champRechercheId;
+    QLabel      *labelNbExigences;
+    QStringList  toutesExigences;
+
+    // Chemins — listes pour sélection multiple
+    QStringList cheminsSSS;
+    QStringList cheminsSRS;
+    QStringList cheminsSDD;
+
+    // Thread
+    MoteurTracabilite *moteurAnalyse = nullptr;
+    ThreadManager     *threadManager = nullptr;
+
+    // Méthodes
+    void construireOngletImport();
+    void construireOngletGraphe();
+    void construireOngletRapport();
+    bool formatAccepte(const QString &chemin);
+    void mettreAJourOngletFichier(int index, const QString &etat);
+    void logTerminal(const QString &message, const QString &couleur = "#D4D4D4");
+    void afficherApercuExigences(const std::vector<ExigenceExtraite> &sss,
+                                 const std::vector<ExigenceExtraite> &srs,
+                                 const std::vector<ExigenceExtraite> &sdd);
+};
+
+#endif // MAINWINDOW_H

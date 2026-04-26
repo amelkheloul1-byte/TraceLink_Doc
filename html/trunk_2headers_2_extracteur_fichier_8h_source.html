@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TraceLink:  Fichier source de trunk/headers/ExtracteurFichier.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TraceLink
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('trunk_2headers_2_extracteur_fichier_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ExtracteurFichier.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="trunk_2headers_2_extracteur_fichier_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef EXTRACTEURFICHIER_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define EXTRACTEURFICHIER_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;regex&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;zip.h&gt;</span>  </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">struct </span><a class="code hl_struct" href="struct_exigence_extraite.html">ExigenceExtraite</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    std::string <a class="code hl_variable" href="struct_exigence_extraite.html#a613bec95d74073192e7886f696acdf8f">identifiant</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    std::string <a class="code hl_variable" href="struct_exigence_extraite.html#ab138ba1b24915bf37507a685859fb350">contenuBrut</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    std::string <a class="code hl_variable" href="struct_exigence_extraite.html#a1bfa6d0969a6c93a33e6a253172639a6">fichierSource</a>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::string <a class="code hl_variable" href="struct_exigence_extraite.html#a50253d94972e85f6f6bd48b1c1bfb471">formatSource</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">int</span>         <a class="code hl_variable" href="struct_exigence_extraite.html#aa572c617fa86e495c1405a86784783b8">numeroLigne</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="struct_exigence_extraite.html#a764129e0479b02a525b50969d55f93d6">tracabilite</a>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="struct_exigence_extraite.html#a7e4ecb6fdc719aadc177dda9972efd84">cibles</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="struct_exigence_extraite.html#a07dca14d16539fe2ebc6155aa22c1d57">necessaireA</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="struct_exigence_extraite.html#acad82b9e074fdc7885ab3182ade0f3f8">alloueA</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">bool</span>        <a class="code hl_variable" href="struct_exigence_extraite.html#a43e0c2b37010e13b7333bc79f285b0d9">developpe</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="struct_exigence_extraite.html#a164c04a1cbf74136c8f8ba9f404f68ca">   46</a></span>    std::string <a class="code hl_function" href="struct_exigence_extraite.html#a164c04a1cbf74136c8f8ba9f404f68ca">detecterExtension</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>};</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">class </span><a class="code hl_class" href="class_extracteur_fichier.html">ExtracteurFichier</a> {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    std::string <a class="code hl_variable" href="class_extracteur_fichier.html#a50cbe3344c37f520b41362eff71271a9">cheminSource</a>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    std::regex <a class="code hl_variable" href="class_extracteur_fichier.html#a6e5584a4fabb6c76a3946b6bb2fe4656">motifRegex</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="class_extracteur_fichier.html#ae1d89b6ba05749e55c8e512ba8ce6f4b">listeIdentifiants</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_extracteur_fichier.html#ab228650dbafe4c9fc08bfb448afd2de0">nbDetectees</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#af983a09177a7055185efcc070f4d3964">   58</a></span>    std::string <a class="code hl_function" href="class_extracteur_fichier.html#af983a09177a7055185efcc070f4d3964">detecterExtension</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#ad34dfdfc31b6da5a52f09f5c66eec2e1">   61</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_extracteur_fichier.html#ad34dfdfc31b6da5a52f09f5c66eec2e1">verifierExistence</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#a5a87b610e7bff17b0b7456cf5b5707e2">   74</a></span>    std::vector&lt;std::pair&lt;int, std::string&gt;&gt; <a class="code hl_function" href="class_extracteur_fichier.html#a5a87b610e7bff17b0b7456cf5b5707e2">lireCSV</a>(<span class="keyword">const</span> std::string&amp; extension) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#aa5f8674039ed2662035059cdc955e1d1">   85</a></span>    std::vector&lt;std::pair&lt;int, std::string&gt;&gt; <a class="code hl_function" href="class_extracteur_fichier.html#aa5f8674039ed2662035059cdc955e1d1">lireDocx</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#abf07cbaf6e600f9ee8afc0390209ccb9">   87</a></span>    std::vector&lt;std::pair&lt;int, std::string&gt;&gt; <a class="code hl_function" href="class_extracteur_fichier.html#abf07cbaf6e600f9ee8afc0390209ccb9">lireXlsx</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>   </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#a464fe6d8dcbbe1645d0622e50d31fb37">   89</a></span>    std::vector&lt;std::string&gt; <a class="code hl_function" href="class_extracteur_fichier.html#a464fe6d8dcbbe1645d0622e50d31fb37">chargerSharedStrings</a>(zip_t* archive) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#a68deb1c725857e2b8d9fbc0e8d7f56cf">  105</a></span>    std::vector&lt;ExigenceExtraite&gt; <a class="code hl_function" href="class_extracteur_fichier.html#a68deb1c725857e2b8d9fbc0e8d7f56cf">filtrerLignes</a>(</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keyword">const</span> std::vector&lt;std::pair&lt;int, std::string&gt;&gt;&amp; lignes,</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keyword">const</span> std::string&amp; format) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#a2916fa8d77e709c79201e8277008d7ac">  118</a></span>    std::vector&lt;ExigenceExtraite&gt; <a class="code hl_function" href="class_extracteur_fichier.html#a2916fa8d77e709c79201e8277008d7ac">parserBlocsDocx</a>(</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keyword">const</span> std::vector&lt;std::pair&lt;int, std::string&gt;&gt;&amp; paragraphes) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#a9d7cd87c1922517d4c14d2f7ff98f243">  124</a></span>    std::vector&lt;std::string&gt; <a class="code hl_function" href="class_extracteur_fichier.html#a9d7cd87c1922517d4c14d2f7ff98f243">decouper</a>(<span class="keyword">const</span> std::string&amp; ligne) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#ab16411b6bcfed524ccc5814d351e7d9f">  127</a></span>    <a class="code hl_function" href="class_extracteur_fichier.html#ab16411b6bcfed524ccc5814d351e7d9f">ExtracteurFichier</a>(<span class="keyword">const</span> std::string&amp; chemin, <span class="keyword">const</span> std::string&amp; motif);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#a52aaddb474e67d61fccf0caac02d6d50">  128</a></span>    std::vector&lt;ExigenceExtraite&gt; <a class="code hl_function" href="class_extracteur_fichier.html#a52aaddb474e67d61fccf0caac02d6d50">extraire</a>();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="class_extracteur_fichier.html#a6d25d8bb97eab2020a633b5d0915043b">  129</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_extracteur_fichier.html#a6d25d8bb97eab2020a633b5d0915043b">getNombreExigencesDetectees</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>};</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="keyword">class </span><a class="code hl_class" href="class_file_not_found_exception.html">FileNotFoundException</a> : <span class="keyword">public</span> std::runtime_error {</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00135" data-start="{" data-end="}">
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="class_file_not_found_exception.html#a4571da183fd90b19662cfeae9f9dd780">  135</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_file_not_found_exception.html#a4571da183fd90b19662cfeae9f9dd780">FileNotFoundException</a>(<span class="keyword">const</span> std::string&amp; chemin)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        : std::runtime_error(<span class="stringliteral">&quot;Fichier introuvable : &quot;</span> + chemin) {}</div>
+</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>};</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="keyword">class </span><a class="code hl_class" href="class_file_format_exception.html">FileFormatException</a> : <span class="keyword">public</span> std::runtime_error {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="class_file_format_exception.html#a91b1d40082be7a46a806b4b02e3a913c">  142</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_file_format_exception.html#a91b1d40082be7a46a806b4b02e3a913c">FileFormatException</a>(<span class="keyword">const</span> std::string&amp; detail)</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        : std::runtime_error(<span class="stringliteral">&quot;Format non supporté : &quot;</span> + detail) {}</div>
+</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>};</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_extracteur_fichier_html"><div class="ttname"><a href="class_extracteur_fichier.html">ExtracteurFichier</a></div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:54</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_a2916fa8d77e709c79201e8277008d7ac"><div class="ttname"><a href="class_extracteur_fichier.html#a2916fa8d77e709c79201e8277008d7ac">ExtracteurFichier::parserBlocsDocx</a></div><div class="ttdeci">std::vector&lt; ExigenceExtraite &gt; parserBlocsDocx(const std::vector&lt; std::pair&lt; int, std::string &gt; &gt; &amp;paragraphes) const</div><div class="ttdoc">Regroupe les paragraphes docx en blocs et extrait les métadonnées.</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_a464fe6d8dcbbe1645d0622e50d31fb37"><div class="ttname"><a href="class_extracteur_fichier.html#a464fe6d8dcbbe1645d0622e50d31fb37">ExtracteurFichier::chargerSharedStrings</a></div><div class="ttdeci">std::vector&lt; std::string &gt; chargerSharedStrings(zip_t *archive) const</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_a50cbe3344c37f520b41362eff71271a9"><div class="ttname"><a href="class_extracteur_fichier.html#a50cbe3344c37f520b41362eff71271a9">ExtracteurFichier::cheminSource</a></div><div class="ttdeci">std::string cheminSource</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:56</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_a52aaddb474e67d61fccf0caac02d6d50"><div class="ttname"><a href="class_extracteur_fichier.html#a52aaddb474e67d61fccf0caac02d6d50">ExtracteurFichier::extraire</a></div><div class="ttdeci">std::vector&lt; ExigenceExtraite &gt; extraire()</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_a5a87b610e7bff17b0b7456cf5b5707e2"><div class="ttname"><a href="class_extracteur_fichier.html#a5a87b610e7bff17b0b7456cf5b5707e2">ExtracteurFichier::lireCSV</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; int, std::string &gt; &gt; lireCSV(const std::string &amp;extension) const</div><div class="ttdoc">Lit un fichier CSV/XLS ligne par ligne.</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_a68deb1c725857e2b8d9fbc0e8d7f56cf"><div class="ttname"><a href="class_extracteur_fichier.html#a68deb1c725857e2b8d9fbc0e8d7f56cf">ExtracteurFichier::filtrerLignes</a></div><div class="ttdeci">std::vector&lt; ExigenceExtraite &gt; filtrerLignes(const std::vector&lt; std::pair&lt; int, std::string &gt; &gt; &amp;lignes, const std::string &amp;format) const</div><div class="ttdoc">Filtre les lignes CSV/XLS colonne par colonne.</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_a6d25d8bb97eab2020a633b5d0915043b"><div class="ttname"><a href="class_extracteur_fichier.html#a6d25d8bb97eab2020a633b5d0915043b">ExtracteurFichier::getNombreExigencesDetectees</a></div><div class="ttdeci">int getNombreExigencesDetectees() const</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_a6e5584a4fabb6c76a3946b6bb2fe4656"><div class="ttname"><a href="class_extracteur_fichier.html#a6e5584a4fabb6c76a3946b6bb2fe4656">ExtracteurFichier::motifRegex</a></div><div class="ttdeci">std::regex motifRegex</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:57</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_a9d7cd87c1922517d4c14d2f7ff98f243"><div class="ttname"><a href="class_extracteur_fichier.html#a9d7cd87c1922517d4c14d2f7ff98f243">ExtracteurFichier::decouper</a></div><div class="ttdeci">std::vector&lt; std::string &gt; decouper(const std::string &amp;ligne) const</div><div class="ttdoc">Découpe une chaîne &quot;val1, val2, val3&quot; en vecteur de tokens nettoyés.</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_aa5f8674039ed2662035059cdc955e1d1"><div class="ttname"><a href="class_extracteur_fichier.html#aa5f8674039ed2662035059cdc955e1d1">ExtracteurFichier::lireDocx</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; int, std::string &gt; &gt; lireDocx() const</div><div class="ttdoc">Extrait le texte brut d&#39;un fichier .docx paragraphe par paragraphe.</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_ab16411b6bcfed524ccc5814d351e7d9f"><div class="ttname"><a href="class_extracteur_fichier.html#ab16411b6bcfed524ccc5814d351e7d9f">ExtracteurFichier::ExtracteurFichier</a></div><div class="ttdeci">ExtracteurFichier(const std::string &amp;chemin, const std::string &amp;motif)</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_ab228650dbafe4c9fc08bfb448afd2de0"><div class="ttname"><a href="class_extracteur_fichier.html#ab228650dbafe4c9fc08bfb448afd2de0">ExtracteurFichier::nbDetectees</a></div><div class="ttdeci">int nbDetectees</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:59</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_abf07cbaf6e600f9ee8afc0390209ccb9"><div class="ttname"><a href="class_extracteur_fichier.html#abf07cbaf6e600f9ee8afc0390209ccb9">ExtracteurFichier::lireXlsx</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; int, std::string &gt; &gt; lireXlsx() const</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_ad34dfdfc31b6da5a52f09f5c66eec2e1"><div class="ttname"><a href="class_extracteur_fichier.html#ad34dfdfc31b6da5a52f09f5c66eec2e1">ExtracteurFichier::verifierExistence</a></div><div class="ttdeci">void verifierExistence() const</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_ae1d89b6ba05749e55c8e512ba8ce6f4b"><div class="ttname"><a href="class_extracteur_fichier.html#ae1d89b6ba05749e55c8e512ba8ce6f4b">ExtracteurFichier::listeIdentifiants</a></div><div class="ttdeci">std::vector&lt; std::string &gt; listeIdentifiants</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:58</div></div>
+<div class="ttc" id="aclass_extracteur_fichier_html_af983a09177a7055185efcc070f4d3964"><div class="ttname"><a href="class_extracteur_fichier.html#af983a09177a7055185efcc070f4d3964">ExtracteurFichier::detecterExtension</a></div><div class="ttdeci">std::string detecterExtension() const</div></div>
+<div class="ttc" id="aclass_file_format_exception_html"><div class="ttname"><a href="class_file_format_exception.html">FileFormatException</a></div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:150</div></div>
+<div class="ttc" id="aclass_file_format_exception_html_a91b1d40082be7a46a806b4b02e3a913c"><div class="ttname"><a href="class_file_format_exception.html#a91b1d40082be7a46a806b4b02e3a913c">FileFormatException::FileFormatException</a></div><div class="ttdeci">FileFormatException(const std::string &amp;detail)</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:142</div></div>
+<div class="ttc" id="aclass_file_not_found_exception_html"><div class="ttname"><a href="class_file_not_found_exception.html">FileNotFoundException</a></div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:143</div></div>
+<div class="ttc" id="aclass_file_not_found_exception_html_a4571da183fd90b19662cfeae9f9dd780"><div class="ttname"><a href="class_file_not_found_exception.html#a4571da183fd90b19662cfeae9f9dd780">FileNotFoundException::FileNotFoundException</a></div><div class="ttdeci">FileNotFoundException(const std::string &amp;chemin)</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:135</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html"><div class="ttname"><a href="struct_exigence_extraite.html">ExigenceExtraite</a></div><div class="ttdoc">Structure représentant une exigence extraite d&#39;un fichier source.</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:34</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_a07dca14d16539fe2ebc6155aa22c1d57"><div class="ttname"><a href="struct_exigence_extraite.html#a07dca14d16539fe2ebc6155aa22c1d57">ExigenceExtraite::necessaireA</a></div><div class="ttdeci">std::vector&lt; std::string &gt; necessaireA</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:43</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_a164c04a1cbf74136c8f8ba9f404f68ca"><div class="ttname"><a href="struct_exigence_extraite.html#a164c04a1cbf74136c8f8ba9f404f68ca">ExigenceExtraite::detecterExtension</a></div><div class="ttdeci">std::string detecterExtension() const</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_a1bfa6d0969a6c93a33e6a253172639a6"><div class="ttname"><a href="struct_exigence_extraite.html#a1bfa6d0969a6c93a33e6a253172639a6">ExigenceExtraite::fichierSource</a></div><div class="ttdeci">std::string fichierSource</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:37</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_a43e0c2b37010e13b7333bc79f285b0d9"><div class="ttname"><a href="struct_exigence_extraite.html#a43e0c2b37010e13b7333bc79f285b0d9">ExigenceExtraite::developpe</a></div><div class="ttdeci">bool developpe</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:45</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_a50253d94972e85f6f6bd48b1c1bfb471"><div class="ttname"><a href="struct_exigence_extraite.html#a50253d94972e85f6f6bd48b1c1bfb471">ExigenceExtraite::formatSource</a></div><div class="ttdeci">std::string formatSource</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:38</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_a613bec95d74073192e7886f696acdf8f"><div class="ttname"><a href="struct_exigence_extraite.html#a613bec95d74073192e7886f696acdf8f">ExigenceExtraite::identifiant</a></div><div class="ttdeci">std::string identifiant</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:35</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_a764129e0479b02a525b50969d55f93d6"><div class="ttname"><a href="struct_exigence_extraite.html#a764129e0479b02a525b50969d55f93d6">ExigenceExtraite::tracabilite</a></div><div class="ttdeci">std::vector&lt; std::string &gt; tracabilite</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:41</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_a7e4ecb6fdc719aadc177dda9972efd84"><div class="ttname"><a href="struct_exigence_extraite.html#a7e4ecb6fdc719aadc177dda9972efd84">ExigenceExtraite::cibles</a></div><div class="ttdeci">std::vector&lt; std::string &gt; cibles</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:42</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_aa572c617fa86e495c1405a86784783b8"><div class="ttname"><a href="struct_exigence_extraite.html#aa572c617fa86e495c1405a86784783b8">ExigenceExtraite::numeroLigne</a></div><div class="ttdeci">int numeroLigne</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:39</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_ab138ba1b24915bf37507a685859fb350"><div class="ttname"><a href="struct_exigence_extraite.html#ab138ba1b24915bf37507a685859fb350">ExigenceExtraite::contenuBrut</a></div><div class="ttdeci">std::string contenuBrut</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:36</div></div>
+<div class="ttc" id="astruct_exigence_extraite_html_acad82b9e074fdc7885ab3182ade0f3f8"><div class="ttname"><a href="struct_exigence_extraite.html#acad82b9e074fdc7885ab3182ade0f3f8">ExigenceExtraite::alloueA</a></div><div class="ttdeci">std::vector&lt; std::string &gt; alloueA</div><div class="ttdef"><b>Definition</b> ExtracteurFichier.h:44</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_4e3a55e2a9734425e24eb78aa4793941.html">trunk</a></li><li class="navelem"><a href="dir_c3fc8ee92b5dc48d673393671412e2a1.html">headers</a></li><li class="navelem"><a href="trunk_2headers_2_extracteur_fichier_8h.html">ExtracteurFichier.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

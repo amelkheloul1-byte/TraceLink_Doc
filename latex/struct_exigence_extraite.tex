@@ -1,0 +1,164 @@
+\doxysection{Référence de la structure Exigence\+Extraite}
+\hypertarget{struct_exigence_extraite}{}\label{struct_exigence_extraite}\index{ExigenceExtraite@{ExigenceExtraite}}
+
+
+Structure représentant une exigence extraite d\textquotesingle{}un fichier source.  
+
+
+
+
+{\ttfamily \+\#include $<$Extracteur\+Fichier.\+h$>$}
+
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca}{detecter\+Extension}} () const
+\item 
+std::\+string \doxymbox{\hyperlink{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca}{detecter\+Extension}} () const
+\item 
+std::\+string \doxymbox{\hyperlink{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca}{detecter\+Extension}} () const
+\item 
+std::\+string \doxymbox{\hyperlink{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca}{detecter\+Extension}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{struct_exigence_extraite_a613bec95d74073192e7886f696acdf8f}{identifiant}}
+\item 
+std::\+string \doxymbox{\hyperlink{struct_exigence_extraite_ab138ba1b24915bf37507a685859fb350}{contenu\+Brut}}
+\item 
+std::\+string \doxymbox{\hyperlink{struct_exigence_extraite_a1bfa6d0969a6c93a33e6a253172639a6}{fichier\+Source}}
+\item 
+std::\+string \doxymbox{\hyperlink{struct_exigence_extraite_a50253d94972e85f6f6bd48b1c1bfb471}{format\+Source}}
+\item 
+int \doxymbox{\hyperlink{struct_exigence_extraite_aa572c617fa86e495c1405a86784783b8}{numero\+Ligne}}
+\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{struct_exigence_extraite_a764129e0479b02a525b50969d55f93d6}{tracabilite}}
+\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{struct_exigence_extraite_a7e4ecb6fdc719aadc177dda9972efd84}{cibles}}
+\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{struct_exigence_extraite_a07dca14d16539fe2ebc6155aa22c1d57}{necessaireA}}
+\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{struct_exigence_extraite_acad82b9e074fdc7885ab3182ade0f3f8}{alloueA}}
+\item 
+bool \doxymbox{\hyperlink{struct_exigence_extraite_a43e0c2b37010e13b7333bc79f285b0d9}{developpe}} = false
+\item 
+std::\+string \doxymbox{\hyperlink{struct_exigence_extraite_ac3c553c5ae289848cee2cf7693884a33}{description}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure représentant une exigence extraite d\textquotesingle{}un fichier source. 
+
+Structure représentant une exigence extraite d\textquotesingle{}un fichier source
+
+Champs de base :\+ identifiant :\+ identifiant extrait par la regex (ex:\+ EXIGENCE\+\_\+\+CLIENT\+\_\+\+A\+\_\+\+F01) contenu\+Brut :\+ texte descriptif de l\textquotesingle{}exigence fichier\+Source :\+ chemin du fichier d\textquotesingle{}origine format\+Source :\+ extension détectée (csv, xls, docx) numero\+Ligne :\+ numéro de ligne dans le fichier source
+
+Métadonnées de traçabilité :\+ tracabilite :\+ IDs SSS couverts par cette SRS (colonne 2 CSV /\+ ligne "{}\+Traçabilité :\+"{} docx) cibles :\+ cibles logicielles/\+matérielles (ligne "{}\+Cible :\+"{} docx) necessaireA :\+ projets/\+clients concernés (ligne "{}\+Nécessaire à :\+"{} docx) alloueA :\+ projets auxquels la SSS est allouée (ligne "{}\+Alloué à :\+"{} docx) developpe :\+ true si "{}\+Développé"{} figure dans le bloc docx 
+
+\label{doc-func-members}
+\Hypertarget{struct_exigence_extraite_doc-func-members}
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca}\index{ExigenceExtraite@{ExigenceExtraite}!detecterExtension@{detecterExtension}}
+\index{detecterExtension@{detecterExtension}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{detecterExtension()}{detecterExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca} 
+std::\+string Exigence\+Extraite::\+detecter\+Extension (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca}\index{ExigenceExtraite@{ExigenceExtraite}!detecterExtension@{detecterExtension}}
+\index{detecterExtension@{detecterExtension}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{detecterExtension()}{detecterExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca} 
+std::\+string Exigence\+Extraite::\+detecter\+Extension (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca}\index{ExigenceExtraite@{ExigenceExtraite}!detecterExtension@{detecterExtension}}
+\index{detecterExtension@{detecterExtension}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{detecterExtension()}{detecterExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca} 
+std::\+string Exigence\+Extraite::\+detecter\+Extension (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca}\index{ExigenceExtraite@{ExigenceExtraite}!detecterExtension@{detecterExtension}}
+\index{detecterExtension@{detecterExtension}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{detecterExtension()}{detecterExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca} 
+std::\+string Exigence\+Extraite::\+detecter\+Extension (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_exigence_extraite_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{struct_exigence_extraite_acad82b9e074fdc7885ab3182ade0f3f8}\index{ExigenceExtraite@{ExigenceExtraite}!alloueA@{alloueA}}
+\index{alloueA@{alloueA}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{alloueA}{alloueA}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_acad82b9e074fdc7885ab3182ade0f3f8} 
+std::\+vector$<$ std::\+string $>$ Exigence\+Extraite::\+alloueA}
+
+\Hypertarget{struct_exigence_extraite_a7e4ecb6fdc719aadc177dda9972efd84}\index{ExigenceExtraite@{ExigenceExtraite}!cibles@{cibles}}
+\index{cibles@{cibles}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{cibles}{cibles}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a7e4ecb6fdc719aadc177dda9972efd84} 
+std::\+vector$<$ std::\+string $>$ Exigence\+Extraite::\+cibles}
+
+\Hypertarget{struct_exigence_extraite_ab138ba1b24915bf37507a685859fb350}\index{ExigenceExtraite@{ExigenceExtraite}!contenuBrut@{contenuBrut}}
+\index{contenuBrut@{contenuBrut}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{contenuBrut}{contenuBrut}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_ab138ba1b24915bf37507a685859fb350} 
+std::\+string Exigence\+Extraite::\+contenu\+Brut}
+
+\Hypertarget{struct_exigence_extraite_ac3c553c5ae289848cee2cf7693884a33}\index{ExigenceExtraite@{ExigenceExtraite}!description@{description}}
+\index{description@{description}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_ac3c553c5ae289848cee2cf7693884a33} 
+std::\+string Exigence\+Extraite::\+description}
+
+\Hypertarget{struct_exigence_extraite_a43e0c2b37010e13b7333bc79f285b0d9}\index{ExigenceExtraite@{ExigenceExtraite}!developpe@{developpe}}
+\index{developpe@{developpe}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{developpe}{developpe}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a43e0c2b37010e13b7333bc79f285b0d9} 
+bool Exigence\+Extraite::\+developpe = false}
+
+\Hypertarget{struct_exigence_extraite_a1bfa6d0969a6c93a33e6a253172639a6}\index{ExigenceExtraite@{ExigenceExtraite}!fichierSource@{fichierSource}}
+\index{fichierSource@{fichierSource}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{fichierSource}{fichierSource}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a1bfa6d0969a6c93a33e6a253172639a6} 
+std::\+string Exigence\+Extraite::\+fichier\+Source}
+
+\Hypertarget{struct_exigence_extraite_a50253d94972e85f6f6bd48b1c1bfb471}\index{ExigenceExtraite@{ExigenceExtraite}!formatSource@{formatSource}}
+\index{formatSource@{formatSource}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{formatSource}{formatSource}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a50253d94972e85f6f6bd48b1c1bfb471} 
+std::\+string Exigence\+Extraite::\+format\+Source}
+
+\Hypertarget{struct_exigence_extraite_a613bec95d74073192e7886f696acdf8f}\index{ExigenceExtraite@{ExigenceExtraite}!identifiant@{identifiant}}
+\index{identifiant@{identifiant}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{identifiant}{identifiant}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a613bec95d74073192e7886f696acdf8f} 
+std::\+string Exigence\+Extraite::\+identifiant}
+
+\Hypertarget{struct_exigence_extraite_a07dca14d16539fe2ebc6155aa22c1d57}\index{ExigenceExtraite@{ExigenceExtraite}!necessaireA@{necessaireA}}
+\index{necessaireA@{necessaireA}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{necessaireA}{necessaireA}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a07dca14d16539fe2ebc6155aa22c1d57} 
+std::\+vector$<$ std::\+string $>$ Exigence\+Extraite::\+necessaireA}
+
+\Hypertarget{struct_exigence_extraite_aa572c617fa86e495c1405a86784783b8}\index{ExigenceExtraite@{ExigenceExtraite}!numeroLigne@{numeroLigne}}
+\index{numeroLigne@{numeroLigne}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{numeroLigne}{numeroLigne}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_aa572c617fa86e495c1405a86784783b8} 
+int Exigence\+Extraite::\+numero\+Ligne}
+
+\Hypertarget{struct_exigence_extraite_a764129e0479b02a525b50969d55f93d6}\index{ExigenceExtraite@{ExigenceExtraite}!tracabilite@{tracabilite}}
+\index{tracabilite@{tracabilite}!ExigenceExtraite@{ExigenceExtraite}}
+\doxysubsubsection{\texorpdfstring{tracabilite}{tracabilite}}
+{\footnotesize\ttfamily \label{struct_exigence_extraite_a764129e0479b02a525b50969d55f93d6} 
+std::\+vector$<$ std::\+string $>$ Exigence\+Extraite::\+tracabilite}
+
+
+
+La documentation de cette structure a été générée à partir des fichiers suivants :\+\begin{DoxyCompactItemize}
+\item 
+branches/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_extracteur_fichier_8h}{Extracteur\+Fichier.\+h}}\item 
+branches/\+module1/\+\doxymbox{\hyperlink{branches_2module1_2_extracteur_fichier_8h}{Extracteur\+Fichier.\+h}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2include_2_extracteur_fichier_8h}{Extracteur\+Fichier.\+h}}\item 
+trunk/\+headers/\+\doxymbox{\hyperlink{trunk_2headers_2_extracteur_fichier_8h}{Extracteur\+Fichier.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TraceLink:  Fichier source de tags/A0/IntegrationM1M2/include/ConvertisseurExigence.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TraceLink
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('tags_2_a0_2_integration_m1_m2_2include_2_convertisseur_exigence_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ConvertisseurExigence.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="tags_2_a0_2_integration_m1_m2_2include_2_convertisseur_exigence_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * ConvertisseurExigence.h</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Created on: 31 mars 2026</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *      Author: yseulthelle</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * ConvertisseurExigences.h</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * @brief Adaptateur entre le Module 1 (ExtracteurFichier) et le Module 2 (MoteurTracabilite).</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * Convertit les ExigenceExtraite (structs brutes issues du parsing)</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> * en objets typés ExigenceSSS / ExigenceSRS / ExigenceSDD.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * Détection du type depuis l&#39;identifiant :</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> *   - contient &quot;CLIENT&quot; → SSS  (ex: EXIGENCE_CLIENT_A_F01)</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> *   - contient &quot;PROJET&quot; → SRS  (ex: EXIGENCE_PROJET_A_02)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment"> *   - contient &quot;SDD&quot;    → SDD  (ex: SDD_FUNC_01)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment"> *   - sinon             → ignorée</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment"> * Les métadonnées extraites par le Module 1 (tracabilite, cibles,</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"> * necessaireA, alloueA, developpe) sont automatiquement transférées</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment"> * dans les objets typés correspondants.</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#ifndef CONVERTISSEUREXIGENCE_H_</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#define CONVERTISSEUREXIGENCE_H_</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">// Inclusions du Module extraction (Données brutes)</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &quot;<a class="code" href="tags_2_a0_2_integration_m1_m2_2include_2_extracteur_fichier_8h.html">ExtracteurFichier.h</a>&quot;</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">// Inclusions du Module traçabilité (Objets typés)</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &quot;<a class="code" href="tags_2_a0_2_integration_m1_m2_2include_2_exigence_s_s_s_8h.html">ExigenceSSS.h</a>&quot;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#include &quot;<a class="code" href="tags_2_a0_2_integration_m1_m2_2include_2_exigence_s_r_s_8h.html">ExigenceSRS.h</a>&quot;</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="tags_2_a0_2_integration_m1_m2_2include_2_exigence_s_d_d_8h.html">ExigenceSDD.h</a>&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">class </span><a class="code hl_class" href="class_convertisseur_exigences.html">ConvertisseurExigences</a> {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    std::vector&lt;ExigenceSSS&gt; <a class="code hl_variable" href="class_convertisseur_exigences.html#a6b0e39a2bbaa2d1424c0827f8c2fa789">exigencesSSS</a>;  </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    std::vector&lt;ExigenceSRS&gt; <a class="code hl_variable" href="class_convertisseur_exigences.html#a35294e17920031d6884a17c54a55e2ea">exigencesSRS</a>;  </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::vector&lt;ExigenceSDD&gt; <a class="code hl_variable" href="class_convertisseur_exigences.html#a8334e252e68d76069c79d0e5c5776456">exigencesSDD</a>;  </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="class_convertisseur_exigences.html#a02fce824cf7832ea08ceaf1d47e40708">ignorees</a>;      </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::string <a class="code hl_variable" href="class_convertisseur_exigences.html#ac0b592b7548ed5afbc8ed8440e2650ec">motifRegex</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_convertisseur_exigences.html#a4d4ed19528a773a283dd46cfd8c25837">   57</a></span>    <a class="code hl_enumeration" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a> <a class="code hl_function" href="class_convertisseur_exigences.html#a4d4ed19528a773a283dd46cfd8c25837">detecterType</a>(<span class="keyword">const</span> std::string&amp; identifiant) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_convertisseur_exigences.html#aafd9a9b8cc8a11450bb30a23393f39dd">   63</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_convertisseur_exigences.html#aafd9a9b8cc8a11450bb30a23393f39dd">estTypeConnu</a>(<span class="keyword">const</span> std::string&amp; identifiant) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="}">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="class_convertisseur_exigences.html#a97f33e76e2c5ccfb9308de0ee5ecfd98">   74</a></span>    <a class="code hl_function" href="class_convertisseur_exigences.html#a97f33e76e2c5ccfb9308de0ee5ecfd98">ConvertisseurExigences</a>(<span class="keyword">const</span> std::string&amp; motif = <span class="stringliteral">&quot;EXIGENCE_[A-Z0-9_]+&quot;</span>) </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        : <a class="code hl_variable" href="class_convertisseur_exigences.html#ac0b592b7548ed5afbc8ed8440e2650ec">motifRegex</a>(motif) {}</div>
+</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_convertisseur_exigences.html#af602bb0f5d061033ef8ad7e5d281a368">   76</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_convertisseur_exigences.html#af602bb0f5d061033ef8ad7e5d281a368">convertir</a>(<span class="keyword">const</span> std::vector&lt;ExigenceExtraite&gt;&amp; extraites);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_convertisseur_exigences.html#a8acab90f49dea1bad8a591534064fd97">   78</a></span>    <span class="keyword">const</span> std::vector&lt;ExigenceSSS&gt;&amp; <a class="code hl_function" href="class_convertisseur_exigences.html#a8acab90f49dea1bad8a591534064fd97">getSSS</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_convertisseur_exigences.html#a3573e23357776321417fd0ccc672528d">   80</a></span>    <span class="keyword">const</span> std::vector&lt;ExigenceSRS&gt;&amp; <a class="code hl_function" href="class_convertisseur_exigences.html#a3573e23357776321417fd0ccc672528d">getSRS</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="class_convertisseur_exigences.html#ac251169e6a562407731f9e7fdb0daef8">   82</a></span>    <span class="keyword">const</span> std::vector&lt;ExigenceSDD&gt;&amp; <a class="code hl_function" href="class_convertisseur_exigences.html#ac251169e6a562407731f9e7fdb0daef8">getSDD</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="class_convertisseur_exigences.html#a474736016ee9053aadab7d05722dec34">   84</a></span>    <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; <a class="code hl_function" href="class_convertisseur_exigences.html#a474736016ee9053aadab7d05722dec34">getIgnorees</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">#endif </span><span class="comment">/* CONVERTISSEUREXIGENCES_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="abranches_2_integration_m1_m2_2include_2_exigence_8h_html_a6587a9ed4154b322d20722b0bdce15a6"><div class="ttname"><a href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a></div><div class="ttdeci">TypeExigence</div><div class="ttdoc">Définit le niveau hiérarchique d&#39;une exigence.</div><div class="ttdef"><b>Definition</b> Exigence.h:21</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html"><div class="ttname"><a href="class_convertisseur_exigences.html">ConvertisseurExigences</a></div><div class="ttdoc">Adaptateur qui transforme les structures brutes (Module 1) en objets C++ typés (Module 2) prêts pour ...</div><div class="ttdef"><b>Definition</b> ConvertisseurExigence.h:27</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_a02fce824cf7832ea08ceaf1d47e40708"><div class="ttname"><a href="class_convertisseur_exigences.html#a02fce824cf7832ea08ceaf1d47e40708">ConvertisseurExigences::ignorees</a></div><div class="ttdeci">std::vector&lt; std::string &gt; ignorees</div><div class="ttdoc">Identifiants dont le type n&#39;a pas pu être déterminé.</div><div class="ttdef"><b>Definition</b> ConvertisseurExigence.h:32</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_a35294e17920031d6884a17c54a55e2ea"><div class="ttname"><a href="class_convertisseur_exigences.html#a35294e17920031d6884a17c54a55e2ea">ConvertisseurExigences::exigencesSRS</a></div><div class="ttdeci">std::vector&lt; ExigenceSRS &gt; exigencesSRS</div><div class="ttdoc">Exigences de niveau SRS converties.</div><div class="ttdef"><b>Definition</b> ConvertisseurExigence.h:30</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_a3573e23357776321417fd0ccc672528d"><div class="ttname"><a href="class_convertisseur_exigences.html#a3573e23357776321417fd0ccc672528d">ConvertisseurExigences::getSRS</a></div><div class="ttdeci">const std::vector&lt; ExigenceSRS &gt; &amp; getSRS() const</div><div class="ttdoc">Retourne les exigences SRS converties.</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_a474736016ee9053aadab7d05722dec34"><div class="ttname"><a href="class_convertisseur_exigences.html#a474736016ee9053aadab7d05722dec34">ConvertisseurExigences::getIgnorees</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; &amp; getIgnorees() const</div><div class="ttdoc">Retourne les identifiants ignorés (type non reconnu).</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_a4d4ed19528a773a283dd46cfd8c25837"><div class="ttname"><a href="class_convertisseur_exigences.html#a4d4ed19528a773a283dd46cfd8c25837">ConvertisseurExigences::detecterType</a></div><div class="ttdeci">TypeExigence detecterType(const std::string &amp;identifiant) const</div><div class="ttdoc">Détermine le type d&#39;une exigence depuis son identifiant.</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_a6b0e39a2bbaa2d1424c0827f8c2fa789"><div class="ttname"><a href="class_convertisseur_exigences.html#a6b0e39a2bbaa2d1424c0827f8c2fa789">ConvertisseurExigences::exigencesSSS</a></div><div class="ttdeci">std::vector&lt; ExigenceSSS &gt; exigencesSSS</div><div class="ttdoc">Exigences de niveau SSS converties.</div><div class="ttdef"><b>Definition</b> ConvertisseurExigence.h:29</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_a8334e252e68d76069c79d0e5c5776456"><div class="ttname"><a href="class_convertisseur_exigences.html#a8334e252e68d76069c79d0e5c5776456">ConvertisseurExigences::exigencesSDD</a></div><div class="ttdeci">std::vector&lt; ExigenceSDD &gt; exigencesSDD</div><div class="ttdoc">Exigences de niveau SDD converties.</div><div class="ttdef"><b>Definition</b> ConvertisseurExigence.h:31</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_a8acab90f49dea1bad8a591534064fd97"><div class="ttname"><a href="class_convertisseur_exigences.html#a8acab90f49dea1bad8a591534064fd97">ConvertisseurExigences::getSSS</a></div><div class="ttdeci">const std::vector&lt; ExigenceSSS &gt; &amp; getSSS() const</div><div class="ttdoc">Retourne les exigences SSS converties.</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_a97f33e76e2c5ccfb9308de0ee5ecfd98"><div class="ttname"><a href="class_convertisseur_exigences.html#a97f33e76e2c5ccfb9308de0ee5ecfd98">ConvertisseurExigences::ConvertisseurExigences</a></div><div class="ttdeci">ConvertisseurExigences(const std::string &amp;motif=&quot;EXIGENCE_[A-Z0-9_]+&quot;)</div><div class="ttdoc">Convertit un vecteur de ExigenceExtraite en objets typés.</div><div class="ttdef"><b>Definition</b> ConvertisseurExigence.h:74</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_aafd9a9b8cc8a11450bb30a23393f39dd"><div class="ttname"><a href="class_convertisseur_exigences.html#aafd9a9b8cc8a11450bb30a23393f39dd">ConvertisseurExigences::estTypeConnu</a></div><div class="ttdeci">bool estTypeConnu(const std::string &amp;identifiant) const</div><div class="ttdoc">Indique si l&#39;identifiant contient un mot-clé de type reconnu.</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_ac0b592b7548ed5afbc8ed8440e2650ec"><div class="ttname"><a href="class_convertisseur_exigences.html#ac0b592b7548ed5afbc8ed8440e2650ec">ConvertisseurExigences::motifRegex</a></div><div class="ttdeci">std::string motifRegex</div><div class="ttdef"><b>Definition</b> ConvertisseurExigence.h:33</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_ac251169e6a562407731f9e7fdb0daef8"><div class="ttname"><a href="class_convertisseur_exigences.html#ac251169e6a562407731f9e7fdb0daef8">ConvertisseurExigences::getSDD</a></div><div class="ttdeci">const std::vector&lt; ExigenceSDD &gt; &amp; getSDD() const</div><div class="ttdoc">Retourne les exigences SDD converties.</div></div>
+<div class="ttc" id="aclass_convertisseur_exigences_html_af602bb0f5d061033ef8ad7e5d281a368"><div class="ttname"><a href="class_convertisseur_exigences.html#af602bb0f5d061033ef8ad7e5d281a368">ConvertisseurExigences::convertir</a></div><div class="ttdeci">void convertir(const std::vector&lt; ExigenceExtraite &gt; &amp;extraites)</div></div>
+<div class="ttc" id="atags_2_a0_2_integration_m1_m2_2include_2_exigence_s_d_d_8h_html"><div class="ttname"><a href="tags_2_a0_2_integration_m1_m2_2include_2_exigence_s_d_d_8h.html">ExigenceSDD.h</a></div></div>
+<div class="ttc" id="atags_2_a0_2_integration_m1_m2_2include_2_exigence_s_r_s_8h_html"><div class="ttname"><a href="tags_2_a0_2_integration_m1_m2_2include_2_exigence_s_r_s_8h.html">ExigenceSRS.h</a></div></div>
+<div class="ttc" id="atags_2_a0_2_integration_m1_m2_2include_2_exigence_s_s_s_8h_html"><div class="ttname"><a href="tags_2_a0_2_integration_m1_m2_2include_2_exigence_s_s_s_8h.html">ExigenceSSS.h</a></div></div>
+<div class="ttc" id="atags_2_a0_2_integration_m1_m2_2include_2_extracteur_fichier_8h_html"><div class="ttname"><a href="tags_2_a0_2_integration_m1_m2_2include_2_extracteur_fichier_8h.html">ExtracteurFichier.h</a></div><div class="ttdoc">Module 1 : Import &amp; Parsing Convertit un fichier physique (Word/CSV/XLS) en liste d&#39;exigences exploit...</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_f409502ee6998d6b48588958fde3cd6f.html">tags</a></li><li class="navelem"><a href="dir_f01a85a028e3d56c551a5de04b5c0c1f.html">A0</a></li><li class="navelem"><a href="dir_b51a041712f5ade4a6d541cd01d7afbb.html">IntegrationM1M2</a></li><li class="navelem"><a href="dir_20f6da281c6327cafba3ed0ab658fc32.html">include</a></li><li class="navelem"><a href="tags_2_a0_2_integration_m1_m2_2include_2_convertisseur_exigence_8h.html">ConvertisseurExigence.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

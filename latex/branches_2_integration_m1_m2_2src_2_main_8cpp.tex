@@ -1,0 +1,39 @@
+\doxysection{Référence du fichier branches/\+\+Integration\+M1\+M2/\+src/\+\+Main.cpp}
+\hypertarget{branches_2_integration_m1_m2_2src_2_main_8cpp}{}\label{branches_2_integration_m1_m2_2src_2_main_8cpp}\index{branches/IntegrationM1M2/src/Main.cpp@{branches/IntegrationM1M2/src/Main.cpp}}
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include "{}Extracteur\+Fichier.\+h"{}}\newline
+{\ttfamily \+\#include "{}Convertisseur\+Exigence.\+h"{}}\newline
+{\ttfamily \+\#include "{}Moteur\+Tracabilite.\+h"{}}\newline
+{\ttfamily \+\#include "{}Thread\+Manager.\+h"{}}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{branches_2_integration_m1_m2_2src_2_main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{branches_2_integration_m1_m2_2src_2_main_8cpp_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{branches_2_integration_m1_m2_2src_2_main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{Main.cpp@{Main.cpp}!main@{main}}
+\index{main@{main}!Main.cpp@{Main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{branches_2_integration_m1_m2_2src_2_main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyItemize}
+\item Initialisation de l\textquotesingle{}extracteur. Utilisation d\textquotesingle{}un chemin RELATIF "{}test2.\+csv"{} pour garantir la portabilité entre Windows et Mac sans modifier le code. Le motif Regex identifie les IDs commençant par "{}\+EXIGENCE\+\_\+"{}.
+\end{DoxyItemize}
+
+Le convertisseur transforme les structures de texte brut en objets métiers structurés (SSS, SRS, SDD) exploitables par le moteur.
+
+Gestion des Threads. On utilise le \doxylink{class_thread_manager}{Thread\+Manager} pour exécuter les calculs lourds en arrière-\/plan.
+
+\begin{DoxyAttention}{Attention}
+Cette ligne bloque le programme jusqu\textquotesingle{}à la fin du calcul. Sans cette attente, le rapport afficherait 0\% car les résultats ne seraient pas encore prêts.
+\end{DoxyAttention}
+Les taux de couverture sont stockés sous forme de décimales (ex:\+ 0.\+33). On les multiplie par 100 pour un affichage lisible en pourcentage.
+
+Gestion globale des erreurs (Fichier manquant, format corrompu, etc.).

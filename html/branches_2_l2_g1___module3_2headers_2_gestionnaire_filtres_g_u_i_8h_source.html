@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TraceLink:  Fichier source de branches/L2G1_Module3/headers/GestionnaireFiltresGUI.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TraceLink
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">GestionnaireFiltresGUI.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef GESTIONNAIREFILTRESGUI_H</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define GESTIONNAIREFILTRESGUI_H</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;QWidget&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;QComboBox&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;QLineEdit&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;QPushButton&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;QLabel&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;QVBoxLayout&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;QCompleter&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;QStringListModel&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;Exigence.h&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// MODIF : TypeDoc conservé pour compatibilité mais filtre document retiré de l&#39;UI</span></div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968d">   22</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968d">TypeDoc</a> {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da66efab3c235e01f89d0c42e317c950d5">   23</a></span>    <a class="code hl_enumvalue" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da66efab3c235e01f89d0c42e317c950d5">TOUS_DOCS</a> = 0,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da83151fd2ae55a1d5c0edfbba88609f92">   24</a></span>    <a class="code hl_enumvalue" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da83151fd2ae55a1d5c0edfbba88609f92">DOC_SSS</a>,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da86d2a1434de353972613c96f4698a9b0">   25</a></span>    <a class="code hl_enumvalue" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da86d2a1434de353972613c96f4698a9b0">DOC_SRS</a>,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da0bbac5c947dbdc9334e348edb0e4c839">   26</a></span>    <a class="code hl_enumvalue" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da0bbac5c947dbdc9334e348edb0e4c839">DOC_SDD</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="struct_filtre_g_u_i.html">   29</a></span><span class="keyword">struct </span><a class="code hl_function" href="struct_filtre_g_u_i.html#a1bbc0e44993918e3b01df902a33fee55">FiltreGUI</a> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="struct_filtre_g_u_i.html#abbcf57ed77d7270788a72fd87787cfce">   30</a></span>    <a class="code hl_enumeration" href="trunk_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968d">TypeDoc</a>  <a class="code hl_variable" href="struct_filtre_g_u_i.html#abbcf57ed77d7270788a72fd87787cfce">filtreDocument</a>    = <a class="code hl_enumvalue" href="trunk_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da66efab3c235e01f89d0c42e317c950d5">TOUS_DOCS</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="struct_filtre_g_u_i.html#ac5098195a36d801184c987f4dcc0d439">   31</a></span>    <a class="code hl_enumeration" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a51cc5d61d45bf71507aceec544ad1667">Statut</a>   <a class="code hl_variable" href="struct_filtre_g_u_i.html#ac5098195a36d801184c987f4dcc0d439">filtreStatut</a>      = <a class="code hl_enumvalue" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a51cc5d61d45bf71507aceec544ad1667a2a275384eb10d9f01e597aa9fd712867">NonAnalyse</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="struct_filtre_g_u_i.html#a3b224272677ddbe228464fcc1dd603d3">   32</a></span>    QString  <a class="code hl_variable" href="struct_filtre_g_u_i.html#a3b224272677ddbe228464fcc1dd603d3">filtreIdentifiant</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="struct_filtre_g_u_i.html#a1da43a991a60640838acb9728ade0fd6">   33</a></span>    <span class="keywordtype">bool</span>     <a class="code hl_variable" href="struct_filtre_g_u_i.html#a1da43a991a60640838acb9728ade0fd6">filtreDevEtat</a>     = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="struct_filtre_g_u_i.html#a4e85bd44d03d05a16683ebcb46461afd">   34</a></span>    <span class="keywordtype">bool</span>     <a class="code hl_variable" href="struct_filtre_g_u_i.html#a4e85bd44d03d05a16683ebcb46461afd">filtreDevValeur</a>   = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="struct_filtre_g_u_i.html#a1d6a8344028d97883696dd01882833d0">   35</a></span>    <span class="keywordtype">bool</span>     <a class="code hl_variable" href="struct_filtre_g_u_i.html#a1d6a8344028d97883696dd01882833d0">filtreOrpheline</a>   = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_gestionnaire_filtres_g_u_i.html">   38</a></span><span class="keyword">class </span><a class="code hl_function" href="class_gestionnaire_filtres_g_u_i.html#a34ffd2707751329dbbfe0349f51b613f">GestionnaireFiltresGUI</a> : <span class="keyword">public</span> QWidget</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    Q_OBJECT</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_gestionnaire_filtres_g_u_i.html#a34ffd2707751329dbbfe0349f51b613f">GestionnaireFiltresGUI</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_struct" href="struct_filtre_g_u_i.html">FiltreGUI</a> <a class="code hl_function" href="class_gestionnaire_filtres_g_u_i.html#a1fb4cbce9311fb0c0b6d51520e61ac10">getFiltreActuel</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gestionnaire_filtres_g_u_i.html#ab440015d7c871e3a63825b1a6a4d6742">setFiltreStatut</a>(<span class="keywordtype">int</span> index);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gestionnaire_filtres_g_u_i.html#a24a9adddf28fdf488f868947563bb14d">setFiltreIdentifiant</a>(<span class="keyword">const</span> QString&amp; texte);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gestionnaire_filtres_g_u_i.html#a3afb056b474dcf6769ebd1fb9698e634">setListeIds</a>(<span class="keyword">const</span> QStringList&amp; ids);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>signals:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> <a class="code hl_signal" href="class_gestionnaire_filtres_g_u_i.html#ab1d03b71dfb39ad497e674eab183e983">filtreModifie</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_filtre_g_u_i.html">FiltreGUI</a>&amp; filtre);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span> slots:</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_gestionnaire_filtres_g_u_i.html#abc58e81e7221eafdff15bd9c2dae2b93">reinitialiser</a>();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">private</span> slots:</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_gestionnaire_filtres_g_u_i.html#a32e5522cd1e77ffa083b86f5759d09a5">appliquerFiltres</a>();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_gestionnaire_filtres_g_u_i.html#a3d7ef2b2ae5fd7c3076d71e2cc48a006">initialiserUI</a>();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    QLabel* <a class="code hl_function" href="class_gestionnaire_filtres_g_u_i.html#a0e3381e67f73601c95772ea46050f7e8">creerLabel</a>(<span class="keyword">const</span> QString&amp; texte);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// MODIF : comboDocument supprimé</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_gestionnaire_filtres_g_u_i.html#ad3485af5e19a2ef3307118984cdbcbd2">   63</a></span>    QComboBox   *<a class="code hl_variable" href="class_gestionnaire_filtres_g_u_i.html#ad3485af5e19a2ef3307118984cdbcbd2">comboStatut</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_gestionnaire_filtres_g_u_i.html#a5213c4b80448d3a6f434ce409485b4c6">   64</a></span>    QComboBox   *<a class="code hl_variable" href="class_gestionnaire_filtres_g_u_i.html#a5213c4b80448d3a6f434ce409485b4c6">comboEtat</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_gestionnaire_filtres_g_u_i.html#a2b9f32b40d563c7358cd4344b6c0dde3">   65</a></span>    QLineEdit   *<a class="code hl_variable" href="class_gestionnaire_filtres_g_u_i.html#a2b9f32b40d563c7358cd4344b6c0dde3">champIdentifiant</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_gestionnaire_filtres_g_u_i.html#a886e42f2a1c3023c1c58cf94dcdd7233">   66</a></span>    QPushButton *<a class="code hl_variable" href="class_gestionnaire_filtres_g_u_i.html#a886e42f2a1c3023c1c58cf94dcdd7233">btnAppliquer</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_gestionnaire_filtres_g_u_i.html#a0b92a08da38814963a7f1686fbb7e833">   67</a></span>    QPushButton *<a class="code hl_variable" href="class_gestionnaire_filtres_g_u_i.html#a0b92a08da38814963a7f1686fbb7e833">btnReinitialiser</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="class_gestionnaire_filtres_g_u_i.html#a9475cfe27ac35c62aef8a7567a83624b">   68</a></span>    QCompleter  *<a class="code hl_variable" href="class_gestionnaire_filtres_g_u_i.html#a9475cfe27ac35c62aef8a7567a83624b">completer</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_gestionnaire_filtres_g_u_i.html#a281c8b3580a92ab33cdf81210e2518c8">   69</a></span>    QStringList  <a class="code hl_variable" href="class_gestionnaire_filtres_g_u_i.html#a281c8b3580a92ab33cdf81210e2518c8">listeIds</a>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="class_gestionnaire_filtres_g_u_i.html#a8d66f722925cbe129e2077a4a350ab1e">   71</a></span>    <a class="code hl_struct" href="struct_filtre_g_u_i.html">FiltreGUI</a> <a class="code hl_variable" href="class_gestionnaire_filtres_g_u_i.html#a8d66f722925cbe129e2077a4a350ab1e">filtreCourant</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif </span><span class="comment">// GESTIONNAIREFILTRESGUI_H</span></div>
+<div class="ttc" id="abranches_2_integration_m1_m2_2include_2_exigence_8h_html_a51cc5d61d45bf71507aceec544ad1667"><div class="ttname"><a href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a51cc5d61d45bf71507aceec544ad1667">Statut</a></div><div class="ttdeci">Statut</div><div class="ttdoc">Définit l&#39;état de couverture d&#39;une exigence après analyse de traçabilité.</div><div class="ttdef"><b>Definition</b> Exigence.h:37</div></div>
+<div class="ttc" id="abranches_2_integration_m1_m2_2include_2_exigence_8h_html_a51cc5d61d45bf71507aceec544ad1667a2a275384eb10d9f01e597aa9fd712867"><div class="ttname"><a href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a51cc5d61d45bf71507aceec544ad1667a2a275384eb10d9f01e597aa9fd712867">NonAnalyse</a></div><div class="ttdeci">@ NonAnalyse</div><div class="ttdef"><b>Definition</b> Exigence.h:38</div></div>
+<div class="ttc" id="abranches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_html_a4308c8f182d4b3326f29fabada0f968d"><div class="ttname"><a href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968d">TypeDoc</a></div><div class="ttdeci">TypeDoc</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:22</div></div>
+<div class="ttc" id="abranches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_html_a4308c8f182d4b3326f29fabada0f968da0bbac5c947dbdc9334e348edb0e4c839"><div class="ttname"><a href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da0bbac5c947dbdc9334e348edb0e4c839">DOC_SDD</a></div><div class="ttdeci">@ DOC_SDD</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:26</div></div>
+<div class="ttc" id="abranches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_html_a4308c8f182d4b3326f29fabada0f968da66efab3c235e01f89d0c42e317c950d5"><div class="ttname"><a href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da66efab3c235e01f89d0c42e317c950d5">TOUS_DOCS</a></div><div class="ttdeci">@ TOUS_DOCS</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:23</div></div>
+<div class="ttc" id="abranches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_html_a4308c8f182d4b3326f29fabada0f968da83151fd2ae55a1d5c0edfbba88609f92"><div class="ttname"><a href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da83151fd2ae55a1d5c0edfbba88609f92">DOC_SSS</a></div><div class="ttdeci">@ DOC_SSS</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:24</div></div>
+<div class="ttc" id="abranches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_html_a4308c8f182d4b3326f29fabada0f968da86d2a1434de353972613c96f4698a9b0"><div class="ttname"><a href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da86d2a1434de353972613c96f4698a9b0">DOC_SRS</a></div><div class="ttdeci">@ DOC_SRS</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:25</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a0b92a08da38814963a7f1686fbb7e833"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a0b92a08da38814963a7f1686fbb7e833">GestionnaireFiltresGUI::btnReinitialiser</a></div><div class="ttdeci">QPushButton * btnReinitialiser</div><div class="ttdoc">Bouton réinitialiser les filtres.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:67</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a0e3381e67f73601c95772ea46050f7e8"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a0e3381e67f73601c95772ea46050f7e8">GestionnaireFiltresGUI::creerLabel</a></div><div class="ttdeci">QLabel * creerLabel(const QString &amp;texte)</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.cpp:22</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a1fb4cbce9311fb0c0b6d51520e61ac10"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a1fb4cbce9311fb0c0b6d51520e61ac10">GestionnaireFiltresGUI::getFiltreActuel</a></div><div class="ttdeci">FiltreGUI getFiltreActuel() const</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.cpp:164</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a24a9adddf28fdf488f868947563bb14d"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a24a9adddf28fdf488f868947563bb14d">GestionnaireFiltresGUI::setFiltreIdentifiant</a></div><div class="ttdeci">void setFiltreIdentifiant(const QString &amp;texte)</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.cpp:187</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a281c8b3580a92ab33cdf81210e2518c8"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a281c8b3580a92ab33cdf81210e2518c8">GestionnaireFiltresGUI::listeIds</a></div><div class="ttdeci">QStringList listeIds</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:69</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a2b9f32b40d563c7358cd4344b6c0dde3"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a2b9f32b40d563c7358cd4344b6c0dde3">GestionnaireFiltresGUI::champIdentifiant</a></div><div class="ttdeci">QLineEdit * champIdentifiant</div><div class="ttdoc">Champ de recherche par identifiant.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:65</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a32e5522cd1e77ffa083b86f5759d09a5"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a32e5522cd1e77ffa083b86f5759d09a5">GestionnaireFiltresGUI::appliquerFiltres</a></div><div class="ttdeci">void appliquerFiltres()</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.cpp:169</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a34ffd2707751329dbbfe0349f51b613f"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a34ffd2707751329dbbfe0349f51b613f">GestionnaireFiltresGUI::GestionnaireFiltresGUI</a></div><div class="ttdeci">GestionnaireFiltresGUI(QWidget *parent=nullptr)</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.cpp:16</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a3afb056b474dcf6769ebd1fb9698e634"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a3afb056b474dcf6769ebd1fb9698e634">GestionnaireFiltresGUI::setListeIds</a></div><div class="ttdeci">void setListeIds(const QStringList &amp;ids)</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.cpp:193</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a3d7ef2b2ae5fd7c3076d71e2cc48a006"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a3d7ef2b2ae5fd7c3076d71e2cc48a006">GestionnaireFiltresGUI::initialiserUI</a></div><div class="ttdeci">void initialiserUI()</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.cpp:29</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a5213c4b80448d3a6f434ce409485b4c6"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a5213c4b80448d3a6f434ce409485b4c6">GestionnaireFiltresGUI::comboEtat</a></div><div class="ttdeci">QComboBox * comboEtat</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:64</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a886e42f2a1c3023c1c58cf94dcdd7233"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a886e42f2a1c3023c1c58cf94dcdd7233">GestionnaireFiltresGUI::btnAppliquer</a></div><div class="ttdeci">QPushButton * btnAppliquer</div><div class="ttdoc">AJOUT : bouton appliquer les filtres.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:66</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a8d66f722925cbe129e2077a4a350ab1e"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a8d66f722925cbe129e2077a4a350ab1e">GestionnaireFiltresGUI::filtreCourant</a></div><div class="ttdeci">FiltreGUI filtreCourant</div><div class="ttdoc">Filtre actuellement actif.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:71</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_a9475cfe27ac35c62aef8a7567a83624b"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#a9475cfe27ac35c62aef8a7567a83624b">GestionnaireFiltresGUI::completer</a></div><div class="ttdeci">QCompleter * completer</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:68</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_ab1d03b71dfb39ad497e674eab183e983"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#ab1d03b71dfb39ad497e674eab183e983">GestionnaireFiltresGUI::filtreModifie</a></div><div class="ttdeci">void filtreModifie(const FiltreGUI &amp;filtre)</div><div class="ttdef"><b>Definition</b> moc_GestionnaireFiltresGUI.cpp:127</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_ab440015d7c871e3a63825b1a6a4d6742"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#ab440015d7c871e3a63825b1a6a4d6742">GestionnaireFiltresGUI::setFiltreStatut</a></div><div class="ttdeci">void setFiltreStatut(int index)</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.cpp:181</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_abc58e81e7221eafdff15bd9c2dae2b93"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#abc58e81e7221eafdff15bd9c2dae2b93">GestionnaireFiltresGUI::reinitialiser</a></div><div class="ttdeci">void reinitialiser()</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.cpp:199</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html_ad3485af5e19a2ef3307118984cdbcbd2"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html#ad3485af5e19a2ef3307118984cdbcbd2">GestionnaireFiltresGUI::comboStatut</a></div><div class="ttdeci">QComboBox * comboStatut</div><div class="ttdoc">Menu déroulant filtre par statut.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:63</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html"><div class="ttname"><a href="struct_filtre_g_u_i.html">FiltreGUI</a></div><div class="ttdoc">Combinaison des trois filtres actifs.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:29</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html_a1bbc0e44993918e3b01df902a33fee55"><div class="ttname"><a href="struct_filtre_g_u_i.html#a1bbc0e44993918e3b01df902a33fee55">FiltreGUI::FiltreGUI</a></div><div class="ttdeci">FiltreGUI()</div><div class="ttdoc">Constructeur par défaut — aucun filtre actif.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:41</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html_a1d6a8344028d97883696dd01882833d0"><div class="ttname"><a href="struct_filtre_g_u_i.html#a1d6a8344028d97883696dd01882833d0">FiltreGUI::filtreOrpheline</a></div><div class="ttdeci">bool filtreOrpheline</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:35</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html_a1da43a991a60640838acb9728ade0fd6"><div class="ttname"><a href="struct_filtre_g_u_i.html#a1da43a991a60640838acb9728ade0fd6">FiltreGUI::filtreDevEtat</a></div><div class="ttdeci">bool filtreDevEtat</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:33</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html_a3b224272677ddbe228464fcc1dd603d3"><div class="ttname"><a href="struct_filtre_g_u_i.html#a3b224272677ddbe228464fcc1dd603d3">FiltreGUI::filtreIdentifiant</a></div><div class="ttdeci">QString filtreIdentifiant</div><div class="ttdoc">Filtre par identifiant (texte libre).</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:32</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html_a4e85bd44d03d05a16683ebcb46461afd"><div class="ttname"><a href="struct_filtre_g_u_i.html#a4e85bd44d03d05a16683ebcb46461afd">FiltreGUI::filtreDevValeur</a></div><div class="ttdeci">bool filtreDevValeur</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:34</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html_abbcf57ed77d7270788a72fd87787cfce"><div class="ttname"><a href="struct_filtre_g_u_i.html#abbcf57ed77d7270788a72fd87787cfce">FiltreGUI::filtreDocument</a></div><div class="ttdeci">TypeDoc filtreDocument</div><div class="ttdoc">Filtre par niveau de document.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:30</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html_ac5098195a36d801184c987f4dcc0d439"><div class="ttname"><a href="struct_filtre_g_u_i.html#ac5098195a36d801184c987f4dcc0d439">FiltreGUI::filtreStatut</a></div><div class="ttdeci">Statut filtreStatut</div><div class="ttdoc">Filtre par statut.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:31</div></div>
+<div class="ttc" id="atrunk_2headers_2_gestionnaire_filtres_g_u_i_8h_html_a4308c8f182d4b3326f29fabada0f968d"><div class="ttname"><a href="trunk_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968d">TypeDoc</a></div><div class="ttdeci">TypeDoc</div><div class="ttdoc">Filtre par niveau de document.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:24</div></div>
+<div class="ttc" id="atrunk_2headers_2_gestionnaire_filtres_g_u_i_8h_html_a4308c8f182d4b3326f29fabada0f968da66efab3c235e01f89d0c42e317c950d5"><div class="ttname"><a href="trunk_2headers_2_gestionnaire_filtres_g_u_i_8h.html#a4308c8f182d4b3326f29fabada0f968da66efab3c235e01f89d0c42e317c950d5">TOUS_DOCS</a></div><div class="ttdeci">@ TOUS_DOCS</div><div class="ttdoc">Affiche tous les documents.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:25</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_85c7096253a6235d051a53fdd615d53a.html">branches</a></li><li class="navelem"><a href="dir_99abb17956bc0d8deaf8920873908442.html">L2G1_Module3</a></li><li class="navelem"><a href="dir_feb3b8c928fdcf884b911aa3d3163021.html">headers</a></li><li class="navelem"><a href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html">GestionnaireFiltresGUI.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

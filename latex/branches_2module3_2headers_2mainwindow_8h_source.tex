@@ -1,0 +1,62 @@
+\doxysection{mainwindow.\+h}
+\hypertarget{branches_2module3_2headers_2mainwindow_8h_source}{}\label{branches_2module3_2headers_2mainwindow_8h_source}\index{branches/module3/headers/mainwindow.h@{branches/module3/headers/mainwindow.h}}
+\doxymbox{\hyperlink{branches_2module3_2headers_2mainwindow_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <QTabWidget>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <QLineEdit>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QHBoxLayout>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QGroupBox>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_main_window}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \doxymbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00020\ \ \ \ \ \doxymbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\string~MainWindow}}();}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a6546156c5f72113ea02598362994d79f}{parcourirSSS}}();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ab39e24654e1e3289f1019926d3cd9e1b}{parcourirSRS}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a65c6d1b51f3e1c474d71e336b5dfc07c}{parcourirSDD}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_adc8d59bb4989482f4563f78fa75c36a6}{verifierFichiersSelectionnes}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ Onglets}}
+\DoxyCodeLine{00030\ \ \ \ \ QTabWidget\ *\doxymbox{\hyperlink{class_main_window_ac6080f95dd35faed65fa56d6f0e15829}{tabWidget}};}
+\DoxyCodeLine{00031\ \ \ \ \ QWidget\ \ \ \ *\doxymbox{\hyperlink{class_main_window_a9e186beefb05a94d292827856f74a93f}{ongletImport}};}
+\DoxyCodeLine{00032\ \ \ \ \ QWidget\ \ \ \ *\doxymbox{\hyperlink{class_main_window_a844047afd3a23a03d5a1d39162d79455}{ongletGraphe}};}
+\DoxyCodeLine{00033\ \ \ \ \ QWidget\ \ \ \ *\doxymbox{\hyperlink{class_main_window_a88798284ca8df1d76f1b9d1ef9d44dee}{ongletRapport}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Onglet\ Import\ -\/\ champs\ fichiers}}
+\DoxyCodeLine{00036\ \ \ \ \ QLineEdit\ \ *\doxymbox{\hyperlink{class_main_window_a29c06208edf21f267effd9bfd57199f8}{champSSS}};}
+\DoxyCodeLine{00037\ \ \ \ \ QLineEdit\ \ *\doxymbox{\hyperlink{class_main_window_ae615075e8b603a4e5b60faee454fdb8d}{champSRS}};}
+\DoxyCodeLine{00038\ \ \ \ \ QLineEdit\ \ *\doxymbox{\hyperlink{class_main_window_ab412b6c0593423f4f9f9edb49006e6c6}{champSDD}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_main_window_a3d36978afc9116f40fa8ce153a487b33}{btnParcourirSSS}};}
+\DoxyCodeLine{00041\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_main_window_a67672d72bba34301e2364a41267862af}{btnParcourirSRS}};}
+\DoxyCodeLine{00042\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_main_window_a2f158425426e8e82c3c3cc65b5eab8c5}{btnParcourirSDD}};}
+\DoxyCodeLine{00043\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_main_window_a505bc104df38e1c0540f4d450fd0f17b}{btnLancer}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ Chemins\ des\ fichiers\ sélectionnés}}
+\DoxyCodeLine{00046\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_main_window_a0bca6c34dd9a150b445ca08ed099791a}{cheminSSS}};}
+\DoxyCodeLine{00047\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_main_window_ad76e78fb2a61d3bace59a929f034b9ad}{cheminSRS}};}
+\DoxyCodeLine{00048\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_main_window_a510ca859d3479780a53b791326fc6d7a}{cheminSDD}};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Méthodes\ de\ construction\ de\ l'UI}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ac9ecc19342cfbe10ce582c96c04a01e0}{construireOngletImport}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ac9bc4ed35a651ba4c2ce72ed179044be}{construireOngletGraphe}}();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ad419fdfc3443880fb564a63827a110f1}{construireOngletRapport}}();}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINWINDOW\_H}}
+
+\end{DoxyCode}

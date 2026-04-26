@@ -1,0 +1,75 @@
+\doxysection{Gestionnaire\+Filtres\+GUI.\+h}
+\hypertarget{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_source}{}\label{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_source}\index{branches/L2G1\_Module3/headers/GestionnaireFiltresGUI.h@{branches/L2G1\_Module3/headers/GestionnaireFiltresGUI.h}}
+\doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ GESTIONNAIREFILTRESGUI\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ GESTIONNAIREFILTRESGUI\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QComboBox>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QLineEdit>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QCompleter>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QStringListModel>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Exigence.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ MODIF\ :\ TypeDoc\ conservé\ pour\ compatibilité\ mais\ filtre\ document\ retiré\ de\ l'UI}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_a4308c8f182d4b3326f29fabada0f968d}{TypeDoc}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_a4308c8f182d4b3326f29fabada0f968da66efab3c235e01f89d0c42e317c950d5}{TOUS\_DOCS}}\ =\ 0,}
+\DoxyCodeLine{00024\ \ \ \ \ \doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_a4308c8f182d4b3326f29fabada0f968da83151fd2ae55a1d5c0edfbba88609f92}{DOC\_SSS}},}
+\DoxyCodeLine{00025\ \ \ \ \ \doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_a4308c8f182d4b3326f29fabada0f968da86d2a1434de353972613c96f4698a9b0}{DOC\_SRS}},}
+\DoxyCodeLine{00026\ \ \ \ \ \doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_a4308c8f182d4b3326f29fabada0f968da0bbac5c947dbdc9334e348edb0e4c839}{DOC\_SDD}}}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_filtre_g_u_i_a1bbc0e44993918e3b01df902a33fee55}{FiltreGUI}}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \doxymbox{\hyperlink{trunk_2headers_2_gestionnaire_filtres_g_u_i_8h_a4308c8f182d4b3326f29fabada0f968d}{TypeDoc}}\ \ \doxymbox{\hyperlink{struct_filtre_g_u_i_abbcf57ed77d7270788a72fd87787cfce}{filtreDocument}}\ \ \ \ =\ \doxymbox{\hyperlink{trunk_2headers_2_gestionnaire_filtres_g_u_i_8h_a4308c8f182d4b3326f29fabada0f968da66efab3c235e01f89d0c42e317c950d5}{TOUS\_DOCS}};}
+\DoxyCodeLine{00031\ \ \ \ \ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}}\ \ \ \doxymbox{\hyperlink{struct_filtre_g_u_i_ac5098195a36d801184c987f4dcc0d439}{filtreStatut}}\ \ \ \ \ \ =\ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a2a275384eb10d9f01e597aa9fd712867}{NonAnalyse}};}
+\DoxyCodeLine{00032\ \ \ \ \ QString\ \ \doxymbox{\hyperlink{struct_filtre_g_u_i_a3b224272677ddbe228464fcc1dd603d3}{filtreIdentifiant}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \doxymbox{\hyperlink{struct_filtre_g_u_i_a1da43a991a60640838acb9728ade0fd6}{filtreDevEtat}}\ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \doxymbox{\hyperlink{struct_filtre_g_u_i_a4e85bd44d03d05a16683ebcb46461afd}{filtreDevValeur}}\ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \doxymbox{\hyperlink{struct_filtre_g_u_i_a1d6a8344028d97883696dd01882833d0}{filtreOrpheline}}\ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a34ffd2707751329dbbfe0349f51b613f}{GestionnaireFiltresGUI}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a34ffd2707751329dbbfe0349f51b613f}{GestionnaireFiltresGUI}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00044\ \ \ \ \ \doxymbox{\hyperlink{struct_filtre_g_u_i}{FiltreGUI}}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a1fb4cbce9311fb0c0b6d51520e61ac10}{getFiltreActuel}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_ab440015d7c871e3a63825b1a6a4d6742}{setFiltreStatut}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a24a9adddf28fdf488f868947563bb14d}{setFiltreIdentifiant}}(\textcolor{keyword}{const}\ QString\&\ texte);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a3afb056b474dcf6769ebd1fb9698e634}{setListeIds}}(\textcolor{keyword}{const}\ QStringList\&\ ids);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ signals:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_ab1d03b71dfb39ad497e674eab183e983}{filtreModifie}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_filtre_g_u_i}{FiltreGUI}}\&\ filtre);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_abc58e81e7221eafdff15bd9c2dae2b93}{reinitialiser}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a32e5522cd1e77ffa083b86f5759d09a5}{appliquerFiltres}}();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a3d7ef2b2ae5fd7c3076d71e2cc48a006}{initialiserUI}}();}
+\DoxyCodeLine{00060\ \ \ \ \ QLabel*\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a0e3381e67f73601c95772ea46050f7e8}{creerLabel}}(\textcolor{keyword}{const}\ QString\&\ texte);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ MODIF\ :\ comboDocument\ supprimé}}
+\DoxyCodeLine{00063\ \ \ \ \ QComboBox\ \ \ *\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_ad3485af5e19a2ef3307118984cdbcbd2}{comboStatut}};}
+\DoxyCodeLine{00064\ \ \ \ \ QComboBox\ \ \ *\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a5213c4b80448d3a6f434ce409485b4c6}{comboEtat}};}
+\DoxyCodeLine{00065\ \ \ \ \ QLineEdit\ \ \ *\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a2b9f32b40d563c7358cd4344b6c0dde3}{champIdentifiant}};}
+\DoxyCodeLine{00066\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a886e42f2a1c3023c1c58cf94dcdd7233}{btnAppliquer}};}
+\DoxyCodeLine{00067\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a0b92a08da38814963a7f1686fbb7e833}{btnReinitialiser}};}
+\DoxyCodeLine{00068\ \ \ \ \ QCompleter\ \ *\doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a9475cfe27ac35c62aef8a7567a83624b}{completer}};}
+\DoxyCodeLine{00069\ \ \ \ \ QStringList\ \ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a281c8b3580a92ab33cdf81210e2518c8}{listeIds}};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \doxymbox{\hyperlink{struct_filtre_g_u_i}{FiltreGUI}}\ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i_a8d66f722925cbe129e2077a4a350ab1e}{filtreCourant}};}
+\DoxyCodeLine{00072\ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ GESTIONNAIREFILTRESGUI\_H}}
+
+\end{DoxyCode}

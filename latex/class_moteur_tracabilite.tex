@@ -1,0 +1,692 @@
+\doxysection{Référence de la classe Moteur\+Tracabilite}
+\hypertarget{class_moteur_tracabilite}{}\label{class_moteur_tracabilite}\index{MoteurTracabilite@{MoteurTracabilite}}
+
+
+Orchestre l\textquotesingle{}analyse de traçabilité sur les trois niveaux d\textquotesingle{}exigences.  
+
+
+
+
+{\ttfamily \+\#include $<$Moteur\+Tracabilite.\+h$>$}
+
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}{Moteur\+Tracabilite}} ()
+\begin{DoxyCompactList}\small\item\em Initialise les trois taux de couverture à 0.\+0. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}{set\+Donnees}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \&sss, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd)
+\begin{DoxyCompactList}\small\item\em Stocke les trois vecteurs d\textquotesingle{}exigences transmis par le module 1. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}{analyser\+Tracabilite}} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise les statuts, vide les liens brisés, puis appelle {\ttfamily \doxylink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS()}} et {\ttfamily \doxylink{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}{analyser\+SRS\+\_\+\+SDD()}}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}{calculer\+Taux}} ()
+\begin{DoxyCompactList}\small\item\em Calcule taux\+SSS\+\_\+\+SRS, taux\+SRS\+\_\+\+SDD et taux\+Global. Ajoute un avertissement dans {\ttfamily liens\+Brises} si un vecteur est vide. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365}{get\+Taux\+SSS\+\_\+\+SRS}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le taux de couverture SSS→\+SRS. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb}{get\+Taux\+SRS\+\_\+\+SDD}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le taux de couverture SRS→\+SDD. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4}{get\+Taux\+Global}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le taux de couverture global. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_aeb2911fd00d680f2ba3b86f0d96cff55}{get\+Taux\+Tracabilite\+Complete}} () const
+\item 
+const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0}{get\+Liens\+Brises}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la liste des liens brisés détectés. \end{DoxyCompactList}\item 
+const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_a488730a9de95d1469c0dc0b2ad3a6145}{get\+Orphelines}} () const
+\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982}{get\+Exigences\+SRS}} () const
+\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3}{get\+Exigences\+SDD}} () const
+\item 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \doxymbox{\hyperlink{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}{get\+Rapport}} () const
+\begin{DoxyCompactList}\small\item\em Remplit et retourne la structure {\ttfamily \doxylink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} pour le module 3. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}{Moteur\+Tracabilite}} ()
+\begin{DoxyCompactList}\small\item\em Initialise le moteur avec tous les taux à 0.\+0. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}{set\+Donnees}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \&sss, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd)
+\begin{DoxyCompactList}\small\item\em Injecte les trois vecteurs d\textquotesingle{}exigences issus du module 1. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}{analyser\+Tracabilite}} ()
+\begin{DoxyCompactList}\small\item\em Lance l\textquotesingle{}analyse de traçabilité complète (SSS→\+SRS puis SRS→\+SDD). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}{calculer\+Taux}} ()
+\begin{DoxyCompactList}\small\item\em Calcule les taux de couverture après l\textquotesingle{}analyse. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365}{get\+Taux\+SSS\+\_\+\+SRS}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le taux de couverture SSS→\+SRS. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb}{get\+Taux\+SRS\+\_\+\+SDD}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le taux de couverture SRS→\+SDD. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4}{get\+Taux\+Global}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le taux de couverture global. \end{DoxyCompactList}\item 
+const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0}{get\+Liens\+Brises}} () const
+\begin{DoxyCompactList}\small\item\em Retourne la liste des liens brisés détectés. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \doxymbox{\hyperlink{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}{get\+Rapport}} () const
+\begin{DoxyCompactList}\small\item\em Construit et retourne le rapport complet à destination du module 3. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}{Moteur\+Tracabilite}} ()
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}{set\+Donnees}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \&sss, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd)
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}{analyser\+Tracabilite}} ()
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}{calculer\+Taux}} ()
+\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365}{get\+Taux\+SSS\+\_\+\+SRS}} () const
+\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb}{get\+Taux\+SRS\+\_\+\+SDD}} () const
+\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4}{get\+Taux\+Global}} () const
+\item 
+const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0}{get\+Liens\+Brises}} () const
+\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982}{get\+Exigences\+SRS}} () const
+\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3}{get\+Exigences\+SDD}} () const
+\item 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \doxymbox{\hyperlink{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}{get\+Rapport}} () const
+\item 
+\doxymbox{\hyperlink{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}{Moteur\+Tracabilite}} ()
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}{set\+Donnees}} (const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \&sss, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&srs, const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&sdd)
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}{analyser\+Tracabilite}} ()
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}{calculer\+Taux}} ()
+\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365}{get\+Taux\+SSS\+\_\+\+SRS}} () const
+\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb}{get\+Taux\+SRS\+\_\+\+SDD}} () const
+\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4}{get\+Taux\+Global}} () const
+\item 
+const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0}{get\+Liens\+Brises}} () const
+\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982}{get\+Exigences\+SRS}} () const
+\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& \doxymbox{\hyperlink{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3}{get\+Exigences\+SDD}} () const
+\item 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} \doxymbox{\hyperlink{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}{get\+Rapport}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_ad537653d46df8dce73481e32ca036822}{taux\+Tracabilite\+Complete}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres privées}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS}} ()
+\begin{DoxyCompactList}\small\item\em Pour chaque SRS, marque les SSS référencées comme {\ttfamily Couverte}. Les références introuvables alimentent {\ttfamily liens\+Brises}. Les SSS encore à {\ttfamily Non\+Analyse} à la fin sont marquées {\ttfamily Non\+Couverte}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}{analyser\+SRS\+\_\+\+SDD}} ()
+\begin{DoxyCompactList}\small\item\em Pour chaque SDD, marque les SRS référencées comme {\ttfamily Couverte}. Même logique que {\ttfamily \doxylink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS()}} appliquée aux paires SDD/\+\+SRS. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS}} ()
+\begin{DoxyCompactList}\small\item\em Analyse la traçabilité SRS → SSS. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}{analyser\+SRS\+\_\+\+SDD}} ()
+\begin{DoxyCompactList}\small\item\em Analyse la traçabilité SDD → SRS. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS}} ()
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}{analyser\+SRS\+\_\+\+SDD}} ()
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS}} ()
+\item 
+void \doxymbox{\hyperlink{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}{analyser\+SRS\+\_\+\+SDD}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \doxymbox{\hyperlink{class_moteur_tracabilite_aa67f36ca1dbbf6132c345a8767ac86ba}{exigences\+SSS}}
+\begin{DoxyCompactList}\small\item\em Exigences de niveau SSS reçues du module 1. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \doxymbox{\hyperlink{class_moteur_tracabilite_ad32f7514a824568b0dec4aa1d9cecfa3}{exigences\+SRS}}
+\begin{DoxyCompactList}\small\item\em Exigences de niveau SRS reçues du module 1. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \doxymbox{\hyperlink{class_moteur_tracabilite_ad24b1804ee3a11b17f187b4be6dcf478}{exigences\+SDD}}
+\begin{DoxyCompactList}\small\item\em Exigences de niveau SDD reçues du module 1. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_moteur_tracabilite_af89fe413b049ecfb9fc70efc71a9f44c}{liens\+Brises}}
+\begin{DoxyCompactList}\small\item\em Références invalides détectées pendant l\textquotesingle{}analyse. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_moteur_tracabilite_a4a69ec2cabb957c98e9a16d32ea3218a}{orphelines}}
+\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_a70dac0a632dd10e0609d3a30d53b2bfa}{taux\+SSS\+\_\+\+SRS}}
+\begin{DoxyCompactList}\small\item\em Taux de couverture SSS→\+SRS (0.\+0 à 1.\+0). \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_a1f36b3271f224a25fb4e97306668e00f}{taux\+SRS\+\_\+\+SDD}}
+\begin{DoxyCompactList}\small\item\em Taux de couverture SRS→\+SDD (0.\+0 à 1.\+0). \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{class_moteur_tracabilite_ae32cad0656e6c31d7f1dcdf068e17301}{taux\+Global}}
+\begin{DoxyCompactList}\small\item\em Taux de couverture global (0.\+0 à 1.\+0). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Orchestre l\textquotesingle{}analyse de traçabilité sur les trois niveaux d\textquotesingle{}exigences. 
+
+Reçoit les vecteurs d\textquotesingle{}exigences du module 1 via {\ttfamily \doxylink{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}{set\+Donnees()}}, exécute l\textquotesingle{}analyse en deux passes (SSS→\+SRS puis SRS→\+SDD), calcule les taux de couverture et expose les résultats sous forme d\textquotesingle{}un {\ttfamily \doxylink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} destiné au module 3.
+
+Peut être piloté de manière asynchrone via {\ttfamily \doxylink{class_thread_manager}{Thread\+Manager}}. 
+
+\label{doc-constructors}
+\Hypertarget{class_moteur_tracabilite_doc-constructors}
+\doxysubsection{Documentation des constructeurs et destructeur}
+\Hypertarget{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}\index{MoteurTracabilite@{MoteurTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\index{MoteurTracabilite@{MoteurTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{MoteurTracabilite()}{MoteurTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e} 
+Moteur\+Tracabilite::\+\+Moteur\+Tracabilite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise les trois taux de couverture à 0.\+0. 
+
+\Hypertarget{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}\index{MoteurTracabilite@{MoteurTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\index{MoteurTracabilite@{MoteurTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{MoteurTracabilite()}{MoteurTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e} 
+Moteur\+Tracabilite::\+\+Moteur\+Tracabilite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initialise le moteur avec tous les taux à 0.\+0. 
+
+\Hypertarget{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}\index{MoteurTracabilite@{MoteurTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\index{MoteurTracabilite@{MoteurTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{MoteurTracabilite()}{MoteurTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e} 
+Moteur\+Tracabilite::\+\+Moteur\+Tracabilite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}\index{MoteurTracabilite@{MoteurTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\index{MoteurTracabilite@{MoteurTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{MoteurTracabilite()}{MoteurTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e} 
+Moteur\+Tracabilite::\+\+Moteur\+Tracabilite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_moteur_tracabilite_doc-func-members}
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}\index{MoteurTracabilite@{MoteurTracabilite}!analyserSRS\_SDD@{analyserSRS\_SDD}}
+\index{analyserSRS\_SDD@{analyserSRS\_SDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserSRS\_SDD()}{analyserSRS\_SDD()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea} 
+void Moteur\+Tracabilite::\+analyser\+SRS\+\_\+\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pour chaque SDD, marque les SRS référencées comme {\ttfamily Couverte}. Même logique que {\ttfamily \doxylink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS()}} appliquée aux paires SDD/\+\+SRS. 
+
+\Hypertarget{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}\index{MoteurTracabilite@{MoteurTracabilite}!analyserSRS\_SDD@{analyserSRS\_SDD}}
+\index{analyserSRS\_SDD@{analyserSRS\_SDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserSRS\_SDD()}{analyserSRS\_SDD()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea} 
+void Moteur\+Tracabilite::\+analyser\+SRS\+\_\+\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Analyse la traçabilité SDD → SRS. 
+
+Même logique que {\ttfamily \doxylink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS()}} appliquée aux paires SDD/\+\+SRS. \Hypertarget{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}\index{MoteurTracabilite@{MoteurTracabilite}!analyserSRS\_SDD@{analyserSRS\_SDD}}
+\index{analyserSRS\_SDD@{analyserSRS\_SDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserSRS\_SDD()}{analyserSRS\_SDD()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea} 
+void Moteur\+Tracabilite::\+analyser\+SRS\+\_\+\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}\index{MoteurTracabilite@{MoteurTracabilite}!analyserSRS\_SDD@{analyserSRS\_SDD}}
+\index{analyserSRS\_SDD@{analyserSRS\_SDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserSRS\_SDD()}{analyserSRS\_SDD()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea} 
+void Moteur\+Tracabilite::\+analyser\+SRS\+\_\+\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}\index{MoteurTracabilite@{MoteurTracabilite}!analyserSSS\_SRS@{analyserSSS\_SRS}}
+\index{analyserSSS\_SRS@{analyserSSS\_SRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserSSS\_SRS()}{analyserSSS\_SRS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d} 
+void Moteur\+Tracabilite::\+analyser\+SSS\+\_\+\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pour chaque SRS, marque les SSS référencées comme {\ttfamily Couverte}. Les références introuvables alimentent {\ttfamily liens\+Brises}. Les SSS encore à {\ttfamily Non\+Analyse} à la fin sont marquées {\ttfamily Non\+Couverte}. 
+
+\Hypertarget{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}\index{MoteurTracabilite@{MoteurTracabilite}!analyserSSS\_SRS@{analyserSSS\_SRS}}
+\index{analyserSSS\_SRS@{analyserSSS\_SRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserSSS\_SRS()}{analyserSSS\_SRS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d} 
+void Moteur\+Tracabilite::\+analyser\+SSS\+\_\+\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Analyse la traçabilité SRS → SSS. 
+
+Pour chaque SRS, parcourt ses identifiants de traçabilité et marque les SSS correspondantes comme {\ttfamily Couverte}. Les références introuvables sont enregistrées dans {\ttfamily liens\+Brises}. Les SSS encore à {\ttfamily Non\+Analyse} à la fin sont marquées {\ttfamily Non\+Couverte}. \Hypertarget{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}\index{MoteurTracabilite@{MoteurTracabilite}!analyserSSS\_SRS@{analyserSSS\_SRS}}
+\index{analyserSSS\_SRS@{analyserSSS\_SRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserSSS\_SRS()}{analyserSSS\_SRS()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d} 
+void Moteur\+Tracabilite::\+analyser\+SSS\+\_\+\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}\index{MoteurTracabilite@{MoteurTracabilite}!analyserSSS\_SRS@{analyserSSS\_SRS}}
+\index{analyserSSS\_SRS@{analyserSSS\_SRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserSSS\_SRS()}{analyserSSS\_SRS()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d} 
+void Moteur\+Tracabilite::\+analyser\+SSS\+\_\+\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}\index{MoteurTracabilite@{MoteurTracabilite}!analyserTracabilite@{analyserTracabilite}}
+\index{analyserTracabilite@{analyserTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserTracabilite()}{analyserTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5} 
+void Moteur\+Tracabilite::\+analyser\+Tracabilite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Réinitialise les statuts, vide les liens brisés, puis appelle {\ttfamily \doxylink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS()}} et {\ttfamily \doxylink{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}{analyser\+SRS\+\_\+\+SDD()}}. 
+
+\Hypertarget{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}\index{MoteurTracabilite@{MoteurTracabilite}!analyserTracabilite@{analyserTracabilite}}
+\index{analyserTracabilite@{analyserTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserTracabilite()}{analyserTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5} 
+void Moteur\+Tracabilite::\+analyser\+Tracabilite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Lance l\textquotesingle{}analyse de traçabilité complète (SSS→\+SRS puis SRS→\+SDD). 
+
+Réinitialise les statuts de toutes les exigences à {\ttfamily Non\+Analyse}, vide les liens brisés, puis appelle {\ttfamily \doxylink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyser\+SSS\+\_\+\+SRS()}} et {\ttfamily \doxylink{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}{analyser\+SRS\+\_\+\+SDD()}}. \Hypertarget{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}\index{MoteurTracabilite@{MoteurTracabilite}!analyserTracabilite@{analyserTracabilite}}
+\index{analyserTracabilite@{analyserTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserTracabilite()}{analyserTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5} 
+void Moteur\+Tracabilite::\+analyser\+Tracabilite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}\index{MoteurTracabilite@{MoteurTracabilite}!analyserTracabilite@{analyserTracabilite}}
+\index{analyserTracabilite@{analyserTracabilite}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{analyserTracabilite()}{analyserTracabilite()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5} 
+void Moteur\+Tracabilite::\+analyser\+Tracabilite (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}\index{MoteurTracabilite@{MoteurTracabilite}!calculerTaux@{calculerTaux}}
+\index{calculerTaux@{calculerTaux}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{calculerTaux()}{calculerTaux()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd} 
+void Moteur\+Tracabilite::\+calculer\+Taux (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Calcule taux\+SSS\+\_\+\+SRS, taux\+SRS\+\_\+\+SDD et taux\+Global. Ajoute un avertissement dans {\ttfamily liens\+Brises} si un vecteur est vide. 
+
+\Hypertarget{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}\index{MoteurTracabilite@{MoteurTracabilite}!calculerTaux@{calculerTaux}}
+\index{calculerTaux@{calculerTaux}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{calculerTaux()}{calculerTaux()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd} 
+void Moteur\+Tracabilite::\+calculer\+Taux (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Calcule les taux de couverture après l\textquotesingle{}analyse. 
+
+
+\begin{DoxyItemize}
+\item {\ttfamily taux\+SSS\+\_\+\+SRS} = nb SSS couvertes /\+ nb SSS total
+\item {\ttfamily taux\+SRS\+\_\+\+SDD} = nb SRS couvertes /\+ nb SRS total
+\item {\ttfamily taux\+Global} = {\ttfamily taux\+SSS\+\_\+\+SRS} × {\ttfamily taux\+SRS\+\_\+\+SDD} 
+\end{DoxyItemize}
+
+Des avertissements sont ajoutés aux liens brisés si un vecteur est vide. \Hypertarget{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}\index{MoteurTracabilite@{MoteurTracabilite}!calculerTaux@{calculerTaux}}
+\index{calculerTaux@{calculerTaux}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{calculerTaux()}{calculerTaux()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd} 
+void Moteur\+Tracabilite::\+calculer\+Taux (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}\index{MoteurTracabilite@{MoteurTracabilite}!calculerTaux@{calculerTaux}}
+\index{calculerTaux@{calculerTaux}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{calculerTaux()}{calculerTaux()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd} 
+void Moteur\+Tracabilite::\+calculer\+Taux (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3}\index{MoteurTracabilite@{MoteurTracabilite}!getExigencesSDD@{getExigencesSDD}}
+\index{getExigencesSDD@{getExigencesSDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getExigencesSDD()}{getExigencesSDD()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& Moteur\+Tracabilite::\+get\+Exigences\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3}\index{MoteurTracabilite@{MoteurTracabilite}!getExigencesSDD@{getExigencesSDD}}
+\index{getExigencesSDD@{getExigencesSDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getExigencesSDD()}{getExigencesSDD()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& Moteur\+Tracabilite::\+get\+Exigences\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3}\index{MoteurTracabilite@{MoteurTracabilite}!getExigencesSDD@{getExigencesSDD}}
+\index{getExigencesSDD@{getExigencesSDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getExigencesSDD()}{getExigencesSDD()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& Moteur\+Tracabilite::\+get\+Exigences\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982}\index{MoteurTracabilite@{MoteurTracabilite}!getExigencesSRS@{getExigencesSRS}}
+\index{getExigencesSRS@{getExigencesSRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getExigencesSRS()}{getExigencesSRS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& Moteur\+Tracabilite::\+get\+Exigences\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982}\index{MoteurTracabilite@{MoteurTracabilite}!getExigencesSRS@{getExigencesSRS}}
+\index{getExigencesSRS@{getExigencesSRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getExigencesSRS()}{getExigencesSRS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& Moteur\+Tracabilite::\+get\+Exigences\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982}\index{MoteurTracabilite@{MoteurTracabilite}!getExigencesSRS@{getExigencesSRS}}
+\index{getExigencesSRS@{getExigencesSRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getExigencesSRS()}{getExigencesSRS()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& Moteur\+Tracabilite::\+get\+Exigences\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0}\index{MoteurTracabilite@{MoteurTracabilite}!getLiensBrises@{getLiensBrises}}
+\index{getLiensBrises@{getLiensBrises}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getLiensBrises()}{getLiensBrises()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0} 
+const std::\+vector$<$ std::\+string $>$ \& Moteur\+Tracabilite::\+get\+Liens\+Brises (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne la liste des liens brisés détectés. 
+
+\Hypertarget{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0}\index{MoteurTracabilite@{MoteurTracabilite}!getLiensBrises@{getLiensBrises}}
+\index{getLiensBrises@{getLiensBrises}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getLiensBrises()}{getLiensBrises()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0} 
+const std::\+vector$<$ std::\+string $>$ \& Moteur\+Tracabilite::\+get\+Liens\+Brises (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne la liste des liens brisés détectés. 
+
+\begin{DoxyReturn}{Renvoie}
+Référence constante sur le vecteur de messages d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+\Hypertarget{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0}\index{MoteurTracabilite@{MoteurTracabilite}!getLiensBrises@{getLiensBrises}}
+\index{getLiensBrises@{getLiensBrises}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getLiensBrises()}{getLiensBrises()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0} 
+const std::\+vector$<$ std::\+string $>$ \& Moteur\+Tracabilite::\+get\+Liens\+Brises (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0}\index{MoteurTracabilite@{MoteurTracabilite}!getLiensBrises@{getLiensBrises}}
+\index{getLiensBrises@{getLiensBrises}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getLiensBrises()}{getLiensBrises()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0} 
+const std::\+vector$<$ std::\+string $>$ \& Moteur\+Tracabilite::\+get\+Liens\+Brises (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_a488730a9de95d1469c0dc0b2ad3a6145}\index{MoteurTracabilite@{MoteurTracabilite}!getOrphelines@{getOrphelines}}
+\index{getOrphelines@{getOrphelines}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getOrphelines()}{getOrphelines()}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a488730a9de95d1469c0dc0b2ad3a6145} 
+const std::\+vector$<$ std::\+string $>$ \& Moteur\+Tracabilite::\+get\+Orphelines (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}\index{MoteurTracabilite@{MoteurTracabilite}!getRapport@{getRapport}}
+\index{getRapport@{getRapport}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getRapport()}{getRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec} 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} Moteur\+Tracabilite::\+get\+Rapport (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Remplit et retourne la structure {\ttfamily \doxylink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} pour le module 3. 
+
+\Hypertarget{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}\index{MoteurTracabilite@{MoteurTracabilite}!getRapport@{getRapport}}
+\index{getRapport@{getRapport}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getRapport()}{getRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec} 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} Moteur\+Tracabilite::\+get\+Rapport (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Construit et retourne le rapport complet à destination du module 3. 
+
+\begin{DoxyReturn}{Renvoie}
+Structure {\ttfamily \doxylink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} remplie avec les exigences SSS, les liens brisés et les trois taux de couverture. 
+\end{DoxyReturn}
+\Hypertarget{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}\index{MoteurTracabilite@{MoteurTracabilite}!getRapport@{getRapport}}
+\index{getRapport@{getRapport}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getRapport()}{getRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec} 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} Moteur\+Tracabilite::\+get\+Rapport (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}\index{MoteurTracabilite@{MoteurTracabilite}!getRapport@{getRapport}}
+\index{getRapport@{getRapport}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getRapport()}{getRapport()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec} 
+\doxymbox{\hyperlink{struct_rapport_tracabilite}{Rapport\+Tracabilite}} Moteur\+Tracabilite::\+get\+Rapport (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxGlobal@{getTauxGlobal}}
+\index{getTauxGlobal@{getTauxGlobal}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxGlobal()}{getTauxGlobal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4} 
+double Moteur\+Tracabilite::\+get\+Taux\+Global (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne le taux de couverture global. 
+
+\Hypertarget{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxGlobal@{getTauxGlobal}}
+\index{getTauxGlobal@{getTauxGlobal}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxGlobal()}{getTauxGlobal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4} 
+double Moteur\+Tracabilite::\+get\+Taux\+Global (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne le taux de couverture global. 
+
+\begin{DoxyReturn}{Renvoie}
+Valeur entre 0.\+0 et 1.\+0. 
+\end{DoxyReturn}
+\Hypertarget{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxGlobal@{getTauxGlobal}}
+\index{getTauxGlobal@{getTauxGlobal}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxGlobal()}{getTauxGlobal()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4} 
+double Moteur\+Tracabilite::\+get\+Taux\+Global (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxGlobal@{getTauxGlobal}}
+\index{getTauxGlobal@{getTauxGlobal}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxGlobal()}{getTauxGlobal()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4} 
+double Moteur\+Tracabilite::\+get\+Taux\+Global (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxSRS\_SDD@{getTauxSRS\_SDD}}
+\index{getTauxSRS\_SDD@{getTauxSRS\_SDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxSRS\_SDD()}{getTauxSRS\_SDD()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb} 
+double Moteur\+Tracabilite::\+get\+Taux\+SRS\+\_\+\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne le taux de couverture SRS→\+SDD. 
+
+\Hypertarget{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxSRS\_SDD@{getTauxSRS\_SDD}}
+\index{getTauxSRS\_SDD@{getTauxSRS\_SDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxSRS\_SDD()}{getTauxSRS\_SDD()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb} 
+double Moteur\+Tracabilite::\+get\+Taux\+SRS\+\_\+\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne le taux de couverture SRS→\+SDD. 
+
+\begin{DoxyReturn}{Renvoie}
+Valeur entre 0.\+0 et 1.\+0. 
+\end{DoxyReturn}
+\Hypertarget{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxSRS\_SDD@{getTauxSRS\_SDD}}
+\index{getTauxSRS\_SDD@{getTauxSRS\_SDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxSRS\_SDD()}{getTauxSRS\_SDD()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb} 
+double Moteur\+Tracabilite::\+get\+Taux\+SRS\+\_\+\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxSRS\_SDD@{getTauxSRS\_SDD}}
+\index{getTauxSRS\_SDD@{getTauxSRS\_SDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxSRS\_SDD()}{getTauxSRS\_SDD()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb} 
+double Moteur\+Tracabilite::\+get\+Taux\+SRS\+\_\+\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxSSS\_SRS@{getTauxSSS\_SRS}}
+\index{getTauxSSS\_SRS@{getTauxSSS\_SRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxSSS\_SRS()}{getTauxSSS\_SRS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365} 
+double Moteur\+Tracabilite::\+get\+Taux\+SSS\+\_\+\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne le taux de couverture SSS→\+SRS. 
+
+\Hypertarget{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxSSS\_SRS@{getTauxSSS\_SRS}}
+\index{getTauxSSS\_SRS@{getTauxSSS\_SRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxSSS\_SRS()}{getTauxSSS\_SRS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365} 
+double Moteur\+Tracabilite::\+get\+Taux\+SSS\+\_\+\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne le taux de couverture SSS→\+SRS. 
+
+\begin{DoxyReturn}{Renvoie}
+Valeur entre 0.\+0 et 1.\+0. 
+\end{DoxyReturn}
+\Hypertarget{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxSSS\_SRS@{getTauxSSS\_SRS}}
+\index{getTauxSSS\_SRS@{getTauxSSS\_SRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxSSS\_SRS()}{getTauxSSS\_SRS()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365} 
+double Moteur\+Tracabilite::\+get\+Taux\+SSS\+\_\+\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxSSS\_SRS@{getTauxSSS\_SRS}}
+\index{getTauxSSS\_SRS@{getTauxSSS\_SRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxSSS\_SRS()}{getTauxSSS\_SRS()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365} 
+double Moteur\+Tracabilite::\+get\+Taux\+SSS\+\_\+\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_aeb2911fd00d680f2ba3b86f0d96cff55}\index{MoteurTracabilite@{MoteurTracabilite}!getTauxTracabiliteComplete@{getTauxTracabiliteComplete}}
+\index{getTauxTracabiliteComplete@{getTauxTracabiliteComplete}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{getTauxTracabiliteComplete()}{getTauxTracabiliteComplete()}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_aeb2911fd00d680f2ba3b86f0d96cff55} 
+double Moteur\+Tracabilite::\+get\+Taux\+Tracabilite\+Complete (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}\index{MoteurTracabilite@{MoteurTracabilite}!setDonnees@{setDonnees}}
+\index{setDonnees@{setDonnees}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{setDonnees()}{setDonnees()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528} 
+void Moteur\+Tracabilite::\+set\+Donnees (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \&}]{sss}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{}\end{DoxyParamCaption})}
+
+
+
+Stocke les trois vecteurs d\textquotesingle{}exigences transmis par le module 1. 
+
+\Hypertarget{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}\index{MoteurTracabilite@{MoteurTracabilite}!setDonnees@{setDonnees}}
+\index{setDonnees@{setDonnees}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{setDonnees()}{setDonnees()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528} 
+void Moteur\+Tracabilite::\+set\+Donnees (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \&}]{sss}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{}\end{DoxyParamCaption})}
+
+
+
+Injecte les trois vecteurs d\textquotesingle{}exigences issus du module 1. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sss} & Vecteur d\textquotesingle{}exigences de niveau SSS. \\
+\hline
+{\em srs} & Vecteur d\textquotesingle{}exigences de niveau SRS. \\
+\hline
+{\em sdd} & Vecteur d\textquotesingle{}exigences de niveau SDD. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}\index{MoteurTracabilite@{MoteurTracabilite}!setDonnees@{setDonnees}}
+\index{setDonnees@{setDonnees}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{setDonnees()}{setDonnees()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528} 
+void Moteur\+Tracabilite::\+set\+Donnees (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \&}]{sss}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}\index{MoteurTracabilite@{MoteurTracabilite}!setDonnees@{setDonnees}}
+\index{setDonnees@{setDonnees}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{setDonnees()}{setDonnees()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528} 
+void Moteur\+Tracabilite::\+set\+Donnees (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \&}]{sss}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \&}]{srs}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \&}]{sdd}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_moteur_tracabilite_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{class_moteur_tracabilite_ad24b1804ee3a11b17f187b4be6dcf478}\index{MoteurTracabilite@{MoteurTracabilite}!exigencesSDD@{exigencesSDD}}
+\index{exigencesSDD@{exigencesSDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{exigencesSDD}{exigencesSDD}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ad24b1804ee3a11b17f187b4be6dcf478} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ Moteur\+Tracabilite::\+exigences\+SDD\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Exigences de niveau SDD reçues du module 1. 
+
+\Hypertarget{class_moteur_tracabilite_ad32f7514a824568b0dec4aa1d9cecfa3}\index{MoteurTracabilite@{MoteurTracabilite}!exigencesSRS@{exigencesSRS}}
+\index{exigencesSRS@{exigencesSRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{exigencesSRS}{exigencesSRS}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ad32f7514a824568b0dec4aa1d9cecfa3} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ Moteur\+Tracabilite::\+exigences\+SRS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Exigences de niveau SRS reçues du module 1. 
+
+\Hypertarget{class_moteur_tracabilite_aa67f36ca1dbbf6132c345a8767ac86ba}\index{MoteurTracabilite@{MoteurTracabilite}!exigencesSSS@{exigencesSSS}}
+\index{exigencesSSS@{exigencesSSS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{exigencesSSS}{exigencesSSS}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_aa67f36ca1dbbf6132c345a8767ac86ba} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ Moteur\+Tracabilite::\+exigences\+SSS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Exigences de niveau SSS reçues du module 1. 
+
+\Hypertarget{class_moteur_tracabilite_af89fe413b049ecfb9fc70efc71a9f44c}\index{MoteurTracabilite@{MoteurTracabilite}!liensBrises@{liensBrises}}
+\index{liensBrises@{liensBrises}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{liensBrises}{liensBrises}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_af89fe413b049ecfb9fc70efc71a9f44c} 
+std::\+vector$<$ std::\+string $>$ Moteur\+Tracabilite::\+liens\+Brises\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Références invalides détectées pendant l\textquotesingle{}analyse. 
+
+\Hypertarget{class_moteur_tracabilite_a4a69ec2cabb957c98e9a16d32ea3218a}\index{MoteurTracabilite@{MoteurTracabilite}!orphelines@{orphelines}}
+\index{orphelines@{orphelines}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{orphelines}{orphelines}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a4a69ec2cabb957c98e9a16d32ea3218a} 
+std::\+vector$<$std::\+string$>$ Moteur\+Tracabilite::\+orphelines\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_moteur_tracabilite_ae32cad0656e6c31d7f1dcdf068e17301}\index{MoteurTracabilite@{MoteurTracabilite}!tauxGlobal@{tauxGlobal}}
+\index{tauxGlobal@{tauxGlobal}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{tauxGlobal}{tauxGlobal}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ae32cad0656e6c31d7f1dcdf068e17301} 
+double Moteur\+Tracabilite::\+taux\+Global\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Taux de couverture global (0.\+0 à 1.\+0). 
+
+\Hypertarget{class_moteur_tracabilite_a1f36b3271f224a25fb4e97306668e00f}\index{MoteurTracabilite@{MoteurTracabilite}!tauxSRS\_SDD@{tauxSRS\_SDD}}
+\index{tauxSRS\_SDD@{tauxSRS\_SDD}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{tauxSRS\_SDD}{tauxSRS\_SDD}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a1f36b3271f224a25fb4e97306668e00f} 
+double Moteur\+Tracabilite::\+taux\+SRS\+\_\+\+SDD\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Taux de couverture SRS→\+SDD (0.\+0 à 1.\+0). 
+
+\Hypertarget{class_moteur_tracabilite_a70dac0a632dd10e0609d3a30d53b2bfa}\index{MoteurTracabilite@{MoteurTracabilite}!tauxSSS\_SRS@{tauxSSS\_SRS}}
+\index{tauxSSS\_SRS@{tauxSSS\_SRS}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{tauxSSS\_SRS}{tauxSSS\_SRS}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_a70dac0a632dd10e0609d3a30d53b2bfa} 
+double Moteur\+Tracabilite::\+taux\+SSS\+\_\+\+SRS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Taux de couverture SSS→\+SRS (0.\+0 à 1.\+0). 
+
+\Hypertarget{class_moteur_tracabilite_ad537653d46df8dce73481e32ca036822}\index{MoteurTracabilite@{MoteurTracabilite}!tauxTracabiliteComplete@{tauxTracabiliteComplete}}
+\index{tauxTracabiliteComplete@{tauxTracabiliteComplete}!MoteurTracabilite@{MoteurTracabilite}}
+\doxysubsubsection{\texorpdfstring{tauxTracabiliteComplete}{tauxTracabiliteComplete}}
+{\footnotesize\ttfamily \label{class_moteur_tracabilite_ad537653d46df8dce73481e32ca036822} 
+double Moteur\+Tracabilite::\+taux\+Tracabilite\+Complete}
+
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants :\+\begin{DoxyCompactItemize}
+\item 
+branches/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_moteur_tracabilite_8h}{Moteur\+Tracabilite.\+h}}\item 
+branches/\+module2/\+include/\+\doxymbox{\hyperlink{branches_2module2_2include_2_moteur_tracabilite_8h}{Moteur\+Tracabilite.\+h}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2include_2_moteur_tracabilite_8h}{Moteur\+Tracabilite.\+h}}\item 
+trunk/\+headers/\+\doxymbox{\hyperlink{trunk_2headers_2_moteur_tracabilite_8h}{Moteur\+Tracabilite.\+h}}\item 
+branches/\+\+Integration\+M1\+M2/\+src/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2src_2_moteur_tracabilite_8cpp}{Moteur\+Tracabilite.\+cpp}}\item 
+branches/\+module2/\+src/\+\doxymbox{\hyperlink{branches_2module2_2src_2_moteur_tracabilite_8cpp}{Moteur\+Tracabilite.\+cpp}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+src/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2src_2_moteur_tracabilite_8cpp}{Moteur\+Tracabilite.\+cpp}}\item 
+trunk/\+sources/\+\doxymbox{\hyperlink{trunk_2sources_2_moteur_tracabilite_8cpp}{Moteur\+Tracabilite.\+cpp}}\end{DoxyCompactItemize}

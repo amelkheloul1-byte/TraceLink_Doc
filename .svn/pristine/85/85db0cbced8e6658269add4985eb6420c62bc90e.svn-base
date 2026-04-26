@@ -1,0 +1,1717 @@
+/**
+ * @file OngletRapport.cpp
+ * @brief Implementation de la classe OngletRapport.
+ * @author Lamia Arrahmane
+ * @date 02/04/2026
+ * @version 2.0 — exports CSV/HTML/PDF ameliores
+ *
+ * FUSION : version originale (Lamia) + ameliorations export (camarade).
+ * Ce qui vient de la camarade :
+ *   - exporterCSV  : ajout date, colonnes SRS associees et flag "Lien brise", matrice SRS x SDD
+ *   - exporterHTML : rapport HTML interactif avec filtres JavaScript, onglets, detail au clic
+ *   - exporterPDF  : nouvelle fonction (n'existait pas avant)
+ *   - .h           : ajout includes QPrinter/QPainter/QPageSize/QPageLayout/QDateTime + slot exporterPDF()
+ * Ce qui appartient a Lamia et est conserve intact :
+ *   - initialiserUI, creerBarre, styliserTableau
+ *   - afficherRapportComplet (avec orphelines, labelDetailDescription/Etat/Fichier, filtreDevEtat)
+ *   - appliquerFiltre (avec filtreDevEtat et filtreDevValeur)
+ *   - toggleFiltres, eventFilter
+ */
+
+// Inclusion du header de la classe
+#include "OngletRapport.h"
+
+// Includes Qt pour la construction de l'interface et les fichiers
+#include <QHeaderView>   // Pour configurer les en-tetes des colonnes d'un tableau
+#include <QGroupBox>     // Un cadre avec un titre (utilise pour la section "Taux de couverture")
+#include <QFileDialog>   // La boite de dialogue "Enregistrer sous..." du systeme
+#include <QMessageBox>   // Les boites de message (OK, Erreur, etc.)
+#include <QFile>         // Pour ouvrir, lire et ecrire des fichiers
+#include <QTextStream>   // Pour ecrire du texte dans un fichier facilement
+#include <QHBoxLayout>   // Un layout qui place les elements cote a cote horizontalement
+#include <QScrollArea>   // Un widget avec une barre de defilement (non utilise directement ici mais inclus)
+#include <QEvent>        // La classe de base des evenements Qt (clic, survol, etc.)
+#include <algorithm>     // Pour la fonction std::find (chercher un element dans une liste)
+
+// Includes pour l'export PDF
+#include <QPrinter>      // Represente l'imprimante ou le fichier PDF de destination
+#include <QTextDocument> // Permet de charger du HTML et de l'imprimer comme un document
+
+
+// =============================================================================
+// CONSTRUCTEUR
+// =============================================================================
+
+/**
+ * @brief Constructeur de l'onglet rapport.
+ *        La seule chose qu'il fait c'est appeler initialiserUI() pour construire l'interface.
+ * @param parent Le widget parent (generalement la fenetre principale).
+ */
+OngletRapport::OngletRapport(QWidget *parent)
+    : QWidget(parent)       // On appelle le constructeur de QWidget avec le parent
+{
+    initialiserUI();         // On construit tous les widgets de l'onglet
+}
+
+
+// =============================================================================
+// METHODES UTILITAIRES (helpers)
+// =============================================================================
+
+/**
+ * @brief Cree une barre de progression avec un style arrondi et une couleur personnalisee.
+ *        Cette methode est appelee 3 fois dans initialiserUI (SSS->SRS, SRS->SDD, global).
+ * @param couleur La couleur de la barre en hexadecimal (ex: "#4A90D9" pour bleu).
+ * @return Un pointeur vers la nouvelle barre de progression.
+ */
+QProgressBar* OngletRapport::creerBarre(const QString& couleur)
+{
+    QProgressBar* barre = new QProgressBar(this); // On cree une nouvelle barre de progression
+    barre->setRange(0, 100);      // La barre va de 0 % a 100 %
+    barre->setValue(0);           // Au depart elle est a 0 (vide)
+    barre->setTextVisible(true);  // On affiche le pourcentage en texte au centre
+    barre->setFixedHeight(22);    // On fixe la hauteur a 22 pixels
+    barre->setAlignment(Qt::AlignCenter); // Le texte est centre dans la barre
+
+    // On applique une feuille de style CSS pour rendre la barre jolie et arrondie
+    // %1 sera remplace par la couleur passee en parametre (ex: "#4A90D9")
+    barre->setStyleSheet(QString(R"(
+        QProgressBar {
+            background-color: #D6EAF8;
+            border-radius: 11px;
+            color: #1A1A2E;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+        }
+        QProgressBar::chunk {
+            background-color: %1;
+            border-radius: 11px;
+        }
+    )").arg(couleur)); // On insere la couleur dans le style
+
+    return barre; // On retourne la barre creee
+}
+
+/**
+ * @brief Applique un style visuel coherent a un QTableWidget.
+ *        Toutes les deux matrices utilisent ce style uniforme.
+ * @param table Le tableau a styliser.
+ */
+void OngletRapport::styliserTableau(QTableWidget* table)
+{
+    // Feuille de style CSS pour colorer les cellules, les en-tetes et les lignes selectionnees
+    table->setStyleSheet(R"(
+        QTableWidget {
+            background-color: #FFFFFF;
+            color: #333333;
+            gridline-color: #DDDDDD;
+            border: none;
+            font-size: 11px;
+        }
+        QTableWidget::item { padding: 4px; }
+        QHeaderView::section {
+            background-color: #EBF5FB;
+            color: #1A5276;
+            font-weight: bold;
+            padding: 6px;
+            border: 1px solid #AED6F1;
+            font-size: 11px;
+        }
+        QTableWidget::item:selected {
+            background-color: #AED6F1;
+            color: #1A5276;
+        }
+    )");
+
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers); // L'utilisateur ne peut pas modifier les cellules
+    table->setAlternatingRowColors(false);                      // Pas d'alternance de couleurs entre lignes
+    table->verticalHeader()->setDefaultSectionSize(28);         // Hauteur par defaut de chaque ligne : 28 pixels
+    table->horizontalHeader()->setStretchLastSection(false);    // La derniere colonne ne s'etire pas automatiquement
+    table->setSelectionBehavior(QAbstractItemView::SelectItems);// On selectionne une cellule, pas toute une ligne
+
+    // Style aussi pour les en-tetes de lignes (la colonne numerotee a gauche)
+    table->verticalHeader()->setStyleSheet(R"(
+        QHeaderView::section {
+            background-color: #EBF5FB;
+            color: #1A5276;
+            font-weight: bold;
+            padding: 4px;
+            border: 1px solid #AED6F1;
+            font-size: 10px;
+        }
+    )");
+}
+
+
+// =============================================================================
+// CONSTRUCTION DE L'INTERFACE (initialiserUI)
+// =============================================================================
+
+/**
+ * @brief Construit toute l'interface graphique de l'onglet.
+ *        Cree et place tous les widgets, connecte les signaux aux slots.
+ */
+void OngletRapport::initialiserUI()
+{
+    // ── Layout global : deux colonnes (contenu principal | panneau filtres) ───
+
+    QHBoxLayout *layoutGlobal = new QHBoxLayout(this); // Layout horizontal global
+    layoutGlobal->setContentsMargins(0, 0, 0, 0);      // Pas de marge autour
+    layoutGlobal->setSpacing(0);                        // Pas d'espace entre les deux colonnes
+
+    // Widget principal (tout le contenu sauf le panneau filtres)
+    QWidget *contenu = new QWidget(this);
+    contenu->setStyleSheet("background-color: #EBF5FB;"); // Fond bleu clair
+    QVBoxLayout *layoutPrincipal = new QVBoxLayout(contenu); // On empile les sections verticalement
+    layoutPrincipal->setContentsMargins(12, 12, 12, 12);     // Marges interieures de 12 pixels
+    layoutPrincipal->setSpacing(10);                          // 10 pixels entre chaque section
+
+    // ── En-tete : titre + badges + boutons ────────────────────────────────────
+
+    QHBoxLayout *layoutEntete = new QHBoxLayout(); // Ligne horizontale pour l'en-tete
+
+    // Titre de l'onglet (emoji + texte en UTF-8)
+    QLabel *titre = new QLabel(
+        QString::fromUtf8("\xF0\x9F\x93\x8A  Rapport de tra\xC3\xA7abilit\xC3\xA9"), this);
+    titre->setStyleSheet("color: #1A5276; font-size: 14px; font-weight: bold;");
+    layoutEntete->addWidget(titre);   // On ajoute le titre a gauche
+    layoutEntete->addStretch();       // On pousse le reste vers la droite
+
+    // Badge vert : nombre d'exigences couvertes
+    labelBadgeCouverts = new QLabel("0 Couvert", this);
+    labelBadgeCouverts->setStyleSheet(
+        "background-color:#27AE60; color:white; border-radius:12px;"
+        "padding:4px 10px; font-size:11px; font-weight:bold;");
+    labelBadgeCouverts->setToolTip(
+        "Exigence reliee a au moins une exigence du niveau inferieur.");
+
+    // Badge rouge : nombre d'exigences non couvertes
+    labelBadgeNonCouverts = new QLabel("0 Non couvert", this);
+    labelBadgeNonCouverts->setStyleSheet(
+        "background-color:#E74C3C; color:white; border-radius:12px;"
+        "padding:4px 10px; font-size:11px; font-weight:bold;");
+    labelBadgeNonCouverts->setToolTip(
+        "Exigence non referencee par aucune exigence du niveau inferieur.");
+
+    // Badge orange CLIQUABLE : nombre de liens brises (clic = affiche/cache le panneau)
+    labelBadgeLiensBrises = new QLabel("0 Lien brise", this);
+    labelBadgeLiensBrises->setStyleSheet(
+        "background-color:#E67E22; color:white; border-radius:12px;"
+        "padding:4px 10px; font-size:11px; font-weight:bold;");
+    labelBadgeLiensBrises->setCursor(Qt::PointingHandCursor); // Le curseur devient une main au survol
+    labelBadgeLiensBrises->installEventFilter(this);           // On intercepte les clics via eventFilter
+    labelBadgeLiensBrises->setToolTip("Reference pointant vers un identifiant inexistant.");
+
+    // Badge violet CLIQUABLE : nombre d'orphelines (clic = affiche/cache le panneau)
+    labelBadgeOrphelines = new QLabel("0 Orpheline", this);
+    labelBadgeOrphelines->setStyleSheet(
+        "background-color:#7D3C98; color:white; border-radius:12px;"
+        "padding:4px 10px; font-size:11px; font-weight:bold;");
+    labelBadgeOrphelines->setCursor(Qt::PointingHandCursor); // Le curseur devient une main au survol
+    labelBadgeOrphelines->installEventFilter(this);           // On intercepte les clics via eventFilter
+    labelBadgeOrphelines->setToolTip("Exigence SRS sans reference vers une exigence SSS parente.");
+
+    // On ajoute les quatre badges dans la ligne d'en-tete
+    layoutEntete->addWidget(labelBadgeCouverts);
+    layoutEntete->addWidget(labelBadgeNonCouverts);
+    layoutEntete->addWidget(labelBadgeLiensBrises);
+    layoutEntete->addWidget(labelBadgeOrphelines);
+    layoutEntete->addSpacing(10); // Un petit espace avant les boutons
+
+    // Bouton "Exporter" avec menu deroulant (CSV, HTML, PDF)
+    boutonExport = new QToolButton(this);
+    boutonExport->setText(QString::fromUtf8("\xE2\xAC\x87 Exporter \xE2\x96\xBC")); // Fleche bas + triangle
+    boutonExport->setPopupMode(QToolButton::InstantPopup); // Le menu s'ouvre immediatement au clic
+    boutonExport->setStyleSheet(R"(
+        QToolButton {
+            background-color: #27AE60; color: white;
+            border-radius: 6px; padding: 6px 14px;
+            font-size: 11px; font-weight: bold;
+        }
+        QToolButton:hover { background-color: #1E8449; }
+        QToolButton::menu-indicator { image: none; }
+    )");
+
+    // Creation du menu deroulant avec les trois options d'export
+    menuExport = new QMenu(this);
+    menuExport->setStyleSheet(R"(
+        QMenu {
+            background-color: white; color: #333;
+            border: 1px solid #AED6F1; border-radius: 6px; padding: 4px;
+        }
+        QMenu::item { padding: 8px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #AED6F1; color: #1A5276; }
+    )");
+
+    // Option 1 : export CSV -> appelle la methode exporterCSV()
+    menuExport->addAction(
+        QString::fromUtf8("\xF0\x9F\x93\x84  Exporter en CSV"),
+        this, &OngletRapport::exporterCSV);
+
+    // Option 2 : export HTML -> appelle la methode exporterHTML()
+    menuExport->addAction(
+        QString::fromUtf8("\xF0\x9F\x8C\x90  Exporter en HTML"),
+        this, &OngletRapport::exporterHTML);
+
+    // Option 3 (nouvelle - camarade) : export PDF -> appelle exporterPDF()
+    menuExport->addAction(
+        QString::fromUtf8("\xF0\x9F\x96\xA8  Exporter en PDF"),
+        this, &OngletRapport::exporterPDF);
+
+    boutonExport->setMenu(menuExport); // On attache le menu au bouton
+
+    // Bouton "Filtres" qui ouvre/ferme le panneau lateral
+    boutonFiltres = new QPushButton(
+        QString::fromUtf8("\xE2\x9A\x99 Filtres \xE2\x96\xB6"), this);
+    boutonFiltres->setStyleSheet(R"(
+        QPushButton {
+            background-color: #EBF5FB; color: #1A5276;
+            border-radius: 6px; padding: 6px 12px;
+            font-size: 11px; border: 1px solid #AED6F1;
+        }
+        QPushButton:hover { background-color: #AED6F1; }
+    )");
+    // Quand on clique sur "Filtres", on appelle toggleFiltres()
+    connect(boutonFiltres, &QPushButton::clicked,
+            this, &OngletRapport::toggleFiltres);
+
+    layoutEntete->addWidget(boutonExport);  // Bouton export a droite
+    layoutEntete->addWidget(boutonFiltres); // Bouton filtres tout a droite
+    layoutPrincipal->addLayout(layoutEntete); // On ajoute l'en-tete au layout principal
+
+    // ── Section "Taux de couverture" ──────────────────────────────────────────
+
+    QGroupBox *groupTaux = new QGroupBox("Taux de couverture", this); // Cadre avec titre
+    groupTaux->setStyleSheet(R"(
+        QGroupBox {
+            color: #1A5276; border: 1px solid #AED6F1;
+            border-radius: 8px; margin-top: 8px; padding: 10px;
+            font-weight: bold; background-color: white;
+        }
+        QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; }
+    )");
+    QVBoxLayout *layoutTaux = new QVBoxLayout(groupTaux); // On empile les trois barres verticalement
+    layoutTaux->setSpacing(6); // 6 pixels entre chaque barre
+
+    // Lambda (fonction locale) pour creer une ligne label + barre de progression
+    // Elle prend un texte, deux pointeurs (label et barre) a remplir, et une couleur
+    auto ajouterTaux = [&](const QString& label, QLabel*& lbl,
+                           QProgressBar*& barre, const QString& couleur) {
+        QHBoxLayout *row = new QHBoxLayout(); // Une ligne horizontale
+        lbl = new QLabel(label, this);        // Le texte a gauche (ex: "Taux SSS->SRS : -")
+        lbl->setStyleSheet("color: #1A5276; font-size: 11px;");
+        lbl->setFixedWidth(160);              // Largeur fixe pour aligner les barres
+        barre = creerBarre(couleur);          // On cree la barre avec la couleur donnee
+        row->addWidget(lbl);
+        row->addWidget(barre);
+        layoutTaux->addLayout(row);
+    };
+
+    // On cree les trois lignes de taux (toutes en bleu #4A90D9)
+    ajouterTaux("Taux SSS->SRS : -", labelTauxSSS_SRS, barreSSS_SRS, "#4A90D9");
+    ajouterTaux("Taux SRS->SDD : -", labelTauxSRS_SDD, barreSRS_SDD, "#4A90D9");
+    ajouterTaux("Taux global : -",   labelTauxGlobal,  barreGlobal,  "#4A90D9");
+
+    layoutPrincipal->addWidget(groupTaux); // On ajoute la section taux au layout principal
+
+    // ── Boutons Zoom ──────────────────────────────────────────────────────────
+
+    QHBoxLayout *layoutZoom = new QHBoxLayout();
+    QString styleZoom = R"(
+        QPushButton {
+            background-color: #EBF5FB; color: #1A5276;
+            border: 1px solid #AED6F1; border-radius: 4px;
+            padding: 3px 8px; font-size: 11px;
+        }
+        QPushButton:hover { background-color: #AED6F1; }
+    )";
+
+    QPushButton *btnZoomPlus  = new QPushButton(
+        QString::fromUtf8("\xF0\x9F\x94\x8D+"), this); // Bouton loupe +
+    QPushButton *btnZoomMoins = new QPushButton(
+        QString::fromUtf8("\xF0\x9F\x94\x8D-"), this); // Bouton loupe -
+    QPushButton *btnZoomReset = new QPushButton(
+        QString::fromUtf8("\xE2\x86\xBA Reset"), this); // Bouton reset zoom
+
+    btnZoomPlus->setStyleSheet(styleZoom);
+    btnZoomMoins->setStyleSheet(styleZoom);
+    btnZoomReset->setStyleSheet(styleZoom);
+
+    QLabel *labelZoom = new QLabel("Zoom :", this);
+    labelZoom->setStyleSheet("color: #1A5276; font-size: 11px;");
+
+    layoutZoom->addStretch();            // Pousse les boutons zoom vers la droite
+    layoutZoom->addWidget(labelZoom);
+    layoutZoom->addWidget(btnZoomMoins);
+    layoutZoom->addWidget(btnZoomPlus);
+    layoutZoom->addWidget(btnZoomReset);
+    layoutPrincipal->addLayout(layoutZoom);
+
+    // ── Onglets des matrices (SSS->SRS et SRS->SDD) ──────────────────────────
+
+    QTabWidget *tabMatrices = new QTabWidget(this); // Systeme a deux onglets
+    tabMatrices->setStyleSheet(R"(
+        QTabWidget::pane {
+            border: 1px solid #AED6F1; border-radius: 8px; background: white;
+        }
+        QTabBar::tab {
+            background: #EBF5FB; color: #555; padding: 6px 16px;
+            border-radius: 4px; margin-right: 4px; border: 1px solid #AED6F1;
+        }
+        QTabBar::tab:selected { background: #2E86C1; color: white; font-weight: bold; border: none; }
+    )");
+
+    // Premier onglet : matrice SSS x SRS
+    tableMatriceSSS_SRS = new QTableWidget(this);
+    styliserTableau(tableMatriceSSS_SRS);               // On applique le style commun
+    tabMatrices->addTab(tableMatriceSSS_SRS, "SSS -> SRS");
+
+    // Deuxieme onglet : matrice SRS x SDD
+    tableMatriceSRS_SDD = new QTableWidget(this);
+    styliserTableau(tableMatriceSRS_SDD);               // On applique le style commun
+    tabMatrices->addTab(tableMatriceSRS_SDD, "SRS -> SDD");
+
+    layoutPrincipal->addWidget(tabMatrices, 1); // stretch=1 : les matrices occupent le maximum d'espace
+
+    // Connexion du bouton zoom+ : agrandit les lignes et la police des deux tableaux
+    connect(btnZoomPlus, &QPushButton::clicked, this, [this]() {
+        int h = tableMatriceSSS_SRS->verticalHeader()->defaultSectionSize(); // Hauteur actuelle des lignes
+        tableMatriceSSS_SRS->verticalHeader()->setDefaultSectionSize(h + 4); // On ajoute 4 pixels
+        tableMatriceSRS_SDD->verticalHeader()->setDefaultSectionSize(h + 4);
+        QFont f = tableMatriceSSS_SRS->font();    // On recupere la police actuelle
+        f.setPointSize(f.pointSize() + 1);        // On augmente la taille de 1 point
+        tableMatriceSSS_SRS->setFont(f);          // On applique la nouvelle police
+        tableMatriceSRS_SDD->setFont(f);
+    });
+
+    // Connexion du bouton zoom- : retrecit les lignes et la police (avec un minimum)
+    connect(btnZoomMoins, &QPushButton::clicked, this, [this]() {
+        int h = tableMatriceSSS_SRS->verticalHeader()->defaultSectionSize();
+        if (h > 16) { // On ne retrecit pas en dessous de 16 pixels (sinon illisible)
+            tableMatriceSSS_SRS->verticalHeader()->setDefaultSectionSize(h - 4);
+            tableMatriceSRS_SDD->verticalHeader()->setDefaultSectionSize(h - 4);
+            QFont f = tableMatriceSSS_SRS->font();
+            if (f.pointSize() > 7) f.setPointSize(f.pointSize() - 1); // Minimum 7 points
+            tableMatriceSSS_SRS->setFont(f);
+            tableMatriceSRS_SDD->setFont(f);
+        }
+    });
+
+    // Connexion du bouton reset : remet les tableaux a leur taille d'origine
+    connect(btnZoomReset, &QPushButton::clicked, this, [this]() {
+        tableMatriceSSS_SRS->verticalHeader()->setDefaultSectionSize(28); // Hauteur d'origine
+        tableMatriceSRS_SDD->verticalHeader()->setDefaultSectionSize(28);
+        QFont f = tableMatriceSSS_SRS->font();
+        f.setPointSize(11); // Taille de police d'origine
+        tableMatriceSSS_SRS->setFont(f);
+        tableMatriceSRS_SDD->setFont(f);
+    });
+
+    // ── Panneau liens brises (cadre orange) ───────────────────────────────────
+
+    panneauLiensBrises = new QFrame(this);
+    panneauLiensBrises->setStyleSheet(
+        "QFrame { background-color:white; border:1px solid #F0B27A; border-radius:8px; }");
+    panneauLiensBrises->setVisible(false); // Cache par defaut, s'affiche quand il y a des liens brises
+
+    QVBoxLayout *layoutLB = new QVBoxLayout(panneauLiensBrises);
+    layoutLB->setContentsMargins(12, 10, 12, 10);
+    layoutLB->setSpacing(6);
+
+    // Ligne de titre du panneau liens brises
+    QHBoxLayout *titreLBLayout = new QHBoxLayout();
+    QLabel *titreLB = new QLabel(
+        QString::fromUtf8("\xE2\x9A\xA0  Liens bris\xC3\xA9s d\xC3\xA9tect\xC3\xA9s"),
+        panneauLiensBrises);
+    titreLB->setStyleSheet("color:#E67E22; font-size:12px; font-weight:bold;");
+    titreLBLayout->addWidget(titreLB);
+    titreLBLayout->addStretch();
+    layoutLB->addLayout(titreLBLayout);
+
+    // Zone qui accueillera dynamiquement les lignes de liens brises
+    listeLiensBrises = new QWidget(panneauLiensBrises);
+    layoutListeLB = new QVBoxLayout(listeLiensBrises);
+    layoutListeLB->setContentsMargins(0, 0, 0, 0);
+    layoutListeLB->setSpacing(4);
+    layoutLB->addWidget(listeLiensBrises);
+    layoutPrincipal->addWidget(panneauLiensBrises);
+
+    // ── Panneau orphelines (cadre violet) ──────────────────────────────────────
+
+    panneauOrphelines = new QFrame(this);
+    panneauOrphelines->setStyleSheet(
+        "QFrame { background-color:white; border:1px solid #A569BD; border-radius:8px; }");
+    panneauOrphelines->setVisible(false); // Cache par defaut, s'affiche quand il y a des orphelines
+
+    QVBoxLayout *layoutOrph = new QVBoxLayout(panneauOrphelines);
+    layoutOrph->setContentsMargins(12, 10, 12, 10);
+    layoutOrph->setSpacing(6);
+
+    // Ligne de titre du panneau orphelines
+    QHBoxLayout *titreOrphLayout = new QHBoxLayout();
+    QLabel *titreOrph = new QLabel(
+        QString::fromUtf8("\xF0\x9F\x94\x80  Exigences orphelines d\xC3\xA9tect\xC3\xA9es"),
+        panneauOrphelines);
+    titreOrph->setStyleSheet("color:#7D3C98; font-size:12px; font-weight:bold;");
+    titreOrphLayout->addWidget(titreOrph);
+    titreOrphLayout->addStretch();
+    layoutOrph->addLayout(titreOrphLayout);
+
+    // Zone qui accueillera dynamiquement les lignes d'orphelines
+    listeOrphelines = new QWidget(panneauOrphelines);
+    layoutListeOrph = new QVBoxLayout(listeOrphelines);
+    layoutListeOrph->setContentsMargins(0, 0, 0, 0);
+    layoutListeOrph->setSpacing(4);
+    layoutOrph->addWidget(listeOrphelines);
+    layoutPrincipal->addWidget(panneauOrphelines);
+
+    // ── Panneau detail (s'affiche quand on clique sur une exigence) ───────────
+
+    panneauDetail = new QFrame(this);
+    panneauDetail->setStyleSheet(
+        "QFrame { background-color:white; border:1px solid #AED6F1; border-radius:8px; }");
+    panneauDetail->setMaximumHeight(160); // Hauteur maximale pour ne pas prendre trop de place
+
+    QVBoxLayout *layoutDetail = new QVBoxLayout(panneauDetail);
+    layoutDetail->setContentsMargins(12, 8, 12, 8);
+    layoutDetail->setSpacing(4);
+
+    // Sous-titre gris en petites lettres
+    QLabel *titreDetail = new QLabel("EXIGENCE SELECTIONNEE", panneauDetail);
+    titreDetail->setStyleSheet(
+        "color:#888; font-size:9px; font-weight:bold; letter-spacing:1px;");
+    layoutDetail->addWidget(titreDetail);
+
+    // Identifiant de l'exigence selectionnee (grand et bleu)
+    labelDetailId = new QLabel(QString::fromUtf8("\xE2\x80\x94"), panneauDetail); // tiret em par defaut
+    labelDetailId->setStyleSheet("color:#1A5276; font-size:16px; font-weight:bold;");
+    layoutDetail->addWidget(labelDetailId);
+
+    // Description (contenu textuel) de l'exigence
+    labelDetailDescription = new QLabel("", panneauDetail);
+    labelDetailDescription->setStyleSheet("color:#555; font-size:11px;");
+    labelDetailDescription->setWordWrap(true); // Le texte revient a la ligne automatiquement
+    layoutDetail->addWidget(labelDetailDescription);
+
+    // Etat de developpement (Developpe / Non developpe)
+    labelDetailEtat = new QLabel("", panneauDetail);
+    layoutDetail->addWidget(labelDetailEtat);
+
+    // Chemin du fichier source (en italique et gris)
+    labelDetailFichier = new QLabel("", panneauDetail);
+    labelDetailFichier->setStyleSheet("color:#888; font-size:10px; font-style:italic;");
+    layoutDetail->addWidget(labelDetailFichier);
+
+    // Ligne du bas : badge type + badge statut + texte des liens
+    QHBoxLayout *rowDetail = new QHBoxLayout();
+    rowDetail->setSpacing(8);
+    labelDetailType   = new QLabel("", panneauDetail); // Badge "SSS" ou "SRS"
+    labelDetailStatut = new QLabel("", panneauDetail); // Badge "Couvert", "Non couvert", etc.
+    labelDetailLiens  = new QLabel("", panneauDetail); // Texte "3 lien(s) : EXIG_A, EXIG_B"
+    labelDetailLiens->setStyleSheet("color:#888; font-size:11px;");
+    rowDetail->addWidget(labelDetailType);
+    rowDetail->addWidget(labelDetailStatut);
+    rowDetail->addWidget(labelDetailLiens);
+    rowDetail->addStretch(); // Pousse tout vers la gauche
+    layoutDetail->addLayout(rowDetail);
+    layoutPrincipal->addWidget(panneauDetail);
+
+    // ── Panneau filtres (lateral droit, cache par defaut) ──────────────────────
+
+    panneauFiltres = new QFrame(this);
+    panneauFiltres->setStyleSheet(
+        "QFrame { background-color:white; border-left:2px solid #AED6F1; }");
+    panneauFiltres->setFixedWidth(220); // Largeur fixe du panneau lateral
+    panneauFiltres->setVisible(false);  // Cache au demarrage
+
+    QVBoxLayout *layoutFiltres = new QVBoxLayout(panneauFiltres);
+    layoutFiltres->setContentsMargins(0, 0, 0, 0);
+
+    // Widget interne qui gere tous les champs de filtre
+    gestionnaireFiltres = new GestionnaireFiltresGUI(panneauFiltres);
+    layoutFiltres->addWidget(gestionnaireFiltres);
+
+    // Quand l'utilisateur change un filtre, on appelle appliquerFiltre()
+    connect(gestionnaireFiltres, &GestionnaireFiltresGUI::filtreModifie,
+            this, &OngletRapport::appliquerFiltre);
+
+    // On ajoute les deux zones (contenu + filtres) dans le layout global
+    layoutGlobal->addWidget(contenu);
+    layoutGlobal->addWidget(panneauFiltres);
+    setLayout(layoutGlobal); // On applique ce layout a l'onglet
+}
+
+
+// =============================================================================
+// TOGGLE FILTRES + EVENTFILTER
+// =============================================================================
+
+/**
+ * @brief Affiche ou cache le panneau de filtres lateral.
+ *        Change aussi le texte du bouton (fleche droite ou gauche).
+ */
+void OngletRapport::toggleFiltres()
+{
+    bool visible = panneauFiltres->isVisible(); // On lit l'etat actuel du panneau
+    panneauFiltres->setVisible(!visible);        // On inverse : visible -> cache, cache -> visible
+
+    // On change le texte du bouton selon le nouvel etat
+    boutonFiltres->setText(
+        visible
+            ? QString::fromUtf8("\xE2\x9A\x99 Filtres \xE2\x96\xB6")  // Panneau ferme : fleche droite
+            : QString::fromUtf8("\xE2\x9A\x99 Filtres \xE2\x97\x80")); // Panneau ouvert : fleche gauche
+}
+
+/**
+ * @brief Gere les clics sur les badges "Lien brise" et "Orpheline".
+ *        Affiche ou cache le panneau correspondant.
+ * @param obj   Le widget sur lequel l'evenement s'est produit.
+ * @param event L'evenement intercepte.
+ * @return true si on a traite l'evenement (clic sur un badge), false sinon.
+ */
+bool OngletRapport::eventFilter(QObject* obj, QEvent* event)
+{
+    if (event->type() == QEvent::MouseButtonPress) { // Si c'est un clic de souris
+        if (obj == labelBadgeLiensBrises) {
+            // Clic sur le badge orange : on bascule la visibilite du panneau liens brises
+            panneauLiensBrises->setVisible(!panneauLiensBrises->isVisible());
+            return true; // On a traite l'evenement, Qt n'a pas besoin d'en faire plus
+        }
+        if (obj == labelBadgeOrphelines) {
+            // Clic sur le badge violet : on bascule la visibilite du panneau orphelines
+            panneauOrphelines->setVisible(!panneauOrphelines->isVisible());
+            return true;
+        }
+    }
+    // Pour tous les autres evenements, on laisse Qt les gerer normalement
+    return QWidget::eventFilter(obj, event);
+}
+
+
+// =============================================================================
+// AFFICHAGE DU RAPPORT
+// =============================================================================
+
+/**
+ * @brief Surcharge simple : affiche un rapport sans donnees SRS/SDD.
+ *        On appelle afficherRapportComplet avec des listes vides.
+ */
+void OngletRapport::afficherRapport(const RapportTracabilite& rapport)
+{
+    afficherRapportComplet(rapport, {}, {}, {}); // {} = liste vide en C++
+}
+
+/**
+ * @brief Remplit tous les widgets de l'onglet avec les donnees du rapport.
+ *        Met a jour : taux, matrices SSS/SRS, matrice SRS/SDD, badges, panneaux, detail au clic.
+ */
+void OngletRapport::afficherRapportComplet(const RapportTracabilite& rapport,
+                                           const std::vector<ExigenceSRS>& srs,
+                                           const std::vector<ExigenceSDD>& sdd,
+                                           const std::vector<std::string>& orphelines)
+{
+    // On sauvegarde les donnees pour pouvoir les reutiliser dans les exports et les filtres
+    rapportCourant     = rapport;
+    srsAnalyses        = srs;
+    sddAnalyses        = sdd;
+    orphelinesAnalyses = orphelines;
+
+    // ── Mise a jour des taux ──────────────────────────────────────────────────
+
+    int pSSS = qRound(rapport.tauxSSS_SRS * 100); // On convertit le taux (0.0-1.0) en pourcentage entier
+    int pSRS = qRound(rapport.tauxSRS_SDD * 100);
+    int pGlb = qRound(rapport.tauxGlobal  * 100);
+
+    labelTauxSSS_SRS->setText(QString("Taux SSS->SRS : %1 %").arg(pSSS)); // On met a jour les labels
+    labelTauxSRS_SDD->setText(QString("Taux SRS->SDD : %1 %").arg(pSRS));
+    labelTauxGlobal ->setText(QString("Taux global : %1 %")  .arg(pGlb));
+
+    barreSSS_SRS->setValue(pSSS); // On met a jour les barres de progression
+    barreSRS_SDD->setValue(pSRS);
+    barreGlobal ->setValue(pGlb);
+
+    // ── Remplissage de la matrice SSS x SRS ───────────────────────────────────
+
+    int nbSSS = (int)rapport.exigencesSSS.size(); // Nombre d'exigences SSS dans le rapport
+    tableMatriceSSS_SRS->setRowCount(nbSSS);       // On redimensionne le tableau
+    tableMatriceSSS_SRS->setColumnCount(3);        // 3 colonnes : ID | Statut | SRS associees
+
+    // On definit les titres des colonnes
+    tableMatriceSSS_SRS->setHorizontalHeaderItem(0, new QTableWidgetItem("Exigence SSS"));
+    tableMatriceSSS_SRS->setHorizontalHeaderItem(1, new QTableWidgetItem("Statut"));
+    tableMatriceSSS_SRS->setHorizontalHeaderItem(2, new QTableWidgetItem("SRS associees"));
+
+    tableMatriceSSS_SRS->verticalHeader()->setVisible(false); // On cache la colonne de numeros de ligne
+    // On configure les largeurs des colonnes
+    tableMatriceSSS_SRS->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents); // S'adapte au contenu
+    tableMatriceSSS_SRS->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    tableMatriceSSS_SRS->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch); // Prend tout l'espace restant
+
+    QStringList tousLesIds; // Liste de tous les IDs (pour alimenter l'autocompletion des filtres)
+    int nbCouverts = 0, nbNonCouverts = 0; // Compteurs pour les badges
+
+    // On boucle sur chaque exigence SSS pour remplir le tableau ligne par ligne
+    for (int i = 0; i < nbSSS; i++) {
+        const ExigenceSSS& exig = rapport.exigencesSSS[i]; // L'exigence SSS courante
+        Statut statut = exig.getStatut();                   // Son statut (Couverte, NonCouverte, etc.)
+
+        if (statut == Couverte)    nbCouverts++;    // On incremente le compteur vert
+        if (statut == NonCouverte) nbNonCouverts++; // On incremente le compteur rouge
+
+        tousLesIds << QString::fromStdString(exig.getId()); // On ajoute l'ID a la liste d'autocompletion
+
+        // Colonne 0 : identifiant de l'exigence SSS
+        QTableWidgetItem *cellId = new QTableWidgetItem(
+            QString::fromStdString(exig.getId()));
+        cellId->setTextAlignment(Qt::AlignVCenter | Qt::AlignLeft); // Aligne a gauche/centre vertical
+        cellId->setFlags(cellId->flags() & ~Qt::ItemIsEditable);    // Non editable par l'utilisateur
+        tableMatriceSSS_SRS->setItem(i, 0, cellId);
+
+        // On verifie si cette exigence SSS apparait dans un lien brise
+        bool lienBrise = false;
+        for (const std::string& lb : rapport.liensBrises)
+            if (lb.find(exig.getId()) != std::string::npos) { lienBrise = true; break; }
+
+        // Colonne 1 : statut colore (vert, rouge ou orange)
+        QTableWidgetItem *cellStatut;
+        if (lienBrise) {
+            // L'exigence est impliquee dans un lien brise : cellule orange
+            cellStatut = new QTableWidgetItem("Lien brise");
+            cellStatut->setBackground(QColor("#E67E22")); // Fond orange
+            cellStatut->setForeground(Qt::white);         // Texte blanc
+        } else if (statut == Couverte) {
+            // L'exigence est bien couverte par au moins une SRS : cellule verte
+            cellStatut = new QTableWidgetItem("Couvert");
+            cellStatut->setBackground(QColor("#27AE60")); // Fond vert
+            cellStatut->setForeground(Qt::white);
+        } else {
+            // Aucune SRS ne pointe vers cette exigence : cellule rouge
+            cellStatut = new QTableWidgetItem("Non couvert");
+            cellStatut->setBackground(QColor("#E74C3C")); // Fond rouge
+            cellStatut->setForeground(Qt::white);
+        }
+        cellStatut->setTextAlignment(Qt::AlignCenter);                    // Texte centre
+        cellStatut->setFlags(cellStatut->flags() & ~Qt::ItemIsEditable);  // Non editable
+        tableMatriceSSS_SRS->setItem(i, 1, cellStatut);
+
+        // Colonne 2 : liste des SRS qui pointent vers cette exigence SSS
+        QStringList srsList;
+        for (const ExigenceSRS& s : srs) {
+            const auto& t = s.getTracabilite(); // On recupere la liste des IDs SSS parentes de cette SRS
+            // Si l'ID de notre exigence SSS est dans la tracabilite de cette SRS, elle est liee
+            if (std::find(t.begin(), t.end(), exig.getId()) != t.end())
+                srsList << QString::fromStdString(s.getId());
+        }
+        // Si la liste est vide, on affiche un tiret, sinon les IDs separes par des virgules
+        QTableWidgetItem *cellSRS = new QTableWidgetItem(
+            srsList.isEmpty() ? QString::fromUtf8("\xE2\x80\x94") : srsList.join(", "));
+        cellSRS->setTextAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+        cellSRS->setFlags(cellSRS->flags() & ~Qt::ItemIsEditable);
+        if (srsList.isEmpty()) cellSRS->setForeground(QColor("#AAAAAA")); // Tiret en gris clair
+        tableMatriceSSS_SRS->setItem(i, 2, cellSRS);
+    }
+
+    // ── Remplissage de la matrice SRS x SDD ───────────────────────────────────
+
+    int nbSRS = (int)srs.size(); // Nombre d'exigences SRS
+
+    tableMatriceSRS_SDD->setRowCount(nbSRS > 0 ? nbSRS : 1); // Au moins 1 ligne pour le message vide
+    tableMatriceSRS_SDD->setColumnCount(3); // 3 colonnes : ID | Statut | SDD associees
+
+    tableMatriceSRS_SDD->setHorizontalHeaderItem(0, new QTableWidgetItem("Exigence SRS"));
+    tableMatriceSRS_SDD->setHorizontalHeaderItem(1, new QTableWidgetItem("Statut"));
+    tableMatriceSRS_SDD->setHorizontalHeaderItem(2, new QTableWidgetItem("SDD associees"));
+
+    tableMatriceSRS_SDD->verticalHeader()->setVisible(false);
+    tableMatriceSRS_SDD->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    tableMatriceSRS_SDD->horizontalHeader()->setSectionResizeMode(1, QHeaderView::ResizeToContents);
+    tableMatriceSRS_SDD->horizontalHeader()->setSectionResizeMode(2, QHeaderView::Stretch);
+
+    int nbCouvertsSRS = 0, nbNonCouvertsSRS = 0; // Compteurs pour les badges SRS
+
+    if (nbSRS > 0) {
+        // On boucle sur chaque exigence SRS
+        for (int i = 0; i < nbSRS; i++) {
+            const ExigenceSRS& exig = srs[i];
+            tousLesIds << QString::fromStdString(exig.getId()); // Ajout a l'autocompletion
+
+            // Colonne 0 : identifiant SRS
+            QTableWidgetItem *cellId = new QTableWidgetItem(
+                QString::fromStdString(exig.getId()));
+            cellId->setTextAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+            cellId->setFlags(cellId->flags() & ~Qt::ItemIsEditable);
+            tableMatriceSRS_SDD->setItem(i, 0, cellId);
+
+            // On cherche les SDD qui referencent cette exigence SRS
+            QStringList sddList;
+            for (const ExigenceSDD& d : sdd) {
+                const auto& ref = d.getReferencedSRS(); // Les IDs SRS que cette SDD reference
+                if (std::find(ref.begin(), ref.end(), exig.getId()) != ref.end())
+                    sddList << QString::fromStdString(d.getId());
+            }
+
+            bool estCouvert  = !sddList.isEmpty();           // Couverte si au moins une SDD pointe dessus
+            bool estOrphelin = exig.getTracabilite().empty();// Orpheline si aucune SSS parente
+            bool estLienBris = false;
+            for (const std::string& lb : rapport.liensBrises)
+                if (lb.find(exig.getId()) != std::string::npos) { estLienBris = true; break; }
+
+            // On compte couvertes/non couvertes (hors liens brises pour ne pas fausser les stats)
+            if (estCouvert)                    nbCouvertsSRS++;
+            if (!estCouvert && !estLienBris)   nbNonCouvertsSRS++;
+
+            // Colonne 1 : statut (priorite : lien brise > orpheline > couvert > non couvert)
+            QTableWidgetItem *cellStatut;
+            if (estLienBris) {
+                cellStatut = new QTableWidgetItem("Lien brise");
+                cellStatut->setBackground(QColor("#E67E22")); cellStatut->setForeground(Qt::white);
+            } else if (estOrphelin) {
+                // SRS sans parent SSS : cellule violette
+                cellStatut = new QTableWidgetItem("Orpheline");
+                cellStatut->setBackground(QColor("#7D3C98")); cellStatut->setForeground(Qt::white);
+            } else if (estCouvert) {
+                cellStatut = new QTableWidgetItem("Couvert");
+                cellStatut->setBackground(QColor("#27AE60")); cellStatut->setForeground(Qt::white);
+            } else {
+                cellStatut = new QTableWidgetItem("Non couvert");
+                cellStatut->setBackground(QColor("#E74C3C")); cellStatut->setForeground(Qt::white);
+            }
+            cellStatut->setTextAlignment(Qt::AlignCenter);
+            cellStatut->setFlags(cellStatut->flags() & ~Qt::ItemIsEditable);
+            tableMatriceSRS_SDD->setItem(i, 1, cellStatut);
+
+            // Colonne 2 : liste des SDD associees (ou tiret si aucune)
+            QTableWidgetItem *cellSDD = new QTableWidgetItem(
+                sddList.isEmpty() ? QString::fromUtf8("\xE2\x80\x94") : sddList.join(", "));
+            cellSDD->setTextAlignment(Qt::AlignVCenter | Qt::AlignLeft);
+            cellSDD->setFlags(cellSDD->flags() & ~Qt::ItemIsEditable);
+            if (sddList.isEmpty()) cellSDD->setForeground(QColor("#AAAAAA"));
+            tableMatriceSRS_SDD->setItem(i, 2, cellSDD);
+        }
+    } else {
+        // Si aucun fichier SDD n'a ete charge, on affiche un message d'information
+        QTableWidgetItem *msg = new QTableWidgetItem(
+            QString::fromUtf8("Aucun fichier SDD import\xC3\xA9"));
+        msg->setForeground(QColor("#AAAAAA"));
+        tableMatriceSRS_SDD->setItem(0, 0, msg);
+    }
+
+    // On alimente l'autocompletion du gestionnaire de filtres avec tous les IDs collectes
+    gestionnaireFiltres->setListeIds(tousLesIds);
+
+    // ── Mise a jour des badges ─────────────────────────────────────────────────
+
+    // On additionne les compteurs SSS et SRS pour avoir les totaux
+    labelBadgeCouverts->setText(
+        QString::number(nbCouverts + nbCouvertsSRS) + " Couvert");
+    labelBadgeNonCouverts->setText(
+        QString::number(nbNonCouverts + nbNonCouvertsSRS) + " Non couvert");
+    labelBadgeLiensBrises->setText(
+        QString::number(rapport.liensBrises.size()) + " Lien brise");
+    labelBadgeOrphelines->setText(
+        QString::number(orphelines.size()) + " Orpheline");
+
+    // ── Remplissage du panneau liens brises ────────────────────────────────────
+
+    // On vide d'abord l'ancien contenu du panneau (pour ne pas dupliquer les lignes)
+    QLayoutItem* item;
+    while ((item = layoutListeLB->takeAt(0)) != nullptr) {
+        delete item->widget(); delete item; // On supprime le widget et son entree dans le layout
+    }
+
+    // Le panneau n'est visible que s'il y a des liens brises
+    panneauLiensBrises->setVisible(!rapport.liensBrises.empty());
+
+    // On cree une ligne pour chaque lien brise
+    for (const std::string& lb : rapport.liensBrises) {
+        QFrame *ligne = new QFrame(listeLiensBrises);
+        ligne->setStyleSheet(
+            "QFrame { background-color:#FEF9F0; border:1px solid #F0B27A; border-radius:6px; }");
+        QHBoxLayout *row = new QHBoxLayout(ligne);
+        row->setContentsMargins(10, 6, 10, 6);
+        row->setSpacing(10);
+        QLabel *icone = new QLabel(QString::fromUtf8("\xF0\x9F\x94\x97"), ligne); // Emoji chaine
+        icone->setStyleSheet("font-size:14px;");
+        icone->setFixedWidth(20);
+        QLabel *texte = new QLabel(QString::fromStdString(lb), ligne); // Texte du lien brise
+        texte->setStyleSheet("color:#A04000; font-size:11px;");
+        texte->setWordWrap(true);
+        row->addWidget(icone);
+        row->addWidget(texte, 1); // stretch=1 : le texte prend tout l'espace disponible
+        layoutListeLB->addWidget(ligne);
+    }
+
+    // ── Remplissage du panneau orphelines ──────────────────────────────────────
+
+    // On vide d'abord l'ancien contenu
+    QLayoutItem* itemOrph;
+    while ((itemOrph = layoutListeOrph->takeAt(0)) != nullptr) {
+        delete itemOrph->widget(); delete itemOrph;
+    }
+
+    // Le panneau n'est visible que s'il y a des orphelines
+    panneauOrphelines->setVisible(!orphelines.empty());
+
+    // On cree une ligne pour chaque orpheline
+    for (const std::string& orph : orphelines) {
+        QFrame *ligne = new QFrame(listeOrphelines);
+        ligne->setStyleSheet(
+            "QFrame { background-color:#F5EEF8; border:1px solid #A569BD; border-radius:6px; }");
+        QHBoxLayout *row = new QHBoxLayout(ligne);
+        row->setContentsMargins(10, 6, 10, 6);
+        row->setSpacing(10);
+        QLabel *icone = new QLabel(QString::fromUtf8("\xF0\x9F\x94\x80"), ligne); // Emoji fleches
+        icone->setStyleSheet("font-size:14px;");
+        icone->setFixedWidth(20);
+        QLabel *texte = new QLabel(QString::fromStdString(orph), ligne); // ID de l'orpheline
+        texte->setStyleSheet("color:#7D3C98; font-size:11px;");
+        texte->setWordWrap(true);
+        row->addWidget(icone);
+        row->addWidget(texte, 1);
+        layoutListeOrph->addWidget(ligne);
+    }
+
+    // ── Connexion : clic sur une ligne de la matrice SSS->SRS ─────────────────
+    // Cette lambda est appelee chaque fois que l'utilisateur clique sur une cellule du tableau SSS->SRS
+    connect(tableMatriceSSS_SRS, &QTableWidget::cellClicked,
+            this, [this](int row, int) { // row = numero de ligne cliquee, colonne ignoree
+                if (row >= (int)rapportCourant.exigencesSSS.size()) return; // Securite : indice valide ?
+                const ExigenceSSS& exig = rapportCourant.exigencesSSS[row]; // On recupere l'exigence
+
+                // On remplit le panneau detail avec les infos de cette exigence
+                labelDetailId->setText(QString::fromStdString(exig.getId()));
+                labelDetailDescription->setText("📝 " + QString::fromStdString(exig.getContenu()));
+                labelDetailEtat->setText(exig.getDeveloppe() ? "✅ Développé" : "⏳ Non développé");
+                labelDetailEtat->setStyleSheet(exig.getDeveloppe()
+                                                   ? "color:#27AE60; font-size:11px; font-weight:bold;"
+                                                   : "color:#E74C3C; font-size:11px; font-weight:bold;");
+                labelDetailFichier->setText("📁 " + QString::fromStdString(exig.getFichierSource()));
+
+                // Badge type "SSS" en bleu
+                labelDetailType->setText(" SSS ");
+                labelDetailType->setStyleSheet(
+                    "background-color:#D6EAF8; color:#1A5276; border-radius:6px;"
+                    "padding:2px 8px; font-size:11px; font-weight:bold;");
+
+                // Badge statut colore selon le statut de l'exigence
+                QString statutStr; QString styleStatut;
+                switch (exig.getStatut()) {
+                case Couverte:
+                    statutStr   = " Couvert ";
+                    styleStatut = "background-color:#27AE60; color:white; border-radius:6px;"
+                                  "padding:2px 8px; font-size:11px; font-weight:bold;";
+                    break;
+                case NonCouverte:
+                    statutStr   = " Non couvert ";
+                    styleStatut = "background-color:#E74C3C; color:white; border-radius:6px;"
+                                  "padding:2px 8px; font-size:11px; font-weight:bold;";
+                    break;
+                default:
+                    statutStr   = " Non analyse ";
+                    styleStatut = "background-color:#AAAAAA; color:white; border-radius:6px;"
+                                  "padding:2px 8px; font-size:11px; font-weight:bold;";
+                    break;
+                }
+                labelDetailStatut->setText(statutStr);
+                labelDetailStatut->setStyleSheet(styleStatut);
+
+                // On cherche et affiche les SRS qui pointent vers cette exigence SSS
+                QStringList liens;
+                for (const ExigenceSRS& s : srsAnalyses) {
+                    const auto& t = s.getTracabilite();
+                    if (std::find(t.begin(), t.end(), exig.getId()) != t.end())
+                        liens << QString::fromStdString(s.getId());
+                }
+                labelDetailLiens->setText(
+                    liens.isEmpty()
+                        ? "Aucun lien SRS"
+                        : QString::fromUtf8("\xF0\x9F\x94\x97 ")
+                              + QString::number(liens.size())
+                              + " lien(s) : " + liens.join(", "));
+            });
+
+    // ── Connexion : clic sur une ligne de la matrice SRS->SDD ─────────────────
+    connect(tableMatriceSRS_SDD, &QTableWidget::cellClicked,
+            this, [this](int row, int) {
+                if (row >= (int)srsAnalyses.size()) return;
+                const ExigenceSRS& exig = srsAnalyses[row];
+
+                labelDetailId->setText(QString::fromStdString(exig.getId()));
+                labelDetailDescription->setText("📝 " + QString::fromStdString(exig.getContenu()));
+                labelDetailEtat->setText(exig.getDeveloppe() ? "✅ Développé" : "⏳ Non développé");
+                labelDetailEtat->setStyleSheet(exig.getDeveloppe()
+                                                   ? "color:#27AE60; font-size:11px; font-weight:bold;"
+                                                   : "color:#E74C3C; font-size:11px; font-weight:bold;");
+                labelDetailFichier->setText("📁 " + QString::fromStdString(exig.getFichierSource()));
+
+                // Badge type "SRS" en orange
+                labelDetailType->setText(" SRS ");
+                labelDetailType->setStyleSheet(
+                    "background-color:#FAE5D3; color:#E67E22; border-radius:6px;"
+                    "padding:2px 8px; font-size:11px; font-weight:bold;");
+
+                // On cherche les SDD liees a cette SRS
+                QStringList liens;
+                for (const ExigenceSDD& d : sddAnalyses) {
+                    const auto& ref = d.getReferencedSRS();
+                    if (std::find(ref.begin(), ref.end(), exig.getId()) != ref.end())
+                        liens << QString::fromStdString(d.getId());
+                }
+                bool estCouvert  = !liens.isEmpty();
+                bool estOrphelin = exig.getTracabilite().empty(); // Pas de SSS parente
+                bool estLienBris = false;
+                for (const std::string& lb : rapportCourant.liensBrises)
+                    if (lb.find(exig.getId()) != std::string::npos) { estLienBris = true; break; }
+
+                // Badge statut avec la meme priorite que dans le tableau
+                QString statutStr; QString styleStatut;
+                if (estLienBris) {
+                    statutStr   = " Lien brise ";
+                    styleStatut = "background-color:#E67E22; color:white; border-radius:6px;"
+                                  "padding:2px 8px; font-size:11px; font-weight:bold;";
+                } else if (estOrphelin) {
+                    statutStr   = " Orpheline ";
+                    styleStatut = "background-color:#7D3C98; color:white; border-radius:6px;"
+                                  "padding:2px 8px; font-size:11px; font-weight:bold;";
+                } else if (estCouvert) {
+                    statutStr   = " Couvert ";
+                    styleStatut = "background-color:#27AE60; color:white; border-radius:6px;"
+                                  "padding:2px 8px; font-size:11px; font-weight:bold;";
+                } else {
+                    statutStr   = " Non couvert ";
+                    styleStatut = "background-color:#E74C3C; color:white; border-radius:6px;"
+                                  "padding:2px 8px; font-size:11px; font-weight:bold;";
+                }
+                labelDetailStatut->setText(statutStr);
+                labelDetailStatut->setStyleSheet(styleStatut);
+                labelDetailLiens->setText(
+                    liens.isEmpty()
+                        ? "Aucun lien SDD"
+                        : QString::fromUtf8("\xF0\x9F\x94\x97 ")
+                              + QString::number(liens.size())
+                              + " lien(s) : " + liens.join(", "));
+            });
+}
+
+
+// =============================================================================
+// FILTRES
+// =============================================================================
+
+/**
+ * @brief Applique les criteres de filtre sur les deux matrices.
+ *        Cache les lignes qui ne correspondent pas au filtre.
+ * @param filtre L'objet qui contient tous les criteres : identifiant, statut, etat, orpheline.
+ */
+void OngletRapport::appliquerFiltre(const FiltreGUI& filtre)
+{
+    // ── Filtrage de la matrice SSS->SRS ───────────────────────────────────────
+
+    for (int i = 0; i < tableMatriceSSS_SRS->rowCount(); i++) {
+        bool afficher = true; // Par defaut on affiche la ligne
+
+        // Filtre par identifiant : on cherche si le texte du filtre est dans l'ID
+        if (!filtre.filtreIdentifiant.isEmpty()) {
+            QTableWidgetItem* it = tableMatriceSSS_SRS->item(i, 0); // Cellule ID (colonne 0)
+            if (it) afficher = it->text().contains(
+                    filtre.filtreIdentifiant, Qt::CaseInsensitive); // Insensible a la casse
+        }
+
+        // Filtre par statut : si un statut precis est selectionne, on cache les autres
+        if (afficher && filtre.filtreStatut != NonAnalyse
+            && i < (int)rapportCourant.exigencesSSS.size()) {
+            Statut s = rapportCourant.exigencesSSS[i].getStatut();
+            if (filtre.filtreStatut == Couverte    && s != Couverte)    afficher = false;
+            if (filtre.filtreStatut == NonCouverte && s != NonCouverte) afficher = false;
+        }
+
+        // Filtre par etat de developpement (getDeveloppe() retourne vrai/faux)
+        if (afficher && filtre.filtreDevEtat && i < (int)rapportCourant.exigencesSSS.size()) {
+            if (filtre.filtreDevValeur != rapportCourant.exigencesSSS[i].getDeveloppe())
+                afficher = false; // L'etat ne correspond pas au filtre
+        }
+
+        // Filtre orpheline : les exigences SSS ne peuvent pas etre orphelines (elles ont pas de parent)
+        // Donc si ce filtre est actif, on cache toutes les lignes SSS
+        if (afficher && filtre.filtreOrpheline) afficher = false;
+
+        tableMatriceSSS_SRS->setRowHidden(i, !afficher); // On affiche ou cache la ligne
+    }
+
+    // ── Filtrage de la matrice SRS->SDD ───────────────────────────────────────
+
+    for (int i = 0; i < tableMatriceSRS_SDD->rowCount(); i++) {
+        bool afficher = true;
+
+        // Filtre par identifiant
+        if (!filtre.filtreIdentifiant.isEmpty()) {
+            QTableWidgetItem* it = tableMatriceSRS_SDD->item(i, 0);
+            if (it) afficher = it->text().contains(
+                    filtre.filtreIdentifiant, Qt::CaseInsensitive);
+        }
+
+        // Filtre par statut : on recalcule si la SRS est couverte
+        if (afficher && filtre.filtreStatut != NonAnalyse
+            && i < (int)srsAnalyses.size()) {
+            bool estCouvert = false;
+            for (const ExigenceSDD& d : sddAnalyses) {
+                const auto& ref = d.getReferencedSRS();
+                if (std::find(ref.begin(), ref.end(),
+                              srsAnalyses[i].getId()) != ref.end()) {
+                    estCouvert = true; break;
+                }
+            }
+            if (filtre.filtreStatut == Couverte    && !estCouvert) afficher = false;
+            if (filtre.filtreStatut == NonCouverte &&  estCouvert) afficher = false;
+        }
+
+        // Filtre par etat de developpement pour les SRS
+        if (afficher && filtre.filtreDevEtat && i < (int)srsAnalyses.size()) {
+            if (filtre.filtreDevValeur != srsAnalyses[i].getDeveloppe())
+                afficher = false;
+        }
+
+        // Filtre orpheline : une SRS est orpheline si sa liste de tracabilite (parents SSS) est vide
+        if (afficher && filtre.filtreOrpheline && i < (int)srsAnalyses.size()) {
+            if (!srsAnalyses[i].getTracabilite().empty())
+                afficher = false; // Elle a des parents SSS : ce n'est pas une orpheline
+        }
+
+        tableMatriceSRS_SDD->setRowHidden(i, !afficher);
+    }
+}
+
+
+// =============================================================================
+// EXPORT CSV (ameliore par la camarade)
+// =============================================================================
+
+/**
+ * @brief Exporte le rapport complet au format CSV.
+ *        Nouveautes camarade : ajout de la date, des colonnes "SRS associees"/"SDD associees",
+ *        d'une colonne "Lien brise"/"Orpheline", et de la section matrice SRS x SDD.
+ */
+void OngletRapport::exporterCSV()
+{
+    // On ouvre la boite de dialogue "Enregistrer sous" avec un nom par defaut
+    QString chemin = QFileDialog::getSaveFileName(
+        this, "Exporter en CSV", "rapport_tracabilite.csv",
+        "Fichiers CSV (*.csv)");
+    if (chemin.isEmpty()) return; // L'utilisateur a annule
+
+    QFile fichier(chemin);
+    if (!fichier.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::critical(this, "Erreur", "Impossible d'ecrire le fichier.");
+        return; // Erreur d'ecriture (permissions, disque plein, etc.)
+    }
+    QTextStream out(&fichier);
+    out.setEncoding(QStringConverter::Utf8); // On force l'encodage UTF-8 pour les accents
+
+    // En-tete du fichier CSV avec la date de generation
+    out << "=== RAPPORT DE TRACABILITE TRACELINK ===\n";
+    out << "Date;" << QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm") << "\n";
+
+    // Les taux avec une decimale (ex: "80.0%")
+    out << "Taux SSS->SRS;"
+        << QString::number(rapportCourant.tauxSSS_SRS * 100, 'f', 1) << "%\n";
+    out << "Taux SRS->SDD;"
+        << QString::number(rapportCourant.tauxSRS_SDD * 100, 'f', 1) << "%\n";
+    out << "Taux global;"
+        << QString::number(rapportCourant.tauxGlobal * 100, 'f', 1) << "%\n\n";
+
+    // Section matrice SSS x SRS avec 4 colonnes
+    out << "=== MATRICE SSS x SRS ===\n";
+    out << "Identifiant SSS;Statut;SRS associees;Lien brise\n"; // En-tete des colonnes
+
+    for (const ExigenceSSS& exig : rapportCourant.exigencesSSS) {
+        // On determine le statut en texte
+        QString statut;
+        switch (exig.getStatut()) {
+        case Couverte:    statut = "Couverte";     break;
+        case NonCouverte: statut = "Non couverte"; break;
+        default:          statut = "Non analyse";  break;
+        }
+
+        // On collecte les IDs des SRS liees a cette exigence SSS
+        QStringList srsList;
+        for (const ExigenceSRS& s : srsAnalyses) {
+            const auto& t = s.getTracabilite();
+            if (std::find(t.begin(), t.end(), exig.getId()) != t.end())
+                srsList << QString::fromStdString(s.getId());
+        }
+
+        // On verifie si cette exigence est impliquee dans un lien brise
+        bool lienBrise = false;
+        for (const std::string& lb : rapportCourant.liensBrises)
+            if (lb.find(exig.getId()) != std::string::npos) { lienBrise = true; break; }
+
+        // On ecrit la ligne CSV : ID ; Statut ; SRS1 | SRS2 ; OUI/NON
+        out << QString::fromStdString(exig.getId()) << ";"
+            << statut << ";"
+            << (srsList.isEmpty() ? "-" : srsList.join(" | ")) << ";" // Separateur "|" entre IDs
+            << (lienBrise ? "OUI" : "NON") << "\n";
+    }
+
+    // Section matrice SRS x SDD avec 4 colonnes
+    out << "\n=== MATRICE SRS x SDD ===\n";
+    out << "Identifiant SRS;Statut;SDD associees;Orpheline\n";
+
+    for (const ExigenceSRS& exig : srsAnalyses) {
+        // On collecte les IDs des SDD liees a cette exigence SRS
+        QStringList sddList;
+        for (const ExigenceSDD& d : sddAnalyses) {
+            const auto& ref = d.getReferencedSRS();
+            if (std::find(ref.begin(), ref.end(), exig.getId()) != ref.end())
+                sddList << QString::fromStdString(d.getId());
+        }
+        bool couvert   = !sddList.isEmpty();           // Couverte si au moins une SDD
+        bool orpheline = exig.getTracabilite().empty(); // Orpheline si aucune SSS parente
+
+        out << QString::fromStdString(exig.getId()) << ";"
+            << (couvert ? "Couverte" : "Non couverte") << ";"
+            << (sddList.isEmpty() ? "-" : sddList.join(" | ")) << ";"
+            << (orpheline ? "OUI" : "NON") << "\n";
+    }
+
+    // Section liens brises (seulement si il y en a)
+    if (!rapportCourant.liensBrises.empty()) {
+        out << "\n=== LIENS BRISES ===\n";
+        out << "Description\n";
+        for (const std::string& lb : rapportCourant.liensBrises)
+            out << QString::fromStdString(lb) << "\n";
+    }
+
+    // Section orphelines (seulement si il y en a)
+    if (!orphelinesAnalyses.empty()) {
+        out << "\n=== EXIGENCES ORPHELINES ===\n";
+        out << "Identifiant SRS\n";
+        for (const std::string& orph : orphelinesAnalyses)
+            out << QString::fromStdString(orph) << "\n";
+    }
+
+    fichier.close(); // On ferme le fichier proprement
+    QMessageBox::information(this, "Export CSV",
+                             QString::fromUtf8("Fichier CSV export\xC3\xA9 avec succ\xC3\xA8s !"));
+}
+
+
+// =============================================================================
+// EXPORT HTML INTERACTIF (ameliore par la camarade)
+// =============================================================================
+
+/**
+ * @brief Exporte le rapport au format HTML avec filtres JavaScript, onglets et detail au clic.
+ *        Version completement reecrite par la camarade : les donnees sont injectees en JSON
+ *        dans la page, et le rendu des tableaux se fait cote navigateur en JavaScript.
+ */
+void OngletRapport::exporterHTML()
+{
+    QString chemin = QFileDialog::getSaveFileName(
+        this, "Exporter en HTML", "rapport_tracabilite.html",
+        "Fichiers HTML (*.html)");
+    if (chemin.isEmpty()) return;
+
+    QFile fichier(chemin);
+    if (!fichier.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::critical(this, "Erreur", "Impossible d'ecrire le fichier.");
+        return;
+    }
+    QTextStream out(&fichier);
+    out.setEncoding(QStringConverter::Utf8);
+
+    // On calcule les pourcentages entiers pour les afficher dans le HTML
+    int pSSS = qRound(rapportCourant.tauxSSS_SRS * 100);
+    int pSRS = qRound(rapportCourant.tauxSRS_SDD * 100);
+    int pGlb = qRound(rapportCourant.tauxGlobal  * 100);
+
+    // Lambda qui retourne une couleur selon le taux : vert >= 80, orange >= 50, rouge sinon
+    auto couleurTaux = [](int p) -> QString {
+        return p >= 80 ? "#27AE60" : p >= 50 ? "#E67E22" : "#E74C3C";
+    };
+
+    // ── Construction du JSON pour les exigences SSS ───────────────────────────
+    // Ce JSON sera injecte dans le HTML et lu par JavaScript pour generer le tableau dynamiquement
+    QString jsonSSS = "[";
+    for (int i = 0; i < (int)rapportCourant.exigencesSSS.size(); i++) {
+        const ExigenceSSS& exig = rapportCourant.exigencesSSS[i];
+
+        // On verifie si cette exigence est dans un lien brise
+        bool lienBrise = false;
+        for (const std::string& lb : rapportCourant.liensBrises)
+            if (lb.find(exig.getId()) != std::string::npos) { lienBrise = true; break; }
+
+        // La classe CSS a appliquer dans le HTML selon le statut
+        QString classe = lienBrise                       ? "lienbrise"  :
+                             exig.getStatut() == Couverte    ? "couvert"    :
+                             "noncouverte";
+        QString statut = lienBrise                       ? "Lien brise" :
+                             exig.getStatut() == Couverte    ? "Couvert"    : "Non couvert";
+
+        // On construit la liste JSON des SRS liees a cette exigence SSS
+        QString liensStr = "[";
+        for (const ExigenceSRS& s : srsAnalyses) {
+            const auto& t = s.getTracabilite();
+            if (std::find(t.begin(), t.end(), exig.getId()) != t.end())
+                liensStr += "\"" + QString::fromStdString(s.getId()) + "\",";
+        }
+        if (liensStr.endsWith(",")) liensStr.chop(1); // On retire la virgule finale
+        liensStr += "]";
+
+        if (i > 0) jsonSSS += ","; // Separateur entre les objets JSON
+        jsonSSS += "{\"id\":\"" + QString::fromStdString(exig.getId()) + "\","
+                   + "\"statut\":\"" + statut + "\","
+                   + "\"classe\":\"" + classe + "\","
+                   + "\"liens\":" + liensStr + "}";
+    }
+    jsonSSS += "]";
+
+    // ── Construction du JSON pour les exigences SRS ───────────────────────────
+    QString jsonSRS = "[";
+    for (int i = 0; i < (int)srsAnalyses.size(); i++) {
+        const ExigenceSRS& exig = srsAnalyses[i];
+
+        // On collecte les IDs des SDD associees
+        QStringList sddList;
+        for (const ExigenceSDD& d : sddAnalyses) {
+            const auto& ref = d.getReferencedSRS();
+            if (std::find(ref.begin(), ref.end(), exig.getId()) != ref.end())
+                sddList << QString::fromStdString(d.getId());
+        }
+        bool couvert   = !sddList.isEmpty();
+        bool orpheline = exig.getTracabilite().empty();
+        bool lienBrise = false;
+        for (const std::string& lb : rapportCourant.liensBrises)
+            if (lb.find(exig.getId()) != std::string::npos) { lienBrise = true; break; }
+
+        // Priorite : lien brise > orpheline > couvert > non couvert
+        QString classe = lienBrise ? "lienbrise"  :
+                             orpheline ? "orpheline"  :
+                             couvert   ? "couvert"    : "noncouverte";
+        QString statut = lienBrise ? "Lien brise" :
+                             orpheline ? "Orpheline"  :
+                             couvert   ? "Couvert"    : "Non couvert";
+
+        // On construit la liste JSON des SDD liees
+        QString liensStr = "[";
+        for (const QString& s : sddList) liensStr += "\"" + s + "\",";
+        if (liensStr.endsWith(",")) liensStr.chop(1);
+        liensStr += "]";
+
+        if (i > 0) jsonSRS += ",";
+        jsonSRS += "{\"id\":\"" + QString::fromStdString(exig.getId()) + "\","
+                   + "\"statut\":\"" + statut + "\","
+                   + "\"classe\":\"" + classe + "\","
+                   + "\"liens\":" + liensStr + "}";
+    }
+    jsonSRS += "]";
+
+    // ── JSON des colonnes (pour les en-tetes dynamiques des tableaux) ──────────
+    // colonnesSRS = liste des IDs SRS (en-tetes de la matrice SSS x SRS)
+    QString colSRS = "[";
+    for (int i = 0; i < (int)srsAnalyses.size(); i++) {
+        if (i > 0) colSRS += ",";
+        colSRS += "\"" + QString::fromStdString(srsAnalyses[i].getId()) + "\"";
+    }
+    colSRS += "]";
+
+    // colonnesSDD = liste des IDs SDD (en-tetes de la matrice SRS x SDD)
+    QString colSDD = "[";
+    for (int i = 0; i < (int)sddAnalyses.size(); i++) {
+        if (i > 0) colSDD += ",";
+        colSDD += "\"" + QString::fromStdString(sddAnalyses[i].getId()) + "\"";
+    }
+    colSDD += "]";
+
+    // ── JSON des liens brises et orphelines ────────────────────────────────────
+    QString jsonLB = "[";
+    for (int i = 0; i < (int)rapportCourant.liensBrises.size(); i++) {
+        if (i > 0) jsonLB += ",";
+        // On remplace les guillemets doubles par des simples pour ne pas casser le JSON
+        jsonLB += "\"" + QString::fromStdString(
+                             rapportCourant.liensBrises[i]).replace("\"", "'") + "\"";
+    }
+    jsonLB += "]";
+
+    QString jsonOrph = "[";
+    for (int i = 0; i < (int)orphelinesAnalyses.size(); i++) {
+        if (i > 0) jsonOrph += ",";
+        jsonOrph += "\"" + QString::fromStdString(orphelinesAnalyses[i]) + "\"";
+    }
+    jsonOrph += "]";
+
+    // ── Construction du HTML des cartes de taux ────────────────────────────────
+    // On genere trois cartes (SSS->SRS, SRS->SDD, global) avec une barre de progression
+    QString tauxHtml = "";
+    auto genTaux = [&](const QString& label, int p) {
+        tauxHtml +=
+            "<div class='taux-card'>"
+            "<div class='taux-label'>" + label + "</div>"
+                      "<div class='taux-value' style='color:" + couleurTaux(p) + "'>"
+            + QString::number(p) + " %</div>"
+                                   "<div class='progress'><div class='progress-bar' style='width:"
+            + QString::number(p) + "%;background:" + couleurTaux(p) + "'></div></div>"
+                                                                      "</div>";
+    };
+    genTaux("Taux SSS &rarr; SRS", pSSS); // &rarr; = fleche droite en HTML
+    genTaux("Taux SRS &rarr; SDD", pSRS);
+    genTaux("Taux global", pGlb);
+
+    // ── Construction du HTML des sections liens brises et orphelines ───────────
+    QString lbHtml = "";
+    if (!rapportCourant.liensBrises.empty()) {
+        lbHtml += "<h2>&#9888; Liens brises</h2>"; // &#9888; = emoji attention
+        for (const std::string& l : rapportCourant.liensBrises)
+            lbHtml += "<div class='lb-item'>" + QString::fromStdString(l) + "</div>\n";
+    }
+    QString orphHtml = "";
+    if (!orphelinesAnalyses.empty()) {
+        orphHtml += "<h2>Exigences orphelines</h2>";
+        for (const std::string& o : orphelinesAnalyses)
+            orphHtml += "<div class='orph-item'>" + QString::fromStdString(o) + "</div>\n";
+    }
+
+    // On recupere les valeurs des badges pour les afficher dans les badges HTML
+    QString nbCouv    = labelBadgeCouverts->text().split(" ")[0];    // Ex: "5" de "5 Couvert"
+    QString nbNonCouv = labelBadgeNonCouverts->text().split(" ")[0];
+    QString nbLB      = labelBadgeLiensBrises->text().split(" ")[0];
+    QString nbOrph    = labelBadgeOrphelines->text().split(" ")[0];
+
+    // En-tetes des colonnes pour les tableaux HTML (IDs des SRS et SDD)
+    QString thSSS = "";
+    for (const ExigenceSRS& s : srsAnalyses)
+        thSSS += "<th>" + QString::fromStdString(s.getId()) + "</th>";
+    if (srsAnalyses.empty()) thSSS = "<th>Statut</th>"; // Fallback si aucune SRS
+
+    QString thSRS = "";
+    for (const ExigenceSDD& d : sddAnalyses)
+        thSRS += "<th>" + QString::fromStdString(d.getId()) + "</th>";
+    if (sddAnalyses.empty()) thSRS = "<th>Statut</th>";
+
+    // ── Generation du fichier HTML complet ────────────────────────────────────
+    // Le HTML contient : CSS inline, badges, cartes de taux, barre de filtre, onglets, tableaux dynamiques
+    out << "<!DOCTYPE html>\n<html lang='fr'>\n<head>\n"
+        << "<meta charset='UTF-8'>\n"
+        << "<title>Rapport TraceLink</title>\n"
+        << "<style>\n"
+        // Reset CSS basique
+        << "* { box-sizing:border-box; margin:0; padding:0; }\n"
+        << "body { font-family:Arial,sans-serif; background:#EBF5FB; color:#333; padding:20px; }\n"
+        << "h1 { color:#1A5276; border-bottom:2px solid #AED6F1; padding-bottom:10px; margin-bottom:16px; font-size:20px; }\n"
+        << "h2 { color:#1A5276; margin:24px 0 10px; font-size:15px; }\n"
+        // Badges
+        << ".badges { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }\n"
+        << ".badge { padding:4px 12px; border-radius:12px; color:white; font-size:12px; font-weight:bold; }\n"
+        // Cartes de taux
+        << ".taux-container { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:20px; }\n"
+        << ".taux-card { background:white; border-radius:10px; padding:14px 18px; min-width:180px; border:1px solid #AED6F1; flex:1; }\n"
+        << ".taux-label { color:#555; font-size:11px; margin-bottom:4px; }\n"
+        << ".taux-value { font-size:22px; font-weight:bold; }\n"
+        << ".progress { background:#D6EAF8; border-radius:6px; height:8px; margin-top:6px; }\n"
+        << ".progress-bar { height:8px; border-radius:6px; }\n"
+        // Barre de filtres et recherche
+        << ".toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:8px; background:white; padding:10px 14px; border-radius:8px; border:1px solid #AED6F1; }\n"
+        << ".toolbar label { font-size:12px; color:#1A5276; font-weight:bold; }\n"
+        << ".toolbar input[type=text] { flex:1; min-width:200px; padding:7px 12px; border:1px solid #AED6F1; border-radius:6px; font-size:12px; outline:none; color:#333; }\n"
+        << ".toolbar input[type=text]:focus { border-color:#2E86C1; }\n"
+        << ".toolbar select { padding:7px 10px; border:1px solid #AED6F1; border-radius:6px; font-size:12px; background:white; color:#333; cursor:pointer; }\n"
+        << ".btn { padding:7px 14px; background:#EBF5FB; border:1px solid #AED6F1; border-radius:6px; font-size:12px; color:#1A5276; cursor:pointer; font-weight:bold; }\n"
+        << ".btn:hover { background:#AED6F1; }\n"
+        // Compteur de resultats
+        << ".compteur { font-size:11px; color:#888; margin-bottom:6px; }\n"
+        // Tableaux
+        << ".table-container { overflow-x:auto; border-radius:8px; border:1px solid #AED6F1; margin-bottom:10px; }\n"
+        << "table { border-collapse:collapse; width:100%; background:white; font-size:11px; }\n"
+        << "th { background:#EBF5FB; color:#1A5276; padding:9px 10px; text-align:center; border:1px solid #AED6F1; font-weight:bold; white-space:nowrap; }\n"
+        << "td { padding:7px 10px; text-align:center; border:1px solid #DDDDDD; }\n"
+        << "tr:hover td { filter:brightness(0.96); }\n"
+        // Classes de statut des cellules
+        << ".couvert { background:#27AE60; color:white; font-weight:bold; }\n"
+        << ".noncouverte { background:#FADBD8; color:#E74C3C; font-weight:bold; }\n"
+        << ".lienbrise { background:#E67E22; color:white; font-weight:bold; }\n"
+        << ".orpheline { background:#7D3C98; color:white; font-weight:bold; }\n"
+        << ".vide { background:#F5F5F5; color:#AAAAAA; }\n"
+        << ".row-hidden { display:none; }\n"
+        // Colonne ID (alignee a gauche)
+        << "th.id-col { min-width:200px; text-align:left; padding-left:12px; }\n"
+        << "td.id-col { text-align:left; padding-left:12px; font-weight:bold; color:#1A5276; }\n"
+        // Panneau detail cliquable
+        << ".detail { background:white; border:1px solid #AED6F1; border-radius:8px; padding:12px 16px; margin:10px 0; display:none; }\n"
+        << ".detail.visible { display:block; }\n"
+        << ".detail-id { font-size:18px; font-weight:bold; color:#1A5276; margin-bottom:6px; }\n"
+        << ".detail-row { display:flex; gap:6px; flex-wrap:wrap; align-items:center; }\n"
+        << ".detail-badge { padding:2px 10px; border-radius:8px; font-size:11px; font-weight:bold; }\n"
+        // Onglets
+        << ".tabs { display:flex; gap:6px; margin-bottom:-1px; }\n"
+        << ".tab-btn { padding:8px 18px; border:1px solid #AED6F1; border-bottom:none; border-radius:6px 6px 0 0; background:#EBF5FB; color:#555; cursor:pointer; font-size:12px; font-weight:bold; }\n"
+        << ".tab-btn.active { background:#2E86C1; color:white; border-color:#2E86C1; }\n"
+        << ".tab-content { display:none; }\n"
+        << ".tab-content.active { display:block; }\n"
+        << ".tab-wrapper { border:1px solid #AED6F1; border-radius:0 8px 8px 8px; padding:14px; background:white; }\n"
+        // Panneaux liens brises et orphelines
+        << ".lb-item { background:#FEF9F0; border:1px solid #F0B27A; border-radius:6px; padding:8px 12px; margin:4px 0; color:#A04000; font-size:11px; }\n"
+        << ".orph-item { background:#F5EEF8; border:1px solid #A569BD; border-radius:6px; padding:8px 12px; margin:4px 0; color:#7D3C98; font-size:11px; }\n"
+        // Pied de page
+        << ".footer { text-align:right; font-size:10px; color:#AAAAAA; margin-top:20px; }\n"
+        << "</style>\n</head>\n<body>\n"
+        << "<h1>Rapport de tracabilite &mdash; TraceLink</h1>\n"
+        // Badges de resume
+        << "<div class='badges'>"
+        << "<span class='badge' style='background:#27AE60'>" << nbCouv    << " Couvert</span>"
+        << "<span class='badge' style='background:#E74C3C'>" << nbNonCouv << " Non couvert</span>"
+        << "<span class='badge' style='background:#E67E22'>" << nbLB      << " Lien brise</span>"
+        << "<span class='badge' style='background:#7D3C98'>" << nbOrph    << " Orpheline</span>"
+        << "</div>\n"
+        // Section taux
+        << "<h2>Taux de couverture</h2>\n"
+        << "<div class='taux-container'>" << tauxHtml << "</div>\n"
+        // Section matrices
+        << "<h2>Matrices de tracabilite</h2>\n"
+        // Barre de filtres HTML interactive
+        << "<div class='toolbar'>\n"
+        << "  <label>Recherche :</label>\n"
+        << "  <input type='text' id='searchInput' placeholder='Rechercher un identifiant...' oninput='appliquerFiltres()'>\n"
+        << "  <label>Statut :</label>\n"
+        << "  <select id='filtreStatut' onchange='appliquerFiltres()'>\n"
+        << "    <option value='tous'>Tous</option>\n"
+        << "    <option value='couvert'>Couvert</option>\n"
+        << "    <option value='noncouverte'>Non couvert</option>\n"
+        << "    <option value='lienbrise'>Lien brise</option>\n"
+        << "    <option value='orpheline'>Orpheline</option>\n"
+        << "  </select>\n"
+        << "  <button class='btn' onclick='resetFiltres()'>&#8635; Reinitialiser</button>\n"
+        << "</div>\n"
+        // Compteur d'exigences affichees
+        << "<div class='compteur' id='compteur'></div>\n"
+        // Panneau detail (cache par defaut, apparait au clic sur une ligne)
+        << "<div class='detail' id='detailPanel'>\n"
+        << "  <div class='detail-id' id='detailId'></div>\n"
+        << "  <div class='detail-row'>\n"
+        << "    <span class='detail-badge' id='detailType'></span>\n"
+        << "    <span class='detail-badge' id='detailStatut'></span>\n"
+        << "    <span style='font-size:11px;color:#888' id='detailLiens'></span>\n"
+        << "  </div>\n"
+        << "</div>\n"
+        // Onglets SSS->SRS et SRS->SDD
+        << "<div class='tabs'>\n"
+        << "  <div class='tab-btn active' onclick='showTab(\"sss\")'>SSS &rarr; SRS</div>\n"
+        << "  <div class='tab-btn' onclick='showTab(\"srs\")'>SRS &rarr; SDD</div>\n"
+        << "</div>\n"
+        << "<div class='tab-wrapper'>\n"
+        // Contenu de l'onglet SSS->SRS (tableau genere par JavaScript)
+        << "  <div class='tab-content active' id='tab-sss'>\n"
+        << "    <div class='table-container'>\n"
+        << "    <table><thead><tr><th class='id-col'>SSS / SRS</th>" << thSSS << "</tr></thead>\n"
+        << "    <tbody id='bodySSS'></tbody></table>\n"
+        << "    </div>\n"
+        << "  </div>\n"
+        // Contenu de l'onglet SRS->SDD (tableau genere par JavaScript)
+        << "  <div class='tab-content' id='tab-srs'>\n"
+        << "    <div class='table-container'>\n"
+        << "    <table><thead><tr><th class='id-col'>SRS / SDD</th>" << thSRS << "</tr></thead>\n"
+        << "    <tbody id='bodySRS'></tbody></table>\n"
+        << "    </div>\n"
+        << "  </div>\n"
+        << "</div>\n"
+        // Sections liens brises et orphelines en bas de page
+        << lbHtml << orphHtml
+        // Pied de page avec date de generation
+        << "<div class='footer'>TraceLink &mdash; Genere le "
+        << QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm")
+        << "</div>\n"
+        // ── Code JavaScript injecte dans la page HTML ───────────────────────────
+        << "<script>\n"
+        // On injecte les donnees JSON issues du C++ dans des variables JavaScript
+        << "var dataSSS="     << jsonSSS  << ";\n" // Tableau des exigences SSS
+        << "var dataSRS="     << jsonSRS  << ";\n" // Tableau des exigences SRS
+        << "var liensBrises=" << jsonLB   << ";\n" // Tableau des liens brises
+        << "var colonnesSRS=" << colSRS   << ";\n" // Tableau des IDs SRS (colonnes de la matrice SSS)
+        << "var colonnesSDD=" << colSDD   << ";\n" // Tableau des IDs SDD (colonnes de la matrice SRS)
+        << "var tabActif='sss';\n"                  // L'onglet actif au demarrage
+
+        // Fonction qui construit dynamiquement les lignes d'un tableau
+        << "function rendreTableau(data,colonnes,tbodyId){\n"
+        << "  var tbody=document.getElementById(tbodyId); tbody.innerHTML='';\n" // On vide le tableau
+        << "  for(var i=0;i<data.length;i++){\n"
+        << "    var e=data[i]; var tr=document.createElement('tr');\n"
+        << "    tr.setAttribute('data-id',e.id); tr.setAttribute('data-statut',e.classe);\n" // Attributs pour le filtrage
+        // Premiere cellule : identifiant de l'exigence
+        << "    var tdId=document.createElement('td'); tdId.className='id-col'; tdId.textContent=e.id;\n"
+        << "    tr.appendChild(tdId);\n"
+        // Cellules suivantes : une par colonne (SRS ou SDD)
+        << "    if(colonnes.length>0){\n"
+        << "      for(var j=0;j<colonnes.length;j++){\n"
+        << "        var col=colonnes[j]; var td=document.createElement('td');\n"
+        << "        var couvre=e.liens.indexOf(col)>=0;\n" // Cette colonne est-elle dans les liens ?
+        // On verifie si ce couple (exigence, colonne) forme un lien brise
+        << "        var lb=false;\n"
+        << "        for(var k=0;k<liensBrises.length;k++){\n"
+        << "          if(liensBrises[k].indexOf(e.id)>=0&&liensBrises[k].indexOf(col)>=0){lb=true;break;}\n"
+        << "        }\n"
+        // On colorie la cellule selon son statut
+        << "        if(lb){td.className='lienbrise';td.textContent='Lien brise';}\n"
+        << "        else if(couvre){td.className='couvert';td.textContent='Couvert';}\n"
+        << "        else if(e.classe==='orpheline'){td.className='orpheline';td.textContent='Orpheline';}\n"
+        << "        else if(e.classe==='noncouverte'){td.className='noncouverte';td.textContent='Non couvert';}\n"
+        << "        else{td.className='vide';td.textContent='-';}\n"
+        << "        tr.appendChild(td);\n"
+        << "      }\n"
+        << "    } else {\n" // Si pas de colonnes, on affiche juste le statut global
+        << "      var td2=document.createElement('td'); td2.className=e.classe; td2.textContent=e.statut; tr.appendChild(td2);\n"
+        << "    }\n"
+        // Au clic sur la ligne, on affiche le detail de l'exigence
+        << "    tr.style.cursor='pointer';\n"
+        << "    (function(ex,t){tr.addEventListener('click',function(){afficherDetail(ex,t);});})(e,tbodyId==='bodySSS'?'SSS':'SRS');\n"
+        << "    tbody.appendChild(tr);\n"
+        << "  }\n"
+        << "}\n"
+
+        // Fonction d'initialisation : on construit les deux tableaux au chargement de la page
+        << "function init(){\n"
+        << "  rendreTableau(dataSSS,colonnesSRS,'bodySSS');\n"
+        << "  rendreTableau(dataSRS,colonnesSDD,'bodySRS');\n"
+        << "  mettreAJourCompteur();\n"
+        << "}\n"
+
+        // Fonction qui filtre les lignes selon la recherche et le statut selectionne
+        << "function appliquerFiltres(){\n"
+        << "  var r=document.getElementById('searchInput').value.toLowerCase();\n" // Texte de recherche
+        << "  var s=document.getElementById('filtreStatut').value;\n"              // Statut selectionne
+        << "  ['bodySSS','bodySRS'].forEach(function(id){\n" // On filtre les deux tableaux
+        << "    var rows=document.getElementById(id).querySelectorAll('tr');\n"
+        << "    rows.forEach(function(tr){\n"
+        << "      var okR=r===''||tr.getAttribute('data-id').toLowerCase().indexOf(r)>=0;\n" // Filtre texte
+        << "      var okS=s==='tous'||tr.getAttribute('data-statut')===s;\n"                 // Filtre statut
+        << "      if(okR&&okS)tr.classList.remove('row-hidden');\n" // On affiche la ligne
+        << "      else tr.classList.add('row-hidden');\n"           // On cache la ligne
+        << "    });\n"
+        << "  });\n"
+        << "  mettreAJourCompteur();\n"
+        << "}\n"
+
+        // Fonction qui met a jour le texte "X exigence(s) affichee(s) sur Y"
+        << "function mettreAJourCompteur(){\n"
+        << "  var id=tabActif==='sss'?'bodySSS':'bodySRS';\n" // On regarde l'onglet actif
+        << "  var tb=document.getElementById(id);\n"
+        << "  var tot=tb.querySelectorAll('tr').length;\n"
+        << "  var hid=tb.querySelectorAll('tr.row-hidden').length;\n"
+        << "  document.getElementById('compteur').textContent=(tot-hid)+' exigence(s) affichee(s) sur '+tot;\n"
+        << "}\n"
+
+        // Fonction qui remet les filtres a zero
+        << "function resetFiltres(){\n"
+        << "  document.getElementById('searchInput').value='';\n"
+        << "  document.getElementById('filtreStatut').value='tous';\n"
+        << "  appliquerFiltres();\n"
+        << "}\n"
+
+        // Fonction qui bascule entre les onglets SSS->SRS et SRS->SDD
+        << "function showTab(tab){\n"
+        << "  tabActif=tab;\n"
+        << "  var btns=document.querySelectorAll('.tab-btn');\n"
+        << "  btns[0].classList.toggle('active',tab==='sss');\n" // Onglet 1 actif si tab='sss'
+        << "  btns[1].classList.toggle('active',tab==='srs');\n" // Onglet 2 actif si tab='srs'
+        << "  document.getElementById('tab-sss').classList.toggle('active',tab==='sss');\n"
+        << "  document.getElementById('tab-srs').classList.toggle('active',tab==='srs');\n"
+        << "  mettreAJourCompteur();\n"
+        << "}\n"
+
+        // Fonction qui affiche le panneau de detail quand on clique sur une ligne
+        << "function afficherDetail(e,type){\n"
+        << "  var p=document.getElementById('detailPanel'); p.classList.add('visible');\n"
+        << "  document.getElementById('detailId').textContent=e.id;\n" // ID de l'exigence
+        << "  var te=document.getElementById('detailType');\n"
+        << "  te.textContent=type; te.style.background=type==='SSS'?'#D6EAF8':'#FAE5D3';\n" // Badge bleu ou orange
+        << "  te.style.color=type==='SSS'?'#1A5276':'#E67E22';\n"
+        << "  var se=document.getElementById('detailStatut');\n"
+        << "  se.textContent=e.statut;\n"
+        // Couleur du badge statut selon la classe
+        << "  se.style.background=e.classe==='couvert'?'#27AE60':e.classe==='noncouverte'?'#E74C3C':e.classe==='lienbrise'?'#E67E22':e.classe==='orpheline'?'#7D3C98':'#AAAAAA';\n"
+        << "  se.style.color='white';\n"
+        << "  document.getElementById('detailLiens').textContent=e.liens.length>0?e.liens.length+' lien(s) : '+e.liens.join(', '):'Aucun lien';\n"
+        << "}\n"
+
+        // On appelle init() au chargement de la page pour construire les tableaux
+        << "init();\n"
+        << "</script>\n</body>\n</html>\n";
+
+    fichier.close();
+    QMessageBox::information(this, "Export HTML",
+                             QString::fromUtf8("Fichier HTML export\xC3\xA9 avec succ\xC3\xA8s !"));
+}
+
+
+// =============================================================================
+// EXPORT PDF (nouveau, fait par la camarade)
+// =============================================================================
+
+/**
+ * @brief Genere un fichier PDF du rapport de tracabilite.
+ *        On construit d'abord un HTML avec les donnees, puis on l'imprime dans un PDF via QPrinter.
+ *        Nouveaute camarade : cette fonction n'existait pas dans la version originale.
+ */
+void OngletRapport::exporterPDF()
+{
+    // On demande a l'utilisateur ou sauvegarder le PDF
+    QString chemin = QFileDialog::getSaveFileName(
+        this, "Exporter en PDF", "rapport_tracabilite.pdf", "PDF (*.pdf)");
+    if (chemin.isEmpty()) return; // L'utilisateur a annule
+
+    // ── 1. On construit un HTML simplifie pour le PDF ─────────────────────────
+    // QPrinter ne sait pas lire du texte brut directement,
+    // mais QTextDocument peut convertir du HTML en document imprimable
+    QString html = R"(
+        <html><head><style>
+            body { font-family: 'Segoe UI', Arial, sans-serif; margin: 20px; }
+            h1 { color: #1A5276; border-bottom: 2px solid #1A5276; padding-bottom: 10px; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; table-layout: fixed; }
+            th { background-color: #EBF5FB; color: #1A5276; border: 1px solid #AED6F1; padding: 10px; font-size: 12pt; }
+            td { border: 1px solid #DDDDDD; padding: 8px; font-size: 10pt; word-wrap: break-word; }
+            .couvert    { background-color: #27AE60; color: white; font-weight: bold; text-align: center; }
+            .non-couvert{ background-color: #E74C3C; color: white; font-weight: bold; text-align: center; }
+            .lien-brise { background-color: #E67E22; color: white; font-weight: bold; text-align: center; }
+        </style></head><body>
+    )";
+
+    html += "<h1>Rapport de Tracabilite - TraceLink</h1>";
+    // On ajoute la date et l'heure de generation
+    html += QString("<p>Genere le : %1</p>").arg(
+        QDateTime::currentDateTime().toString("dd/MM/yyyy HH:mm"));
+
+    // Section matrice SSS -> SRS : on parcourt directement les cellules du tableau Qt
+    html += "<h2>Matrice SSS -> SRS</h2>";
+    html += "<table><tr><th width='30%'>ID SSS</th><th width='20%'>Statut</th><th width='50%'>SRS Associees</th></tr>";
+
+    for (int i = 0; i < tableMatriceSSS_SRS->rowCount(); ++i) {
+        // On lit le texte de chaque cellule du tableau Qt
+        QString id     = tableMatriceSSS_SRS->item(i, 0)->text(); // Identifiant SSS
+        QString statut = tableMatriceSSS_SRS->item(i, 1)->text(); // Statut textuel
+        QString assoc  = tableMatriceSSS_SRS->item(i, 2)->text(); // SRS associees
+
+        // On choisit la classe CSS selon le statut pour colorier la cellule dans le PDF
+        QString classe = (statut == "Couvert")    ? "couvert"    :
+                             (statut == "Lien brise") ? "lien-brise" : "non-couvert";
+
+        // On ecrit la ligne HTML correspondante
+        html += QString("<tr><td>%1</td><td class='%2'>%3</td><td>%4</td></tr>")
+                    .arg(id, classe, statut, assoc);
+    }
+    html += "</table></body></html>"; // On ferme le document HTML
+
+    // ── 2. Configuration de l'imprimante PDF ──────────────────────────────────
+    QPrinter printer(QPrinter::ScreenResolution); // Resoluton ecran (suffisant pour un PDF)
+    printer.setOutputFormat(QPrinter::PdfFormat); // On genere un PDF, pas une impression physique
+    printer.setOutputFileName(chemin);            // Chemin du fichier PDF de sortie
+    // Marges de 15mm de chaque cote
+    printer.setPageMargins(QMarginsF(15, 15, 15, 15), QPageLayout::Millimeter);
+
+    // ── 3. On charge le HTML dans QTextDocument et on l'imprime ───────────────
+    QTextDocument doc;
+    // On definit la taille de la page du document selon la surface imprimable de l'imprimante
+    doc.setPageSize(printer.pageRect(QPrinter::Point).size());
+    doc.setHtml(html);   // QTextDocument interprete le HTML et formate le contenu
+    doc.print(&printer); // On imprime le document dans le fichier PDF
+
+    QMessageBox::information(this, "Export reussi",
+                             "Le PDF a ete genere avec une taille de texte optimale.");
+}

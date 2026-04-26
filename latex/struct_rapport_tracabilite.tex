@@ -1,0 +1,104 @@
+\doxysection{Référence de la structure Rapport\+Tracabilite}
+\hypertarget{struct_rapport_tracabilite}{}\label{struct_rapport_tracabilite}\index{RapportTracabilite@{RapportTracabilite}}
+
+
+Structure de transfert des résultats de l\textquotesingle{}analyse vers le module 3.  
+
+
+
+
+{\ttfamily \+\#include $<$Rapport\+Tracabilite.\+h$>$}
+
+\doxysubsubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \doxymbox{\hyperlink{struct_rapport_tracabilite_af6c56850ae32ba0b560548b05b3890f7}{exigences\+SSS}}
+\begin{DoxyCompactList}\small\item\em Exigences SSS avec leurs statuts mis à jour. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{struct_rapport_tracabilite_a2cba0b14f9e58b718a6493fb954d5388}{liens\+Brises}}
+\begin{DoxyCompactList}\small\item\em Messages décrivant les références invalides détectées. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{struct_rapport_tracabilite_a654c9bb841fb551e43a1de2bdb7168f2}{taux\+SSS\+\_\+\+SRS}}
+\begin{DoxyCompactList}\small\item\em Taux de SSS couvertes par au moins une SRS. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{struct_rapport_tracabilite_a7643c9844637ce9d769576e07cd93e67}{taux\+SRS\+\_\+\+SDD}}
+\begin{DoxyCompactList}\small\item\em Taux de SRS couvertes par au moins une SDD. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{struct_rapport_tracabilite_a292287cc92e7f2ae1d36e639a59c4452}{taux\+Global}}
+\begin{DoxyCompactList}\small\item\em Produit des deux taux intermédiaires. \end{DoxyCompactList}\item 
+double \doxymbox{\hyperlink{struct_rapport_tracabilite_a1df2566679be13665ecab51ad66c8da1}{taux\+Tracabilite\+Complete}}
+\begin{DoxyCompactList}\small\item\em Nb SSS avec chaîne complète SSS→\+SRS→\+SDD /\+ nb total SSS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure de transfert des résultats de l\textquotesingle{}analyse vers le module 3. 
+
+Construite par {\ttfamily \doxylink{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}{Moteur\+Tracabilite::\+get\+Rapport()}} et consommée par le module 3 pour la génération du rapport final. 
+
+\label{doc-variable-members}
+\Hypertarget{struct_rapport_tracabilite_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{struct_rapport_tracabilite_af6c56850ae32ba0b560548b05b3890f7}\index{RapportTracabilite@{RapportTracabilite}!exigencesSSS@{exigencesSSS}}
+\index{exigencesSSS@{exigencesSSS}!RapportTracabilite@{RapportTracabilite}}
+\doxysubsubsection{\texorpdfstring{exigencesSSS}{exigencesSSS}}
+{\footnotesize\ttfamily \label{struct_rapport_tracabilite_af6c56850ae32ba0b560548b05b3890f7} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ Rapport\+Tracabilite::\+exigences\+SSS}
+
+
+
+Exigences SSS avec leurs statuts mis à jour. 
+
+\Hypertarget{struct_rapport_tracabilite_a2cba0b14f9e58b718a6493fb954d5388}\index{RapportTracabilite@{RapportTracabilite}!liensBrises@{liensBrises}}
+\index{liensBrises@{liensBrises}!RapportTracabilite@{RapportTracabilite}}
+\doxysubsubsection{\texorpdfstring{liensBrises}{liensBrises}}
+{\footnotesize\ttfamily \label{struct_rapport_tracabilite_a2cba0b14f9e58b718a6493fb954d5388} 
+std::\+vector$<$ std::\+string $>$ Rapport\+Tracabilite::\+liens\+Brises}
+
+
+
+Messages décrivant les références invalides détectées. 
+
+\Hypertarget{struct_rapport_tracabilite_a292287cc92e7f2ae1d36e639a59c4452}\index{RapportTracabilite@{RapportTracabilite}!tauxGlobal@{tauxGlobal}}
+\index{tauxGlobal@{tauxGlobal}!RapportTracabilite@{RapportTracabilite}}
+\doxysubsubsection{\texorpdfstring{tauxGlobal}{tauxGlobal}}
+{\footnotesize\ttfamily \label{struct_rapport_tracabilite_a292287cc92e7f2ae1d36e639a59c4452} 
+double Rapport\+Tracabilite::\+taux\+Global}
+
+
+
+Produit des deux taux intermédiaires. 
+
+Taux global = {\ttfamily taux\+SSS\+\_\+\+SRS} × {\ttfamily taux\+SRS\+\_\+\+SDD}. \Hypertarget{struct_rapport_tracabilite_a7643c9844637ce9d769576e07cd93e67}\index{RapportTracabilite@{RapportTracabilite}!tauxSRS\_SDD@{tauxSRS\_SDD}}
+\index{tauxSRS\_SDD@{tauxSRS\_SDD}!RapportTracabilite@{RapportTracabilite}}
+\doxysubsubsection{\texorpdfstring{tauxSRS\_SDD}{tauxSRS\_SDD}}
+{\footnotesize\ttfamily \label{struct_rapport_tracabilite_a7643c9844637ce9d769576e07cd93e67} 
+double Rapport\+Tracabilite::\+taux\+SRS\+\_\+\+SDD}
+
+
+
+Taux de SRS couvertes par au moins une SDD. 
+
+Proportion de SRS couvertes par au moins une SDD (0.\+0 à 1.\+0). \Hypertarget{struct_rapport_tracabilite_a654c9bb841fb551e43a1de2bdb7168f2}\index{RapportTracabilite@{RapportTracabilite}!tauxSSS\_SRS@{tauxSSS\_SRS}}
+\index{tauxSSS\_SRS@{tauxSSS\_SRS}!RapportTracabilite@{RapportTracabilite}}
+\doxysubsubsection{\texorpdfstring{tauxSSS\_SRS}{tauxSSS\_SRS}}
+{\footnotesize\ttfamily \label{struct_rapport_tracabilite_a654c9bb841fb551e43a1de2bdb7168f2} 
+double Rapport\+Tracabilite::\+taux\+SSS\+\_\+\+SRS}
+
+
+
+Taux de SSS couvertes par au moins une SRS. 
+
+Proportion de SSS couvertes par au moins une SRS (0.\+0 à 1.\+0). \Hypertarget{struct_rapport_tracabilite_a1df2566679be13665ecab51ad66c8da1}\index{RapportTracabilite@{RapportTracabilite}!tauxTracabiliteComplete@{tauxTracabiliteComplete}}
+\index{tauxTracabiliteComplete@{tauxTracabiliteComplete}!RapportTracabilite@{RapportTracabilite}}
+\doxysubsubsection{\texorpdfstring{tauxTracabiliteComplete}{tauxTracabiliteComplete}}
+{\footnotesize\ttfamily \label{struct_rapport_tracabilite_a1df2566679be13665ecab51ad66c8da1} 
+double Rapport\+Tracabilite::\+taux\+Tracabilite\+Complete}
+
+
+
+Nb SSS avec chaîne complète SSS→\+SRS→\+SDD /\+ nb total SSS. 
+
+
+
+La documentation de cette structure a été générée à partir des fichiers suivants :\+\begin{DoxyCompactItemize}
+\item 
+branches/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_rapport_tracabilite_8h}{Rapport\+Tracabilite.\+h}}\item 
+branches/\+module2/\+include/\+\doxymbox{\hyperlink{branches_2module2_2include_2_rapport_tracabilite_8h}{Rapport\+Tracabilite.\+h}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2include_2_rapport_tracabilite_8h}{Rapport\+Tracabilite.\+h}}\item 
+trunk/\+headers/\+\doxymbox{\hyperlink{trunk_2headers_2_rapport_tracabilite_8h}{Rapport\+Tracabilite.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,31 @@
+\doxysection{Rapport\+Tracabilite.\+h}
+\hypertarget{branches_2_integration_m1_m2_2include_2_rapport_tracabilite_8h_source}{}\label{branches_2_integration_m1_m2_2include_2_rapport_tracabilite_8h_source}\index{branches/IntegrationM1M2/include/RapportTracabilite.h@{branches/IntegrationM1M2/include/RapportTracabilite.h}}
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_rapport_tracabilite_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ RapportTracabilite.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 10\ mars\ 2026}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ yseulthelle}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//module\ qui\ va\ permettre\ de\ transférer\ la\ structure\ de\ données\ contenant\ les\ infos\ sur\ la\ traçabilité\ au\ module\ 3}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ RAPPORTTRACABILITE\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ RAPPORTTRACABILITE\_H\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_s_s_s_8h}{ExigenceSSS.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_rapport_tracabilite}{RapportTracabilite}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ std::vector<ExigenceSSS>\ \doxymbox{\hyperlink{struct_rapport_tracabilite_af6c56850ae32ba0b560548b05b3890f7}{exigencesSSS}};}
+\DoxyCodeLine{00016\ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{struct_rapport_tracabilite_a2cba0b14f9e58b718a6493fb954d5388}{liensBrises}};}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_rapport_tracabilite_a654c9bb841fb551e43a1de2bdb7168f2}{tauxSSS\_SRS}};\ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_rapport_tracabilite_a7643c9844637ce9d769576e07cd93e67}{tauxSRS\_SDD}};\ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_rapport_tracabilite_a292287cc92e7f2ae1d36e639a59c4452}{tauxGlobal}};\ \ \ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ AJOUT\ :\ taux\ de\ traçabilité\ complète\ SSS→SRS→SDD}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_rapport_tracabilite_a1df2566679be13665ecab51ad66c8da1}{tauxTracabiliteComplete}};\ }
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ RAPPORTTRACABILITE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TraceLink: Référence du fichier branches/L2G1_Module3/sources/Ongletrapport.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TraceLink
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('branches_2_l2_g1___module3_2sources_2_ongletrapport_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier Ongletrapport.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementation de la classe <a class="el" href="class_onglet_rapport.html" title="Onglet Qt qui affiche le rapport de tracabilite complet produit par le Module 2.">OngletRapport</a>.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;OngletRapport.h&quot;</code><br />
+<code>#include &lt;QHeaderView&gt;</code><br />
+<code>#include &lt;QGroupBox&gt;</code><br />
+<code>#include &lt;QFileDialog&gt;</code><br />
+<code>#include &lt;QMessageBox&gt;</code><br />
+<code>#include &lt;QFile&gt;</code><br />
+<code>#include &lt;QTextStream&gt;</code><br />
+<code>#include &lt;QHBoxLayout&gt;</code><br />
+<code>#include &lt;QScrollArea&gt;</code><br />
+<code>#include &lt;QEvent&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;QPrinter&gt;</code><br />
+<code>#include &lt;QTextDocument&gt;</code><br />
+</div><a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Implementation de la classe <a class="el" href="class_onglet_rapport.html" title="Onglet Qt qui affiche le rapport de tracabilite complet produit par le Module 2.">OngletRapport</a>. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Lamia Arrahmane, Amel Kheloul </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>26/04/2026 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>2.1 - Export HTML interactif tableau 3 colonnes (<a class="el" href="class_exigence.html" title="Classe mère abstraite représentant une exigence générique.">Exigence</a>, <a class="el" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a51cc5d61d45bf71507aceec544ad1667" title="Définit l&#39;état de couverture d&#39;une exigence après analyse de traçabilité.">Statut</a>, Couverte par)</dd></dl>
+<p>FUSION : version originale (Lamia) + ameliorations export HTML et PDF (Amel Kheloul). Modification v2.1 par Amel Kheloul : exporterHTML : refonte en tableau 3 colonnes interactif avec recherche et filtres JS exporterPDF : creation initiale avec en-tete, police 8pt, format A4 paysage </p>
+</div></div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_85c7096253a6235d051a53fdd615d53a.html">branches</a></li><li class="navelem"><a href="dir_99abb17956bc0d8deaf8920873908442.html">L2G1_Module3</a></li><li class="navelem"><a href="dir_67734c9cb311e07e166e2b0a67513879.html">sources</a></li><li class="navelem"><a href="branches_2_l2_g1___module3_2sources_2_ongletrapport_8cpp.html">Ongletrapport.cpp</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

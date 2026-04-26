@@ -1,0 +1,64 @@
+\doxysection{Convertisseur\+Exigence.\+h}
+\hypertarget{trunk_2headers_2_convertisseur_exigence_8h_source}{}\label{trunk_2headers_2_convertisseur_exigence_8h_source}\index{trunk/headers/ConvertisseurExigence.h@{trunk/headers/ConvertisseurExigence.h}}
+\doxymbox{\hyperlink{trunk_2headers_2_convertisseur_exigence_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ ConvertisseurExigence.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 31\ mars\ 2026}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ yseulthelle}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *\ ConvertisseurExigences.h}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{\ *\ @brief\ Adaptateur\ entre\ le\ Module\ 1\ (ExtracteurFichier)\ et\ le\ Module\ 2\ (MoteurTracabilite).}}
+\DoxyCodeLine{00011\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{\ *\ Convertit\ les\ ExigenceExtraite\ (structs\ brutes\ issues\ du\ parsing)}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ *\ en\ objets\ typés\ ExigenceSSS\ /\ ExigenceSRS\ /\ ExigenceSDD.}}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{\ *\ Détection\ du\ type\ depuis\ l'identifiant\ :}}
+\DoxyCodeLine{00016\ \textcolor{comment}{\ *\ \ \ -\/\ contient\ "{}CLIENT"{}\ →\ SSS\ \ (ex:\ EXIGENCE\_CLIENT\_A\_F01)}}
+\DoxyCodeLine{00017\ \textcolor{comment}{\ *\ \ \ -\/\ contient\ "{}PROJET"{}\ →\ SRS\ \ (ex:\ EXIGENCE\_PROJET\_A\_02)}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ \ \ -\/\ contient\ "{}SDD"{}\ \ \ \ →\ SDD\ \ (ex:\ SDD\_FUNC\_01)}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ \ \ -\/\ sinon\ \ \ \ \ \ \ \ \ \ \ \ \ →\ ignorée}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ *\ Les\ métadonnées\ extraites\ par\ le\ Module\ 1\ (tracabilite,\ cibles,}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *\ necessaireA,\ alloueA,\ developpe)\ sont\ automatiquement\ transférées}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ dans\ les\ objets\ typés\ correspondants.}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ CONVERTISSEUREXIGENCE\_H\_}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ CONVERTISSEUREXIGENCE\_H\_}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ Inclusions\ du\ Module\ extraction\ (Données\ brutes)}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{trunk_2headers_2_extracteur_fichier_8h}{ExtracteurFichier.h}}"{}}\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ Inclusions\ du\ Module\ traçabilité\ (Objets\ typés)}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{trunk_2headers_2_exigence_s_s_s_8h}{ExigenceSSS.h}}"{}}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{trunk_2headers_2_exigence_s_r_s_8h}{ExigenceSRS.h}}"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{trunk_2headers_2_exigence_s_d_d_8h}{ExigenceSDD.h}}"{}}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_convertisseur_exigences}{ConvertisseurExigences}}\ \{}
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ std::vector<ExigenceSSS>\ \doxymbox{\hyperlink{class_convertisseur_exigences_a6b0e39a2bbaa2d1424c0827f8c2fa789}{exigencesSSS}};\ \ }
+\DoxyCodeLine{00047\ \ \ \ \ std::vector<ExigenceSRS>\ \doxymbox{\hyperlink{class_convertisseur_exigences_a35294e17920031d6884a17c54a55e2ea}{exigencesSRS}};\ \ }
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<ExigenceSDD>\ \doxymbox{\hyperlink{class_convertisseur_exigences_a8334e252e68d76069c79d0e5c5776456}{exigencesSDD}};\ \ }
+\DoxyCodeLine{00049\ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{class_convertisseur_exigences_a02fce824cf7832ea08ceaf1d47e40708}{ignorees}};\ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_convertisseur_exigences_ac0b592b7548ed5afbc8ed8440e2650ec}{motifRegex}};}
+\DoxyCodeLine{00057\ \ \ \ \ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{TypeExigence}}\ \doxymbox{\hyperlink{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837}{detecterType}}(\textcolor{keyword}{const}\ std::string\&\ identifiant)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd}{estTypeConnu}}(\textcolor{keyword}{const}\ std::string\&\ identifiant)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ \doxymbox{\hyperlink{class_convertisseur_exigences_a97f33e76e2c5ccfb9308de0ee5ecfd98}{ConvertisseurExigences}}(\textcolor{keyword}{const}\ std::string\&\ motif\ =\ \textcolor{stringliteral}{"{}EXIGENCE\_[A-\/Z0-\/9\_]+"{}})\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{class_convertisseur_exigences_ac0b592b7548ed5afbc8ed8440e2650ec}{motifRegex}}(motif)\ \{\}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368}{convertir}}(\textcolor{keyword}{const}\ std::vector<ExigenceExtraite>\&\ extraites);}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSSS>\&\ \doxymbox{\hyperlink{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97}{getSSS}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSRS>\&\ \doxymbox{\hyperlink{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d}{getSRS}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSDD>\&\ \doxymbox{\hyperlink{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8}{getSDD}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ \doxymbox{\hyperlink{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34}{getIgnorees}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ \};}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CONVERTISSEUREXIGENCES\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

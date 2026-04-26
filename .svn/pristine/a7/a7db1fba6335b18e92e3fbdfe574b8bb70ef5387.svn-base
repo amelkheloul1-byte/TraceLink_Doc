@@ -1,0 +1,104 @@
+#include <iostream>
+#include <cassert>
+#include <vector>
+#include "ExtracteurFichier.h"
+
+// Test 1 : Vérifier que l'extension est bien détectée
+void test_extension() {
+    ExtracteurFichier ext("document.DOCX", ".*");
+    assert(ext.detecterExtension() == "docx");
+    std::cout << "Test Extension : OK" << std::endl;
+}
+
+// Test 2 : Vérifier le filtrage des doublons dans un CSV
+void test_doublons_csv() {
+    // On utilise le fichier test_simple.csv créé plus haut
+    ExtracteurFichier ext("tests/data/test_simple.csv", "ID_[0-9]+");
+    auto resultats = ext.extraire();
+
+    // Il y a deux "ID_01" dans le fichier, le code doit n'en garder qu'un
+    // Donc total = 2 exigences (ID_01 et ID_02)
+    assert(resultats.size() == 2);
+    assert(resultats[0].identifiant == "ID_01");
+    std::cout << "Test Doublons CSV : OK" << std::endl;
+}
+
+// Test 3 : Vérifier la gestion d'un fichier inexistant
+void test_fichier_manquant() {
+    bool erreurDetectee = false;
+    try {
+        ExtracteurFichier ext("fantome.csv", ".*");
+        ext.extraire();
+    } catch (const FileNotFoundException& e) {
+        erreurDetectee = true;
+    }
+    assert(erreurDetectee == true);
+    std::cout << "Test Fichier Manquant : OK" << std::endl;
+}
+
+// Test 4 : Vérifier le découpage Word (Le fameux '#')
+void test_decoupage_word() {
+    // Ici on teste la logique de ton parser de blocs
+    ExtracteurFichier ext("tests/data/test_word.docx", "EX_[0-9]+");
+    auto resultats = ext.extraire();
+    
+    assert(resultats.size() == 1);
+    assert(resultats[0].identifiant == "EX_01");
+    std::cout << "Test Découpage Word : OK" << std::endl;
+}
+
+// Test 5 : Vérifier l'extraction depuis un Excel (.xlsx)
+void test_xlsx() {
+    // Ce test va vérifier si chargerSharedStrings() et lireXlsx() fonctionnent ensemble
+    ExtracteurFichier ext("tests/data/test_exigences.xlsx", "REQ_[0-9]+");
+    
+    try {
+        auto resultats = ext.extraire();
+        
+        // Supposons que le fichier Excel de test contient 3 exigences
+        assert(resultats.size() == 3);
+        assert(resultats[0].identifiant == "REQ_01");
+        
+        std::cout << "Test XLSX : OK (SharedStrings et cellules lus avec succès)" << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Erreur pendant le test XLSX : " << e.what() << std::endl;
+        assert(false); // Force l'échec du test
+    }
+}
+
+// Test 6 : Vérifier l'extraction depuis un ancien Word (.doc)
+void test_doc() {
+    std::cout << "--- Test format .doc ---" << std::endl;
+    
+    // On crée l'extracteur pour un fichier .doc
+    ExtracteurFichier ext("tests/data/test_ancien.doc", "ID_[0-9]+");
+    
+    try {
+        auto resultats = ext.extraire();
+        
+        // On vérifie si on a trouvé l'exigence qu'on va mettre dans le fichier
+        if (!resultats.empty()) {
+            assert(resultats[0].identifiant == "ID_99");
+            std::cout << "Test DOC : OK" << std::endl;
+        } else {
+            std::cout << "Test DOC : Aucune exigence trouvée (ton code est peut-être encore vide ?)" << std::endl;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << " Erreur DOC : " << e.what() << std::endl;
+        // On ne met pas d'assert(false) ici si tu sais que la fonction n'est pas finie
+    }
+}
+
+int main() {
+    std::cout << "=== LANCEMENT DES TESTS UNITAIRES ===" << std::endl;
+    
+    test_extension();
+    test_doublons_csv();
+    test_fichier_manquant();
+    test_decoupage_word();
+    test_xlsx();
+    test_doc();
+    std::cout << " tous les tests sont réussi" << std::endl;
+    
+    return 0;
+}

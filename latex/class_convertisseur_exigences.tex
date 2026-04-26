@@ -1,0 +1,535 @@
+\doxysection{Référence de la classe Convertisseur\+Exigences}
+\hypertarget{class_convertisseur_exigences}{}\label{class_convertisseur_exigences}\index{ConvertisseurExigences@{ConvertisseurExigences}}
+
+
+Adaptateur qui transforme les structures brutes (Module 1) en objets C++ typés (Module 2) prêts pour l\textquotesingle{}analyse de traçabilité.  
+
+
+
+
+{\ttfamily \+\#include $<$Convertisseur\+Exigence.\+h$>$}
+
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_convertisseur_exigences_ad011e004c7e7f51882eebe92f7738dde}{Convertisseur\+Exigences}} (const std::\+string \&motif="{}\+[A-\/Z]\+\+[A-\/Z0-\/9\+\_\+]\++"{}, const std::\+string \&p\+SSS="{}CLIENT"{}, const std::\+string \&p\+SRS="{}PROJET"{}, const std::\+string \&p\+SDD="{}SDD"{})
+\begin{DoxyCompactList}\small\item\em Constructeur avec préfixes multiples séparés par virgules. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368}{convertir}} (const std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \&extraites)
+\begin{DoxyCompactList}\small\item\em Convertit une liste d\textquotesingle{}exigences extraites en objets SSS, SRS et SDD. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97}{get\+SSS}} () const
+\begin{DoxyCompactList}\small\item\em Récupère les exigences de type SSS. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d}{get\+SRS}} () const
+\begin{DoxyCompactList}\small\item\em Récupère les exigences de type SRS. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8}{get\+SDD}} () const
+\begin{DoxyCompactList}\small\item\em Récupère les exigences de type SDD. \end{DoxyCompactList}\item 
+const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34}{get\+Ignorees}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la liste des identifiants ignorés lors de la conversion. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_convertisseur_exigences_a97f33e76e2c5ccfb9308de0ee5ecfd98}{Convertisseur\+Exigences}} (const std::\+string \&motif="{}EXIGENCE\+\_\+\+[A-\/Z0-\/9\+\_\+]\++"{})
+\begin{DoxyCompactList}\small\item\em Convertit un vecteur de \doxylink{struct_exigence_extraite}{Exigence\+Extraite} en objets typés. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368}{convertir}} (const std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \&extraites)
+\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97}{get\+SSS}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les exigences SSS converties. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d}{get\+SRS}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les exigences SRS converties. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8}{get\+SDD}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les exigences SDD converties. \end{DoxyCompactList}\item 
+const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34}{get\+Ignorees}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les identifiants ignorés (type non reconnu). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_convertisseur_exigences_a97f33e76e2c5ccfb9308de0ee5ecfd98}{Convertisseur\+Exigences}} (const std::\+string \&motif="{}EXIGENCE\+\_\+\+[A-\/Z0-\/9\+\_\+]\++"{})
+\begin{DoxyCompactList}\small\item\em Convertit un vecteur de \doxylink{struct_exigence_extraite}{Exigence\+Extraite} en objets typés. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368}{convertir}} (const std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \&extraites)
+\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97}{get\+SSS}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les exigences SSS converties. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d}{get\+SRS}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les exigences SRS converties. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8}{get\+SDD}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les exigences SDD converties. \end{DoxyCompactList}\item 
+const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34}{get\+Ignorees}} () const
+\begin{DoxyCompactList}\small\item\em Retourne les identifiants ignorés (type non reconnu). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres privées}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{Type\+Exigence}} \doxymbox{\hyperlink{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837}{detecter\+Type}} (const std::\+string \&identifiant) const
+\begin{DoxyCompactList}\small\item\em Détecte le type SSS/\+\+SRS/\+\+SDD depuis l\textquotesingle{}identifiant. AJOUT :\+ supporte plusieurs préfixes par niveau. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd}{est\+Type\+Connu}} (const std::\+string \&identifiant) const
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}identifiant contient au moins un mot-\/clé SSS, SRS ou SDD. AJOUT :\+ supporte plusieurs préfixes par niveau. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{Type\+Exigence}} \doxymbox{\hyperlink{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837}{detecter\+Type}} (const std::\+string \&identifiant) const
+\begin{DoxyCompactList}\small\item\em Détermine le type d\textquotesingle{}une exigence depuis son identifiant. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd}{est\+Type\+Connu}} (const std::\+string \&identifiant) const
+\begin{DoxyCompactList}\small\item\em Indique si l\textquotesingle{}identifiant contient un mot-\/clé de type reconnu. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{Type\+Exigence}} \doxymbox{\hyperlink{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837}{detecter\+Type}} (const std::\+string \&identifiant) const
+\begin{DoxyCompactList}\small\item\em Détermine le type d\textquotesingle{}une exigence depuis son identifiant. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd}{est\+Type\+Connu}} (const std::\+string \&identifiant) const
+\begin{DoxyCompactList}\small\item\em Indique si l\textquotesingle{}identifiant contient un mot-\/clé de type reconnu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres privées statiques}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_convertisseur_exigences_ae9f2eb390f488cf6e028ae2e360b59e1}{split\+Virgule}} (const std::\+string \&s)
+\begin{DoxyCompactList}\small\item\em Découpe une chaîne par virgule et nettoie les espaces. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \doxymbox{\hyperlink{class_convertisseur_exigences_a6b0e39a2bbaa2d1424c0827f8c2fa789}{exigences\+SSS}}
+\begin{DoxyCompactList}\small\item\em Exigences de niveau SSS converties. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \doxymbox{\hyperlink{class_convertisseur_exigences_a35294e17920031d6884a17c54a55e2ea}{exigences\+SRS}}
+\begin{DoxyCompactList}\small\item\em Exigences de niveau SRS converties. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \doxymbox{\hyperlink{class_convertisseur_exigences_a8334e252e68d76069c79d0e5c5776456}{exigences\+SDD}}
+\begin{DoxyCompactList}\small\item\em Exigences de niveau SDD converties. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_convertisseur_exigences_a02fce824cf7832ea08ceaf1d47e40708}{ignorees}}
+\begin{DoxyCompactList}\small\item\em Identifiants dont le type n\textquotesingle{}a pas pu être déterminé. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_convertisseur_exigences_ac0b592b7548ed5afbc8ed8440e2650ec}{motif\+Regex}}
+\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_convertisseur_exigences_a8195c54b0e6ccad6746203ffb9b632a6}{prefixes\+SSS}}
+\begin{DoxyCompactList}\small\item\em Mots-\/clés SSS (ex:\+ \+["{}\+CLIENT"{}, "{}\+A"{}]\+). \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_convertisseur_exigences_a68151ecc0f0ac4aea64adeb1f0c5cf01}{prefixes\+SRS}}
+\begin{DoxyCompactList}\small\item\em Mots-\/clés SRS (ex:\+ \+["{}\+PROJET"{}, "{}\+B"{}]\+). \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_convertisseur_exigences_a4b0691eadfa705210e0c8e3474b57d0b}{prefixes\+SDD}}
+\begin{DoxyCompactList}\small\item\em Mots-\/clés SDD (ex:\+ \+["{}\+SDD"{}, "{}\+C"{}]\+). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Adaptateur qui transforme les structures brutes (Module 1) en objets C++ typés (Module 2) prêts pour l\textquotesingle{}analyse de traçabilité. 
+
+AJOUT :\+ les préfixes SSS/\+\+SRS/\+\+SDD acceptent désormais plusieurs valeurs séparées par des virgules (ex:\+ "{}\+CLIENT, A, SSS"{}). Le préfixe global accepte aussi plusieurs valeurs (ex:\+ "{}\+SPEC\+\_\+, EX\+\_\+, REQ\+\_\+"{}). 
+
+\label{doc-constructors}
+\Hypertarget{class_convertisseur_exigences_doc-constructors}
+\doxysubsection{Documentation des constructeurs et destructeur}
+\Hypertarget{class_convertisseur_exigences_ad011e004c7e7f51882eebe92f7738dde}\index{ConvertisseurExigences@{ConvertisseurExigences}!ConvertisseurExigences@{ConvertisseurExigences}}
+\index{ConvertisseurExigences@{ConvertisseurExigences}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{ConvertisseurExigences()}{ConvertisseurExigences()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_ad011e004c7e7f51882eebe92f7738dde} 
+Convertisseur\+Exigences::\+\+Convertisseur\+Exigences (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{motif}{ = {\ttfamily "{}\+[A-\/Z]\+\+[A-\/Z0-\/9\+\_\+]\++"{}}, }\item[{const std::\+string \&}]{p\+SSS}{ = {\ttfamily "{}CLIENT"{}}, }\item[{const std::\+string \&}]{p\+SRS}{ = {\ttfamily "{}PROJET"{}}, }\item[{const std::\+string \&}]{p\+SDD}{ = {\ttfamily "{}SDD"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructeur avec préfixes multiples séparés par virgules. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em motif} & Regex pour matcher les identifiants \\
+\hline
+{\em p\+SSS} & Mots-\/clés SSS séparés par virgules (ex:\+ "{}\+CLIENT, A"{}) \\
+\hline
+{\em p\+SRS} & Mots-\/clés SRS séparés par virgules (ex:\+ "{}\+PROJET, B"{}) \\
+\hline
+{\em p\+SDD} & Mots-\/clés SDD séparés par virgules (ex:\+ "{}\+SDD, C"{}) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_convertisseur_exigences_a97f33e76e2c5ccfb9308de0ee5ecfd98}\index{ConvertisseurExigences@{ConvertisseurExigences}!ConvertisseurExigences@{ConvertisseurExigences}}
+\index{ConvertisseurExigences@{ConvertisseurExigences}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{ConvertisseurExigences()}{ConvertisseurExigences()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a97f33e76e2c5ccfb9308de0ee5ecfd98} 
+Convertisseur\+Exigences::\+\+Convertisseur\+Exigences (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{motif}{ = {\ttfamily "{}EXIGENCE\+\_\+\+[A-\/Z0-\/9\+\_\+]\++"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convertit un vecteur de \doxylink{struct_exigence_extraite}{Exigence\+Extraite} en objets typés. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em extraites} & Liste issue de \doxylink{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}{Extracteur\+Fichier::\+extraire()}.\\
+\hline
+\end{DoxyParams}
+Réinitialise les résultats précédents à chaque appel. Transfère automatiquement les métadonnées (tracabilite, cibles, necessaireA, alloueA, developpe) dans les objets créés. \Hypertarget{class_convertisseur_exigences_a97f33e76e2c5ccfb9308de0ee5ecfd98}\index{ConvertisseurExigences@{ConvertisseurExigences}!ConvertisseurExigences@{ConvertisseurExigences}}
+\index{ConvertisseurExigences@{ConvertisseurExigences}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{ConvertisseurExigences()}{ConvertisseurExigences()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a97f33e76e2c5ccfb9308de0ee5ecfd98} 
+Convertisseur\+Exigences::\+\+Convertisseur\+Exigences (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{motif}{ = {\ttfamily "{}EXIGENCE\+\_\+\+[A-\/Z0-\/9\+\_\+]\++"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convertit un vecteur de \doxylink{struct_exigence_extraite}{Exigence\+Extraite} en objets typés. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em extraites} & Liste issue de \doxylink{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}{Extracteur\+Fichier::\+extraire()}.\\
+\hline
+\end{DoxyParams}
+Réinitialise les résultats précédents à chaque appel. Transfère automatiquement les métadonnées (tracabilite, cibles, necessaireA, alloueA, developpe) dans les objets créés. 
+
+\label{doc-func-members}
+\Hypertarget{class_convertisseur_exigences_doc-func-members}
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368}\index{ConvertisseurExigences@{ConvertisseurExigences}!convertir@{convertir}}
+\index{convertir@{convertir}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{convertir()}{convertir()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368} 
+void Convertisseur\+Exigences::\+convertir (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \&}]{extraites}{}\end{DoxyParamCaption})}
+
+
+
+Convertit une liste d\textquotesingle{}exigences extraites en objets SSS, SRS et SDD. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em extraites} & Liste des exigences extraites par le Module 1 \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368}\index{ConvertisseurExigences@{ConvertisseurExigences}!convertir@{convertir}}
+\index{convertir@{convertir}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{convertir()}{convertir()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368} 
+void Convertisseur\+Exigences::\+convertir (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \&}]{extraites}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368}\index{ConvertisseurExigences@{ConvertisseurExigences}!convertir@{convertir}}
+\index{convertir@{convertir}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{convertir()}{convertir()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_af602bb0f5d061033ef8ad7e5d281a368} 
+void Convertisseur\+Exigences::\+convertir (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \&}]{extraites}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837}\index{ConvertisseurExigences@{ConvertisseurExigences}!detecterType@{detecterType}}
+\index{detecterType@{detecterType}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{detecterType()}{detecterType()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837} 
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{Type\+Exigence}} Convertisseur\+Exigences::\+detecter\+Type (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifiant}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Détecte le type SSS/\+\+SRS/\+\+SDD depuis l\textquotesingle{}identifiant. AJOUT :\+ supporte plusieurs préfixes par niveau. 
+
+Détecte le type d\textquotesingle{}exigence à partir de son identifiant.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em identifiant} & L\textquotesingle{}identifiant de l\textquotesingle{}exigence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+\doxylink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{Type\+Exigence} Type détecté (SSS, SRS, SDD) 
+\end{DoxyReturn}
+\Hypertarget{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837}\index{ConvertisseurExigences@{ConvertisseurExigences}!detecterType@{detecterType}}
+\index{detecterType@{detecterType}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{detecterType()}{detecterType()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837} 
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{Type\+Exigence}} Convertisseur\+Exigences::\+detecter\+Type (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifiant}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Détermine le type d\textquotesingle{}une exigence depuis son identifiant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em identifiant} & Identifiant extrait par le module 1. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+SSS, SRS ou SDD. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Appeler \doxylink{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd}{est\+Type\+Connu()} avant pour éviter un résultat invalide. 
+\end{DoxyNote}
+\Hypertarget{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837}\index{ConvertisseurExigences@{ConvertisseurExigences}!detecterType@{detecterType}}
+\index{detecterType@{detecterType}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{detecterType()}{detecterType()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a4d4ed19528a773a283dd46cfd8c25837} 
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{Type\+Exigence}} Convertisseur\+Exigences::\+detecter\+Type (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifiant}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Détermine le type d\textquotesingle{}une exigence depuis son identifiant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em identifiant} & Identifiant extrait par le module 1. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+SSS, SRS ou SDD. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Appeler \doxylink{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd}{est\+Type\+Connu()} avant pour éviter un résultat invalide. 
+\end{DoxyNote}
+\Hypertarget{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd}\index{ConvertisseurExigences@{ConvertisseurExigences}!estTypeConnu@{estTypeConnu}}
+\index{estTypeConnu@{estTypeConnu}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{estTypeConnu()}{estTypeConnu()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd} 
+bool Convertisseur\+Exigences::\+est\+Type\+Connu (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifiant}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vérifie si l\textquotesingle{}identifiant contient au moins un mot-\/clé SSS, SRS ou SDD. AJOUT :\+ supporte plusieurs préfixes par niveau. 
+
+Vérifie si un identifiant correspond à un type d\textquotesingle{}exigence connu.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em identifiant} & L\textquotesingle{}identifiant de l\textquotesingle{}exigence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si le type est SSS, SRS ou SDD 
+
+false sinon 
+\end{DoxyReturn}
+\Hypertarget{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd}\index{ConvertisseurExigences@{ConvertisseurExigences}!estTypeConnu@{estTypeConnu}}
+\index{estTypeConnu@{estTypeConnu}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{estTypeConnu()}{estTypeConnu()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd} 
+bool Convertisseur\+Exigences::\+est\+Type\+Connu (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifiant}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Indique si l\textquotesingle{}identifiant contient un mot-\/clé de type reconnu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em identifiant} & L\textquotesingle{}identifiant à tester. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si "{}\+CLIENT"{}, "{}\+PROJET"{} ou "{}\+SDD"{} est présent (insensible à la casse). 
+\end{DoxyReturn}
+\Hypertarget{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd}\index{ConvertisseurExigences@{ConvertisseurExigences}!estTypeConnu@{estTypeConnu}}
+\index{estTypeConnu@{estTypeConnu}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{estTypeConnu()}{estTypeConnu()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_aafd9a9b8cc8a11450bb30a23393f39dd} 
+bool Convertisseur\+Exigences::\+est\+Type\+Connu (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{identifiant}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Indique si l\textquotesingle{}identifiant contient un mot-\/clé de type reconnu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em identifiant} & L\textquotesingle{}identifiant à tester. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+true si "{}\+CLIENT"{}, "{}\+PROJET"{} ou "{}\+SDD"{} est présent (insensible à la casse). 
+\end{DoxyReturn}
+\Hypertarget{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34}\index{ConvertisseurExigences@{ConvertisseurExigences}!getIgnorees@{getIgnorees}}
+\index{getIgnorees@{getIgnorees}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getIgnorees()}{getIgnorees()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34} 
+const std::\+vector$<$ std::\+string $>$ \& Convertisseur\+Exigences::\+get\+Ignorees (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère la liste des identifiants ignorés lors de la conversion. 
+
+\begin{DoxyReturn}{Renvoie}
+const std::\+vector$<$std::\+string$>$\& Liste des identifiants ignorés 
+\end{DoxyReturn}
+\Hypertarget{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34}\index{ConvertisseurExigences@{ConvertisseurExigences}!getIgnorees@{getIgnorees}}
+\index{getIgnorees@{getIgnorees}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getIgnorees()}{getIgnorees()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34} 
+const std::\+vector$<$ std::\+string $>$ \& Convertisseur\+Exigences::\+get\+Ignorees (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne les identifiants ignorés (type non reconnu). 
+
+\Hypertarget{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34}\index{ConvertisseurExigences@{ConvertisseurExigences}!getIgnorees@{getIgnorees}}
+\index{getIgnorees@{getIgnorees}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getIgnorees()}{getIgnorees()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a474736016ee9053aadab7d05722dec34} 
+const std::\+vector$<$ std::\+string $>$ \& Convertisseur\+Exigences::\+get\+Ignorees (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne les identifiants ignorés (type non reconnu). 
+
+\Hypertarget{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8}\index{ConvertisseurExigences@{ConvertisseurExigences}!getSDD@{getSDD}}
+\index{getSDD@{getSDD}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getSDD()}{getSDD()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& Convertisseur\+Exigences::\+get\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère les exigences de type SDD. 
+
+\begin{DoxyReturn}{Renvoie}
+const std::\+vector$<$\+Exigence\+SDD$>$\& Liste des exigences SDD 
+\end{DoxyReturn}
+\Hypertarget{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8}\index{ConvertisseurExigences@{ConvertisseurExigences}!getSDD@{getSDD}}
+\index{getSDD@{getSDD}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getSDD()}{getSDD()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& Convertisseur\+Exigences::\+get\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne les exigences SDD converties. 
+
+\Hypertarget{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8}\index{ConvertisseurExigences@{ConvertisseurExigences}!getSDD@{getSDD}}
+\index{getSDD@{getSDD}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getSDD()}{getSDD()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_ac251169e6a562407731f9e7fdb0daef8} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ \& Convertisseur\+Exigences::\+get\+SDD (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne les exigences SDD converties. 
+
+\Hypertarget{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d}\index{ConvertisseurExigences@{ConvertisseurExigences}!getSRS@{getSRS}}
+\index{getSRS@{getSRS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getSRS()}{getSRS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& Convertisseur\+Exigences::\+get\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère les exigences de type SRS. 
+
+\begin{DoxyReturn}{Renvoie}
+const std::\+vector$<$\+Exigence\+SRS$>$\& Liste des exigences SRS 
+\end{DoxyReturn}
+\Hypertarget{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d}\index{ConvertisseurExigences@{ConvertisseurExigences}!getSRS@{getSRS}}
+\index{getSRS@{getSRS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getSRS()}{getSRS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& Convertisseur\+Exigences::\+get\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne les exigences SRS converties. 
+
+\Hypertarget{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d}\index{ConvertisseurExigences@{ConvertisseurExigences}!getSRS@{getSRS}}
+\index{getSRS@{getSRS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getSRS()}{getSRS()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a3573e23357776321417fd0ccc672528d} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ \& Convertisseur\+Exigences::\+get\+SRS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne les exigences SRS converties. 
+
+\Hypertarget{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97}\index{ConvertisseurExigences@{ConvertisseurExigences}!getSSS@{getSSS}}
+\index{getSSS@{getSSS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getSSS()}{getSSS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \& Convertisseur\+Exigences::\+get\+SSS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère les exigences de type SSS. 
+
+\begin{DoxyReturn}{Renvoie}
+const std::\+vector$<$\+Exigence\+SSS$>$\& Liste des exigences SSS 
+\end{DoxyReturn}
+\Hypertarget{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97}\index{ConvertisseurExigences@{ConvertisseurExigences}!getSSS@{getSSS}}
+\index{getSSS@{getSSS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getSSS()}{getSSS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \& Convertisseur\+Exigences::\+get\+SSS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne les exigences SSS converties. 
+
+\Hypertarget{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97}\index{ConvertisseurExigences@{ConvertisseurExigences}!getSSS@{getSSS}}
+\index{getSSS@{getSSS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{getSSS()}{getSSS()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a8acab90f49dea1bad8a591534064fd97} 
+const std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ \& Convertisseur\+Exigences::\+get\+SSS (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne les exigences SSS converties. 
+
+\Hypertarget{class_convertisseur_exigences_ae9f2eb390f488cf6e028ae2e360b59e1}\index{ConvertisseurExigences@{ConvertisseurExigences}!splitVirgule@{splitVirgule}}
+\index{splitVirgule@{splitVirgule}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{splitVirgule()}{splitVirgule()}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_ae9f2eb390f488cf6e028ae2e360b59e1} 
+std::\+vector$<$ std::\+string $>$ Convertisseur\+Exigences::\+split\+Virgule (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Découpe une chaîne par virgule et nettoie les espaces. 
+
+Découpe une chaîne par virgule et nettoie les espaces. Ex:\+ "{}\+CLIENT, A, SSS"{} → \+["{}\+CLIENT"{}, "{}\+A"{}, "{}\+SSS"{}]\+. 
+
+\label{doc-variable-members}
+\Hypertarget{class_convertisseur_exigences_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{class_convertisseur_exigences_a8334e252e68d76069c79d0e5c5776456}\index{ConvertisseurExigences@{ConvertisseurExigences}!exigencesSDD@{exigencesSDD}}
+\index{exigencesSDD@{exigencesSDD}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{exigencesSDD}{exigencesSDD}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a8334e252e68d76069c79d0e5c5776456} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_d_d}{Exigence\+SDD}} $>$ Convertisseur\+Exigences::\+exigences\+SDD\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Exigences de niveau SDD converties. 
+
+\Hypertarget{class_convertisseur_exigences_a35294e17920031d6884a17c54a55e2ea}\index{ConvertisseurExigences@{ConvertisseurExigences}!exigencesSRS@{exigencesSRS}}
+\index{exigencesSRS@{exigencesSRS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{exigencesSRS}{exigencesSRS}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a35294e17920031d6884a17c54a55e2ea} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_r_s}{Exigence\+SRS}} $>$ Convertisseur\+Exigences::\+exigences\+SRS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Exigences de niveau SRS converties. 
+
+\Hypertarget{class_convertisseur_exigences_a6b0e39a2bbaa2d1424c0827f8c2fa789}\index{ConvertisseurExigences@{ConvertisseurExigences}!exigencesSSS@{exigencesSSS}}
+\index{exigencesSSS@{exigencesSSS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{exigencesSSS}{exigencesSSS}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a6b0e39a2bbaa2d1424c0827f8c2fa789} 
+std::\+vector$<$ \doxymbox{\hyperlink{class_exigence_s_s_s}{Exigence\+SSS}} $>$ Convertisseur\+Exigences::\+exigences\+SSS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Exigences de niveau SSS converties. 
+
+\Hypertarget{class_convertisseur_exigences_a02fce824cf7832ea08ceaf1d47e40708}\index{ConvertisseurExigences@{ConvertisseurExigences}!ignorees@{ignorees}}
+\index{ignorees@{ignorees}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{ignorees}{ignorees}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a02fce824cf7832ea08ceaf1d47e40708} 
+std::\+vector$<$ std::\+string $>$ Convertisseur\+Exigences::\+ignorees\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Identifiants dont le type n\textquotesingle{}a pas pu être déterminé. 
+
+\Hypertarget{class_convertisseur_exigences_ac0b592b7548ed5afbc8ed8440e2650ec}\index{ConvertisseurExigences@{ConvertisseurExigences}!motifRegex@{motifRegex}}
+\index{motifRegex@{motifRegex}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{motifRegex}{motifRegex}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_ac0b592b7548ed5afbc8ed8440e2650ec} 
+std::\+string Convertisseur\+Exigences::\+motif\+Regex\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_convertisseur_exigences_a4b0691eadfa705210e0c8e3474b57d0b}\index{ConvertisseurExigences@{ConvertisseurExigences}!prefixesSDD@{prefixesSDD}}
+\index{prefixesSDD@{prefixesSDD}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{prefixesSDD}{prefixesSDD}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a4b0691eadfa705210e0c8e3474b57d0b} 
+std::\+vector$<$std::\+string$>$ Convertisseur\+Exigences::\+prefixes\+SDD\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mots-\/clés SDD (ex:\+ \+["{}\+SDD"{}, "{}\+C"{}]\+). 
+
+\Hypertarget{class_convertisseur_exigences_a68151ecc0f0ac4aea64adeb1f0c5cf01}\index{ConvertisseurExigences@{ConvertisseurExigences}!prefixesSRS@{prefixesSRS}}
+\index{prefixesSRS@{prefixesSRS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{prefixesSRS}{prefixesSRS}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a68151ecc0f0ac4aea64adeb1f0c5cf01} 
+std::\+vector$<$std::\+string$>$ Convertisseur\+Exigences::\+prefixes\+SRS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mots-\/clés SRS (ex:\+ \+["{}\+PROJET"{}, "{}\+B"{}]\+). 
+
+\Hypertarget{class_convertisseur_exigences_a8195c54b0e6ccad6746203ffb9b632a6}\index{ConvertisseurExigences@{ConvertisseurExigences}!prefixesSSS@{prefixesSSS}}
+\index{prefixesSSS@{prefixesSSS}!ConvertisseurExigences@{ConvertisseurExigences}}
+\doxysubsubsection{\texorpdfstring{prefixesSSS}{prefixesSSS}}
+{\footnotesize\ttfamily \label{class_convertisseur_exigences_a8195c54b0e6ccad6746203ffb9b632a6} 
+std::\+vector$<$std::\+string$>$ Convertisseur\+Exigences::\+prefixes\+SSS\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Mots-\/clés SSS (ex:\+ \+["{}\+CLIENT"{}, "{}\+A"{}]\+). 
+
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants :\+\begin{DoxyCompactItemize}
+\item 
+branches/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_convertisseur_exigence_8h}{Convertisseur\+Exigence.\+h}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2include_2_convertisseur_exigence_8h}{Convertisseur\+Exigence.\+h}}\item 
+trunk/\+headers/\+\doxymbox{\hyperlink{trunk_2headers_2_convertisseur_exigence_8h}{Convertisseur\+Exigence.\+h}}\item 
+branches/\+\+Integration\+M1\+M2/\+src/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2src_2_convertisseur_exigence_8cpp}{Convertisseur\+Exigence.\+cpp}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+src/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2src_2_convertisseur_exigence_8cpp}{Convertisseur\+Exigence.\+cpp}}\item 
+trunk/\+sources/\+\doxymbox{\hyperlink{trunk_2sources_2_convertisseur_exigence_8cpp}{Convertisseur\+Exigence.\+cpp}}\end{DoxyCompactItemize}

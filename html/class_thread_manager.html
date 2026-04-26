@@ -1,0 +1,620 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TraceLink: Référence de la classe ThreadManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TraceLink
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_thread_manager.html','','class_thread_manager-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence de la classe ThreadManager</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gère l'exécution asynchrone de l'analyse de traçabilité.  
+ <a href="#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="branches_2_integration_m1_m2_2include_2_thread_manager_8h_source.html">ThreadManager.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Fonctions membres publiques</h2></td></tr>
+<tr class="memitem:aa71d481c0225f7ac18d5ebe3aac5936c" id="r_aa71d481c0225f7ac18d5ebe3aac5936c"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa71d481c0225f7ac18d5ebe3aac5936c">ThreadManager</a> (<a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp;<a class="el" href="#ad401d3bb503e0fc98ca0beba45fc357d">moteur</a>)</td></tr>
+<tr class="memdesc:aa71d481c0225f7ac18d5ebe3aac5936c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise la référence au moteur et positionne <code>analyseTerminee</code> à <code>false</code>.  <br /></td></tr>
+<tr class="memitem:a18eb12d3d752075318c3672c8efffd5b" id="r_a18eb12d3d752075318c3672c8efffd5b"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a18eb12d3d752075318c3672c8efffd5b">~ThreadManager</a> ()</td></tr>
+<tr class="memdesc:a18eb12d3d752075318c3672c8efffd5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joint le thread s'il est encore actif, empêchant l'appel à <code>std::terminate()</code>.  <br /></td></tr>
+<tr class="memitem:a926d04dbefb3d908659dd86209ed0008" id="r_a926d04dbefb3d908659dd86209ed0008"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a926d04dbefb3d908659dd86209ed0008">lancerAnalyse</a> ()</td></tr>
+<tr class="memdesc:a926d04dbefb3d908659dd86209ed0008"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un thread d'arrière-plan qui exécute <code>analyserTracabilite()</code> puis <code>calculerTaux()</code>, et positionne <code>analyseTerminee</code> à <code>true</code>. Sans effet si un thread est déjà actif.  <br /></td></tr>
+<tr class="memitem:a84a6ac12b8d5b88c3669c1e64262b836" id="r_a84a6ac12b8d5b88c3669c1e64262b836"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a84a6ac12b8d5b88c3669c1e64262b836">attendreFinAnalyse</a> ()</td></tr>
+<tr class="memdesc:a84a6ac12b8d5b88c3669c1e64262b836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelle <code>std::thread::join()</code> pour bloquer jusqu'à la fin du thread. Sans effet si aucun thread n'est actif.  <br /></td></tr>
+<tr class="memitem:a2746ccc87d26d8de34597b4b432a5864" id="r_a2746ccc87d26d8de34597b4b432a5864"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2746ccc87d26d8de34597b4b432a5864">estTerminee</a> () const</td></tr>
+<tr class="memdesc:a2746ccc87d26d8de34597b4b432a5864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'état de <code>analyseTerminee</code> sans bloquer le thread appelant.  <br /></td></tr>
+<tr class="memitem:aa71d481c0225f7ac18d5ebe3aac5936c" id="r_aa71d481c0225f7ac18d5ebe3aac5936c"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa71d481c0225f7ac18d5ebe3aac5936c">ThreadManager</a> (<a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp;<a class="el" href="#ad401d3bb503e0fc98ca0beba45fc357d">moteur</a>)</td></tr>
+<tr class="memdesc:aa71d481c0225f7ac18d5ebe3aac5936c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le gestionnaire de thread.  <br /></td></tr>
+<tr class="memitem:a18eb12d3d752075318c3672c8efffd5b" id="r_a18eb12d3d752075318c3672c8efffd5b"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a18eb12d3d752075318c3672c8efffd5b">~ThreadManager</a> ()</td></tr>
+<tr class="memdesc:a18eb12d3d752075318c3672c8efffd5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur : joint le thread s'il est encore actif.  <br /></td></tr>
+<tr class="memitem:a926d04dbefb3d908659dd86209ed0008" id="r_a926d04dbefb3d908659dd86209ed0008"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a926d04dbefb3d908659dd86209ed0008">lancerAnalyse</a> ()</td></tr>
+<tr class="memdesc:a926d04dbefb3d908659dd86209ed0008"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance l'analyse dans un thread séparé.  <br /></td></tr>
+<tr class="memitem:a84a6ac12b8d5b88c3669c1e64262b836" id="r_a84a6ac12b8d5b88c3669c1e64262b836"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a84a6ac12b8d5b88c3669c1e64262b836">attendreFinAnalyse</a> ()</td></tr>
+<tr class="memdesc:a84a6ac12b8d5b88c3669c1e64262b836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bloque le thread appelant jusqu'à la fin de l'analyse.  <br /></td></tr>
+<tr class="memitem:a2746ccc87d26d8de34597b4b432a5864" id="r_a2746ccc87d26d8de34597b4b432a5864"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2746ccc87d26d8de34597b4b432a5864">estTerminee</a> () const</td></tr>
+<tr class="memdesc:a2746ccc87d26d8de34597b4b432a5864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si l'analyse est terminée, sans bloquer.  <br /></td></tr>
+<tr class="memitem:aa71d481c0225f7ac18d5ebe3aac5936c" id="r_aa71d481c0225f7ac18d5ebe3aac5936c"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa71d481c0225f7ac18d5ebe3aac5936c">ThreadManager</a> (<a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp;<a class="el" href="#ad401d3bb503e0fc98ca0beba45fc357d">moteur</a>)</td></tr>
+<tr class="memitem:a18eb12d3d752075318c3672c8efffd5b" id="r_a18eb12d3d752075318c3672c8efffd5b"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a18eb12d3d752075318c3672c8efffd5b">~ThreadManager</a> ()</td></tr>
+<tr class="memitem:a926d04dbefb3d908659dd86209ed0008" id="r_a926d04dbefb3d908659dd86209ed0008"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a926d04dbefb3d908659dd86209ed0008">lancerAnalyse</a> ()</td></tr>
+<tr class="memitem:a84a6ac12b8d5b88c3669c1e64262b836" id="r_a84a6ac12b8d5b88c3669c1e64262b836"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a84a6ac12b8d5b88c3669c1e64262b836">attendreFinAnalyse</a> ()</td></tr>
+<tr class="memitem:a2746ccc87d26d8de34597b4b432a5864" id="r_a2746ccc87d26d8de34597b4b432a5864"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2746ccc87d26d8de34597b4b432a5864">estTerminee</a> () const</td></tr>
+<tr class="memitem:aa71d481c0225f7ac18d5ebe3aac5936c" id="r_aa71d481c0225f7ac18d5ebe3aac5936c"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#aa71d481c0225f7ac18d5ebe3aac5936c">ThreadManager</a> (<a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp;<a class="el" href="#ad401d3bb503e0fc98ca0beba45fc357d">moteur</a>)</td></tr>
+<tr class="memitem:a18eb12d3d752075318c3672c8efffd5b" id="r_a18eb12d3d752075318c3672c8efffd5b"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a18eb12d3d752075318c3672c8efffd5b">~ThreadManager</a> ()</td></tr>
+<tr class="memitem:a926d04dbefb3d908659dd86209ed0008" id="r_a926d04dbefb3d908659dd86209ed0008"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a926d04dbefb3d908659dd86209ed0008">lancerAnalyse</a> ()</td></tr>
+<tr class="memitem:a84a6ac12b8d5b88c3669c1e64262b836" id="r_a84a6ac12b8d5b88c3669c1e64262b836"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a84a6ac12b8d5b88c3669c1e64262b836">attendreFinAnalyse</a> ()</td></tr>
+<tr class="memitem:a2746ccc87d26d8de34597b4b432a5864" id="r_a2746ccc87d26d8de34597b4b432a5864"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a2746ccc87d26d8de34597b4b432a5864">estTerminee</a> () const</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Attributs privés</h2></td></tr>
+<tr class="memitem:ad401d3bb503e0fc98ca0beba45fc357d" id="r_ad401d3bb503e0fc98ca0beba45fc357d"><td class="memItemLeft"><a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ad401d3bb503e0fc98ca0beba45fc357d">moteur</a></td></tr>
+<tr class="memdesc:ad401d3bb503e0fc98ca0beba45fc357d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Référence au moteur de traçabilité (pas de copie).  <br /></td></tr>
+<tr class="memitem:ad9572c1ed71075215e2e103979637538" id="r_ad9572c1ed71075215e2e103979637538"><td class="memItemLeft">std::thread&#160;</td><td class="memItemRight"><a class="el" href="#ad9572c1ed71075215e2e103979637538">threadAnalyse</a></td></tr>
+<tr class="memdesc:ad9572c1ed71075215e2e103979637538"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread d'arrière-plan exécutant l'analyse.  <br /></td></tr>
+<tr class="memitem:a8f7aefd9c3f0892e82bb32b24f041b18" id="r_a8f7aefd9c3f0892e82bb32b24f041b18"><td class="memItemLeft">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8f7aefd9c3f0892e82bb32b24f041b18">analyseTerminee</a></td></tr>
+<tr class="memdesc:a8f7aefd9c3f0892e82bb32b24f041b18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicateur atomique de fin d'analyse.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gère l'exécution asynchrone de l'analyse de traçabilité. </p>
+<p>Encapsule un <code>std::thread</code> qui exécute séquentiellement <code><a class="el" href="class_moteur_tracabilite.html#ad2fad491850ace8d8092eabc4e6b61b5" title="Réinitialise les statuts, vide les liens brisés, puis appelle analyserSSS_SRS() et analyserSRS_SDD().">MoteurTracabilite::analyserTracabilite()</a></code> puis <code><a class="el" href="class_moteur_tracabilite.html#aebf35cbed81371cefd10246ae6aa89cd" title="Calcule tauxSSS_SRS, tauxSRS_SDD et tauxGlobal. Ajoute un avertissement dans liensBrises si un vecteu...">MoteurTracabilite::calculerTaux()</a></code>. Un <code>std::atomic&lt;bool&gt;</code> permet de consulter l'état d'avancement sans bloquer le thread principal.</p>
+<p>Le destructeur garantit que le thread est joint avant la destruction de l'objet, évitant ainsi l'appel à <code>std::terminate()</code>. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a id="aa71d481c0225f7ac18d5ebe3aac5936c" name="aa71d481c0225f7ac18d5ebe3aac5936c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa71d481c0225f7ac18d5ebe3aac5936c">&#9670;&#160;</a></span>ThreadManager() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadManager::ThreadManager </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>moteur</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise la référence au moteur et positionne <code>analyseTerminee</code> à <code>false</code>. </p>
+
+</div>
+</div>
+<a id="a18eb12d3d752075318c3672c8efffd5b" name="a18eb12d3d752075318c3672c8efffd5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18eb12d3d752075318c3672c8efffd5b">&#9670;&#160;</a></span>~ThreadManager() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadManager::~ThreadManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Joint le thread s'il est encore actif, empêchant l'appel à <code>std::terminate()</code>. </p>
+
+</div>
+</div>
+<a id="aa71d481c0225f7ac18d5ebe3aac5936c" name="aa71d481c0225f7ac18d5ebe3aac5936c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa71d481c0225f7ac18d5ebe3aac5936c">&#9670;&#160;</a></span>ThreadManager() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadManager::ThreadManager </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>moteur</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construit le gestionnaire de thread. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="#ad401d3bb503e0fc98ca0beba45fc357d" title="Référence au moteur de traçabilité (pas de copie).">moteur</a></td><td>Référence au <code><a class="el" href="class_moteur_tracabilite.html" title="Orchestre l&#39;analyse de traçabilité sur les trois niveaux d&#39;exigences.">MoteurTracabilite</a></code> déjà alimenté par <code>setDonnees()</code>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><code>analyseTerminee</code> est initialisé à <code>false</code>. </p>
+
+</div>
+</div>
+<a id="a18eb12d3d752075318c3672c8efffd5b" name="a18eb12d3d752075318c3672c8efffd5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18eb12d3d752075318c3672c8efffd5b">&#9670;&#160;</a></span>~ThreadManager() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadManager::~ThreadManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructeur : joint le thread s'il est encore actif. </p>
+<p>Empêche l'appel à <code>std::terminate()</code> lors de la destruction d'un <code>std::thread</code> encore joignable. </p>
+
+</div>
+</div>
+<a id="aa71d481c0225f7ac18d5ebe3aac5936c" name="aa71d481c0225f7ac18d5ebe3aac5936c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa71d481c0225f7ac18d5ebe3aac5936c">&#9670;&#160;</a></span>ThreadManager() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadManager::ThreadManager </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>moteur</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18eb12d3d752075318c3672c8efffd5b" name="a18eb12d3d752075318c3672c8efffd5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18eb12d3d752075318c3672c8efffd5b">&#9670;&#160;</a></span>~ThreadManager() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadManager::~ThreadManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa71d481c0225f7ac18d5ebe3aac5936c" name="aa71d481c0225f7ac18d5ebe3aac5936c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa71d481c0225f7ac18d5ebe3aac5936c">&#9670;&#160;</a></span>ThreadManager() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadManager::ThreadManager </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>moteur</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18eb12d3d752075318c3672c8efffd5b" name="a18eb12d3d752075318c3672c8efffd5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18eb12d3d752075318c3672c8efffd5b">&#9670;&#160;</a></span>~ThreadManager() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ThreadManager::~ThreadManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions membres</h2>
+<a id="a84a6ac12b8d5b88c3669c1e64262b836" name="a84a6ac12b8d5b88c3669c1e64262b836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a6ac12b8d5b88c3669c1e64262b836">&#9670;&#160;</a></span>attendreFinAnalyse() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ThreadManager::attendreFinAnalyse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Appelle <code>std::thread::join()</code> pour bloquer jusqu'à la fin du thread. Sans effet si aucun thread n'est actif. </p>
+
+</div>
+</div>
+<a id="a84a6ac12b8d5b88c3669c1e64262b836" name="a84a6ac12b8d5b88c3669c1e64262b836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a6ac12b8d5b88c3669c1e64262b836">&#9670;&#160;</a></span>attendreFinAnalyse() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ThreadManager::attendreFinAnalyse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Bloque le thread appelant jusqu'à la fin de l'analyse. </p>
+<p>Appelle <code>std::thread::join()</code> sur le thread d'analyse. Sans effet si aucun thread n'est actif. </p>
+
+</div>
+</div>
+<a id="a84a6ac12b8d5b88c3669c1e64262b836" name="a84a6ac12b8d5b88c3669c1e64262b836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a6ac12b8d5b88c3669c1e64262b836">&#9670;&#160;</a></span>attendreFinAnalyse() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ThreadManager::attendreFinAnalyse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a84a6ac12b8d5b88c3669c1e64262b836" name="a84a6ac12b8d5b88c3669c1e64262b836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84a6ac12b8d5b88c3669c1e64262b836">&#9670;&#160;</a></span>attendreFinAnalyse() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ThreadManager::attendreFinAnalyse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2746ccc87d26d8de34597b4b432a5864" name="a2746ccc87d26d8de34597b4b432a5864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2746ccc87d26d8de34597b4b432a5864">&#9670;&#160;</a></span>estTerminee() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ThreadManager::estTerminee </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne l'état de <code>analyseTerminee</code> sans bloquer le thread appelant. </p>
+
+</div>
+</div>
+<a id="a2746ccc87d26d8de34597b4b432a5864" name="a2746ccc87d26d8de34597b4b432a5864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2746ccc87d26d8de34597b4b432a5864">&#9670;&#160;</a></span>estTerminee() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ThreadManager::estTerminee </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si l'analyse est terminée, sans bloquer. </p>
+<dl class="section return"><dt>Renvoie</dt><dd><code>true</code> si <code>analyseTerminee</code> vaut <code>true</code>, <code>false</code> sinon. </dd></dl>
+
+</div>
+</div>
+<a id="a2746ccc87d26d8de34597b4b432a5864" name="a2746ccc87d26d8de34597b4b432a5864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2746ccc87d26d8de34597b4b432a5864">&#9670;&#160;</a></span>estTerminee() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ThreadManager::estTerminee </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2746ccc87d26d8de34597b4b432a5864" name="a2746ccc87d26d8de34597b4b432a5864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2746ccc87d26d8de34597b4b432a5864">&#9670;&#160;</a></span>estTerminee() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ThreadManager::estTerminee </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a926d04dbefb3d908659dd86209ed0008" name="a926d04dbefb3d908659dd86209ed0008"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a926d04dbefb3d908659dd86209ed0008">&#9670;&#160;</a></span>lancerAnalyse() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ThreadManager::lancerAnalyse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée un thread d'arrière-plan qui exécute <code>analyserTracabilite()</code> puis <code>calculerTaux()</code>, et positionne <code>analyseTerminee</code> à <code>true</code>. Sans effet si un thread est déjà actif. </p>
+
+</div>
+</div>
+<a id="a926d04dbefb3d908659dd86209ed0008" name="a926d04dbefb3d908659dd86209ed0008"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a926d04dbefb3d908659dd86209ed0008">&#9670;&#160;</a></span>lancerAnalyse() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ThreadManager::lancerAnalyse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lance l'analyse dans un thread séparé. </p>
+<p>Crée un <code>std::thread</code> qui exécute successivement <code><a class="el" href="class_moteur_tracabilite.html#ad2fad491850ace8d8092eabc4e6b61b5" title="Réinitialise les statuts, vide les liens brisés, puis appelle analyserSSS_SRS() et analyserSRS_SDD().">MoteurTracabilite::analyserTracabilite()</a></code> et <code><a class="el" href="class_moteur_tracabilite.html#aebf35cbed81371cefd10246ae6aa89cd" title="Calcule tauxSSS_SRS, tauxSRS_SDD et tauxGlobal. Ajoute un avertissement dans liensBrises si un vecteu...">MoteurTracabilite::calculerTaux()</a></code>, puis positionne <code>analyseTerminee</code> à <code>true</code>. Sans effet si un thread est déjà en cours d'exécution. </p>
+
+</div>
+</div>
+<a id="a926d04dbefb3d908659dd86209ed0008" name="a926d04dbefb3d908659dd86209ed0008"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a926d04dbefb3d908659dd86209ed0008">&#9670;&#160;</a></span>lancerAnalyse() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ThreadManager::lancerAnalyse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a926d04dbefb3d908659dd86209ed0008" name="a926d04dbefb3d908659dd86209ed0008"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a926d04dbefb3d908659dd86209ed0008">&#9670;&#160;</a></span>lancerAnalyse() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ThreadManager::lancerAnalyse </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentation des données membres</h2>
+<a id="a8f7aefd9c3f0892e82bb32b24f041b18" name="a8f7aefd9c3f0892e82bb32b24f041b18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f7aefd9c3f0892e82bb32b24f041b18">&#9670;&#160;</a></span>analyseTerminee</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt; bool &gt; ThreadManager::analyseTerminee</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indicateur atomique de fin d'analyse. </p>
+
+</div>
+</div>
+<a id="ad401d3bb503e0fc98ca0beba45fc357d" name="ad401d3bb503e0fc98ca0beba45fc357d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad401d3bb503e0fc98ca0beba45fc357d">&#9670;&#160;</a></span>moteur</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_moteur_tracabilite.html">MoteurTracabilite</a> &amp; ThreadManager::moteur</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Référence au moteur de traçabilité (pas de copie). </p>
+
+</div>
+</div>
+<a id="ad9572c1ed71075215e2e103979637538" name="ad9572c1ed71075215e2e103979637538"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9572c1ed71075215e2e103979637538">&#9670;&#160;</a></span>threadAnalyse</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::thread ThreadManager::threadAnalyse</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Thread d'arrière-plan exécutant l'analyse. </p>
+
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<li>branches/IntegrationM1M2/include/<a class="el" href="branches_2_integration_m1_m2_2include_2_thread_manager_8h_source.html">ThreadManager.h</a></li>
+<li>branches/module2/include/<a class="el" href="branches_2module2_2include_2_thread_manager_8h_source.html">ThreadManager.h</a></li>
+<li>tags/A0/IntegrationM1M2/include/<a class="el" href="tags_2_a0_2_integration_m1_m2_2include_2_thread_manager_8h_source.html">ThreadManager.h</a></li>
+<li>trunk/headers/<a class="el" href="trunk_2headers_2_thread_manager_8h_source.html">ThreadManager.h</a></li>
+<li>branches/IntegrationM1M2/src/<a class="el" href="branches_2_integration_m1_m2_2src_2_thread_manager_8cpp.html">ThreadManager.cpp</a></li>
+<li>branches/module2/src/<a class="el" href="branches_2module2_2src_2_thread_manager_8cpp.html">ThreadManager.cpp</a></li>
+<li>tags/A0/IntegrationM1M2/src/<a class="el" href="tags_2_a0_2_integration_m1_m2_2src_2_thread_manager_8cpp.html">ThreadManager.cpp</a></li>
+<li>trunk/sources/<a class="el" href="trunk_2sources_2_thread_manager_8cpp.html">ThreadManager.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_thread_manager.html">ThreadManager</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

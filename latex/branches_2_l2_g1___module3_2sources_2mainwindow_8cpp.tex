@@ -1,0 +1,46 @@
+\doxysection{Référence du fichier branches/\+\+L2\+G1\+\_\+\+Module3/\+sources/\+mainwindow.cpp}
+\hypertarget{branches_2_l2_g1___module3_2sources_2mainwindow_8cpp}{}\label{branches_2_l2_g1___module3_2sources_2mainwindow_8cpp}\index{branches/L2G1\_Module3/sources/mainwindow.cpp@{branches/L2G1\_Module3/sources/mainwindow.cpp}}
+
+
+Implémentation de la fenêtre principale de Trace\+Link — Module 3.  
+
+
+{\ttfamily \+\#include "{}mainwindow.\+h"{}}\newline
+{\ttfamily \+\#include $<$QFile\+Dialog$>$}\newline
+{\ttfamily \+\#include $<$QHBox\+Layout$>$}\newline
+{\ttfamily \+\#include $<$QVBox\+Layout$>$}\newline
+{\ttfamily \+\#include $<$QLabel$>$}\newline
+{\ttfamily \+\#include $<$QFile\+Info$>$}\newline
+{\ttfamily \+\#include $<$QText\+Edit$>$}\newline
+{\ttfamily \+\#include $<$QMessage\+Box$>$}\newline
+{\ttfamily \+\#include $<$QList\+Widget$>$}\newline
+{\ttfamily \+\#include $<$QProgress\+Bar$>$}\newline
+{\ttfamily \+\#include $<$QTimer$>$}\newline
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include "{}Exigence\+SSS.\+h"{}}\newline
+{\ttfamily \+\#include "{}Exigence\+SRS.\+h"{}}\newline
+{\ttfamily \+\#include "{}Exigence\+SDD.\+h"{}}\newline
+
+
+\doxysubsection{Description détaillée}
+Implémentation de la fenêtre principale de Trace\+Link — Module 3. 
+
+Orchestre le flux complet d\textquotesingle{}analyse de traçabilité :\+
+\begin{DoxyEnumerate}
+\item Import des fichiers SSS, SRS et SDD (sélection multiple)
+\item Extraction des exigences via \doxylink{class_extracteur_fichier}{Extracteur\+Fichier} (Module 1)
+\item Conversion via \doxylink{class_convertisseur_exigences}{Convertisseur\+Exigences} (Module 1)
+\item Analyse de traçabilité via \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite} dans un thread séparé (Module 2)
+\item Affichage des résultats dans l\textquotesingle{}onglet Rapport et l\textquotesingle{}onglet Graphe
+\end{DoxyEnumerate}
+
+\begin{DoxyAuthor}{Auteur}
+Amel Kheloul, Lamia Arrahmane 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+26/\+04/\+2026 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+7.\+1 — Label "{}\+Fichiers sélectionnés"{} + item vide par défaut dans listes 
+\end{DoxyVersion}

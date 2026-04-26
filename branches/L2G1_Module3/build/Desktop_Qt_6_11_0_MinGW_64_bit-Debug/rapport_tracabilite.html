@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+<meta charset='UTF-8'>
+<title>Rapport TraceLink</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:Arial,sans-serif; background:#EBF5FB; color:#333; padding:20px; }
+h1 { color:#1A5276; border-bottom:2px solid #AED6F1; padding-bottom:10px; margin-bottom:16px; font-size:20px; }
+h2 { color:#1A5276; margin:24px 0 10px; font-size:15px; }
+.badges { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.badge { padding:4px 12px; border-radius:12px; color:white; font-size:12px; font-weight:bold; }
+.taux-container { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:20px; }
+.taux-card { background:white; border-radius:10px; padding:14px 18px; min-width:180px; border:1px solid #AED6F1; flex:1; }
+.taux-label { color:#555; font-size:11px; margin-bottom:4px; }
+.taux-value { font-size:22px; font-weight:bold; }
+.progress { background:#D6EAF8; border-radius:6px; height:8px; margin-top:6px; }
+.progress-bar { height:8px; border-radius:6px; }
+.toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:8px; background:white; padding:10px 14px; border-radius:8px; border:1px solid #AED6F1; }
+.toolbar label { font-size:12px; color:#1A5276; font-weight:bold; }
+.toolbar input[type=text] { flex:1; min-width:200px; padding:7px 12px; border:1px solid #AED6F1; border-radius:6px; font-size:12px; outline:none; color:#333; }
+.toolbar input[type=text]:focus { border-color:#2E86C1; }
+.toolbar select { padding:7px 10px; border:1px solid #AED6F1; border-radius:6px; font-size:12px; background:white; color:#333; cursor:pointer; }
+.btn { padding:7px 14px; background:#EBF5FB; border:1px solid #AED6F1; border-radius:6px; font-size:12px; color:#1A5276; cursor:pointer; font-weight:bold; }
+.btn:hover { background:#AED6F1; }
+.compteur { font-size:11px; color:#888; margin-bottom:6px; }
+.table-container { overflow-x:auto; border-radius:8px; border:1px solid #AED6F1; margin-bottom:10px; }
+table { border-collapse:collapse; width:100%; background:white; font-size:11px; }
+th { background:#EBF5FB; color:#1A5276; padding:9px 10px; text-align:center; border:1px solid #AED6F1; font-weight:bold; white-space:nowrap; }
+td { padding:7px 10px; text-align:center; border:1px solid #DDDDDD; }
+tr:hover td { filter:brightness(0.96); }
+.couvert { background:#27AE60; color:white; font-weight:bold; }
+.noncouverte { background:#FADBD8; color:#E74C3C; font-weight:bold; }
+.lienbrise { background:#E67E22; color:white; font-weight:bold; }
+.orpheline { background:#7D3C98; color:white; font-weight:bold; }
+.vide { background:#F5F5F5; color:#AAAAAA; }
+.row-hidden { display:none; }
+th.id-col { min-width:200px; text-align:left; padding-left:12px; }
+td.id-col { text-align:left; padding-left:12px; font-weight:bold; color:#1A5276; }
+.detail { background:white; border:1px solid #AED6F1; border-radius:8px; padding:12px 16px; margin:10px 0; display:none; }
+.detail.visible { display:block; }
+.detail-id { font-size:18px; font-weight:bold; color:#1A5276; margin-bottom:6px; }
+.detail-row { display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+.detail-badge { padding:2px 10px; border-radius:8px; font-size:11px; font-weight:bold; }
+.tabs { display:flex; gap:6px; margin-bottom:-1px; }
+.tab-btn { padding:8px 18px; border:1px solid #AED6F1; border-bottom:none; border-radius:6px 6px 0 0; background:#EBF5FB; color:#555; cursor:pointer; font-size:12px; font-weight:bold; }
+.tab-btn.active { background:#2E86C1; color:white; border-color:#2E86C1; }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+.tab-wrapper { border:1px solid #AED6F1; border-radius:0 8px 8px 8px; padding:14px; background:white; }
+.lb-item { background:#FEF9F0; border:1px solid #F0B27A; border-radius:6px; padding:8px 12px; margin:4px 0; color:#A04000; font-size:11px; }
+.orph-item { background:#F5EEF8; border:1px solid #A569BD; border-radius:6px; padding:8px 12px; margin:4px 0; color:#7D3C98; font-size:11px; }
+.footer { text-align:right; font-size:10px; color:#AAAAAA; margin-top:20px; }
+</style>
+</head>
+<body>
+<h1>Rapport de tracabilite &mdash; TraceLink</h1>
+<div class='badges'><span class='badge' style='background:#27AE60'>22 Couvert</span><span class='badge' style='background:#E74C3C'>26 Non couvert</span><span class='badge' style='background:#E67E22'>0 Lien brise</span><span class='badge' style='background:#7D3C98'>0 Orpheline</span></div>
+<h2>Taux de couverture</h2>
+<div class='taux-container'><div class='taux-card'><div class='taux-label'>Taux SSS &rarr; SRS</div><div class='taux-value' style='color:#27AE60'>92 %</div><div class='progress'><div class='progress-bar' style='width:92%;background:#27AE60'></div></div></div><div class='taux-card'><div class='taux-label'>Taux SRS &rarr; SDD</div><div class='taux-value' style='color:#E74C3C'>0 %</div><div class='progress'><div class='progress-bar' style='width:0%;background:#E74C3C'></div></div></div><div class='taux-card'><div class='taux-label'>Taux global</div><div class='taux-value' style='color:#E74C3C'>0 %</div><div class='progress'><div class='progress-bar' style='width:0%;background:#E74C3C'></div></div></div></div>
+<h2>Matrices de tracabilite</h2>
+<div class='toolbar'>
+  <label>Recherche :</label>
+  <input type='text' id='searchInput' placeholder='Rechercher un identifiant...' oninput='appliquerFiltres()'>
+  <label>Statut :</label>
+  <select id='filtreStatut' onchange='appliquerFiltres()'>
+    <option value='tous'>Tous</option>
+    <option value='couvert'>Couvert</option>
+    <option value='noncouverte'>Non couvert</option>
+    <option value='lienbrise'>Lien brise</option>
+    <option value='orpheline'>Orpheline</option>
+  </select>
+  <button class='btn' onclick='resetFiltres()'>&#8635; Reinitialiser</button>
+</div>
+<div class='compteur' id='compteur'></div>
+<div class='detail' id='detailPanel'>
+  <div class='detail-id' id='detailId'></div>
+  <div class='detail-row'>
+    <span class='detail-badge' id='detailType'></span>
+    <span class='detail-badge' id='detailStatut'></span>
+    <span style='font-size:11px;color:#888' id='detailLiens'></span>
+  </div>
+</div>
+<div class='tabs'>
+  <div class='tab-btn active' onclick='showTab("sss")'>SSS &rarr; SRS</div>
+  <div class='tab-btn' onclick='showTab("srs")'>SRS &rarr; SDD</div>
+</div>
+<div class='tab-wrapper'>
+  <div class='tab-content active' id='tab-sss'>
+    <div class='table-container'>
+    <table><thead><tr><th class='id-col'>SSS / SRS</th><th>EXIGENCE_PROJET_PAY_01</th><th>EXIGENCE_PROJET_PAY_02</th><th>EXIGENCE_PROJET_PAY_03</th><th>EXIGENCE_PROJET_PAY_04</th><th>EXIGENCE_PROJET_PAY_05</th><th>EXIGENCE_PROJET_PAY_06</th><th>EXIGENCE_PROJET_PAY_07</th><th>EXIGENCE_PROJET_PAY_08</th><th>EXIGENCE_PROJET_SEC_01</th><th>EXIGENCE_PROJET_SEC_02</th><th>EXIGENCE_PROJET_SEC_03</th><th>EXIGENCE_PROJET_SEC_04</th><th>EXIGENCE_PROJET_SEC_05</th><th>EXIGENCE_PROJET_SEC_06</th><th>EXIGENCE_PROJET_SEC_07</th><th>EXIGENCE_PROJET_NAV_01</th><th>EXIGENCE_PROJET_NAV_02</th><th>EXIGENCE_PROJET_NAV_03</th><th>EXIGENCE_PROJET_NAV_04</th><th>EXIGENCE_PROJET_NAV_05</th><th>EXIGENCE_PROJET_NAV_06</th><th>EXIGENCE_PROJET_NAV_07</th><th>EXIGENCE_PROJET_NAV_08</th><th>EXIGENCE_PROJET_NAV_09</th></tr></thead>
+    <tbody id='bodySSS'></tbody></table>
+    </div>
+  </div>
+  <div class='tab-content' id='tab-srs'>
+    <div class='table-container'>
+    <table><thead><tr><th class='id-col'>SRS / SDD</th><th>Statut</th></tr></thead>
+    <tbody id='bodySRS'></tbody></table>
+    </div>
+  </div>
+</div>
+<div class='footer'>TraceLink &mdash; Genere le 20/04/2026 13:14</div>
+<script>
+var dataSSS=[{"id":"EXIGENCE_CLIENT_PAY_F01","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_PAY_01"]},{"id":"EXIGENCE_CLIENT_PAY_F02","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_PAY_02"]},{"id":"EXIGENCE_CLIENT_PAY_F03","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_PAY_03"]},{"id":"EXIGENCE_CLIENT_PAY_F04","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_PAY_04"]},{"id":"EXIGENCE_CLIENT_PAY_F05","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_PAY_05"]},{"id":"EXIGENCE_CLIENT_PAY_F06","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_PAY_06"]},{"id":"EXIGENCE_CLIENT_PAY_F07","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_PAY_07"]},{"id":"EXIGENCE_CLIENT_PAY_F08","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_PAY_08"]},{"id":"EXIGENCE_CLIENT_PAY_F09","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_CLIENT_SEC_F01","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_SEC_01"]},{"id":"EXIGENCE_CLIENT_SEC_F02","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_SEC_02"]},{"id":"EXIGENCE_CLIENT_SEC_F03","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_SEC_03"]},{"id":"EXIGENCE_CLIENT_SEC_F04","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_SEC_04"]},{"id":"EXIGENCE_CLIENT_SEC_F05","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_SEC_05"]},{"id":"EXIGENCE_CLIENT_SEC_F06","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_SEC_06"]},{"id":"EXIGENCE_CLIENT_SEC_F07","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_SEC_07"]},{"id":"EXIGENCE_CLIENT_NAV_F01","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_NAV_01","EXIGENCE_PROJET_NAV_02"]},{"id":"EXIGENCE_CLIENT_NAV_F02","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_NAV_03"]},{"id":"EXIGENCE_CLIENT_NAV_F03","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_NAV_04","EXIGENCE_PROJET_NAV_05"]},{"id":"EXIGENCE_CLIENT_NAV_F04","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_NAV_06"]},{"id":"EXIGENCE_CLIENT_NAV_F05","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_NAV_07"]},{"id":"EXIGENCE_CLIENT_NAV_F06","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_NAV_08"]},{"id":"EXIGENCE_CLIENT_NAV_F07","statut":"Couvert","classe":"couvert","liens":["EXIGENCE_PROJET_NAV_09"]},{"id":"EXIGENCE_CLIENT_NAV_F08","statut":"Non couvert","classe":"noncouverte","liens":[]}];
+var dataSRS=[{"id":"EXIGENCE_PROJET_PAY_01","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_PAY_02","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_PAY_03","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_PAY_04","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_PAY_05","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_PAY_06","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_PAY_07","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_PAY_08","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_SEC_01","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_SEC_02","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_SEC_03","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_SEC_04","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_SEC_05","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_SEC_06","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_SEC_07","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_NAV_01","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_NAV_02","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_NAV_03","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_NAV_04","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_NAV_05","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_NAV_06","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_NAV_07","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_NAV_08","statut":"Non couvert","classe":"noncouverte","liens":[]},{"id":"EXIGENCE_PROJET_NAV_09","statut":"Non couvert","classe":"noncouverte","liens":[]}];
+var liensBrises=[];
+var colonnesSRS=["EXIGENCE_PROJET_PAY_01","EXIGENCE_PROJET_PAY_02","EXIGENCE_PROJET_PAY_03","EXIGENCE_PROJET_PAY_04","EXIGENCE_PROJET_PAY_05","EXIGENCE_PROJET_PAY_06","EXIGENCE_PROJET_PAY_07","EXIGENCE_PROJET_PAY_08","EXIGENCE_PROJET_SEC_01","EXIGENCE_PROJET_SEC_02","EXIGENCE_PROJET_SEC_03","EXIGENCE_PROJET_SEC_04","EXIGENCE_PROJET_SEC_05","EXIGENCE_PROJET_SEC_06","EXIGENCE_PROJET_SEC_07","EXIGENCE_PROJET_NAV_01","EXIGENCE_PROJET_NAV_02","EXIGENCE_PROJET_NAV_03","EXIGENCE_PROJET_NAV_04","EXIGENCE_PROJET_NAV_05","EXIGENCE_PROJET_NAV_06","EXIGENCE_PROJET_NAV_07","EXIGENCE_PROJET_NAV_08","EXIGENCE_PROJET_NAV_09"];
+var colonnesSDD=[];
+var tabActif='sss';
+function rendreTableau(data,colonnes,tbodyId){
+  var tbody=document.getElementById(tbodyId); tbody.innerHTML='';
+  for(var i=0;i<data.length;i++){
+    var e=data[i]; var tr=document.createElement('tr');
+    tr.setAttribute('data-id',e.id); tr.setAttribute('data-statut',e.classe);
+    var tdId=document.createElement('td'); tdId.className='id-col'; tdId.textContent=e.id;
+    tr.appendChild(tdId);
+    if(colonnes.length>0){
+      for(var j=0;j<colonnes.length;j++){
+        var col=colonnes[j]; var td=document.createElement('td');
+        var couvre=e.liens.indexOf(col)>=0;
+        var lb=false;
+        for(var k=0;k<liensBrises.length;k++){
+          if(liensBrises[k].indexOf(e.id)>=0&&liensBrises[k].indexOf(col)>=0){lb=true;break;}
+        }
+        if(lb){td.className='lienbrise';td.textContent='Lien brise';}
+        else if(couvre){td.className='couvert';td.textContent='Couvert';}
+        else if(e.classe==='orpheline'){td.className='orpheline';td.textContent='Orpheline';}
+        else if(e.classe==='noncouverte'){td.className='noncouverte';td.textContent='Non couvert';}
+        else{td.className='vide';td.textContent='-';}
+        tr.appendChild(td);
+      }
+    } else {
+      var td2=document.createElement('td'); td2.className=e.classe; td2.textContent=e.statut; tr.appendChild(td2);
+    }
+    tr.style.cursor='pointer';
+    (function(ex,t){tr.addEventListener('click',function(){afficherDetail(ex,t);});})(e,tbodyId==='bodySSS'?'SSS':'SRS');
+    tbody.appendChild(tr);
+  }
+}
+function init(){
+  rendreTableau(dataSSS,colonnesSRS,'bodySSS');
+  rendreTableau(dataSRS,colonnesSDD,'bodySRS');
+  mettreAJourCompteur();
+}
+function appliquerFiltres(){
+  var r=document.getElementById('searchInput').value.toLowerCase();
+  var s=document.getElementById('filtreStatut').value;
+  ['bodySSS','bodySRS'].forEach(function(id){
+    var rows=document.getElementById(id).querySelectorAll('tr');
+    rows.forEach(function(tr){
+      var okR=r===''||tr.getAttribute('data-id').toLowerCase().indexOf(r)>=0;
+      var okS=s==='tous'||tr.getAttribute('data-statut')===s;
+      if(okR&&okS)tr.classList.remove('row-hidden');
+      else tr.classList.add('row-hidden');
+    });
+  });
+  mettreAJourCompteur();
+}
+function mettreAJourCompteur(){
+  var id=tabActif==='sss'?'bodySSS':'bodySRS';
+  var tb=document.getElementById(id);
+  var tot=tb.querySelectorAll('tr').length;
+  var hid=tb.querySelectorAll('tr.row-hidden').length;
+  document.getElementById('compteur').textContent=(tot-hid)+' exigence(s) affichee(s) sur '+tot;
+}
+function resetFiltres(){
+  document.getElementById('searchInput').value='';
+  document.getElementById('filtreStatut').value='tous';
+  appliquerFiltres();
+}
+function showTab(tab){
+  tabActif=tab;
+  var btns=document.querySelectorAll('.tab-btn');
+  btns[0].classList.toggle('active',tab==='sss');
+  btns[1].classList.toggle('active',tab==='srs');
+  document.getElementById('tab-sss').classList.toggle('active',tab==='sss');
+  document.getElementById('tab-srs').classList.toggle('active',tab==='srs');
+  mettreAJourCompteur();
+}
+function afficherDetail(e,type){
+  var p=document.getElementById('detailPanel'); p.classList.add('visible');
+  document.getElementById('detailId').textContent=e.id;
+  var te=document.getElementById('detailType');
+  te.textContent=type; te.style.background=type==='SSS'?'#D6EAF8':'#FAE5D3';
+  te.style.color=type==='SSS'?'#1A5276':'#E67E22';
+  var se=document.getElementById('detailStatut');
+  se.textContent=e.statut;
+  se.style.background=e.classe==='couvert'?'#27AE60':e.classe==='noncouverte'?'#E74C3C':e.classe==='lienbrise'?'#E67E22':e.classe==='orpheline'?'#7D3C98':'#AAAAAA';
+  se.style.color='white';
+  document.getElementById('detailLiens').textContent=e.liens.length>0?e.liens.length+' lien(s) : '+e.liens.join(', '):'Aucun lien';
+}
+init();
+</script>
+</body>
+</html>

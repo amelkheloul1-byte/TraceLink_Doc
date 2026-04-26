@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['_7eexigence_0',['~Exigence',['../class_exigence.html#aef1c6191ef4b87baf6e362655166205b',1,'Exigence::~Exigence()=default'],['../class_exigence.html#aef1c6191ef4b87baf6e362655166205b',1,'Exigence::~Exigence()=default'],['../class_exigence.html#aef1c6191ef4b87baf6e362655166205b',1,'Exigence::~Exigence()=default'],['../class_exigence.html#aef1c6191ef4b87baf6e362655166205b',1,'Exigence::~Exigence()=default']]],
+  ['_7emainwindow_1',['~MainWindow',['../class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7',1,'MainWindow::~MainWindow()'],['../class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7',1,'MainWindow::~MainWindow()'],['../class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7',1,'MainWindow::~MainWindow()'],['../class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7',1,'MainWindow::~MainWindow()']]],
+  ['_7ethreadmanager_2',['~ThreadManager',['../class_thread_manager.html#a18eb12d3d752075318c3672c8efffd5b',1,'ThreadManager::~ThreadManager()'],['../class_thread_manager.html#a18eb12d3d752075318c3672c8efffd5b',1,'ThreadManager::~ThreadManager()'],['../class_thread_manager.html#a18eb12d3d752075318c3672c8efffd5b',1,'ThreadManager::~ThreadManager()'],['../class_thread_manager.html#a18eb12d3d752075318c3672c8efffd5b',1,'ThreadManager::~ThreadManager()']]]
+];

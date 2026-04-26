@@ -1,0 +1,46 @@
+\doxysection{Exigence.\+h}
+\hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_source}{}\label{branches_2_integration_m1_m2_2include_2_exigence_8h_source}\index{branches/IntegrationM1M2/include/Exigence.h@{branches/IntegrationM1M2/include/Exigence.h}}
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ Exigence.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 9\ mars\ 2026}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ yseulthelle}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ EXIGENCE\_H\_}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ EXIGENCE\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{TypeExigence}}\ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a25cb49703f6f42276b239123e6996fea}{SSS}},}
+\DoxyCodeLine{00023\ \ \ \ \ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a464a925f33b0ef227a095e7f16367f61}{SRS}},}
+\DoxyCodeLine{00024\ \ \ \ \ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a80ae225c494151e089929e0cc8920eeb}{SDD}}}
+\DoxyCodeLine{00025\ \};}
+\DoxyCodeLine{00037\ \textcolor{keyword}{enum}\ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}}\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a2a275384eb10d9f01e597aa9fd712867}{NonAnalyse}},}
+\DoxyCodeLine{00039\ \ \ \ \ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a64735bb0721ff3fd42018040173bd7cc}{Couverte}},}
+\DoxyCodeLine{00040\ \ \ \ \ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a0b29763d2b0ce5cfb2d5faa98f4a34ba}{NonCouverte}}}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_exigence_a424c52cc2b9b13e088275a738db1ee98}{Exigence}}\ \{}
+\DoxyCodeLine{00052\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00053\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_exigence_ad530b9ab198203bba11550d4141dd4d9}{id}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_exigence_a2b11170f7f131cceb6926970b898aec0}{contenu}};\ \ }
+\DoxyCodeLine{00055\ \ \ \ \ \doxymbox{\hyperlink{trunk_2headers_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{TypeExigence}}\ \doxymbox{\hyperlink{class_exigence_a43becad829b537e687f7ab46faf8b7c8}{type}};\ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \doxymbox{\hyperlink{trunk_2headers_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}}\ \doxymbox{\hyperlink{class_exigence_a8798b307176ce2906c726dc2aaea0d60}{statut}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ AJOUT\ :\ chemin\ du\ fichier\ source\ de\ l'exigence}}
+\DoxyCodeLine{00058\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_exigence_a17ab38a4a99ad76463d8f203e1fda92e}{fichierSource}};\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \doxymbox{\hyperlink{class_exigence_a424c52cc2b9b13e088275a738db1ee98}{Exigence}}(\textcolor{keyword}{const}\ std::string\&\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{class_exigence_a2b11170f7f131cceb6926970b898aec0}{contenu}},\ \doxymbox{\hyperlink{trunk_2headers_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{TypeExigence}}\ \doxymbox{\hyperlink{class_exigence_a43becad829b537e687f7ab46faf8b7c8}{type}});}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{class_exigence_aef1c6191ef4b87baf6e362655166205b}{\string~Exigence}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00073\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_exigence_a4ac2cb4f147eec9a69c47c27c6754d8b}{getId}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ \ \ \ \ \doxymbox{\hyperlink{trunk_2headers_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}}\ \doxymbox{\hyperlink{class_exigence_a84b4d773ec1117714783471a1ba3e0e8}{getStatut}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00079\ \ \ \ \ \doxymbox{\hyperlink{trunk_2headers_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{TypeExigence}}\ \doxymbox{\hyperlink{class_exigence_a1d2d320558186d8bc5515724b41d6f16}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_exigence_ac0428ba658492c0c81e6af0887ac5577}{getContenu}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_exigence_ae51e330cb811eab110779999f939894a}{setStatut}}(\doxymbox{\hyperlink{trunk_2headers_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}}\ \doxymbox{\hyperlink{class_exigence_a8798b307176ce2906c726dc2aaea0d60}{statut}});}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ AJOUT\ :\ getter\ et\ setter\ pour\ le\ fichier\ source}}
+\DoxyCodeLine{00091\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_exigence_aa1caf5a9ae07bb186695603c63005181}{getFichierSource}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_exigence_a42d321d64783b9eee5a68aa75c4e7cf2}{setFichierSource}}(\textcolor{keyword}{const}\ std::string\&\ fichier);}
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ EXIGENCE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

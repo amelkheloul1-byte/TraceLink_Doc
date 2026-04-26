@@ -1,0 +1,930 @@
+/**
+ * @file OngletRapport.cpp
+ * @brief Implémentation de la classe OngletRapport.
+ * @author Lamia Arrahmane
+ * @date 02/04/2026
+ * @version 1.0
+ */
+
+#include "OngletRapport.h"
+#include <QHeaderView>
+#include <QGroupBox>
+#include <QString>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
+#include <QHBoxLayout>
+#include <QScrollArea>
+
+OngletRapport::OngletRapport(QWidget *parent)
+    : QWidget(parent)
+{
+    initialiserUI();
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+/**
+ * @brief Crée une barre de progression stylisée.
+ * @param couleur Couleur de la barre en format hex.
+ * @return La barre de progression créée.
+ */
+QProgressBar* OngletRapport::creerBarre(const QString& couleur)
+{
+    QProgressBar* barre = new QProgressBar(this);
+    barre->setRange(0, 100);
+    barre->setValue(0);
+    barre->setTextVisible(true);
+    barre->setFixedHeight(22);
+    barre->setAlignment(Qt::AlignCenter);
+    barre->setStyleSheet(QString(R"(
+        QProgressBar {
+            background-color: #D6EAF8;
+            border-radius: 11px;
+            color: #1A1A2E;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+        }
+        QProgressBar::chunk {
+            background-color: %1;
+            border-radius: 11px;
+        }
+    )").arg(couleur));
+    return barre;
+}
+
+/**
+ * @brief Applique un style cohérent à un QTableWidget.
+ * @param table Le tableau à styliser.
+ */
+void OngletRapport::styliserTableau(QTableWidget* table)
+{
+    table->setStyleSheet(R"(
+        QTableWidget {
+            background-color: #FFFFFF;
+            color: #333333;
+            gridline-color: #DDDDDD;
+            border: none;
+            font-size: 11px;
+        }
+        QTableWidget::item { padding: 4px; }
+        QHeaderView::section {
+            background-color: #EBF5FB;
+            color: #1A5276;
+            font-weight: bold;
+            padding: 6px;
+            border: 1px solid #AED6F1;
+            font-size: 11px;
+        }
+        QTableWidget::item:selected {
+            background-color: #AED6F1;
+            color: #1A5276;
+        }
+    )");
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    table->setAlternatingRowColors(false);
+    table->verticalHeader()->setDefaultSectionSize(28);
+    table->horizontalHeader()->setStretchLastSection(false);
+    table->setSelectionBehavior(QAbstractItemView::SelectItems);
+    table->verticalHeader()->setStyleSheet(R"(
+        QHeaderView::section {
+            background-color: #EBF5FB;
+            color: #1A5276;
+            font-weight: bold;
+            padding: 4px;
+            border: 1px solid #AED6F1;
+            font-size: 10px;
+        }
+    )");
+}
+
+// ─── UI ───────────────────────────────────────────────────────────────────────
+
+/**
+ * @brief Initialise la mise en page et tous les widgets de l'onglet rapport.
+ *
+ * Construit :
+ * - L'entête avec titre, badges résumé, menu export et bouton filtres
+ * - La section des taux de couverture avec barres de progression bleues
+ * - Les deux matrices (SSS×SRS et SRS×SDD) avec boutons zoom/dézoom
+ * - La section liens brisés
+ * - Le panneau détail d'une exigence au clic
+ * - Le panneau de filtres déroulant à droite
+ */
+void OngletRapport::initialiserUI()
+{
+    QHBoxLayout *layoutGlobal = new QHBoxLayout(this);
+    layoutGlobal->setContentsMargins(0, 0, 0, 0);
+    layoutGlobal->setSpacing(0);
+
+    QWidget *contenu = new QWidget(this);
+    contenu->setStyleSheet("background-color: #EBF5FB;");
+    QVBoxLayout *layoutPrincipal = new QVBoxLayout(contenu);
+    layoutPrincipal->setContentsMargins(12, 12, 12, 12);
+    layoutPrincipal->setSpacing(10);
+
+    // ── Entête : titre + badges + boutons ─────────────────────────────────────
+    QHBoxLayout *layoutEntete = new QHBoxLayout();
+
+    QLabel *titre = new QLabel("📊  Rapport de traçabilité", this);
+    titre->setStyleSheet("color: #1A5276; font-size: 14px; font-weight: bold;");
+    layoutEntete->addWidget(titre);
+    layoutEntete->addStretch();
+
+    labelBadgeCouverts = new QLabel("0 Couvert", this);
+    labelBadgeCouverts->setStyleSheet(R"(
+        background-color: #27AE60; color: white;
+        border-radius: 12px; padding: 4px 10px; font-size: 11px; font-weight: bold;
+    )");
+    labelBadgeNonCouverts = new QLabel("0 Non couvert", this);
+    labelBadgeNonCouverts->setStyleSheet(R"(
+        background-color: #E74C3C; color: white;
+        border-radius: 12px; padding: 4px 10px; font-size: 11px; font-weight: bold;
+    )");
+    labelBadgeLiensBrises = new QLabel("0 Lien brisé", this);
+    labelBadgeLiensBrises->setStyleSheet(R"(
+        background-color: #E67E22; color: white;
+        border-radius: 12px; padding: 4px 10px; font-size: 11px; font-weight: bold;
+    )");
+
+    layoutEntete->addWidget(labelBadgeCouverts);
+    layoutEntete->addWidget(labelBadgeNonCouverts);
+    layoutEntete->addWidget(labelBadgeLiensBrises);
+    layoutEntete->addSpacing(10);
+
+    // Menu déroulant export
+    boutonExport = new QToolButton(this);
+    boutonExport->setText("⬇ Exporter ▼");
+    boutonExport->setPopupMode(QToolButton::InstantPopup);
+    boutonExport->setStyleSheet(R"(
+        QToolButton {
+            background-color: #27AE60; color: white;
+            border-radius: 6px; padding: 6px 14px;
+            font-size: 11px; font-weight: bold;
+        }
+        QToolButton:hover { background-color: #1E8449; }
+        QToolButton::menu-indicator { image: none; }
+    )");
+    menuExport = new QMenu(this);
+    menuExport->setStyleSheet(R"(
+        QMenu {
+            background-color: white; color: #333;
+            border: 1px solid #AED6F1; border-radius: 6px; padding: 4px;
+        }
+        QMenu::item { padding: 8px 20px; border-radius: 4px; }
+        QMenu::item:selected { background-color: #AED6F1; color: #1A5276; }
+    )");
+    menuExport->addAction("📄  Exporter en CSV",  this, &OngletRapport::exporterCSV);
+    menuExport->addAction("🌐  Exporter en HTML", this, &OngletRapport::exporterHTML);
+    boutonExport->setMenu(menuExport);
+
+    // Bouton filtres
+    boutonFiltres = new QPushButton("⚙ Filtres ▶", this);
+    boutonFiltres->setStyleSheet(R"(
+        QPushButton {
+            background-color: #EBF5FB; color: #1A5276;
+            border-radius: 6px; padding: 6px 12px;
+            font-size: 11px; border: 1px solid #AED6F1;
+        }
+        QPushButton:hover { background-color: #AED6F1; }
+    )");
+    connect(boutonFiltres, &QPushButton::clicked, this, &OngletRapport::toggleFiltres);
+
+    layoutEntete->addWidget(boutonExport);
+    layoutEntete->addWidget(boutonFiltres);
+    layoutPrincipal->addLayout(layoutEntete);
+
+    // ── Taux de couverture ────────────────────────────────────────────────────
+    QGroupBox *groupTaux = new QGroupBox("Taux de couverture", this);
+    groupTaux->setStyleSheet(R"(
+        QGroupBox {
+            color: #1A5276; border: 1px solid #AED6F1;
+            border-radius: 8px; margin-top: 8px;
+            padding: 10px; font-weight: bold;
+            background-color: white;
+        }
+        QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; }
+    )");
+    QVBoxLayout *layoutTaux = new QVBoxLayout(groupTaux);
+    layoutTaux->setSpacing(6);
+
+    auto ajouterTaux = [&](const QString& label, QLabel*& lbl, QProgressBar*& barre, const QString& couleur) {
+        QHBoxLayout *row = new QHBoxLayout();
+        lbl = new QLabel(label, this);
+        lbl->setStyleSheet("color: #1A5276; font-size: 11px;");
+        lbl->setFixedWidth(160);
+        barre = creerBarre(couleur);
+        row->addWidget(lbl);
+        row->addWidget(barre);
+        layoutTaux->addLayout(row);
+    };
+
+    ajouterTaux("Taux SSS→SRS : -", labelTauxSSS_SRS, barreSSS_SRS, "#4A90D9");
+    ajouterTaux("Taux SRS→SDD : -", labelTauxSRS_SDD, barreSRS_SDD, "#4A90D9");
+    ajouterTaux("Taux global : -",   labelTauxGlobal,  barreGlobal,  "#4A90D9");
+    layoutPrincipal->addWidget(groupTaux);
+
+    // ── Boutons zoom matrice ──────────────────────────────────────────────────
+    QHBoxLayout *layoutZoom = new QHBoxLayout();
+    QPushButton *btnZoomPlus  = new QPushButton("🔍+", this);
+    QPushButton *btnZoomMoins = new QPushButton("🔍-", this);
+    QPushButton *btnZoomReset = new QPushButton("↺ Reset", this);
+    QString styleZoom = R"(
+        QPushButton {
+            background-color: #EBF5FB; color: #1A5276;
+            border: 1px solid #AED6F1; border-radius: 4px;
+            padding: 3px 8px; font-size: 11px;
+        }
+        QPushButton:hover { background-color: #AED6F1; }
+    )";
+    btnZoomPlus->setStyleSheet(styleZoom);
+    btnZoomMoins->setStyleSheet(styleZoom);
+    btnZoomReset->setStyleSheet(styleZoom);
+
+    QLabel *labelZoom = new QLabel("Zoom :", this);
+    labelZoom->setStyleSheet("color: #1A5276; font-size: 11px;");
+    layoutZoom->addStretch();
+    layoutZoom->addWidget(labelZoom);
+    layoutZoom->addWidget(btnZoomMoins);
+    layoutZoom->addWidget(btnZoomPlus);
+    layoutZoom->addWidget(btnZoomReset);
+    layoutPrincipal->addLayout(layoutZoom);
+
+    // ── Matrices de traçabilité ───────────────────────────────────────────────
+    QTabWidget *tabMatrices = new QTabWidget(this);
+    tabMatrices->setStyleSheet(R"(
+        QTabWidget::pane {
+            border: 1px solid #AED6F1; border-radius: 8px; background: white;
+        }
+        QTabBar::tab {
+            background: #EBF5FB; color: #555;
+            padding: 6px 16px; border-radius: 4px; margin-right: 4px;
+            border: 1px solid #AED6F1;
+        }
+        QTabBar::tab:selected { background: #2E86C1; color: white; font-weight: bold; border: none; }
+    )");
+
+    tableMatriceSSS_SRS = new QTableWidget(this);
+    styliserTableau(tableMatriceSSS_SRS);
+    tabMatrices->addTab(tableMatriceSSS_SRS, "SSS → SRS");
+
+    tableMatriceSRS_SDD = new QTableWidget(this);
+    styliserTableau(tableMatriceSRS_SDD);
+    tabMatrices->addTab(tableMatriceSRS_SDD, "SRS → SDD");
+
+    layoutPrincipal->addWidget(tabMatrices, 1);
+
+    // Connexions zoom
+    connect(btnZoomPlus, &QPushButton::clicked, this, [this]() {
+        int h = tableMatriceSSS_SRS->verticalHeader()->defaultSectionSize();
+        tableMatriceSSS_SRS->verticalHeader()->setDefaultSectionSize(h + 4);
+        tableMatriceSRS_SDD->verticalHeader()->setDefaultSectionSize(h + 4);
+        QFont f = tableMatriceSSS_SRS->font();
+        f.setPointSize(f.pointSize() + 1);
+        tableMatriceSSS_SRS->setFont(f);
+        tableMatriceSRS_SDD->setFont(f);
+    });
+    connect(btnZoomMoins, &QPushButton::clicked, this, [this]() {
+        int h = tableMatriceSSS_SRS->verticalHeader()->defaultSectionSize();
+        if (h > 16) {
+            tableMatriceSSS_SRS->verticalHeader()->setDefaultSectionSize(h - 4);
+            tableMatriceSRS_SDD->verticalHeader()->setDefaultSectionSize(h - 4);
+            QFont f = tableMatriceSSS_SRS->font();
+            if (f.pointSize() > 7) f.setPointSize(f.pointSize() - 1);
+            tableMatriceSSS_SRS->setFont(f);
+            tableMatriceSRS_SDD->setFont(f);
+        }
+    });
+    connect(btnZoomReset, &QPushButton::clicked, this, [this]() {
+        tableMatriceSSS_SRS->verticalHeader()->setDefaultSectionSize(28);
+        tableMatriceSRS_SDD->verticalHeader()->setDefaultSectionSize(28);
+        QFont f = tableMatriceSSS_SRS->font();
+        f.setPointSize(11);
+        tableMatriceSSS_SRS->setFont(f);
+        tableMatriceSRS_SDD->setFont(f);
+    });
+
+    // ── Section liens brisés ──────────────────────────────────────────────────
+    panneauLiensBrises = new QFrame(this);
+    panneauLiensBrises->setStyleSheet(R"(
+        QFrame {
+            background-color: white;
+            border: 1px solid #F0B27A;
+            border-radius: 8px;
+        }
+    )");
+    panneauLiensBrises->setVisible(false);
+
+    QVBoxLayout *layoutLB = new QVBoxLayout(panneauLiensBrises);
+    layoutLB->setContentsMargins(12, 10, 12, 10);
+    layoutLB->setSpacing(6);
+
+    QHBoxLayout *titreLBLayout = new QHBoxLayout();
+    QLabel *titreLB = new QLabel("⚠  Liens brisés détectés", panneauLiensBrises);
+    titreLB->setStyleSheet("color: #E67E22; font-size: 12px; font-weight: bold;");
+    titreLBLayout->addWidget(titreLB);
+    titreLBLayout->addStretch();
+    layoutLB->addLayout(titreLBLayout);
+
+    listeLiensBrises = new QWidget(panneauLiensBrises);
+    layoutListeLB = new QVBoxLayout(listeLiensBrises);
+    layoutListeLB->setContentsMargins(0, 0, 0, 0);
+    layoutListeLB->setSpacing(4);
+    layoutLB->addWidget(listeLiensBrises);
+
+    layoutPrincipal->addWidget(panneauLiensBrises);
+
+    // ── Panneau détail exigence sélectionnée ──────────────────────────────────
+    panneauDetail = new QFrame(this);
+    panneauDetail->setStyleSheet(R"(
+        QFrame {
+            background-color: white;
+            border: 1px solid #AED6F1;
+            border-radius: 8px;
+        }
+    )");
+    panneauDetail->setMaximumHeight(110);
+
+    QVBoxLayout *layoutDetail = new QVBoxLayout(panneauDetail);
+    layoutDetail->setContentsMargins(12, 8, 12, 8);
+    layoutDetail->setSpacing(6);
+
+    QLabel *titreDetail = new QLabel("EXIGENCE SÉLECTIONNÉE", panneauDetail);
+    titreDetail->setStyleSheet("color: #888; font-size: 9px; font-weight: bold; letter-spacing: 1px;");
+    layoutDetail->addWidget(titreDetail);
+
+    labelDetailId = new QLabel("—", panneauDetail);
+    labelDetailId->setStyleSheet("color: #1A5276; font-size: 16px; font-weight: bold;");
+    layoutDetail->addWidget(labelDetailId);
+
+    QHBoxLayout *rowDetail = new QHBoxLayout();
+    rowDetail->setSpacing(8);
+
+    labelDetailType = new QLabel("", panneauDetail);
+    labelDetailStatut = new QLabel("", panneauDetail);
+    labelDetailLiens = new QLabel("", panneauDetail);
+    labelDetailLiens->setStyleSheet("color: #888; font-size: 11px;");
+
+    rowDetail->addWidget(labelDetailType);
+    rowDetail->addWidget(labelDetailStatut);
+    rowDetail->addWidget(labelDetailLiens);
+    rowDetail->addStretch();
+    layoutDetail->addLayout(rowDetail);
+
+    layoutPrincipal->addWidget(panneauDetail);
+
+    // ── Panneau de filtres déroulant à droite ─────────────────────────────────
+    panneauFiltres = new QFrame(this);
+    panneauFiltres->setStyleSheet(R"(
+        QFrame { background-color: white; border-left: 2px solid #AED6F1; }
+    )");
+    panneauFiltres->setFixedWidth(220);
+    panneauFiltres->setVisible(false);
+
+    QVBoxLayout *layoutFiltres = new QVBoxLayout(panneauFiltres);
+    layoutFiltres->setContentsMargins(0, 0, 0, 0);
+    gestionnaireFiltres = new GestionnaireFiltresGUI(panneauFiltres);
+    layoutFiltres->addWidget(gestionnaireFiltres);
+
+    connect(gestionnaireFiltres, &GestionnaireFiltresGUI::filtreModifie,
+            this, &OngletRapport::appliquerFiltre);
+
+    layoutGlobal->addWidget(contenu);
+    layoutGlobal->addWidget(panneauFiltres);
+    setLayout(layoutGlobal);
+}
+
+// ─── Toggle filtres ───────────────────────────────────────────────────────────
+
+/**
+ * @brief Affiche ou masque le panneau de filtres latéral.
+ */
+void OngletRapport::toggleFiltres()
+{
+    bool visible = panneauFiltres->isVisible();
+    panneauFiltres->setVisible(!visible);
+    boutonFiltres->setText(visible ? "⚙ Filtres ▶" : "⚙ Filtres ◀");
+}
+
+// ─── Afficher rapport simple ──────────────────────────────────────────────────
+
+/**
+ * @brief Affiche un rapport sans les vecteurs SRS et SDD détaillés.
+ * @param rapport Le rapport produit par le MoteurTracabilite.
+ */
+void OngletRapport::afficherRapport(const RapportTracabilite& rapport)
+{
+    afficherRapportComplet(rapport, {}, {});
+}
+
+// ─── Afficher rapport complet ─────────────────────────────────────────────────
+
+/**
+ * @brief Affiche le rapport complet avec les vraies matrices bidimensionnelles.
+ *
+ * Construit :
+ * - La matrice SSS (lignes) × SRS (colonnes) avec code couleur
+ * - La matrice SRS (lignes) × SDD (colonnes) avec code couleur
+ * - Les badges résumé (couverts, non couverts, liens brisés)
+ * - Les barres de progression des taux
+ * - La section liens brisés
+ *
+ * @param rapport Le rapport produit par le MoteurTracabilite.
+ * @param srs     Vecteur des exigences SRS analysées.
+ * @param sdd     Vecteur des exigences SDD analysées.
+ */
+void OngletRapport::afficherRapportComplet(const RapportTracabilite& rapport,
+                                           const std::vector<ExigenceSRS>& srs,
+                                           const std::vector<ExigenceSDD>& sdd)
+{
+    rapportCourant = rapport;
+    srsAnalyses    = srs;
+    sddAnalyses    = sdd;
+
+    // ── Taux de couverture ────────────────────────────────────────────────────
+    int pSSS = qRound(rapport.tauxSSS_SRS * 100);
+    int pSRS = qRound(rapport.tauxSRS_SDD * 100);
+    int pGlb = qRound(rapport.tauxGlobal  * 100);
+
+    labelTauxSSS_SRS->setText(QString("Taux SSS→SRS : %1 %").arg(pSSS));
+    labelTauxSRS_SDD->setText(QString("Taux SRS→SDD : %1 %").arg(pSRS));
+    labelTauxGlobal ->setText(QString("Taux global : %1 %") .arg(pGlb));
+    barreSSS_SRS->setValue(pSSS);
+    barreSRS_SDD->setValue(pSRS);
+    barreGlobal ->setValue(pGlb);
+
+    // ── Matrice SSS × SRS ────────────────────────────────────────────────────
+    int nbSSS = rapport.exigencesSSS.size();
+    int nbSRS = srs.size();
+
+    tableMatriceSSS_SRS->setRowCount(nbSSS);
+    tableMatriceSSS_SRS->setColumnCount(nbSRS > 0 ? nbSRS : 1);
+
+    if (nbSRS > 0) {
+        for (int j = 0; j < nbSRS; j++)
+            tableMatriceSSS_SRS->setHorizontalHeaderItem(j,
+                                                         new QTableWidgetItem(QString::fromStdString(srs[j].getId())));
+    } else {
+        tableMatriceSSS_SRS->setHorizontalHeaderItem(0, new QTableWidgetItem("Statut"));
+    }
+
+    int nbCouverts = 0, nbNonCouverts = 0;
+    for (int i = 0; i < nbSSS; i++) {
+        QString idSSS = QString::fromStdString(rapport.exigencesSSS[i].getId());
+        tableMatriceSSS_SRS->setVerticalHeaderItem(i, new QTableWidgetItem(idSSS));
+
+        Statut statut = rapport.exigencesSSS[i].getStatut();
+        if (statut == Couverte)    nbCouverts++;
+        if (statut == NonCouverte) nbNonCouverts++;
+
+        if (nbSRS > 0) {
+            for (int j = 0; j < nbSRS; j++) {
+                const std::vector<std::string>& trac = srs[j].getTracabilite();
+                bool couvre = std::find(trac.begin(), trac.end(),
+                                        rapport.exigencesSSS[i].getId()) != trac.end();
+
+                // Vérifier lien brisé SSS
+                bool lienBriseSSS = false;
+                for (const std::string& lb : rapport.liensBrises) {
+                    if (lb.find(srs[j].getId()) != std::string::npos &&
+                        lb.find(rapport.exigencesSSS[i].getId()) != std::string::npos) {
+                        lienBriseSSS = true;
+                        break;
+                    }
+                }
+
+                QTableWidgetItem *cell;
+                if (lienBriseSSS) {
+                    cell = new QTableWidgetItem("Lien brisé");
+                    cell->setBackground(QColor("#E67E22"));
+                    cell->setForeground(Qt::white);
+                } else if (couvre) {
+                    cell = new QTableWidgetItem("Couvert");
+                    cell->setBackground(QColor("#27AE60"));
+                    cell->setForeground(Qt::white);
+                } else if (statut == NonCouverte) {
+                    cell = new QTableWidgetItem("Non couvert");
+                    cell->setBackground(QColor("#FADBD8"));
+                    cell->setForeground(QColor("#E74C3C"));
+                } else {
+                    cell = new QTableWidgetItem("—");
+                    cell->setBackground(QColor("#F5F5F5"));
+                    cell->setForeground(QColor("#AAAAAA"));
+                }
+                cell->setTextAlignment(Qt::AlignCenter);
+                tableMatriceSSS_SRS->setItem(i, j, cell);
+            }
+        } else {
+            QString statutTxt;
+            QColor couleur;
+            switch (statut) {
+            case Couverte:    statutTxt = "✅ Couverte";     couleur = QColor("#27AE60"); break;
+            case NonCouverte: statutTxt = "❌ Non couverte"; couleur = QColor("#E74C3C"); break;
+            default:          statutTxt = "⏳ Non analysé";  couleur = QColor("#AAAAAA"); break;
+            }
+            QTableWidgetItem *cell = new QTableWidgetItem(statutTxt);
+            cell->setBackground(couleur);
+            cell->setForeground(Qt::white);
+            cell->setTextAlignment(Qt::AlignCenter);
+            tableMatriceSSS_SRS->setItem(i, 0, cell);
+        }
+    }
+    tableMatriceSSS_SRS->resizeColumnsToContents();
+
+    // ── Matrice SRS × SDD ────────────────────────────────────────────────────
+    int nbSDD = sdd.size();
+    tableMatriceSRS_SDD->setRowCount(nbSRS > 0 ? nbSRS : 1);
+    tableMatriceSRS_SDD->setColumnCount(nbSDD > 0 ? nbSDD : 1);
+
+    if (nbSRS > 0 && nbSDD > 0) {
+        for (int j = 0; j < nbSDD; j++)
+            tableMatriceSRS_SDD->setHorizontalHeaderItem(j,
+                                                         new QTableWidgetItem(QString::fromStdString(sdd[j].getId())));
+
+        for (int i = 0; i < nbSRS; i++) {
+            tableMatriceSRS_SDD->setVerticalHeaderItem(i,
+                                                       new QTableWidgetItem(QString::fromStdString(srs[i].getId())));
+
+            for (int j = 0; j < nbSDD; j++) {
+                const std::vector<std::string>& ref = sdd[j].getReferencedSRS();
+                bool couvre = std::find(ref.begin(), ref.end(),
+                                        srs[i].getId()) != ref.end();
+
+                bool lienBrise = false;
+                for (const std::string& lb : rapport.liensBrises) {
+                    if (lb.find(srs[i].getId()) != std::string::npos) {
+                        lienBrise = true;
+                        break;
+                    }
+                    if (lb.find(sdd[j].getId()) != std::string::npos) {
+                        const auto& r = sdd[j].getReferencedSRS();
+                        bool sddReferenceCSRS = std::find(r.begin(), r.end(),
+                                                          srs[i].getId()) != r.end();
+                        if (!sddReferenceCSRS) break;
+                        lienBrise = true;
+                        break;
+                    }
+                }
+
+                QTableWidgetItem *cell;
+                if (lienBrise) {
+                    cell = new QTableWidgetItem("Lien brisé");
+                    cell->setBackground(QColor("#E67E22"));
+                    cell->setForeground(Qt::white);
+                } else if (couvre) {
+                    cell = new QTableWidgetItem("Couvert");
+                    cell->setBackground(QColor("#27AE60"));
+                    cell->setForeground(Qt::white);
+                } else if (srs[i].getStatut() == NonCouverte) {
+                    cell = new QTableWidgetItem("Non couvert");
+                    cell->setBackground(QColor("#FADBD8"));
+                    cell->setForeground(QColor("#E74C3C"));
+                } else {
+                    cell = new QTableWidgetItem("—");
+                    cell->setBackground(QColor("#F5F5F5"));
+                    cell->setForeground(QColor("#AAAAAA"));
+                }
+                cell->setTextAlignment(Qt::AlignCenter);
+                tableMatriceSRS_SDD->setItem(i, j, cell);
+            }
+        }
+    } else {
+        tableMatriceSRS_SDD->setHorizontalHeaderItem(0, new QTableWidgetItem("Statut SDD"));
+        QTableWidgetItem *msg = new QTableWidgetItem("Aucun fichier SDD importé");
+        msg->setForeground(QColor("#AAAAAA"));
+        tableMatriceSRS_SDD->setItem(0, 0, msg);
+    }
+    tableMatriceSRS_SDD->resizeColumnsToContents();
+
+    // ── Badges résumé ─────────────────────────────────────────────────────────
+    int nbCouvertsSRS = 0, nbNonCouvertsSRS = 0;
+    for (const ExigenceSRS& s : srs) {
+        if (s.getStatut() == Couverte)                                    nbCouvertsSRS++;
+        if (s.getStatut() == NonCouverte || s.getStatut() == NonAnalyse) nbNonCouvertsSRS++;
+    }
+
+    labelBadgeCouverts->setText(QString::number(nbCouverts + nbCouvertsSRS) + " Couvert");
+    labelBadgeNonCouverts->setText(QString::number(nbNonCouverts + nbNonCouvertsSRS) + " Non couvert");
+    labelBadgeLiensBrises->setText(QString::number(rapport.liensBrises.size()) + " Lien brisé");
+
+    // ── Section liens brisés ──────────────────────────────────────────────────
+    QLayoutItem* item;
+    while ((item = layoutListeLB->takeAt(0)) != nullptr) {
+        delete item->widget();
+        delete item;
+    }
+
+    if (!rapport.liensBrises.empty()) {
+        panneauLiensBrises->setVisible(true);
+        for (const std::string& lb : rapport.liensBrises) {
+            QFrame *ligneLB = new QFrame(listeLiensBrises);
+            ligneLB->setStyleSheet(R"(
+                QFrame {
+                    background-color: #FEF9F0;
+                    border: 1px solid #F0B27A;
+                    border-radius: 6px;
+                }
+            )");
+            QHBoxLayout *rowLB = new QHBoxLayout(ligneLB);
+            rowLB->setContentsMargins(10, 6, 10, 6);
+            rowLB->setSpacing(10);
+
+            QLabel *icone = new QLabel("🔗", ligneLB);
+            icone->setStyleSheet("font-size: 14px;");
+            icone->setFixedWidth(20);
+
+            QLabel *texte = new QLabel(QString::fromStdString(lb), ligneLB);
+            texte->setStyleSheet("color: #A04000; font-size: 11px;");
+            texte->setWordWrap(true);
+
+            rowLB->addWidget(icone);
+            rowLB->addWidget(texte, 1);
+            layoutListeLB->addWidget(ligneLB);
+        }
+    } else {
+        panneauLiensBrises->setVisible(false);
+    }
+
+    // ── Connexion clic matrice SSS×SRS ────────────────────────────────────────
+    connect(tableMatriceSSS_SRS, &QTableWidget::cellClicked,
+            this, [this](int row, int) {
+                if (row >= (int)rapportCourant.exigencesSSS.size()) return;
+                const ExigenceSSS& exig = rapportCourant.exigencesSSS[row];
+
+                labelDetailId->setText(QString::fromStdString(exig.getId()));
+                labelDetailType->setText(" SSS ");
+                labelDetailType->setStyleSheet(R"(
+                    background-color: #D6EAF8; color: #1A5276;
+                    border-radius: 6px; padding: 2px 8px;
+                    font-size: 11px; font-weight: bold;
+                )");
+
+                QString statut;
+                QString styleStat;
+                switch (exig.getStatut()) {
+                case Couverte:
+                    statut    = " Couvert ";
+                    styleStat = "background-color:#27AE60; color:white; border-radius:6px; padding:2px 8px; font-size:11px; font-weight:bold;";
+                    break;
+                case NonCouverte:
+                    statut    = " Non couvert ";
+                    styleStat = "background-color:#E74C3C; color:white; border-radius:6px; padding:2px 8px; font-size:11px; font-weight:bold;";
+                    break;
+                default:
+                    statut    = " Non analysé ";
+                    styleStat = "background-color:#AAAAAA; color:white; border-radius:6px; padding:2px 8px; font-size:11px; font-weight:bold;";
+                    break;
+                }
+                labelDetailStatut->setText(statut);
+                labelDetailStatut->setStyleSheet(styleStat);
+
+                QStringList liens;
+                for (const ExigenceSRS& s : srsAnalyses) {
+                    const auto& trac = s.getTracabilite();
+                    if (std::find(trac.begin(), trac.end(), exig.getId()) != trac.end())
+                        liens << QString::fromStdString(s.getId());
+                }
+                labelDetailLiens->setText(liens.isEmpty() ? "Aucun lien SRS" :
+                                              "🔗 " + QString::number(liens.size()) + " lien(s) : " + liens.join(", "));
+            });
+
+    // ── Connexion clic matrice SRS×SDD ────────────────────────────────────────
+    connect(tableMatriceSRS_SDD, &QTableWidget::cellClicked,
+            this, [this](int row, int) {
+                if (row >= (int)srsAnalyses.size()) return;
+                const ExigenceSRS& exig = srsAnalyses[row];
+
+                labelDetailId->setText(QString::fromStdString(exig.getId()));
+                labelDetailType->setText(" SRS ");
+                labelDetailType->setStyleSheet(R"(
+                    background-color: #FAE5D3; color: #E67E22;
+                    border-radius: 6px; padding: 2px 8px;
+                    font-size: 11px; font-weight: bold;
+                )");
+
+                Statut s = exig.getStatut();
+                QString statut;
+                QString styleStat;
+                switch (s) {
+                case Couverte:
+                    statut    = " Couvert ";
+                    styleStat = "background-color:#27AE60; color:white; border-radius:6px; padding:2px 8px; font-size:11px; font-weight:bold;";
+                    break;
+                case NonCouverte:
+                    statut    = " Non couvert ";
+                    styleStat = "background-color:#E74C3C; color:white; border-radius:6px; padding:2px 8px; font-size:11px; font-weight:bold;";
+                    break;
+                default:
+                    statut    = " Non analysé ";
+                    styleStat = "background-color:#AAAAAA; color:white; border-radius:6px; padding:2px 8px; font-size:11px; font-weight:bold;";
+                    break;
+                }
+                labelDetailStatut->setText(statut);
+                labelDetailStatut->setStyleSheet(styleStat);
+
+                QStringList liens;
+                for (const ExigenceSDD& d : sddAnalyses) {
+                    const auto& ref = d.getReferencedSRS();
+                    if (std::find(ref.begin(), ref.end(), exig.getId()) != ref.end())
+                        liens << QString::fromStdString(d.getId());
+                }
+                labelDetailLiens->setText(liens.isEmpty() ? "Aucun lien SDD" :
+                                              "🔗 " + QString::number(liens.size()) + " lien(s) : " + liens.join(", "));
+            });
+}
+
+// ─── Export CSV ───────────────────────────────────────────────────────────────
+
+/**
+ * @brief Exporte le rapport au format CSV.
+ */
+void OngletRapport::exporterCSV()
+{
+    QString chemin = QFileDialog::getSaveFileName(
+        this, "Exporter en CSV", "", "Fichiers CSV (*.csv)");
+    if (chemin.isEmpty()) return;
+
+    QFile fichier(chemin);
+    if (!fichier.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::critical(this, "Erreur", "Impossible d'écrire le fichier.");
+        return;
+    }
+
+    QTextStream out(&fichier);
+    out.setEncoding(QStringConverter::Utf8);
+
+    out << "=== RAPPORT DE TRACABILITE ===\n\n";
+    out << "Taux SSS->SRS;" << rapportCourant.tauxSSS_SRS * 100 << "%\n";
+    out << "Taux SRS->SDD;" << rapportCourant.tauxSRS_SDD * 100 << "%\n";
+    out << "Taux global;"   << rapportCourant.tauxGlobal   * 100 << "%\n\n";
+
+    out << "=== MATRICE SSS x SRS ===\n";
+    out << "Identifiant SSS;Statut\n";
+    for (const ExigenceSSS& exig : rapportCourant.exigencesSSS) {
+        QString statut;
+        switch (exig.getStatut()) {
+        case Couverte:    statut = "Couverte";     break;
+        case NonCouverte: statut = "Non couverte"; break;
+        default:          statut = "Non analyse";  break;
+        }
+        out << QString::fromStdString(exig.getId()) << ";" << statut << "\n";
+    }
+
+    out << "\n=== LIENS BRISES ===\n";
+    for (const std::string& lien : rapportCourant.liensBrises)
+        out << QString::fromStdString(lien) << "\n";
+
+    fichier.close();
+    QMessageBox::information(this, "Export CSV", "✅ Fichier exporté avec succès !");
+}
+
+// ─── Export HTML ──────────────────────────────────────────────────────────────
+
+/**
+ * @brief Exporte le rapport au format HTML.
+ */
+void OngletRapport::exporterHTML()
+{
+    QString chemin = QFileDialog::getSaveFileName(
+        this, "Exporter en HTML", "", "Fichiers HTML (*.html)");
+    if (chemin.isEmpty()) return;
+
+    QFile fichier(chemin);
+    if (!fichier.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::critical(this, "Erreur", "Impossible d'écrire le fichier.");
+        return;
+    }
+
+    QTextStream out(&fichier);
+    out.setEncoding(QStringConverter::Utf8);
+
+    int pSSS = qRound(rapportCourant.tauxSSS_SRS * 100);
+    int pSRS = qRound(rapportCourant.tauxSRS_SDD * 100);
+    int pGlb = qRound(rapportCourant.tauxGlobal  * 100);
+
+    auto couleurTaux = [](int p) -> QString {
+        return p >= 80 ? "#27AE60" : p >= 50 ? "#E67E22" : "#E74C3C";
+    };
+
+    out << R"(<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Rapport de traçabilité - TraceLink</title>
+<style>
+  body { font-family: Arial; background:#EBF5FB; color:#333; margin:0; padding:20px; }
+  h1 { color:#1A5276; border-bottom:2px solid #AED6F1; padding-bottom:10px; }
+  h2 { color:#1A5276; margin-top:30px; }
+  .taux-container { display:flex; gap:20px; flex-wrap:wrap; margin:20px 0; }
+  .taux-card { background:white; border-radius:10px; padding:15px 20px; min-width:200px; border:1px solid #AED6F1; }
+  .taux-label { color:#555; font-size:12px; margin-bottom:6px; }
+  .taux-value { font-size:24px; font-weight:bold; }
+  .progress { background:#D6EAF8; border-radius:6px; height:10px; margin-top:8px; }
+  .progress-bar { height:10px; border-radius:6px; }
+  table { border-collapse:collapse; width:100%; margin:15px 0; background:white; }
+  th { background:#EBF5FB; color:#1A5276; padding:10px; text-align:center; border:1px solid #AED6F1; font-size:11px; }
+  td { padding:8px; text-align:center; border:1px solid #DDDDDD; font-size:11px; }
+  .couvert { background:#27AE60; color:white; }
+  .noncouverte { background:#FADBD8; color:#E74C3C; }
+  .lien { background:#E67E22; color:white; }
+  .vide { background:#F5F5F5; color:#AAAAAA; }
+  .badge { display:inline-block; padding:3px 10px; border-radius:12px; color:white; font-size:11px; font-weight:bold; margin-right:5px; }
+  .lien-brise-item { background:#FEF9F0; border:1px solid #F0B27A; border-radius:6px; padding:8px 12px; margin:4px 0; color:#A04000; font-size:11px; }
+</style>
+</head>
+<body>
+<h1>📊 Rapport de traçabilité — TraceLink</h1>)";
+
+    out << QString(R"(<div style="margin:10px 0;">
+  <span class="badge" style="background:#27AE60;">%1 Couvert</span>
+  <span class="badge" style="background:#E74C3C;">%2 Non couvert</span>
+  <span class="badge" style="background:#E67E22;">%3 Lien brisé</span>
+</div>)")
+               .arg(labelBadgeCouverts->text().split(" ")[0])
+               .arg(labelBadgeNonCouverts->text().split(" ")[0])
+               .arg(labelBadgeLiensBrises->text().split(" ")[0]);
+
+    out << "<h2>Taux de couverture</h2><div class='taux-container'>";
+    auto taux = [&](const QString& label, int p) {
+        out << QString(R"(<div class="taux-card">
+  <div class="taux-label">%1</div>
+  <div class="taux-value" style="color:%2">%3 %</div>
+  <div class="progress"><div class="progress-bar" style="width:%3%;background:%2"></div></div>
+</div>)").arg(label).arg(couleurTaux(p)).arg(p);
+    };
+    taux("Taux SSS → SRS", pSSS);
+    taux("Taux SRS → SDD", pSRS);
+    taux("Taux global",    pGlb);
+    out << "</div>";
+
+    out << "<h2>Matrice SSS × SRS</h2><table><tr><th>SSS \\ SRS</th>";
+    for (const ExigenceSRS& s : srsAnalyses)
+        out << "<th>" << QString::fromStdString(s.getId()) << "</th>";
+    if (srsAnalyses.empty()) out << "<th>Statut</th>";
+    out << "</tr>";
+
+    for (const ExigenceSSS& exig : rapportCourant.exigencesSSS) {
+        out << "<tr><th>" << QString::fromStdString(exig.getId()) << "</th>";
+        if (!srsAnalyses.empty()) {
+            for (const ExigenceSRS& s : srsAnalyses) {
+                const auto& trac = s.getTracabilite();
+                bool couvre = std::find(trac.begin(), trac.end(), exig.getId()) != trac.end();
+                if (couvre)
+                    out << "<td class='couvert'>Couvert</td>";
+                else if (exig.getStatut() == NonCouverte)
+                    out << "<td class='noncouverte'>Non couvert</td>";
+                else
+                    out << "<td class='vide'>—</td>";
+            }
+        } else {
+            QString cl = exig.getStatut() == Couverte ? "couvert" :
+                             exig.getStatut() == NonCouverte ? "noncouverte" : "";
+            out << "<td class='" << cl << "'>"
+                << (exig.getStatut() == Couverte ? "Couverte" : "Non couverte")
+                << "</td>";
+        }
+        out << "</tr>";
+    }
+    out << "</table>";
+
+    // Liens brisés
+    if (!rapportCourant.liensBrises.empty()) {
+        out << "<h2>⚠ Liens brisés</h2>";
+        for (const std::string& lien : rapportCourant.liensBrises)
+            out << "<div class='lien-brise-item'>🔗 " << QString::fromStdString(lien) << "</div>";
+    }
+
+    out << "</body></html>";
+    fichier.close();
+    QMessageBox::information(this, "Export HTML", "✅ Fichier exporté avec succès !");
+}
+
+// ─── Appliquer filtre ─────────────────────────────────────────────────────────
+
+/**
+ * @brief Applique un filtre sur les matrices.
+ * @param filtre Le filtre à appliquer.
+ */
+void OngletRapport::appliquerFiltre(const FiltreGUI& filtre)
+{
+    for (int i = 0; i < tableMatriceSSS_SRS->rowCount(); i++) {
+        bool afficher = true;
+
+        if (!filtre.filtreIdentifiant.isEmpty()) {
+            QTableWidgetItem* idItem = tableMatriceSSS_SRS->verticalHeaderItem(i);
+            if (idItem)
+                afficher = idItem->text().contains(filtre.filtreIdentifiant, Qt::CaseInsensitive);
+        }
+
+        if (afficher && filtre.filtreStatut != NonAnalyse
+            && i < (int)rapportCourant.exigencesSSS.size()) {
+            Statut s = rapportCourant.exigencesSSS[i].getStatut();
+            if (filtre.filtreStatut == Couverte    && s != Couverte)    afficher = false;
+            if (filtre.filtreStatut == NonCouverte && s != NonCouverte) afficher = false;
+        }
+
+        tableMatriceSSS_SRS->setRowHidden(i, !afficher);
+    }
+}

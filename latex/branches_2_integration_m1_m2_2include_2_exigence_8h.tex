@@ -1,0 +1,86 @@
+\doxysection{Référence du fichier branches/\+\+Integration\+M1\+M2/\+include/\+\+Exigence.h}
+\hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h}{}\label{branches_2_integration_m1_m2_2include_2_exigence_8h}\index{branches/IntegrationM1M2/include/Exigence.h@{branches/IntegrationM1M2/include/Exigence.h}}
+{\ttfamily \+\#include $<$string$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_exigence}{Exigence}}
+\begin{DoxyCompactList}\small\item\em Classe mère abstraite représentant une exigence générique. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{Type\+Exigence}} \{ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a25cb49703f6f42276b239123e6996fea}{SSS}}
+, \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a464a925f33b0ef227a095e7f16367f61}{SRS}}
+, \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a80ae225c494151e089929e0cc8920eeb}{SDD}}
+ \}
+\begin{DoxyCompactList}\small\item\em Définit le niveau hiérarchique d\textquotesingle{}une exigence. \end{DoxyCompactList}\item 
+enum \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}} \{ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a2a275384eb10d9f01e597aa9fd712867}{Non\+Analyse}}
+, \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a64735bb0721ff3fd42018040173bd7cc}{Couverte}}
+, \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a0b29763d2b0ce5cfb2d5faa98f4a34ba}{Non\+Couverte}}
+ \}
+\begin{DoxyCompactList}\small\item\em Définit l\textquotesingle{}état de couverture d\textquotesingle{}une exigence après analyse de traçabilité. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_doc-enum-members}
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\Hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}\index{Exigence.h@{Exigence.h}!Statut@{Statut}}
+\index{Statut@{Statut}!Exigence.h@{Exigence.h}}
+\doxysubsubsection{\texorpdfstring{Statut}{Statut}}
+{\footnotesize\ttfamily \label{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667} 
+enum \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667}{Statut}}}
+
+
+
+Définit l\textquotesingle{}état de couverture d\textquotesingle{}une exigence après analyse de traçabilité. 
+
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NonAnalyse@{NonAnalyse}!Exigence.h@{Exigence.h}}
+\index{Exigence.h@{Exigence.h}!NonAnalyse@{NonAnalyse}}
+}\Hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a2a275384eb10d9f01e597aa9fd712867}\label{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a2a275384eb10d9f01e597aa9fd712867} 
+Non\+Analyse&L\textquotesingle{}exigence n\textquotesingle{}a pas encore été traitée par le moteur de traçabilité. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Couverte@{Couverte}!Exigence.h@{Exigence.h}}
+\index{Exigence.h@{Exigence.h}!Couverte@{Couverte}}
+}\Hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a64735bb0721ff3fd42018040173bd7cc}\label{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a64735bb0721ff3fd42018040173bd7cc} 
+Couverte&Au moins une exigence du niveau suivant référence cette exigence. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NonCouverte@{NonCouverte}!Exigence.h@{Exigence.h}}
+\index{Exigence.h@{Exigence.h}!NonCouverte@{NonCouverte}}
+}\Hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a0b29763d2b0ce5cfb2d5faa98f4a34ba}\label{branches_2_integration_m1_m2_2include_2_exigence_8h_a51cc5d61d45bf71507aceec544ad1667a0b29763d2b0ce5cfb2d5faa98f4a34ba} 
+Non\+Couverte&Aucune exigence du niveau suivant ne couvre cette exigence. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}\index{Exigence.h@{Exigence.h}!TypeExigence@{TypeExigence}}
+\index{TypeExigence@{TypeExigence}!Exigence.h@{Exigence.h}}
+\doxysubsubsection{\texorpdfstring{TypeExigence}{TypeExigence}}
+{\footnotesize\ttfamily \label{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6} 
+enum \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{Type\+Exigence}}}
+
+
+
+Définit le niveau hiérarchique d\textquotesingle{}une exigence. 
+
+\begin{DoxyEnumFields}[2]{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SSS@{SSS}!Exigence.h@{Exigence.h}}
+\index{Exigence.h@{Exigence.h}!SSS@{SSS}}
+}\Hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a25cb49703f6f42276b239123e6996fea}\label{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a25cb49703f6f42276b239123e6996fea} 
+SSS&\doxylink{class_exigence}{Exigence} client (System/\+\+Subsystem Specification). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SRS@{SRS}!Exigence.h@{Exigence.h}}
+\index{Exigence.h@{Exigence.h}!SRS@{SRS}}
+}\Hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a464a925f33b0ef227a095e7f16367f61}\label{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a464a925f33b0ef227a095e7f16367f61} 
+SRS&\doxylink{class_exigence}{Exigence} projet (Software Requirements Specification). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SDD@{SDD}!Exigence.h@{Exigence.h}}
+\index{Exigence.h@{Exigence.h}!SDD@{SDD}}
+}\Hypertarget{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a80ae225c494151e089929e0cc8920eeb}\label{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6a80ae225c494151e089929e0cc8920eeb} 
+SDD&\doxylink{class_exigence}{Exigence} d\textquotesingle{}implémentation (Software Design Document). \\
+\hline
+
+\end{DoxyEnumFields}

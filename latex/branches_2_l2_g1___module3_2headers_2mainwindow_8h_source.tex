@@ -1,0 +1,105 @@
+\doxysection{mainwindow.\+h}
+\hypertarget{branches_2_l2_g1___module3_2headers_2mainwindow_8h_source}{}\label{branches_2_l2_g1___module3_2headers_2mainwindow_8h_source}\index{branches/L2G1\_Module3/headers/mainwindow.h@{branches/L2G1\_Module3/headers/mainwindow.h}}
+\doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2mainwindow_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MAINWINDOW\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MAINWINDOW\_H}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QMainWindow>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QTabWidget>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QLineEdit>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QHBoxLayout>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QTextEdit>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QListWidget>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <QProgressBar>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <QStringList>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <QTimer>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_ongletrapport_8h}{OngletRapport.h}}"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h}{VueGrapheTracabilite.h}}"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h}{GestionnaireFiltresGUI.h}}"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}ExtracteurFichier.h"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}ConvertisseurExigence.h"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}MoteurTracabilite.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}ThreadManager.h"{}}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}\ :\ \textcolor{keyword}{public}\ QMainWindow}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{MainWindow}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00034\ \ \ \ \ \doxymbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{\string~MainWindow}}();}
+\DoxyCodeLine{00035\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a6546156c5f72113ea02598362994d79f}{parcourirSSS}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ab39e24654e1e3289f1019926d3cd9e1b}{parcourirSRS}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a65c6d1b51f3e1c474d71e336b5dfc07c}{parcourirSDD}}();}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_adc8d59bb4989482f4563f78fa75c36a6}{verifierFichiersSelectionnes}}();}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ae4b8723fa8add1a24180ef2b63751699}{reinitialiser}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a2c6cd85de787b78a91cd43a240e8f65c}{lancerAnalyse}}();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a3f2e4a9c8cb7495cf48151db88996206}{filtrerApercu}}(\textcolor{keyword}{const}\ QString\ \&texte);}
+\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Onglets\ principaux}}
+\DoxyCodeLine{00045\ \ \ \ \ QTabWidget\ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_ac6080f95dd35faed65fa56d6f0e15829}{tabWidget}};}
+\DoxyCodeLine{00046\ \ \ \ \ QWidget\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_a9e186beefb05a94d292827856f74a93f}{ongletImport}};}
+\DoxyCodeLine{00047\ \ \ \ \ \doxymbox{\hyperlink{class_onglet_rapport}{OngletRapport}}\ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_a88798284ca8df1d76f1b9d1ef9d44dee}{ongletRapport}};}
+\DoxyCodeLine{00048\ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite}{VueGrapheTracabilite}}\ \ \ *\doxymbox{\hyperlink{class_main_window_a844047afd3a23a03d5a1d39162d79455}{ongletGraphe}};}
+\DoxyCodeLine{00049\ \ \ \ \ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i}{GestionnaireFiltresGUI}}\ *\doxymbox{\hyperlink{class_main_window_a4b53f543a4d3ddf0f99ad96fac689962}{gestionnaireFiltres}};}
+\DoxyCodeLine{00050\ \ \ \ \ QWidget\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_a3ae22b2eae2558a3cad689a458450e0b}{ongletGrapheConteneur}};}
+\DoxyCodeLine{00051\ \ \ \ \ QWidget\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_a183bb814f2f81045c5d1592a37aaa066}{ongletRapportConteneur}};}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Onglets\ fichiers\ SSS/SRS/SDD}}
+\DoxyCodeLine{00053\ \ \ \ \ QTabWidget\ \ *\doxymbox{\hyperlink{class_main_window_a7a1cf69dd9ef5b074f44c5314770f0b9}{ongletsFichiers}};}
+\DoxyCodeLine{00054\ \ \ \ \ QLineEdit\ \ \ *\doxymbox{\hyperlink{class_main_window_a29c06208edf21f267effd9bfd57199f8}{champSSS}};}
+\DoxyCodeLine{00055\ \ \ \ \ QLineEdit\ \ \ *\doxymbox{\hyperlink{class_main_window_ae615075e8b603a4e5b60faee454fdb8d}{champSRS}};}
+\DoxyCodeLine{00056\ \ \ \ \ QLineEdit\ \ \ *\doxymbox{\hyperlink{class_main_window_ab412b6c0593423f4f9f9edb49006e6c6}{champSDD}};}
+\DoxyCodeLine{00057\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_main_window_a3d36978afc9116f40fa8ce153a487b33}{btnParcourirSSS}};}
+\DoxyCodeLine{00058\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_main_window_a67672d72bba34301e2364a41267862af}{btnParcourirSRS}};}
+\DoxyCodeLine{00059\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_main_window_a2f158425426e8e82c3c3cc65b5eab8c5}{btnParcourirSDD}};}
+\DoxyCodeLine{00060\ \ \ \ \ QLabel\ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_adbd902ab10419242511bbf66bb1b3ded}{badgeSSS}};}
+\DoxyCodeLine{00061\ \ \ \ \ QLabel\ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_a93b38f90a5c9823f1e83d7f85095782b}{badgeSRS}};}
+\DoxyCodeLine{00062\ \ \ \ \ QLabel\ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_a0ff09376639eb7fc8b4d4ea7c929c3ec}{badgeSDD}};}
+\DoxyCodeLine{00063\ \ \ \ \ QLabel\ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_ab61dc516291879fc11662d781312caa0}{erreurSSS}};}
+\DoxyCodeLine{00064\ \ \ \ \ QLabel\ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_a532a25a469d7ff9ddf7a77e1365e2c1e}{erreurSRS}};}
+\DoxyCodeLine{00065\ \ \ \ \ QLabel\ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_ab21775ba46eb6ccf9dd9d082ef7564b8}{erreurSDD}};}
+\DoxyCodeLine{00066\ \ \ \ \ QListWidget\ *\doxymbox{\hyperlink{class_main_window_aebaf5f8357d6b7e8bf89bdcf4c99beb6}{listeSSS}};}
+\DoxyCodeLine{00067\ \ \ \ \ QListWidget\ *\doxymbox{\hyperlink{class_main_window_ab7eb40d0003c656ce5b3adaacb50c4d0}{listeSRS}};}
+\DoxyCodeLine{00068\ \ \ \ \ QListWidget\ *\doxymbox{\hyperlink{class_main_window_a3019ea7c00b55c0ab88ed870ebd578b0}{listeSDD}};}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//\ Préfixes\ configurables\ par\ l'utilisateur}}
+\DoxyCodeLine{00070\ \ \ \ \ QLineEdit\ \ \ *\doxymbox{\hyperlink{class_main_window_af369a34cf876ff881097967fea701104}{champPrefixeGlobal}};\ }
+\DoxyCodeLine{00071\ \ \ \ \ QLineEdit\ \ \ *\doxymbox{\hyperlink{class_main_window_acfb5606b548ed5e3172d296abaa104a7}{champPrefixeSSS}};\ \ \ \ }
+\DoxyCodeLine{00072\ \ \ \ \ QLineEdit\ \ \ *\doxymbox{\hyperlink{class_main_window_af4cfa08cd6fb82d858c406f5572354bd}{champPrefixeSRS}};\ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ QLineEdit\ \ \ *\doxymbox{\hyperlink{class_main_window_ad1fd3c58a5653d37597d7ec9b7d8c17d}{champPrefixeSDD}};\ \ \ \ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Boutons\ +\ statut}}
+\DoxyCodeLine{00075\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_main_window_a505bc104df38e1c0540f4d450fd0f17b}{btnLancer}};}
+\DoxyCodeLine{00076\ \ \ \ \ QPushButton\ *\doxymbox{\hyperlink{class_main_window_ae0af91469db80afd4c4c4438386f4232}{btnReinitialiser}};}
+\DoxyCodeLine{00077\ \ \ \ \ QLabel\ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_a5b835797808104379708d7bad103a0a5}{labelStatut}};}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ Terminal\ +\ progression}}
+\DoxyCodeLine{00079\ \ \ \ \ QTextEdit\ \ \ \ *\doxymbox{\hyperlink{class_main_window_a655af4ce2e2b60ff0e32485bf81c70c1}{terminal}};}
+\DoxyCodeLine{00080\ \ \ \ \ QProgressBar\ *\doxymbox{\hyperlink{class_main_window_a625733ab96553e187e95052cd64c4ae9}{barreProgression}};}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Aperçu\ exigences}}
+\DoxyCodeLine{00082\ \ \ \ \ QListWidget\ *\doxymbox{\hyperlink{class_main_window_ac55dfe1fdfe6f84410af91032305a2fb}{listeExigences}};}
+\DoxyCodeLine{00083\ \ \ \ \ QLineEdit\ \ \ *\doxymbox{\hyperlink{class_main_window_a6de28aac7fce489f08aa87d89614a7b8}{champRechercheId}};}
+\DoxyCodeLine{00084\ \ \ \ \ QLabel\ \ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_aa9ae6fcb02bd4d870afa95115615308d}{labelNbExigences}};}
+\DoxyCodeLine{00085\ \ \ \ \ QStringList\ \ \doxymbox{\hyperlink{class_main_window_a7b3473d7aafed5812236cea604978198}{toutesExigences}};}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{comment}{//\ Chemins\ :\ listes\ pour\ sélection\ multiple}}
+\DoxyCodeLine{00087\ \ \ \ \ QStringList\ \doxymbox{\hyperlink{class_main_window_a186e3a3094553b67568b559e8e862030}{cheminsSSS}};}
+\DoxyCodeLine{00088\ \ \ \ \ QStringList\ \doxymbox{\hyperlink{class_main_window_a36c9d629cdad5d183106f9216175f964}{cheminsSRS}};}
+\DoxyCodeLine{00089\ \ \ \ \ QStringList\ \doxymbox{\hyperlink{class_main_window_abc5b6f2d71207d9d5288c3ae7d8a958b}{cheminsSDD}};}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ Thread}}
+\DoxyCodeLine{00091\ \ \ \ \ \doxymbox{\hyperlink{class_moteur_tracabilite}{MoteurTracabilite}}\ *\doxymbox{\hyperlink{class_main_window_a068af2d3a2c4dc660471b9aa2fbe4697}{moteurAnalyse}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00092\ \ \ \ \ \doxymbox{\hyperlink{class_thread_manager}{ThreadManager}}\ \ \ \ \ *\doxymbox{\hyperlink{class_main_window_a985e4521472041f5e00193872a619d01}{threadManager}}\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ Méthodes}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ac9ecc19342cfbe10ce582c96c04a01e0}{construireOngletImport}}();}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ac9bc4ed35a651ba4c2ce72ed179044be}{construireOngletGraphe}}();}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ad419fdfc3443880fb564a63827a110f1}{construireOngletRapport}}();}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_main_window_aa3c0c8baa5625b112c9870157c8c375f}{formatAccepte}}(\textcolor{keyword}{const}\ QString\ \&chemin);}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a64de1d418f1afb2bf0fdfe5c1c311dd8}{mettreAJourOngletFichier}}(\textcolor{keywordtype}{int}\ index,\ \textcolor{keyword}{const}\ QString\ \&etat);}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_adfb08a1d7d4711163137aaa69798280a}{logTerminal}}(\textcolor{keyword}{const}\ QString\ \&message,\ \textcolor{keyword}{const}\ QString\ \&couleur\ =\ \textcolor{stringliteral}{"{}\#D4D4D4"{}});}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_ac552ded8e5621ffa0e3f8e4b5e041fb6}{afficherApercuExigences}}(\textcolor{keyword}{const}\ std::vector<ExigenceExtraite>\ \&sss,}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceExtraite>\ \&srs,}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceExtraite>\ \&sdd);}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_main_window_a664924215614811f1afd1d4c08b6b2f1}{ajouterItemVide}}(QListWidget\ *liste);}
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MAINWINDOW\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,100 @@
+\doxysection{Ongletrapport.\+h}
+\hypertarget{tags_2_a0_2_l2_g1___module3_2headers_2_ongletrapport_8h_source}{}\label{tags_2_a0_2_l2_g1___module3_2headers_2_ongletrapport_8h_source}\index{tags/A0/L2G1\_Module3/headers/Ongletrapport.h@{tags/A0/L2G1\_Module3/headers/Ongletrapport.h}}
+\doxymbox{\hyperlink{tags_2_a0_2_l2_g1___module3_2headers_2_ongletrapport_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ONGLETRAPPORT\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ONGLETRAPPORT\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QTableWidget>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QVBoxLayout>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QFrame>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QProgressBar>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <QTabWidget>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <QMenu>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <QToolButton>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}RapportTracabilite.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{tags_2_a0_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h}{GestionnaireFiltresGUI.h}}"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}ExigenceSRS.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}ExigenceSDD.h"{}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_onglet_rapport}{OngletRapport}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_onglet_rapport_a519fe0235f5fb41432fa772782b7f818}{OngletRapport}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_onglet_rapport_a5c0a66eaaced228c416ceefcab373eb6}{afficherRapport}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_rapport_tracabilite}{RapportTracabilite}}\&\ rapport);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_onglet_rapport_aa0f83abd74aeb7975e0267caced15582}{afficherRapportComplet}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_rapport_tracabilite}{RapportTracabilite}}\&\ rapport,}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSRS>\&\ srs,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSDD>\&\ sdd);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{keyword}{private}\ slots:}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_onglet_rapport_ac22c36aed05993e180d240661f6f07b4}{exporterCSV}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_onglet_rapport_a6dccd55774251782f8fb092695d8f1d8}{exporterHTML}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_onglet_rapport_ac9941f52ef0b753220475b1f091109a3}{toggleFiltres}}();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_onglet_rapport_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba}{appliquerFiltre}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_filtre_g_u_i}{FiltreGUI}}\&\ filtre);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{comment}{//\ ──\ Taux\ de\ couverture\ ────────────────────────────────────────────────────}}
+\DoxyCodeLine{00094\ \ \ \ \ QLabel\ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_onglet_rapport_af7f370e171006d74535cd3f54c938a47}{labelTauxSSS\_SRS}};\ }
+\DoxyCodeLine{00095\ \ \ \ \ QLabel\ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_onglet_rapport_a1912bd0119c1e6ee4619d807e468e11d}{labelTauxSRS\_SDD}};\ }
+\DoxyCodeLine{00096\ \ \ \ \ QLabel\ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_onglet_rapport_a82f8f2cdb7ac56b6364162a5d3c02325}{labelTauxGlobal}};\ \ }
+\DoxyCodeLine{00097\ \ \ \ \ QProgressBar\ *\doxymbox{\hyperlink{class_onglet_rapport_a08600dce6969bb44417df5d5f8282f30}{barreSSS\_SRS}};\ \ \ \ \ }
+\DoxyCodeLine{00098\ \ \ \ \ QProgressBar\ *\doxymbox{\hyperlink{class_onglet_rapport_a1b3867e58380cf22da33fb65fab0615c}{barreSRS\_SDD}};\ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ QProgressBar\ *\doxymbox{\hyperlink{class_onglet_rapport_a6a47ec106861b2b1eecd7b34d7aa4e50}{barreGlobal}};\ \ \ \ \ \ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ ──\ Badges\ résumé\ ─────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00102\ \ \ \ \ QLabel\ *\doxymbox{\hyperlink{class_onglet_rapport_a44a30164fcb71c6e9d9437a0b02350ed}{labelBadgeCouverts}};\ \ \ \ }
+\DoxyCodeLine{00103\ \ \ \ \ QLabel\ *\doxymbox{\hyperlink{class_onglet_rapport_a3c24ab7fe5d0e85eab63f74158c5eeba}{labelBadgeNonCouverts}};\ }
+\DoxyCodeLine{00104\ \ \ \ \ QLabel\ *\doxymbox{\hyperlink{class_onglet_rapport_a9d9818f3b333c4d82d7d35e5ef16f82d}{labelBadgeLiensBrises}};\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//\ ──\ Matrices\ de\ traçabilité\ ───────────────────────────────────────────────}}
+\DoxyCodeLine{00107\ \ \ \ \ QTableWidget\ *\doxymbox{\hyperlink{class_onglet_rapport_a9febc078f7c7c585bd07fccd3e5a0ce6}{tableMatriceSSS\_SRS}};\ }
+\DoxyCodeLine{00108\ \ \ \ \ QTableWidget\ *\doxymbox{\hyperlink{class_onglet_rapport_ab7ae76a7fbdcce24d43c327bd544fee6}{tableMatriceSRS\_SDD}};\ }
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{comment}{//\ ──\ Panneau\ détail\ exigence\ sélectionnée\ ──────────────────────────────────}}
+\DoxyCodeLine{00111\ \ \ \ \ QFrame\ \ *\doxymbox{\hyperlink{class_onglet_rapport_a6b2128766e24629ca56027af6cd1a8c3}{panneauDetail}};\ \ \ \ \ \ }
+\DoxyCodeLine{00112\ \ \ \ \ QLabel\ \ *\doxymbox{\hyperlink{class_onglet_rapport_ad9a888355f5ed489e24ba3fed114d0be}{labelDetailId}};\ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ QLabel\ \ *\doxymbox{\hyperlink{class_onglet_rapport_a5d640bfa67288baa93a100f9406f4bc3}{labelDetailType}};\ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ QLabel\ \ *\doxymbox{\hyperlink{class_onglet_rapport_a36271cc1572f979177a7dfdf1027101d}{labelDetailStatut}};\ \ }
+\DoxyCodeLine{00115\ \ \ \ \ QLabel\ \ *\doxymbox{\hyperlink{class_onglet_rapport_ad85c99840ac1f829a3339b38ee7abcf3}{labelDetailLiens}};\ \ \ }
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ ──\ Export\ ────────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00118\ \ \ \ \ QToolButton\ *\doxymbox{\hyperlink{class_onglet_rapport_a37325c6c7892d1ed774761efc58e48e3}{boutonExport}};\ }
+\DoxyCodeLine{00119\ \ \ \ \ QMenu\ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_onglet_rapport_ab3a6c2c747381058a25d871ae92d3374}{menuExport}};\ \ \ }
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ ──\ Filtres\ ───────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00122\ \ \ \ \ QFrame\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_onglet_rapport_ac3d2cedd4765281542c8aeed0e42daa4}{panneauFiltres}};\ \ \ \ \ }
+\DoxyCodeLine{00123\ \ \ \ \ QPushButton\ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_onglet_rapport_a39c4cea08e8afe1a7265389a08ca590c}{boutonFiltres}};\ \ \ \ \ \ }
+\DoxyCodeLine{00124\ \ \ \ \ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i}{GestionnaireFiltresGUI}}\ *\doxymbox{\hyperlink{class_onglet_rapport_ada2b30c0663b8d386e3314038d9b9349}{gestionnaireFiltres}};\ }
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//\ ──\ Données\ ───────────────────────────────────────────────────────────────}}
+\DoxyCodeLine{00127\ \ \ \ \ \doxymbox{\hyperlink{struct_rapport_tracabilite}{RapportTracabilite}}\ \ \ \ \ \ \ \doxymbox{\hyperlink{class_onglet_rapport_ab4ff6350ad14a8d11cc5d7c2150bc286}{rapportCourant}};\ }
+\DoxyCodeLine{00128\ \ \ \ \ std::vector<ExigenceSRS>\ \doxymbox{\hyperlink{class_onglet_rapport_a65a64cad20ad7b9d386e23cd5bc1525b}{srsAnalyses}};\ \ \ }
+\DoxyCodeLine{00129\ \ \ \ \ std::vector<ExigenceSDD>\ \doxymbox{\hyperlink{class_onglet_rapport_a4c245859a692c4678b072920f10383af}{sddAnalyses}};\ \ \ }
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//Liens\ brisés}}
+\DoxyCodeLine{00132\ \ \ \ \ QFrame\ \ \ \ \ \ *\doxymbox{\hyperlink{class_onglet_rapport_af36529bc577117a2c613937ad3085b8e}{panneauLiensBrises}};}
+\DoxyCodeLine{00133\ \ \ \ \ QWidget\ \ \ \ \ *\doxymbox{\hyperlink{class_onglet_rapport_a29846db8e7ec124501f1bf2a4177d387}{listeLiensBrises}};}
+\DoxyCodeLine{00134\ \ \ \ \ QVBoxLayout\ *\doxymbox{\hyperlink{class_onglet_rapport_a10beacaa38c62655de993ff0734ace18}{layoutListeLB}};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_onglet_rapport_a1c4673e01953875944c20aea6e8bf804}{initialiserUI}}();}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00146\ \ \ \ \ QProgressBar*\ \doxymbox{\hyperlink{class_onglet_rapport_a761820647193743906d8a29a35531415}{creerBarre}}(\textcolor{keyword}{const}\ QString\&\ couleur);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_onglet_rapport_ac8b5203545aade91354b45a910426c3c}{styliserTableau}}(QTableWidget*\ table);}
+\DoxyCodeLine{00153\ \};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ONGLETRAPPORT\_H}}
+
+\end{DoxyCode}

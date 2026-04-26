@@ -1,0 +1,1177 @@
+/**
+ * @file mainwindow.cpp
+ * @brief Implémentation de la fenêtre principale de TraceLink — Module 3.
+ *
+ * Orchestre le flux complet d'analyse de traçabilité :
+ *   1. Import des fichiers SSS, SRS et SDD (sélection multiple)
+ *   2. Extraction des exigences via ExtracteurFichier (Module 1)
+ *   3. Conversion via ConvertisseurExigences (Module 1)
+ *   4. Analyse de traçabilité via MoteurTracabilite dans un thread séparé (Module 2)
+ *   5. Affichage des résultats dans l'onglet Rapport et l'onglet Graphe
+ *
+ * @author Amel Kheloul, Lamia Arrahmane
+ * @date 26/04/2026
+ * @version 7.1 — Label "Fichiers sélectionnés" + item vide par défaut dans listes
+ */
+
+#include "mainwindow.h"
+#include <QFileDialog>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QFileInfo>
+#include <QTextEdit>
+#include <QMessageBox>
+#include <QListWidget>
+#include <QProgressBar>
+#include <QTimer>
+#include <algorithm>
+#include <iostream>
+
+#include "ExigenceSSS.h"
+#include "ExigenceSRS.h"
+#include "ExigenceSDD.h"
+
+/**
+ * @brief Constructeur de la fenêtre principale.
+ *
+ * Initialise la fenêtre, applique le style global, construit les 3 onglets
+ * (Import, Graphe, Rapport), connecte les signaux du gestionnaire de filtres.
+ *
+ * @param parent Widget parent Qt.
+ */
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+{
+    setWindowTitle("TraceLink - Outil de Traçabilité");
+    resize(1100, 700);
+
+    setStyleSheet(R"(
+        QMainWindow { background-color: #EBF5FB; }
+        QTabWidget::pane { border: none; background-color: #EBF5FB; }
+        QTabBar::tab {
+            background: #FFFFFF;
+            color: #555555;
+            padding: 8px 20px;
+            border-radius: 4px;
+            margin-right: 4px;
+            border: 1px solid #DDDDDD;
+        }
+        QTabBar::tab:selected {
+            background: #2E86C1;
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+        QGroupBox {
+            color: #333333;
+            border: 1px solid #DDDDDD;
+            border-radius: 8px;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 11px;
+            background-color: #FFFFFF;
+        }
+        QGroupBox::title { subcontrol-origin: margin; left: 10px; padding: 0 5px; }
+        QLineEdit {
+            background-color: #FFFFFF;
+            color: #333333;
+            border: 1px solid #DDDDDD;
+            border-radius: 4px;
+            padding: 6px;
+        }
+        QPushButton {
+            background-color: #FFFFFF;
+            color: #555555;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 11px;
+            border: 1px solid #DDDDDD;
+        }
+        QPushButton:hover { background-color: #E8F0FE; color: #2E86C1; }
+        QListWidget {
+            background-color: #FFFFFF;
+            border: 1px solid #DDDDDD;
+            border-radius: 6px;
+            font-size: 10px;
+        }
+        QProgressBar {
+            background-color: #EEEEEE;
+            border-radius: 4px;
+            border: none;
+        }
+        QProgressBar::chunk {
+            background-color: #2E86C1;
+            border-radius: 4px;
+        }
+    )");
+
+    tabWidget = new QTabWidget(this);
+    setCentralWidget(tabWidget);
+
+    construireOngletImport();
+    construireOngletGraphe();
+    construireOngletRapport();
+
+    // Connexion du gestionnaire de filtres aux onglets Rapport et Graphe
+    gestionnaireFiltres = new GestionnaireFiltresGUI();
+    connect(gestionnaireFiltres, &GestionnaireFiltresGUI::filtreModifie,
+            ongletRapport, &OngletRapport::appliquerFiltre);
+    connect(gestionnaireFiltres, &GestionnaireFiltresGUI::filtreModifie,
+            ongletGraphe, &VueGrapheTracabilite::appliquerFiltre);
+
+    tabWidget->addTab(ongletImport,           "📂 Import des fichiers");
+    tabWidget->addTab(ongletGrapheConteneur,  "🔗 Graphe de traçabilité");
+    tabWidget->addTab(ongletRapportConteneur, "📊 Rapport & Taux");
+
+    connect(btnLancer, &QPushButton::clicked, this, &MainWindow::lancerAnalyse);
+}
+
+/**
+ * @brief Destructeur — libère le thread et le moteur si encore actifs.
+ */
+MainWindow::~MainWindow()
+{
+    if (threadManager) {
+        threadManager->attendreFinAnalyse();
+        delete threadManager;
+    }
+    if (moteurAnalyse) delete moteurAnalyse;
+}
+
+/**
+ * @brief Ajoute l'item "Aucun fichier sélectionné" par défaut dans une liste.
+ *
+ * L'item est grisé et non sélectionnable. Il est affiché quand aucun fichier
+ * n'a encore été importé dans l'onglet correspondant.
+ *
+ * @param liste La QListWidget à initialiser avec l'item vide.
+ */
+void MainWindow::ajouterItemVide(QListWidget *liste)
+{
+    QListWidgetItem *vide = new QListWidgetItem("📭  Aucun fichier sélectionné");
+    vide->setForeground(QColor("#AAAAAA"));
+    vide->setFlags(Qt::NoItemFlags);
+    liste->addItem(vide);
+}
+
+/**
+ * @brief Construit l'onglet Import en 3 colonnes :
+ *        - Gauche  : sélection fichiers SSS/SRS/SDD + zone préfixes configurables
+ *        - Milieu  : terminal d'analyse + barre de progression
+ *        - Droite  : aperçu des exigences extraites avec recherche par ID
+ */
+void MainWindow::construireOngletImport()
+{
+    ongletImport = new QWidget();
+    ongletImport->setStyleSheet("background-color: #EEF6FF;");
+
+    QHBoxLayout *layoutPrincipal = new QHBoxLayout(ongletImport);
+    layoutPrincipal->setContentsMargins(14, 14, 14, 14);
+    layoutPrincipal->setSpacing(14);
+
+
+    // COLONNE GAUCHE
+
+    QWidget *colonneGauche = new QWidget();
+    colonneGauche->setFixedWidth(310);
+    colonneGauche->setStyleSheet("background-color: transparent;");
+    QVBoxLayout *layoutGauche = new QVBoxLayout(colonneGauche);
+    layoutGauche->setContentsMargins(0, 0, 0, 0);
+    layoutGauche->setSpacing(10);
+
+    // Style commun pour les listes de fichiers importés
+    QString styleListeFichiers = R"(
+        QListWidget {
+            background-color: #F4F9FF;
+            border: 1px solid #C8DDEF;
+            border-radius: 6px;
+            font-size: 9px;
+            color: #1A3A5C;
+        }
+        QListWidget::item { padding: 3px 8px; color: #1A3A5C; border-bottom: 1px solid #E0EEF8; }
+        QListWidget::item:selected { background-color: #D0E8F8; color: #0D2B45; }
+    )";
+
+    // Style pour les champs de chemin en lecture seule
+    QString styleChampFichier = R"(
+        QLineEdit {
+            background-color: #F4F9FF;
+            color: #1A3A5C;
+            border: 1px solid #C8DDEF;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 10px;
+        }
+    )";
+
+    // Style pour les boutons Parcourir
+    QString styleBtnParcourir = R"(
+        QPushButton {
+            background-color: #1A6FA8;
+            color: white;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 10px;
+            font-weight: bold;
+            border: none;
+        }
+        QPushButton:hover { background-color: #0D2B45; }
+    )";
+
+    // Style pour les labels "Fichiers sélectionnés :"
+    QString styleLabelListe = "color: #4A7A9B; font-size: 9px; font-weight: bold; padding: 2px 0px;";
+
+    //  Onglets SSS / SRS / SDD
+    ongletsFichiers = new QTabWidget();
+    ongletsFichiers->setStyleSheet(R"(
+        QTabWidget::pane {
+            border: 1px solid #C8DDEF;
+            border-radius: 10px;
+            background-color: #FFFFFF;
+            padding: 10px;
+        }
+        QTabBar::tab {
+            background: #EEF6FF;
+            color: #4A7A9B;
+            padding: 7px 18px;
+            border-radius: 6px;
+            margin-right: 4px;
+            border: 1px solid #C8DDEF;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        QTabBar::tab:selected {
+            background: #0D2B45;
+            color: white;
+            border: none;
+        }
+        QTabBar::tab:hover:!selected {
+            background: #D0E8F8;
+            color: #0D2B45;
+        }
+    )");
+
+    //  Tab SSS
+    QWidget *tabSSS = new QWidget();
+    tabSSS->setStyleSheet("background-color: transparent;");
+    QVBoxLayout *lSSS = new QVBoxLayout(tabSSS);
+    lSSS->setSpacing(6);
+    champSSS = new QLineEdit(); champSSS->setPlaceholderText("Aucun fichier sélectionné..."); champSSS->setReadOnly(true);
+    champSSS->setStyleSheet(styleChampFichier);
+    btnParcourirSSS = new QPushButton("📁  Parcourir");
+    btnParcourirSSS->setStyleSheet(styleBtnParcourir);
+    badgeSSS = new QLabel(""); badgeSSS->setAlignment(Qt::AlignCenter); badgeSSS->setTextFormat(Qt::RichText);
+    erreurSSS = new QLabel(""); erreurSSS->setStyleSheet("color: #E74C3C; font-size: 9px;"); erreurSSS->setWordWrap(true);
+    QLabel *labelFichiersSSS = new QLabel("Fichiers sélectionnés :");
+    labelFichiersSSS->setStyleSheet(styleLabelListe);
+    listeSSS = new QListWidget(); listeSSS->setFixedHeight(72); listeSSS->setStyleSheet(styleListeFichiers);
+    ajouterItemVide(listeSSS); // item par défaut "Aucun fichier sélectionné"
+    lSSS->addWidget(champSSS); lSSS->addWidget(btnParcourirSSS);
+    lSSS->addWidget(badgeSSS); lSSS->addWidget(erreurSSS);
+    lSSS->addWidget(labelFichiersSSS); lSSS->addWidget(listeSSS); lSSS->addStretch();
+
+    //  Tab SRS
+    QWidget *tabSRS = new QWidget();
+    tabSRS->setStyleSheet("background-color: transparent;");
+    QVBoxLayout *lSRS = new QVBoxLayout(tabSRS);
+    lSRS->setSpacing(6);
+    champSRS = new QLineEdit(); champSRS->setPlaceholderText("Aucun fichier sélectionné..."); champSRS->setReadOnly(true);
+    champSRS->setStyleSheet(styleChampFichier);
+    btnParcourirSRS = new QPushButton("📁  Parcourir");
+    btnParcourirSRS->setStyleSheet(styleBtnParcourir);
+    badgeSRS = new QLabel(""); badgeSRS->setAlignment(Qt::AlignCenter); badgeSRS->setTextFormat(Qt::RichText);
+    erreurSRS = new QLabel(""); erreurSRS->setStyleSheet("color: #E74C3C; font-size: 9px;"); erreurSRS->setWordWrap(true);
+    QLabel *labelFichiersSRS = new QLabel("Fichiers sélectionnés :");
+    labelFichiersSRS->setStyleSheet(styleLabelListe);
+    listeSRS = new QListWidget(); listeSRS->setFixedHeight(72); listeSRS->setStyleSheet(styleListeFichiers);
+    ajouterItemVide(listeSRS); // item par défaut "Aucun fichier sélectionné"
+    lSRS->addWidget(champSRS); lSRS->addWidget(btnParcourirSRS);
+    lSRS->addWidget(badgeSRS); lSRS->addWidget(erreurSRS);
+    lSRS->addWidget(labelFichiersSRS); lSRS->addWidget(listeSRS); lSRS->addStretch();
+
+    //  Tab SDD
+    QWidget *tabSDD = new QWidget();
+    tabSDD->setStyleSheet("background-color: transparent;");
+    QVBoxLayout *lSDD = new QVBoxLayout(tabSDD);
+    lSDD->setSpacing(6);
+    champSDD = new QLineEdit(); champSDD->setPlaceholderText("Aucun fichier sélectionné..."); champSDD->setReadOnly(true);
+    champSDD->setStyleSheet(styleChampFichier);
+    btnParcourirSDD = new QPushButton("📁  Parcourir");
+    btnParcourirSDD->setStyleSheet(styleBtnParcourir);
+    badgeSDD = new QLabel(""); badgeSDD->setAlignment(Qt::AlignCenter); badgeSDD->setTextFormat(Qt::RichText);
+    erreurSDD = new QLabel(""); erreurSDD->setStyleSheet("color: #E74C3C; font-size: 9px;"); erreurSDD->setWordWrap(true);
+    QLabel *labelFichiersSDD = new QLabel("Fichiers sélectionnés :");
+    labelFichiersSDD->setStyleSheet(styleLabelListe);
+    listeSDD = new QListWidget(); listeSDD->setFixedHeight(72); listeSDD->setStyleSheet(styleListeFichiers);
+    ajouterItemVide(listeSDD); // item par défaut "Aucun fichier sélectionné"
+    lSDD->addWidget(champSDD); lSDD->addWidget(btnParcourirSDD);
+    lSDD->addWidget(badgeSDD); lSDD->addWidget(erreurSDD);
+    lSDD->addWidget(labelFichiersSDD); lSDD->addWidget(listeSDD); lSDD->addStretch();
+
+    ongletsFichiers->addTab(tabSSS, "⏳ SSS");
+    ongletsFichiers->addTab(tabSRS, "⏳ SRS");
+    ongletsFichiers->addTab(tabSDD, "⏳ SDD");
+
+    //  Zone préfixes configurables
+    // Permet à l'utilisateur de définir les préfixes de ses identifiants
+    // ex : préfixe global "EXIGENCE_", SSS="CLIENT", SRS="PROJET", SDD="SDD"
+    // → construit la regex de détection automatiquement
+    QFrame *framePrefixes = new QFrame();
+    framePrefixes->setStyleSheet(R"(
+        QFrame {
+            background-color: #FFFFFF;
+            border: 1px solid #C8DDEF;
+            border-radius: 10px;
+        }
+    )");
+    QVBoxLayout *layoutPrefixes = new QVBoxLayout(framePrefixes);
+    layoutPrefixes->setContentsMargins(12, 10, 12, 10);
+    layoutPrefixes->setSpacing(7);
+
+    QLabel *titrePrefixes = new QLabel("⚙  Préfixes des identifiants");
+    titrePrefixes->setStyleSheet(R"(
+        font-size: 11px; font-weight: bold; color: #0D2B45;
+        padding: 4px 0px;
+        border-bottom: 1px solid #C8DDEF;
+    )");
+
+    QLabel *infoPrefixes = new QLabel("Définissez par quoi commencent vos IDs (séparés par virgule)");
+    infoPrefixes->setStyleSheet("color: #7A9AB8; font-size: 9px; padding: 2px 0;");
+    infoPrefixes->setWordWrap(true);
+
+    QString styleChampPrefixe = R"(
+        QLineEdit {
+            font-size: 10px;
+            background-color: #F4F9FF;
+            border: 1px solid #C8DDEF;
+            border-radius: 6px;
+            padding: 5px 8px;
+            color: #0D2B45;
+        }
+        QLineEdit:focus {
+            border: 1px solid #1A6FA8;
+            background-color: #EBF5FB;
+        }
+    )";
+
+    QString styleLabelPrefixe = "font-size: 10px; font-weight: bold; min-width: 55px;";
+
+    // Préfixe global commun (ex: EXIGENCE_, SPEC_, REQ_)
+    QHBoxLayout *rowGlobal = new QHBoxLayout();
+    rowGlobal->setSpacing(8);
+    QLabel *lblGlobal = new QLabel("Préfixe :");
+    lblGlobal->setStyleSheet(styleLabelPrefixe + "color: #4A7A9B;");
+    lblGlobal->setFixedWidth(55);
+    champPrefixeGlobal = new QLineEdit();
+    champPrefixeGlobal->setPlaceholderText("Ex: SPEC_, EX_, REQ_");
+    champPrefixeGlobal->setText("EXIGENCE_");
+    champPrefixeGlobal->setStyleSheet(styleChampPrefixe);
+    rowGlobal->addWidget(lblGlobal); rowGlobal->addWidget(champPrefixeGlobal);
+
+    // Suffixe de type SSS (ex: CLIENT)
+    QHBoxLayout *rowSSS = new QHBoxLayout();
+    rowSSS->setSpacing(8);
+    QLabel *lblSSS = new QLabel("SSS :");
+    lblSSS->setStyleSheet(styleLabelPrefixe + "color: #0D2B45;");
+    lblSSS->setFixedWidth(35);
+    champPrefixeSSS = new QLineEdit();
+    champPrefixeSSS->setPlaceholderText("Ex: CLIENT, A");
+    champPrefixeSSS->setText("CLIENT");
+    champPrefixeSSS->setStyleSheet(styleChampPrefixe);
+    rowSSS->addWidget(lblSSS); rowSSS->addWidget(champPrefixeSSS);
+
+    // Suffixe de type SRS (ex: PROJET)
+    QHBoxLayout *rowSRS = new QHBoxLayout();
+    rowSRS->setSpacing(8);
+    QLabel *lblSRS = new QLabel("SRS :");
+    lblSRS->setStyleSheet(styleLabelPrefixe + "color: #1A6FA8;");
+    lblSRS->setFixedWidth(35);
+    champPrefixeSRS = new QLineEdit();
+    champPrefixeSRS->setPlaceholderText("Ex: PROJET, B");
+    champPrefixeSRS->setText("PROJET");
+    champPrefixeSRS->setStyleSheet(styleChampPrefixe);
+    rowSRS->addWidget(lblSRS); rowSRS->addWidget(champPrefixeSRS);
+
+    // Suffixe de type SDD (ex: SDD)
+    QHBoxLayout *rowSDD = new QHBoxLayout();
+    rowSDD->setSpacing(8);
+    QLabel *lblSDD = new QLabel("SDD :");
+    lblSDD->setStyleSheet(styleLabelPrefixe + "color: #7EC8E3;");
+    lblSDD->setFixedWidth(35);
+    champPrefixeSDD = new QLineEdit();
+    champPrefixeSDD->setPlaceholderText("Ex: SDD, C");
+    champPrefixeSDD->setText("SDD");
+    champPrefixeSDD->setStyleSheet(styleChampPrefixe);
+    rowSDD->addWidget(lblSDD); rowSDD->addWidget(champPrefixeSDD);
+
+    layoutPrefixes->addWidget(titrePrefixes);
+    layoutPrefixes->addWidget(infoPrefixes);
+    layoutPrefixes->addLayout(rowGlobal);
+    layoutPrefixes->addLayout(rowSSS);
+    layoutPrefixes->addLayout(rowSRS);
+    layoutPrefixes->addLayout(rowSDD);
+
+    //  Label statut
+    // Indique l'état de l'interface : en attente, prêt, analyse terminée, erreur
+    labelStatut = new QLabel("⏳  En attente de fichiers SSS et SRS...");
+    labelStatut->setAlignment(Qt::AlignCenter);
+    labelStatut->setWordWrap(true);
+    labelStatut->setStyleSheet(R"(
+        color: #7A9AB8; font-size: 10px; padding: 7px;
+        background-color: #FFFFFF;
+        border-radius: 8px;
+        border: 1px solid #C8DDEF;
+    )");
+
+    //  Bouton Lancer
+    // Désactivé tant que SSS et SRS ne sont pas sélectionnés
+    btnLancer = new QPushButton("▶   Lancer l'analyse");
+    btnLancer->setEnabled(false);
+    btnLancer->setMinimumHeight(42);
+    btnLancer->setStyleSheet(R"(
+        QPushButton {
+            background-color: #C8DDEF;
+            color: #8AACCC;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border: none;
+        }
+        QPushButton:!disabled {
+            background-color: #0D2B45;
+            color: white;
+            border: none;
+        }
+        QPushButton:!disabled:hover {
+            background-color: #1A6FA8;
+        }
+    )");
+
+    //  Bouton Réinitialiser
+    btnReinitialiser = new QPushButton("↺   Réinitialiser");
+    btnReinitialiser->setStyleSheet(R"(
+        QPushButton {
+            background-color: #FFF5F5;
+            color: #E74C3C;
+            border-radius: 8px;
+            font-size: 10px;
+            border: 1px solid #E74C3C;
+            padding: 5px;
+        }
+        QPushButton:hover {
+            background-color: #FADBD8;
+            color: #C0392B;
+         border-color: #C0392B;
+        }
+    )");
+
+    layoutGauche->addWidget(ongletsFichiers);
+    layoutGauche->addWidget(framePrefixes);
+    layoutGauche->addWidget(labelStatut);
+    layoutGauche->addWidget(btnLancer);
+    layoutGauche->addWidget(btnReinitialiser);
+
+
+    // COLONNE MILIEU — terminal + progression
+
+    QWidget *colonneMilieu = new QWidget();
+    colonneMilieu->setStyleSheet("background-color: transparent;");
+    QVBoxLayout *layoutMilieu = new QVBoxLayout(colonneMilieu);
+    layoutMilieu->setContentsMargins(0, 0, 0, 0);
+    layoutMilieu->setSpacing(8);
+
+    // Bandeau style terminal macOS
+    QFrame *frameTerminalHeader = new QFrame();
+    frameTerminalHeader->setFixedHeight(34);
+    frameTerminalHeader->setStyleSheet(R"(
+        QFrame {
+            background-color: #0D2B45;
+            border-radius: 8px 8px 0px 0px;
+            border: none;
+        }
+    )");
+    QHBoxLayout *layoutTerminalHeader = new QHBoxLayout(frameTerminalHeader);
+    layoutTerminalHeader->setContentsMargins(12, 0, 12, 0);
+    QLabel *titreTerminal = new QLabel("● Journal d'analyse");
+    titreTerminal->setStyleSheet("color: #7EC8E3; font-size: 11px; font-weight: bold;");
+    QLabel *dots = new QLabel("🔴 🟡 🟢"); // boutons décoratifs style macOS
+    dots->setStyleSheet("font-size: 10px;");
+    layoutTerminalHeader->addWidget(dots);
+    layoutTerminalHeader->addWidget(titreTerminal, 1, Qt::AlignCenter);
+
+    // Zone de texte du terminal — affiche les logs colorés de l'analyse
+    terminal = new QTextEdit();
+    terminal->setReadOnly(true);
+    terminal->setStyleSheet(R"(
+        QTextEdit {
+            background-color: #0A1628;
+            color: #C8E6F5;
+            font-family: "Courier New";
+            font-size: 10px;
+            border-radius: 0px 0px 10px 10px;
+            border: 1px solid #1A3A5C;
+            border-top: none;
+            padding: 10px;
+        }
+    )");
+
+    QLabel *titreProgress = new QLabel("Progression de l'analyse");
+    titreProgress->setStyleSheet("font-size: 10px; font-weight: bold; color: #4A7A9B;");
+
+    // Barre de progression 0→100% mise à jour par le QTimer
+    barreProgression = new QProgressBar();
+    barreProgression->setRange(0, 100);
+    barreProgression->setValue(0);
+    barreProgression->setTextVisible(true);
+    barreProgression->setFixedHeight(20);
+    barreProgression->setStyleSheet(R"(
+        QProgressBar {
+            background-color: #D0E8F8;
+            border-radius: 10px;
+            border: none;
+            text-align: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+        QProgressBar::chunk {
+            background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                stop:0 #0D2B45, stop:1 #1A6FA8);
+            border-radius: 10px;
+        }
+    )");
+
+    layoutMilieu->addWidget(frameTerminalHeader);
+    layoutMilieu->addWidget(terminal, 1);
+    layoutMilieu->addWidget(titreProgress);
+    layoutMilieu->addWidget(barreProgression);
+
+    //
+    // COLONNE DROITE — aperçu exigences
+    //
+    QWidget *colonneDroite = new QWidget();
+    colonneDroite->setFixedWidth(270);
+    colonneDroite->setStyleSheet("background-color: transparent;");
+    QVBoxLayout *layoutDroite = new QVBoxLayout(colonneDroite);
+    layoutDroite->setContentsMargins(0, 0, 0, 0);
+    layoutDroite->setSpacing(8);
+
+    QFrame *frameApercuHeader = new QFrame();
+    frameApercuHeader->setFixedHeight(34);
+    frameApercuHeader->setStyleSheet(R"(
+        QFrame {
+            background-color: #0D2B45;
+            border-radius: 10px 10px 0px 0px;
+            border: none;
+        }
+    )");
+    QHBoxLayout *layoutApercuHeader = new QHBoxLayout(frameApercuHeader);
+    layoutApercuHeader->setContentsMargins(12, 0, 12, 0);
+    QLabel *titreApercu = new QLabel("📋  Aperçu des exigences");
+    titreApercu->setStyleSheet("color: #7EC8E3; font-size: 11px; font-weight: bold;");
+    layoutApercuHeader->addWidget(titreApercu, 1, Qt::AlignCenter);
+
+    // Champ de recherche par ID dans l'aperçu
+    champRechercheId = new QLineEdit();
+    champRechercheId->setPlaceholderText("🔍  Rechercher par ID...");
+    champRechercheId->setStyleSheet(R"(
+        QLineEdit {
+            background-color: #FFFFFF;
+            color: #0D2B45;
+            border: 1px solid #C8DDEF;
+            border-radius: 0px;
+            padding: 6px 10px;
+            font-size: 10px;
+            border-top: none;
+        }
+        QLineEdit:focus { border-color: #1A6FA8; background-color: #F4F9FF; }
+    )");
+
+    // Liste des exigences : SSS en bleu, SRS en orange, SDD en violet
+    listeExigences = new QListWidget();
+    listeExigences->setStyleSheet(R"(
+        QListWidget {
+            background-color: #FFFFFF;
+            border: 1px solid #C8DDEF;
+            border-radius: 0px 0px 10px 10px;
+            font-size: 10px;
+            border-top: none;
+        }
+        QListWidget::item {
+            padding: 6px 10px;
+            border-bottom: 1px solid #EEF6FF;
+            color: #1A3A5C;
+        }
+        QListWidget::item:selected {
+            background-color: #D0E8F8;
+            color: #0D2B45;
+        }
+        QListWidget::item:hover {
+            background-color: #F4F9FF;
+        }
+    )");
+
+    // Compteur d'exigences affichées / total
+    labelNbExigences = new QLabel("0 exigence(s) détectée(s)");
+    labelNbExigences->setAlignment(Qt::AlignCenter);
+    labelNbExigences->setStyleSheet(R"(
+        color: #7A9AB8;
+        font-size: 10px;
+        padding: 6px;
+        background-color: #FFFFFF;
+        border: 1px solid #C8DDEF;
+        border-top: none;
+        border-radius: 0px 0px 8px 8px;
+    )");
+
+    layoutDroite->addWidget(frameApercuHeader);
+    layoutDroite->addWidget(champRechercheId);
+    layoutDroite->addWidget(listeExigences, 1);
+    layoutDroite->addWidget(labelNbExigences);
+
+    //  Assemblage final
+    layoutPrincipal->addWidget(colonneGauche);
+    layoutPrincipal->addWidget(colonneMilieu, 1);
+    layoutPrincipal->addWidget(colonneDroite);
+
+    //  Connexions des boutons et champs
+    connect(btnParcourirSSS,  &QPushButton::clicked,   this, &MainWindow::parcourirSSS);
+    connect(btnParcourirSRS,  &QPushButton::clicked,   this, &MainWindow::parcourirSRS);
+    connect(btnParcourirSDD,  &QPushButton::clicked,   this, &MainWindow::parcourirSDD);
+    connect(btnReinitialiser, &QPushButton::clicked,   this, &MainWindow::reinitialiser);
+    connect(champRechercheId, &QLineEdit::textChanged, this, &MainWindow::filtrerApercu);
+}
+
+/**
+ * @brief Construit l'onglet Graphe de traçabilité.
+ *
+ * Instancie VueGrapheTracabilite dans un conteneur avec fond bleu clair.
+ */
+void MainWindow::construireOngletGraphe()
+{
+    ongletGrapheConteneur = new QWidget();
+    ongletGrapheConteneur->setStyleSheet("background-color: #EBF5FB;");
+    QVBoxLayout *layout = new QVBoxLayout(ongletGrapheConteneur);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(0);
+    ongletGraphe = new VueGrapheTracabilite(ongletGrapheConteneur);
+    layout->addWidget(ongletGraphe);
+}
+
+/**
+ * @brief Construit l'onglet Rapport & Taux.
+ *
+ * Instancie OngletRapport dans un conteneur avec fond bleu clair.
+ */
+void MainWindow::construireOngletRapport()
+{
+    ongletRapportConteneur = new QWidget();
+    ongletRapportConteneur->setStyleSheet("background-color: #EBF5FB;");
+    QVBoxLayout *layout = new QVBoxLayout(ongletRapportConteneur);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setSpacing(0);
+    ongletRapport = new OngletRapport(ongletRapportConteneur);
+    layout->addWidget(ongletRapport);
+}
+
+/**
+ * @brief Met à jour le titre et la couleur de l'onglet SSS/SRS/SDD.
+ *
+ * @param index 0=SSS, 1=SRS, 2=SDD
+ * @param etat  "accepte" → ✓ vert | "erreur" → ✗ rouge | autre → ⏳ orange
+ */
+void MainWindow::mettreAJourOngletFichier(int index, const QString &etat)
+{
+    QStringList noms = {"SSS", "SRS", "SDD"};
+    QString texte;
+    if (etat == "accepte")     texte = "✓ " + noms[index];
+    else if (etat == "erreur") texte = "✗ " + noms[index];
+    else                       texte = "⏳ " + noms[index];
+    ongletsFichiers->setTabText(index, texte);
+}
+
+/**
+ * @brief Vérifie si l'extension du fichier est acceptée par l'application.
+ *
+ * Extensions acceptées : .docx, .doc, .csv, .xls, .xlsx, .txt
+ *
+ * @param chemin Chemin complet du fichier.
+ * @return true si l'extension est supportée, false sinon.
+ */
+bool MainWindow::formatAccepte(const QString &chemin)
+{
+    QString ext = QFileInfo(chemin).suffix().toLower();
+    return ext == "docx" || ext == "doc" || ext == "csv"
+           || ext == "xls"  || ext == "xlsx" || ext == "txt";
+}
+
+/**
+ * @brief Ouvre un sélecteur de fichiers multiples pour les fichiers SSS.
+ *
+ * Valide les formats, met à jour la liste et le badge de statut,
+ * puis vérifie si le bouton Lancer peut être activé.
+ */
+void MainWindow::parcourirSSS()
+{
+    QStringList chemins = QFileDialog::getOpenFileNames(
+        this, "Sélectionner les fichiers SSS", "",
+        "Fichiers supportés (*.docx *.doc *.csv *.xls *.xlsx *.txt);;Tous (*)");
+    if (!chemins.isEmpty()) {
+        cheminsSSS = chemins; champSSS->setText(chemins.join(" | ")); listeSSS->clear();
+        bool tousValides = true;
+        for (const QString &c : chemins) {
+            QFileInfo info(c);
+            if (formatAccepte(c)) {
+                QListWidgetItem *it = new QListWidgetItem("📄 " + info.fileName());
+                it->setForeground(QColor("#333333")); listeSSS->addItem(it);
+            } else {
+                QListWidgetItem *it = new QListWidgetItem("⚠ " + info.fileName());
+                it->setForeground(QColor("#E74C3C")); listeSSS->addItem(it);
+                tousValides = false;
+            }
+        }
+        if (tousValides) {
+            badgeSSS->setText("<span style='color:#27AE60; font-size:16px;'>✓ " + QString::number(chemins.size()) + " fichier(s) valide(s)</span>");
+            erreurSSS->setText(""); mettreAJourOngletFichier(0, "accepte");
+        } else {
+            cheminsSSS.clear();
+            badgeSSS->setText("<span style='color:#E74C3C; font-size:16px;'>✗ Format invalide</span>");
+            erreurSSS->setText("⚠ Acceptés : .docx  .doc  .csv  .xls  .xlsx");
+            mettreAJourOngletFichier(0, "erreur");
+        }
+        verifierFichiersSelectionnes();
+    }
+}
+
+/**
+ * @brief Ouvre un sélecteur de fichiers multiples pour les fichiers SRS.
+ *
+ * Valide les formats, met à jour la liste et le badge de statut,
+ * puis vérifie si le bouton Lancer peut être activé.
+ */
+void MainWindow::parcourirSRS()
+{
+    QStringList chemins = QFileDialog::getOpenFileNames(
+        this, "Sélectionner les fichiers SRS", "",
+        "Fichiers supportés (*.docx *.doc *.csv *.xls *.xlsx *.txt);;Tous (*)");
+    if (!chemins.isEmpty()) {
+        cheminsSRS = chemins; champSRS->setText(chemins.join(" | ")); listeSRS->clear();
+        bool tousValides = true;
+        for (const QString &c : chemins) {
+            QFileInfo info(c);
+            if (formatAccepte(c)) {
+                QListWidgetItem *it = new QListWidgetItem("📄 " + info.fileName());
+                it->setForeground(QColor("#333333")); listeSRS->addItem(it);
+            } else {
+                QListWidgetItem *it = new QListWidgetItem("⚠ " + info.fileName());
+                it->setForeground(QColor("#E74C3C")); listeSRS->addItem(it);
+                tousValides = false;
+            }
+        }
+        if (tousValides) {
+            badgeSRS->setText("<span style='color:#27AE60; font-size:16px;'>✓ " + QString::number(chemins.size()) + " fichier(s) valide(s)</span>");
+            erreurSRS->setText(""); mettreAJourOngletFichier(1, "accepte");
+        } else {
+            cheminsSRS.clear();
+            badgeSRS->setText("<span style='color:#E74C3C; font-size:16px;'>✗ Format invalide</span>");
+            erreurSRS->setText("⚠ Acceptés : .docx  .doc  .csv  .xls  .xlsx");
+            mettreAJourOngletFichier(1, "erreur");
+        }
+        verifierFichiersSelectionnes();
+    }
+}
+
+/**
+ * @brief Ouvre un sélecteur de fichiers multiples pour les fichiers SDD.
+ *
+ * Valide les formats et met à jour la liste et le badge de statut.
+ * Le SDD est optionnel — ne bloque pas le bouton Lancer.
+ */
+void MainWindow::parcourirSDD()
+{
+    QStringList chemins = QFileDialog::getOpenFileNames(
+        this, "Sélectionner les fichiers SDD", "",
+        "Fichiers supportés (*.docx *.doc *.csv *.xls *.xlsx *.txt);;Tous (*)");
+    if (!chemins.isEmpty()) {
+        cheminsSDD = chemins; champSDD->setText(chemins.join(" | ")); listeSDD->clear();
+        bool tousValides = true;
+        for (const QString &c : chemins) {
+            QFileInfo info(c);
+            if (formatAccepte(c)) {
+                QListWidgetItem *it = new QListWidgetItem("📄 " + info.fileName());
+                it->setForeground(QColor("#333333")); listeSDD->addItem(it);
+            } else {
+                QListWidgetItem *it = new QListWidgetItem("⚠ " + info.fileName());
+                it->setForeground(QColor("#E74C3C")); listeSDD->addItem(it);
+                tousValides = false;
+            }
+        }
+        if (tousValides) {
+            badgeSDD->setText("<span style='color:#27AE60; font-size:16px;'>✓ " + QString::number(chemins.size()) + " fichier(s) valide(s)</span>");
+            erreurSDD->setText(""); mettreAJourOngletFichier(2, "accepte");
+        } else {
+            cheminsSDD.clear();
+            badgeSDD->setText("<span style='color:#E74C3C; font-size:16px;'>✗ Format invalide</span>");
+            erreurSDD->setText("⚠ Acceptés : .docx  .doc  .csv  .xls  .xlsx");
+            mettreAJourOngletFichier(2, "erreur");
+        }
+    }
+}
+
+/**
+ * @brief Active le bouton Lancer si SSS et SRS sont valides.
+ *
+ * Met aussi à jour le label de statut selon l'état courant.
+ */
+void MainWindow::verifierFichiersSelectionnes()
+{
+    bool pret = !cheminsSSS.isEmpty() && !cheminsSRS.isEmpty();
+    btnLancer->setEnabled(pret);
+    if (pret) {
+        labelStatut->setText("✅  Prêt à analyser !");
+        labelStatut->setStyleSheet("color: #27AE60; font-size: 10px; padding: 6px; background-color: #F0FFF4; border-radius: 6px; border: 1px solid #27AE60;");
+    } else {
+        labelStatut->setText("⏳  En attente de fichiers SSS et SRS...");
+        labelStatut->setStyleSheet("color: #888888; font-size: 10px; padding: 6px; background-color: #FFFFFF; border-radius: 6px; border: 1px solid #DDDDDD;");
+    }
+}
+
+/**
+ * @brief Vide toutes les zones et remet l'interface à l'état initial.
+ *
+ * Réinitialise les listes de fichiers, les préfixes (valeurs par défaut),
+ * le terminal, la barre de progression et l'aperçu des exigences.
+ */
+void MainWindow::reinitialiser()
+{
+    // Vider les champs fichiers
+    champSSS->clear(); champSRS->clear(); champSDD->clear();
+    badgeSSS->clear(); badgeSRS->clear(); badgeSDD->clear();
+    erreurSSS->clear(); erreurSRS->clear(); erreurSDD->clear();
+
+    // Vider les listes et remettre l'item vide par défaut
+    listeSSS->clear(); listeSRS->clear(); listeSDD->clear();
+    ajouterItemVide(listeSSS); ajouterItemVide(listeSRS); ajouterItemVide(listeSDD);
+
+    cheminsSSS.clear(); cheminsSRS.clear(); cheminsSDD.clear();
+    mettreAJourOngletFichier(0, "attente");
+    mettreAJourOngletFichier(1, "attente");
+    mettreAJourOngletFichier(2, "attente");
+
+    // Remettre les préfixes par défaut
+    champPrefixeGlobal->setText("EXIGENCE_");
+    champPrefixeSSS->setText("CLIENT");
+    champPrefixeSRS->setText("PROJET");
+    champPrefixeSDD->setText("SDD");
+
+    champRechercheId->clear();
+    btnLancer->setEnabled(false);
+    terminal->clear();
+    barreProgression->setValue(0);
+    listeExigences->clear();
+    toutesExigences.clear();
+    labelNbExigences->setText("0 exigence(s) détectée(s)");
+    labelStatut->setText("⏳  En attente de fichiers...");
+    labelStatut->setStyleSheet("color: #888888; font-size: 10px; padding: 6px; background-color: #FFFFFF; border-radius: 6px; border: 1px solid #DDDDDD;");
+}
+
+/**
+ * @brief Ajoute un message coloré dans le terminal d'analyse.
+ *
+ * @param message Le texte à afficher.
+ * @param couleur Couleur HTML
+ */
+void MainWindow::logTerminal(const QString &message, const QString &couleur)
+{
+    terminal->append(QString("<span style='color:%1;'>%2</span>").arg(couleur, message));
+}
+
+/**
+ * @brief Affiche les exigences extraites dans l'aperçu à droite.
+ *
+ * Colorie les items selon le type : SSS en bleu, SRS en orange, SDD en violet.
+ * Met à jour le compteur total d'exigences.
+ *
+ * @param sss Exigences extraites des fichiers SSS.
+ * @param srs Exigences extraites des fichiers SRS.
+ * @param sdd Exigences extraites des fichiers SDD.
+ */
+void MainWindow::afficherApercuExigences(const std::vector<ExigenceExtraite> &sss,
+                                         const std::vector<ExigenceExtraite> &srs,
+                                         const std::vector<ExigenceExtraite> &sdd)
+{
+    toutesExigences.clear();
+    listeExigences->clear();
+
+    for (const auto &e : sss) toutesExigences.append("[SSS] " + QString::fromStdString(e.identifiant));
+    for (const auto &e : srs) toutesExigences.append("[SRS] " + QString::fromStdString(e.identifiant));
+    for (const auto &e : sdd) toutesExigences.append("[SDD] " + QString::fromStdString(e.identifiant));
+
+    for (const QString &item : toutesExigences) {
+        QListWidgetItem *it = new QListWidgetItem(item);
+        if (item.startsWith("[SSS]"))      it->setForeground(QColor("#2E86C1")); // bleu
+        else if (item.startsWith("[SRS]")) it->setForeground(QColor("#E67E22")); // orange
+        else                               it->setForeground(QColor("#8E44AD")); // violet
+        listeExigences->addItem(it);
+    }
+
+    int total = (int)(sss.size() + srs.size() + sdd.size());
+    labelNbExigences->setText(QString::number(total) + " exigence(s) détectée(s)");
+}
+
+/**
+ * @brief Filtre l'aperçu des exigences par ID en temps réel.
+ *
+ * Affiche uniquement les exigences dont l'identifiant contient le texte saisi.
+ * Met à jour le compteur "X / Y exigence(s)".
+ *
+ * @param texte Texte saisi dans le champ de recherche.
+ */
+void MainWindow::filtrerApercu(const QString &texte)
+{
+    listeExigences->clear();
+    for (const QString &item : toutesExigences) {
+        if (texte.isEmpty() || item.contains(texte, Qt::CaseInsensitive)) {
+            QListWidgetItem *it = new QListWidgetItem(item);
+            if (item.startsWith("[SSS]"))      it->setForeground(QColor("#2E86C1"));
+            else if (item.startsWith("[SRS]")) it->setForeground(QColor("#E67E22"));
+            else                               it->setForeground(QColor("#8E44AD"));
+            listeExigences->addItem(it);
+        }
+    }
+    int nb = listeExigences->count();
+    int total = toutesExigences.size();
+    if (texte.isEmpty())
+        labelNbExigences->setText(QString::number(total) + " exigence(s) détectée(s)");
+    else
+        labelNbExigences->setText(QString::number(nb) + " / " + QString::number(total) + " exigence(s)");
+}
+
+/**
+ * @brief Lance le pipeline complet d'analyse de traçabilité.
+ *
+ * Flux d'exécution :
+ *   1. Lecture des préfixes configurés par l'utilisateur → construction de la regex
+ *   2. Extraction M1 sur tous les fichiers SSS, SRS, SDD via ExtracteurFichier
+ *   3. Conversion M1 via ConvertisseurExigences avec les préfixes utilisateur
+ *   4. Lancement de MoteurTracabilite dans un thread séparé via ThreadManager
+ *   5. QTimer 100ms surveille estTerminee() → affiche les résultats quand terminé
+ *
+ * En cas d'erreur, affiche un message dans le terminal et dans une boîte de dialogue.
+ */
+void MainWindow::lancerAnalyse()
+{
+    try {
+        terminal->clear();
+        barreProgression->setValue(0);
+        btnLancer->setEnabled(false);
+        logTerminal("▶ Lancement de l'analyse...", "#4A90D9");
+
+        //  Récupération des préfixes saisis
+        std::string prefGlobal = champPrefixeGlobal->text().trimmed().toStdString();
+        std::string motCleSSS  = champPrefixeSSS->text().trimmed().toStdString();
+        std::string motCleSRS  = champPrefixeSRS->text().trimmed().toStdString();
+        std::string motCleSDD  = champPrefixeSDD->text().trimmed().toStdString();
+
+        // Valeurs par défaut si vides
+        if (prefGlobal.empty()) prefGlobal = "EXIGENCE_";
+        if (motCleSSS.empty())  motCleSSS  = "CLIENT";
+        if (motCleSRS.empty())  motCleSRS  = "PROJET";
+        if (motCleSDD.empty())  motCleSDD  = "SDD";
+
+        //  Construction de la regex à partir des préfixes globaux
+        // Supporte plusieurs préfixes séparés par virgule (ex: "EXIGENCE_, SPEC_")
+        std::vector<std::string> globals;
+        std::istringstream flux(prefGlobal);
+        std::string tok;
+        while (std::getline(flux, tok, ',')) {
+            tok.erase(0, tok.find_first_not_of(" \t"));
+            size_t last = tok.find_last_not_of(" \t");
+            if (last != std::string::npos) tok = tok.substr(0, last + 1);
+            if (!tok.empty()) globals.push_back(tok);
+        }
+        std::string motif;
+        if (globals.size() == 1) {
+            motif = globals[0] + "[A-Z0-9_]+";
+        } else {
+            motif = "(";
+            for (size_t i = 0; i < globals.size(); i++) {
+                if (i > 0) motif += "|";
+                motif += globals[i];
+            }
+            motif += ")[A-Z0-9_]+";
+        }
+        std::cout << "[DEBUG] motif=" << motif << std::endl;
+
+        //  Combinaison préfixes globaux + suffixes de type
+        // Ex: globals=["EXIGENCE_"] + motCleSSS="CLIENT" → "EXIGENCE_CLIENT"
+        auto combiner = [](const std::vector<std::string>& globals, const std::string& motCles) {
+            std::string result;
+            std::istringstream fluxMot(motCles);
+            std::string motCle;
+            while (std::getline(fluxMot, motCle, ',')) {
+                motCle.erase(0, motCle.find_first_not_of(" \t"));
+                size_t last = motCle.find_last_not_of(" \t");
+                if (last != std::string::npos) motCle = motCle.substr(0, last + 1);
+                if (motCle.empty()) continue;
+                for (const auto& g : globals) {
+                    if (!result.empty()) result += ",";
+                    result += g + motCle;
+                }
+            }
+            return result;
+        };
+        std::string prefSSS = combiner(globals, motCleSSS);
+        std::string prefSRS = combiner(globals, motCleSRS);
+        std::string prefSDD = combiner(globals, motCleSDD);
+
+        logTerminal("⚙ Préfixes : SSS=" + QString::fromStdString(prefSSS)
+                        + " | SRS=" + QString::fromStdString(prefSRS)
+                        + " | SDD=" + QString::fromStdString(prefSDD), "#AED6F1");
+
+        std::vector<ExigenceExtraite> extraitesSSS, extraitesSRS, extraitesSDD;
+
+        //  Module 1 : extraction SSS
+        for (const QString &chemin : cheminsSSS) {
+            logTerminal("📂 Lecture SSS : " + QFileInfo(chemin).fileName(), "#888888");
+            ExtracteurFichier extracteurSSS(chemin.toStdString(), motif);
+            auto res = extracteurSSS.extraire();
+            extraitesSSS.insert(extraitesSSS.end(), res.begin(), res.end());
+            logTerminal("✅ " + QString::number(res.size()) + " exigences SSS détectées", "#27AE60");
+        }
+        barreProgression->setValue(20);
+
+        //  Module 1 : extraction SRS
+        for (const QString &chemin : cheminsSRS) {
+            logTerminal("📂 Lecture SRS : " + QFileInfo(chemin).fileName(), "#888888");
+            ExtracteurFichier extracteurSRS(chemin.toStdString(), motif);
+            auto res = extracteurSRS.extraire();
+            extraitesSRS.insert(extraitesSRS.end(), res.begin(), res.end());
+            logTerminal("✅ " + QString::number(res.size()) + " exigences SRS détectées", "#27AE60");
+        }
+        barreProgression->setValue(40);
+
+        //  Module 1 : extraction SDD
+        for (const QString &chemin : cheminsSDD) {
+            logTerminal("📂 Lecture SDD : " + QFileInfo(chemin).fileName(), "#888888");
+            ExtracteurFichier extracteurSDD(chemin.toStdString(), motif);
+            auto res = extracteurSDD.extraire();
+            extraitesSDD.insert(extraitesSDD.end(), res.begin(), res.end());
+            logTerminal("✅ " + QString::number(res.size()) + " exigences SDD détectées", "#27AE60");
+        }
+        barreProgression->setValue(55);
+
+        logTerminal("📊 Total extrait : " + QString::number(extraitesSSS.size()) + " SSS | "
+                        + QString::number(extraitesSRS.size()) + " SRS | "
+                        + QString::number(extraitesSDD.size()) + " SDD", "#4A90D9");
+
+        afficherApercuExigences(extraitesSSS, extraitesSRS, extraitesSDD);
+
+        // Module 1 : conversion avec préfixes utilisateur
+        logTerminal("⚙ Conversion des exigences...", "#E67E22");
+
+        ConvertisseurExigences conv(motif, prefSSS, prefSRS, prefSDD);
+        conv.convertir(extraitesSSS);
+        auto sss = conv.getSSS();
+
+        ConvertisseurExigences convSRS(motif, prefSSS, prefSRS, prefSDD);
+        convSRS.convertir(extraitesSRS);
+        auto srs = convSRS.getSRS();
+
+        ConvertisseurExigences convSDD(motif, prefSSS, prefSRS, prefSDD);
+        convSDD.convertir(extraitesSDD);
+        auto sdd = convSDD.getSDD();
+
+        barreProgression->setValue(65);
+
+        // Module 2 : analyse de traçabilité dans un thread séparé
+        // Le thread évite de bloquer l'interface Qt pendant l'analyse
+        logTerminal("⚙ Analyse de traçabilité en cours (thread)...", "#E67E22");
+
+        moteurAnalyse = new MoteurTracabilite();
+        moteurAnalyse->setDonnees(sss, srs, sdd);
+
+        threadManager = new ThreadManager(*moteurAnalyse);
+        threadManager->lancerAnalyse();
+
+        // QTimer surveille estTerminee() toutes les 100ms sans bloquer l'UI
+        QTimer *timer = new QTimer(this);
+        connect(timer, &QTimer::timeout, this, [this, timer, srs, sdd]() {
+            if (threadManager->estTerminee()) {
+                timer->stop();
+                timer->deleteLater();
+
+                barreProgression->setValue(100);
+                RapportTracabilite rapport = moteurAnalyse->getRapport();
+
+                // Affichage des résultats dans le terminal
+                logTerminal("✅ Analyse terminée !", "#27AE60");
+                logTerminal("📊 SSS→SRS : " + QString::number(rapport.tauxSSS_SRS * 100, 'f', 1) + "%", "#4A90D9");
+                logTerminal("📊 SRS→SDD : " + QString::number(rapport.tauxSRS_SDD * 100, 'f', 1) + "%", "#4A90D9");
+                logTerminal("📊 Global  : " + QString::number(rapport.tauxGlobal * 100, 'f', 1) + "%", "#4A90D9");
+
+                if (!rapport.liensBrises.empty()) {
+                    logTerminal("⚠ " + QString::number(rapport.liensBrises.size())
+                                    + " lien(s) brisé(s) détecté(s)", "#E67E22");
+                }
+
+                // Mise à jour des onglets Rapport et Graphe
+                ongletRapport->afficherRapportComplet(rapport, srs, sdd, moteurAnalyse->getOrphelines());
+                ongletGraphe->construireGraphe(rapport, srs, sdd);
+
+                // Alimentation de l'autocomplétion du graphe avec les noms de fichiers sources
+                QStringList nomsFichiers;
+                for (const auto& s : rapport.exigencesSSS) {
+                    QString nom = QFileInfo(QString::fromStdString(s.getFichierSource())).fileName();
+                    if (!nomsFichiers.contains(nom)) nomsFichiers.append(nom);
+                }
+                for (const auto& s : srs) {
+                    QString nom = QFileInfo(QString::fromStdString(s.getFichierSource())).fileName();
+                    if (!nomsFichiers.contains(nom)) nomsFichiers.append(nom);
+                }
+                for (const auto& d : sdd) {
+                    QString nom = QFileInfo(QString::fromStdString(d.getFichierSource())).fileName();
+                    if (!nomsFichiers.contains(nom)) nomsFichiers.append(nom);
+                }
+                ongletGraphe->setListeNomsFichiers(nomsFichiers);
+                gestionnaireFiltres->reinitialiser();
+
+                labelStatut->setText("✅  Analyse terminée !");
+                labelStatut->setStyleSheet("color: #27AE60; font-size: 10px; padding: 6px; background-color: #F0FFF4; border-radius: 6px; border: 1px solid #27AE60;");
+                btnLancer->setEnabled(true);
+
+                // Libération mémoire
+                delete threadManager;
+                delete moteurAnalyse;
+                threadManager = nullptr;
+                moteurAnalyse = nullptr;
+
+            } else {
+                // Incrémentation progressive de la barre pendant l'analyse
+                int val = barreProgression->value();
+                if (val < 95) barreProgression->setValue(val + 1);
+            }
+        });
+        timer->start(100);
+
+    } catch (const FileNotFoundException& e) {
+        logTerminal("❌ Fichier introuvable : " + QString::fromStdString(e.what()), "#E74C3C");
+        QMessageBox::critical(this, "Erreur", QString::fromStdString(e.what()));
+        btnLancer->setEnabled(true); barreProgression->setValue(0);
+        labelStatut->setText("❌  Fichier introuvable !");
+        labelStatut->setStyleSheet("color:#E74C3C; font-size:10px; padding:6px; background-color:#FFF5F5; border-radius:6px; border:1px solid #E74C3C;");
+    } catch (const FileFormatException& e) {
+        logTerminal("❌ Format non supporté : " + QString::fromStdString(e.what()), "#E74C3C");
+        QMessageBox::critical(this, "Erreur", QString::fromStdString(e.what()));
+        btnLancer->setEnabled(true); barreProgression->setValue(0);
+        labelStatut->setText("❌  Format non supporté !");
+        labelStatut->setStyleSheet("color:#E74C3C; font-size:10px; padding:6px; background-color:#FFF5F5; border-radius:6px; border:1px solid #E74C3C;");
+    } catch (const std::exception& e) {
+        logTerminal("❌ Erreur : " + QString::fromStdString(e.what()), "#E74C3C");
+        QMessageBox::critical(this, "Erreur", QString::fromStdString(e.what()));
+        btnLancer->setEnabled(true); barreProgression->setValue(0);
+        labelStatut->setText("❌  Erreur lors de l'analyse !");
+        labelStatut->setStyleSheet("color:#E74C3C; font-size:10px; padding:6px; background-color:#FFF5F5; border-radius:6px; border:1px solid #E74C3C;");
+    }
+}

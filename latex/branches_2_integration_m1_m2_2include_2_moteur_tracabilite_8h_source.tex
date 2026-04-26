@@ -1,0 +1,89 @@
+\doxysection{Moteur\+Tracabilite.\+h}
+\hypertarget{branches_2_integration_m1_m2_2include_2_moteur_tracabilite_8h_source}{}\label{branches_2_integration_m1_m2_2include_2_moteur_tracabilite_8h_source}\index{branches/IntegrationM1M2/include/MoteurTracabilite.h@{branches/IntegrationM1M2/include/MoteurTracabilite.h}}
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_moteur_tracabilite_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ MoteurTracabilite.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 10\ mars\ 2026}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ yseulthelle}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ MOTEURTRACABILITE\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MOTEURTRACABILITE\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_s_s_s_8h}{ExigenceSSS.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_s_r_s_8h}{ExigenceSRS.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_s_d_d_8h}{ExigenceSDD.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_rapport_tracabilite_8h}{RapportTracabilite.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}{MoteurTracabilite}}\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//Les\ 3\ vecteurs\ d'exigences\ reçus\ du\ module\ 1}}
+\DoxyCodeLine{00022\ \ \ \ \ std::vector<ExigenceSSS>\ \doxymbox{\hyperlink{class_moteur_tracabilite_aa67f36ca1dbbf6132c345a8767ac86ba}{exigencesSSS}};}
+\DoxyCodeLine{00023\ \ \ \ \ std::vector<ExigenceSRS>\ \doxymbox{\hyperlink{class_moteur_tracabilite_ad32f7514a824568b0dec4aa1d9cecfa3}{exigencesSRS}};}
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<ExigenceSDD>\ \doxymbox{\hyperlink{class_moteur_tracabilite_ad24b1804ee3a11b17f187b4be6dcf478}{exigencesSDD}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//Les\ liens\ brisés\ détectés\ pendant\ l'analyse}}
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{class_moteur_tracabilite_af89fe413b049ecfb9fc70efc71a9f44c}{liensBrises}};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ AJOUT\ :\ les\ orphelines\ détectées\ pendant\ l'analyse\ (séparées\ des\ liens\ brisés)}}
+\DoxyCodeLine{00029\ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{class_moteur_tracabilite_a4a69ec2cabb957c98e9a16d32ea3218a}{orphelines}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//Les\ taux\ calculés}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_moteur_tracabilite_a70dac0a632dd10e0609d3a30d53b2bfa}{tauxSSS\_SRS}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_moteur_tracabilite_a1f36b3271f224a25fb4e97306668e00f}{tauxSRS\_SDD}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_moteur_tracabilite_ae32cad0656e6c31d7f1dcdf068e17301}{tauxGlobal}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//Méthodes\ qui\ nous\ permettera\ d'exécuter\ les\ 2\ traçabilité}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_moteur_tracabilite_a714a8447ffce517cd5bd218681d2d16d}{analyserSSS\_SRS}}();\ \ \textcolor{comment}{//\ analyse\ uniquement\ SSS\ -\/>\ SRS}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_moteur_tracabilite_a5187037c141fa81194ae8116648bdcea}{analyserSRS\_SDD}}();\ \ \textcolor{comment}{//\ analyse\ uniquement\ SRS\ -\/>\ SDD}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//Constructeur}}
+\DoxyCodeLine{00043\ \ \ \ \ \doxymbox{\hyperlink{class_moteur_tracabilite_abb4095e203ae7a372c054579c931c45e}{MoteurTracabilite}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//Méthodes}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//Reçoit\ les\ données\ du\ module\ 1}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_moteur_tracabilite_abc77ccb38fd1de0d00636f875b271528}{setDonnees}}(\textcolor{keyword}{const}\ std::vector<ExigenceSSS>\&\ sss,}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSRS>\&\ srs,}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSDD>\&\ sdd);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//Lance\ l'analyse\ de\ traçabilité}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}{analyserTracabilite}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//Calcule\ les\ taux\ de\ couverture}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}{calculerTaux}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//Méthodes\ de\ retour\ des\ taux}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_moteur_tracabilite_addfd1ae1a72fe11a66d4de52bef60365}{getTauxSSS\_SRS}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_moteur_tracabilite_ae3e1e93d37b80e0cf681c04dc6cc18fb}{getTauxSRS\_SDD}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_moteur_tracabilite_a55ff133fdf16c1f6c04da88fddc3dfd4}{getTauxGlobal}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ AJOUT\ :\ taux\ de\ traçabilité\ complète}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_moteur_tracabilite_ad537653d46df8dce73481e32ca036822}{tauxTracabiliteComplete}};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ AJOUT\ :\ getter}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{class_moteur_tracabilite_aeb2911fd00d680f2ba3b86f0d96cff55}{getTauxTracabiliteComplete}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{comment}{//Méthode\ de\ retour\ des\ liens\ brisés}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ \doxymbox{\hyperlink{class_moteur_tracabilite_ab93e98992e852603bc324934588512a0}{getLiensBrises}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ AJOUT\ :\ retourne\ les\ orphelines\ séparément}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ \doxymbox{\hyperlink{class_moteur_tracabilite_a488730a9de95d1469c0dc0b2ad3a6145}{getOrphelines}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSRS>\&\ \doxymbox{\hyperlink{class_moteur_tracabilite_a0cfa2d0f506dd38223c2ed7aed15d982}{getExigencesSRS}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSDD>\&\ \doxymbox{\hyperlink{class_moteur_tracabilite_af4a7477a09b4ed71f0292aa43bcd1ce3}{getExigencesSDD}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//Méthode\ de\ retour\ du\ rapport\ complet\ pour\ le\ module\ 3}}
+\DoxyCodeLine{00080\ \ \ \ \ \doxymbox{\hyperlink{struct_rapport_tracabilite}{RapportTracabilite}}\ \doxymbox{\hyperlink{class_moteur_tracabilite_a94049ad539080417f603523091d8bdec}{getRapport}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00081\ \};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ MOTEURTRACABILITE\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

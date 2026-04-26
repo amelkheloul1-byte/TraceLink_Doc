@@ -1,0 +1,916 @@
+/**
+ * @file VueGrapheTracabilite.cpp
+ * @brief Vue graphe de traçabilité — un nœud par fichier importé.
+ *
+ * Chaque fichier SSS, SRS et SDD importé apparaît comme un nœud distinct.
+ * Les liens entre fichiers montrent le pourcentage d'exigences couvertes.
+ * Le pourcentage sur chaque nœud représente la couverture de ce fichier
+ * par le niveau suivant (SSS→SRS→SDD).
+ *
+ * @author Lamia Arrahmane, Amel Kheloul
+ * @version 5.0
+ */
+#include "VueGrapheTracabilite.h"
+#include <QPainter>
+#include <QPen>
+#include <QBrush>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QFontMetrics>
+#include <QToolTip>
+#include <QListWidgetItem>
+#include <cmath>
+#include <algorithm>
+#include <QMap>
+#include <QSet>
+
+/**
+ * @brief Constructeur — met en place tous les widgets de l'interface graphe.
+ */
+VueGrapheTracabilite::VueGrapheTracabilite(QWidget *parent)
+    : QWidget(parent),
+    filtreRapide(0),
+    niveauZoom(1.0),
+    noeudSurvole(-1),
+    noeudSelectionne(-1),
+    lienSurvole(-1)
+{
+    setMinimumSize(600, 400);
+    setStyleSheet("background-color: #EBF5FB;");
+    setMouseTracking(true);
+
+    // ── Filtre rapide ─────────────────────────────────────────────────────────
+    comboFiltreRapide = new QComboBox(this);
+    comboFiltreRapide->addItem("👁 Tout afficher");
+    comboFiltreRapide->addItem("✗ Non couvertes seulement");
+    comboFiltreRapide->addItem("⚠ Liens brisés seulement");
+    comboFiltreRapide->setStyleSheet(R"(
+        QComboBox {
+            background-color: #FFFFFF; color: #333333;
+            border: 1px solid #AED6F1; border-radius: 6px;
+            padding: 4px 10px; font-size: 11px;
+        }
+        QComboBox:hover { background-color: #D6EAF8; }
+        QComboBox QAbstractItemView {
+            background-color: #FFFFFF; color: #333333;
+            selection-background-color: #D6EAF8;
+            border: 1px solid #AED6F1;
+        }
+        QComboBox::drop-down { border: none; }
+        QComboBox::down-arrow { image: none; }
+    )");
+    comboFiltreRapide->move(10, 10);
+    comboFiltreRapide->resize(200, 28);
+    comboFiltreRapide->setVisible(false);
+
+    connect(comboFiltreRapide, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &VueGrapheTracabilite::onFiltreRapideChange);
+
+    // ── Bouton filtres avancés ────────────────────────────────────────────────
+    boutonFiltres = new QPushButton("⚙ Filtres ▶", this);
+    boutonFiltres->setStyleSheet(R"(
+        QPushButton {
+            background-color: #FFFFFF; color: #2E86C1;
+            border-radius: 6px; padding: 4px 10px;
+            font-size: 11px; border: 1px solid #AED6F1;
+        }
+        QPushButton:hover { background-color: #D6EAF8; }
+    )");
+    boutonFiltres->move(900, 10);
+    boutonFiltres->resize(110, 28);
+    connect(boutonFiltres, &QPushButton::clicked,
+            this, &VueGrapheTracabilite::toggleFiltres);
+
+    // ── Panneau filtres avancés ───────────────────────────────────────────────
+    panneauFiltres = new QFrame(this);
+    panneauFiltres->setStyleSheet(
+        "QFrame { background-color: #FFFFFF; border-left: 2px solid #AED6F1; }");
+    panneauFiltres->setVisible(false);
+    QVBoxLayout *layoutFiltres = new QVBoxLayout(panneauFiltres);
+    layoutFiltres->setContentsMargins(8, 8, 8, 8);
+    QLabel *titreFiltres = new QLabel("⚙ Filtres avancés", panneauFiltres);
+    titreFiltres->setStyleSheet(
+        "color: #2E86C1; font-weight: bold; font-size: 12px;");
+    layoutFiltres->addWidget(titreFiltres);
+    gestionnaireFiltres = new GestionnaireFiltresGUI(panneauFiltres);
+    layoutFiltres->addWidget(gestionnaireFiltres);
+    layoutFiltres->addStretch();
+    connect(gestionnaireFiltres, &GestionnaireFiltresGUI::filtreModifie,
+            this, &VueGrapheTracabilite::appliquerFiltre);
+
+    // ── Panneau info bas ──────────────────────────────────────────────────────
+    panneauInfo = new QFrame(this);
+    panneauInfo->setStyleSheet(
+        "QFrame { background-color: #FFFFFF; border-top: 1px solid #AED6F1; }");
+    panneauInfo->setVisible(false);
+    QHBoxLayout *layoutInfo = new QHBoxLayout(panneauInfo);
+    layoutInfo->setContentsMargins(12, 6, 12, 6);
+    layoutInfo->setSpacing(16);
+
+    labelTauxSSS_SRS = new QLabel("SSS→SRS : —", panneauInfo);
+    labelTauxSSS_SRS->setStyleSheet(
+        "color: #2E86C1; font-size: 11px; font-weight: bold;");
+    labelTauxSRS_SDD = new QLabel("SRS→SDD : —", panneauInfo);
+    labelTauxSRS_SDD->setStyleSheet(
+        "color: #E67E22; font-size: 11px; font-weight: bold;");
+    labelTauxGlobal = new QLabel("Global : —", panneauInfo);
+    labelTauxGlobal->setStyleSheet(
+        "color: #8E44AD; font-size: 11px; font-weight: bold;");
+
+    labelTauxComplet = new QLabel("Traçabilité complète : —", panneauInfo);
+    labelTauxComplet->setStyleSheet(
+        "color: #27AE60; font-size: 11px; font-weight: bold;");
+
+    labelLiensBrises = new QLabel("⚠ Liens brisés : —", panneauInfo);
+    labelLiensBrises->setStyleSheet(
+        "color: #E74C3C; font-size: 11px; font-weight: bold;");
+
+    QFrame *sep1 = new QFrame(panneauInfo);
+    sep1->setFrameShape(QFrame::VLine);
+    QFrame *sep2 = new QFrame(panneauInfo);
+    sep2->setFrameShape(QFrame::VLine);
+    QFrame *sep3 = new QFrame(panneauInfo);
+    sep3->setFrameShape(QFrame::VLine);
+
+    QLabel *legCouverte    = new QLabel("● Couvert",     panneauInfo);
+    legCouverte->setStyleSheet("color: #27AE60; font-size: 10px;");
+    QLabel *legNonCouverte = new QLabel("● Non couvert", panneauInfo);
+    legNonCouverte->setStyleSheet("color: #E74C3C; font-size: 10px;");
+    QLabel *legBrise       = new QLabel("● Lien brisé",  panneauInfo);
+    legBrise->setStyleSheet("color: #E67E22; font-size: 10px;");
+
+    layoutInfo->addWidget(labelTauxSSS_SRS);
+    layoutInfo->addWidget(labelTauxSRS_SDD);
+    layoutInfo->addWidget(labelTauxGlobal);
+    layoutInfo->addWidget(sep1);
+    layoutInfo->addWidget(labelTauxComplet);
+    layoutInfo->addWidget(sep2);
+    layoutInfo->addWidget(labelLiensBrises);
+    layoutInfo->addWidget(sep3);
+    layoutInfo->addStretch();
+    layoutInfo->addWidget(legCouverte);
+    layoutInfo->addWidget(legNonCouverte);
+    layoutInfo->addWidget(legBrise);
+
+    // ── Panneau détail nœud ───────────────────────────────────────────────────
+    panneauDetail = new QFrame(this);
+    panneauDetail->setStyleSheet(R"(
+        QFrame {
+            background-color: #FFFFFF;
+            border: 1px solid #AED6F1;
+            border-radius: 8px;
+        }
+    )");
+    panneauDetail->setVisible(false);
+    QVBoxLayout *layoutDetail = new QVBoxLayout(panneauDetail);
+    layoutDetail->setContentsMargins(10, 8, 10, 8);
+    layoutDetail->setSpacing(6);
+
+    labelDetailTitre = new QLabel("Détails", panneauDetail);
+    labelDetailTitre->setStyleSheet(
+        "color: #1A5276; font-size: 13px; font-weight: bold;");
+    labelDetailStats = new QLabel("", panneauDetail);
+    labelDetailStats->setStyleSheet("color: #555555; font-size: 11px;");
+
+    QLabel *labelListeTitre = new QLabel(
+        "Exigences non couvertes :", panneauDetail);
+    labelListeTitre->setStyleSheet(
+        "color: #E74C3C; font-size: 10px; font-weight: bold;");
+
+    listeDetailExigences = new QListWidget(panneauDetail);
+    listeDetailExigences->setFixedHeight(100);
+    listeDetailExigences->setStyleSheet(R"(
+        QListWidget {
+            background-color: #FFF5F5;
+            border: 1px solid #FADBD8;
+            border-radius: 4px;
+            font-size: 10px;
+        }
+        QListWidget::item {
+            padding: 3px 6px;
+            border-bottom: 1px solid #FADBD8;
+        }
+        QListWidget::item:selected {
+            background-color: #FADBD8;
+            color: #E74C3C;
+        }
+    )");
+
+    layoutDetail->addWidget(labelDetailTitre);
+    layoutDetail->addWidget(labelDetailStats);
+    layoutDetail->addWidget(labelListeTitre);
+    layoutDetail->addWidget(listeDetailExigences);
+}
+
+/**
+ * @brief Redimensionne les panneaux flottants quand la fenêtre change de taille.
+ */
+void VueGrapheTracabilite::resizeEvent(QResizeEvent *event)
+{
+    QWidget::resizeEvent(event);
+    int filtresW = panneauFiltres->isVisible() ? 220 : 0;
+    panneauFiltres->setGeometry(width() - 220, 0, 220, height());
+    panneauInfo->setGeometry(0, height() - 44, width() - filtresW, 44);
+    boutonFiltres->move(width() - 130, 10);
+
+    if (panneauDetail->isVisible())
+        panneauDetail->setGeometry(10, height() - 240, 360, 190);
+}
+
+/**
+ * @brief Affiche ou masque le panneau de filtres avancés.
+ */
+void VueGrapheTracabilite::toggleFiltres()
+{
+    bool visible = panneauFiltres->isVisible();
+    panneauFiltres->setVisible(!visible);
+    boutonFiltres->setText(visible ? "⚙ Filtres ▶" : "⚙ Filtres ◀");
+    resizeEvent(nullptr);
+    update();
+}
+
+/**
+ * @brief Change le filtre rapide et redessine le graphe.
+ */
+void VueGrapheTracabilite::onFiltreRapideChange(int index)
+{
+    filtreRapide = index;
+    update();
+}
+
+/**
+ * @brief Extrait le nom court d'un fichier depuis son chemin complet.
+ */
+QString VueGrapheTracabilite::nomCourtFichier(const std::string& chemin) const
+{
+    size_t pos = chemin.find_last_of("/\\");
+    if (pos != std::string::npos)
+        return QString::fromStdString(chemin.substr(pos + 1));
+    return QString::fromStdString(chemin);
+}
+
+/**
+ * @brief Retourne true si le nœud doit être affiché selon le filtre rapide.
+ */
+bool VueGrapheTracabilite::noeudVisible(int index) const
+{
+    if (index < 0 || index >= (int)noeuds.size()) return false;
+    const NoeudFichier &n = noeuds[index];
+    if (filtreRapide == 1)
+        return n.nbTotal - n.nbCouvertes > 0;
+    if (filtreRapide == 2)
+        return !liensBrises.isEmpty();
+    return true;
+}
+
+// ─── Construction du graphe ───────────────────────────────────────────────────
+
+/**
+ * @brief Construit le graphe avec un nœud par fichier importé.
+ */
+void VueGrapheTracabilite::construireGraphe(const RapportTracabilite& rapport,
+                                            const std::vector<ExigenceSRS>& srs,
+                                            const std::vector<ExigenceSDD>& sdd)
+{
+    noeuds.clear();
+    liens.clear();
+    liensBrises.clear();
+    srsAnalyses      = srs;
+    sddAnalyses      = sdd;
+    rapportCourant   = rapport;
+    noeudSurvole     = -1;
+    noeudSelectionne = -1;
+    lienSurvole      = -1;
+    filtreRapide     = 0;
+    comboFiltreRapide->setCurrentIndex(0);
+
+    for (const std::string &lb : rapport.liensBrises)
+        liensBrises.append(QString::fromStdString(lb));
+
+    // ── Regrouper par fichier source ──────────────────────────────────────────
+    QMap<QString, QList<const ExigenceSSS*>> sssParFichier;
+    for (const auto& sss : rapport.exigencesSSS) {
+        QString nom = nomCourtFichier(sss.getFichierSource());
+        sssParFichier[nom].append(&sss);
+    }
+
+    QMap<QString, QList<const ExigenceSRS*>> srsParFichier;
+    for (const auto& s : srs) {
+        QString nom = nomCourtFichier(s.getFichierSource());
+        srsParFichier[nom].append(&s);
+    }
+
+    QMap<QString, QList<const ExigenceSDD*>> sddParFichier;
+    for (const auto& d : sdd) {
+        QString nom = nomCourtFichier(d.getFichierSource());
+        sddParFichier[nom].append(&d);
+    }
+
+    int nbSSS = sssParFichier.size();
+    int nbSRS = srsParFichier.size();
+    int nbSDD = sddParFichier.size();
+
+    int xSSS = 130, xSRS = 430, xSDD = 730;
+    int espacementV = 120;
+
+    // ── Créer les nœuds SSS ───────────────────────────────────────────────────
+    int i = 0;
+    for (auto it = sssParFichier.begin(); it != sssParFichier.end(); ++it, ++i) {
+        const QString& nomF = it.key();
+        const QList<const ExigenceSSS*>& exigs = it.value();
+
+        int nbTotal = exigs.size();
+        int nbCompletes = 0;
+        QStringList couvertes, nonCouvertes;
+
+        for (const ExigenceSSS* sssPtr : exigs) {
+            bool chaineComplete = false;
+            for (const auto& s : srs) {
+                const auto& trac = s.getTracabilite();
+                bool srsCouvreSss = std::find(trac.begin(), trac.end(),
+                                              sssPtr->getId()) != trac.end();
+                if (srsCouvreSss) {
+                    for (const auto& d : sdd) {
+                        const auto& ref = d.getReferencedSRS();
+                        if (std::find(ref.begin(), ref.end(), s.getId()) != ref.end()) {
+                            chaineComplete = true;
+                            break;
+                        }
+                    }
+                    if (chaineComplete) break;
+                }
+            }
+            if (chaineComplete) {
+                nbCompletes++;
+                couvertes << QString::fromStdString(sssPtr->getId());
+            } else {
+                nonCouvertes << QString::fromStdString(sssPtr->getId());
+            }
+        }
+
+        NoeudFichier n;
+        n.nomFichier            = nomF;
+        n.cheminComplet         = exigs.first()->getFichierSource().c_str();
+        n.type                  = SSS;
+        n.couleur               = QColor("#1A3A5C");
+        n.nbTotal               = nbTotal;
+        n.nbCouvertes           = nbCompletes;
+        n.pourcentage           = nbTotal > 0 ? (nbCompletes * 100.0 / nbTotal) : 0.0;
+        n.exigencesCouvertes    = couvertes;
+        n.exigencesNonCouvertes = nonCouvertes;
+
+        int yStart = qMax(80, (height() - 50) / 2 - ((nbSSS - 1) * espacementV / 2));
+        n.position = QPointF(xSSS, yStart + i * espacementV);
+        noeuds.push_back(n);
+    }
+
+    // ── Créer les nœuds SRS ───────────────────────────────────────────────────
+    i = 0;
+    for (auto it = srsParFichier.begin(); it != srsParFichier.end(); ++it, ++i) {
+        const QString& nomF = it.key();
+        const QList<const ExigenceSRS*>& exigs = it.value();
+
+        int nbTotal = exigs.size();
+        int nbCouvertes = 0;
+        QStringList couvertes, nonCouvertes;
+
+        for (const ExigenceSRS* srsPtr : exigs) {
+            bool couverte = false;
+            for (const auto& d : sdd) {
+                const auto& ref = d.getReferencedSRS();
+                if (std::find(ref.begin(), ref.end(), srsPtr->getId()) != ref.end()) {
+                    couverte = true;
+                    break;
+                }
+            }
+            if (couverte) {
+                nbCouvertes++;
+                couvertes << QString::fromStdString(srsPtr->getId());
+            } else {
+                nonCouvertes << QString::fromStdString(srsPtr->getId());
+            }
+        }
+
+        NoeudFichier n;
+        n.nomFichier            = nomF;
+        n.cheminComplet         = exigs.first()->getFichierSource().c_str();
+        n.type                  = SRS;
+        n.couleur               = QColor("#2E86C1");
+        n.nbTotal               = nbTotal;
+        n.nbCouvertes           = nbCouvertes;
+        n.pourcentage           = nbTotal > 0 ? (nbCouvertes * 100.0 / nbTotal) : 0.0;
+        n.exigencesCouvertes    = couvertes;
+        n.exigencesNonCouvertes = nonCouvertes;
+
+        int yStart = qMax(80, (height() - 50) / 2 - ((nbSRS - 1) * espacementV / 2));
+        n.position = QPointF(xSRS, yStart + i * espacementV);
+        noeuds.push_back(n);
+    }
+
+    // ── Créer les nœuds SDD ───────────────────────────────────────────────────
+    i = 0;
+    for (auto it = sddParFichier.begin(); it != sddParFichier.end(); ++it, ++i) {
+        const QString& nomF = it.key();
+        const QList<const ExigenceSDD*>& exigs = it.value();
+
+        int nbTotal = exigs.size();
+        NoeudFichier n;
+        n.nomFichier            = nomF;
+        n.cheminComplet         = exigs.first()->getFichierSource().c_str();
+        n.type                  = SDD;
+        n.couleur               = QColor("#5DADE2");
+        n.nbTotal               = nbTotal;
+        n.nbCouvertes           = nbTotal;
+        n.pourcentage           = 100.0;
+        n.exigencesCouvertes.clear();
+        n.exigencesNonCouvertes.clear();
+        for (const ExigenceSDD* d : exigs)
+            n.exigencesCouvertes << QString::fromStdString(d->getId());
+
+        int yStart = qMax(80, (height() - 50) / 2 - ((nbSDD - 1) * espacementV / 2));
+        n.position = QPointF(xSDD, yStart + i * espacementV);
+        noeuds.push_back(n);
+    }
+
+    // ── Créer les liens SRS → SSS ─────────────────────────────────────────────
+    for (int iNoeud = 0; iNoeud < (int)noeuds.size(); iNoeud++) {
+        if (noeuds[iNoeud].type != SRS) continue;
+        const QString& nomSRS = noeuds[iNoeud].nomFichier;
+
+        QMap<QString, int> couverturesParSSS;
+        // ← déclaré à l'intérieur du for iNoeud : se remet à zéro pour chaque nœud SRS
+        QMap<QString, QSet<QString>> dejaCompteParSSS;
+
+        for (const auto& s : srs) {
+            if (nomCourtFichier(s.getFichierSource()) != nomSRS) continue;
+            for (const std::string& ref : s.getTracabilite()) {
+                QString refStr = QString::fromStdString(ref);
+                for (const auto& sssEx : rapport.exigencesSSS) {
+                    if (sssEx.getId() == ref) {
+                        QString nomSSS = nomCourtFichier(sssEx.getFichierSource());
+                        if (!dejaCompteParSSS[nomSSS].contains(refStr)) {
+                            dejaCompteParSSS[nomSSS].insert(refStr);
+                            couverturesParSSS[nomSSS]++;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        for (auto it = couverturesParSSS.begin(); it != couverturesParSSS.end(); ++it) {
+            const QString& nomSSS = it.key();
+            int nbCouverts = it.value();
+
+            int nbTotalSSS = 0;
+            for (const auto& sssEx : rapport.exigencesSSS) {
+                if (nomCourtFichier(sssEx.getFichierSource()) == nomSSS)
+                    nbTotalSSS++;
+            }
+
+            int indexSSS = -1;
+            for (int j = 0; j < (int)noeuds.size(); j++) {
+                if (noeuds[j].type == SSS && noeuds[j].nomFichier == nomSSS) {
+                    indexSSS = j; break;
+                }
+            }
+
+            if (indexSSS >= 0 && nbTotalSSS > 0) {
+                LienFichier lien;
+                lien.indexSource = iNoeud;
+                lien.indexCible  = indexSSS;
+                lien.pourcentage = (nbCouverts * 100.0) / nbTotalSSS;
+                lien.estBrise    = false;
+                liens.push_back(lien);
+            }
+        }
+    }
+
+    // ── Créer les liens SDD → SRS ─────────────────────────────────────────────
+    for (int iNoeud = 0; iNoeud < (int)noeuds.size(); iNoeud++) {
+        if (noeuds[iNoeud].type != SDD) continue;
+        const QString& nomSDD = noeuds[iNoeud].nomFichier;
+
+        QMap<QString, int> couverturesParSRS;
+        // ← déclaré à l'intérieur du for iNoeud : se remet à zéro pour chaque nœud SDD
+        QMap<QString, QSet<QString>> dejaCompteParSRS;
+
+        for (const auto& d : sdd) {
+            if (nomCourtFichier(d.getFichierSource()) != nomSDD) continue;
+            for (const std::string& ref : d.getReferencedSRS()) {
+                QString refStr = QString::fromStdString(ref);
+                for (const auto& s : srs) {
+                    if (s.getId() == ref) {
+                        QString nomSRS = nomCourtFichier(s.getFichierSource());
+                        if (!dejaCompteParSRS[nomSRS].contains(refStr)) {
+                            dejaCompteParSRS[nomSRS].insert(refStr);
+                            couverturesParSRS[nomSRS]++;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        for (auto it = couverturesParSRS.begin(); it != couverturesParSRS.end(); ++it) {
+            const QString& nomSRS = it.key();
+            int nbCouverts = it.value();
+
+            int nbTotalSRS = 0;
+            for (const auto& s : srs) {
+                if (nomCourtFichier(s.getFichierSource()) == nomSRS)
+                    nbTotalSRS++;
+            }
+
+            int indexSRS = -1;
+            for (int j = 0; j < (int)noeuds.size(); j++) {
+                if (noeuds[j].type == SRS && noeuds[j].nomFichier == nomSRS) {
+                    indexSRS = j; break;
+                }
+            }
+
+            if (indexSRS >= 0 && nbTotalSRS > 0) {
+                LienFichier lien;
+                lien.indexSource = iNoeud;
+                lien.indexCible  = indexSRS;
+                lien.pourcentage = (nbCouverts * 100.0) / nbTotalSRS;
+                lien.estBrise    = false;
+                liens.push_back(lien);
+            }
+        }
+    }
+
+    // ── Mise à jour panneau info ──────────────────────────────────────────────
+    panneauInfo->setVisible(true);
+    panneauDetail->setVisible(false);
+
+    auto styleT = [](double taux) -> QString {
+        if (taux >= 80.0) return "color:#27AE60; font-size:11px; font-weight:bold;";
+        if (taux >= 50.0) return "color:#E67E22; font-size:11px; font-weight:bold;";
+        return "color:#E74C3C; font-size:11px; font-weight:bold;";
+    };
+
+    labelTauxSSS_SRS->setText(
+        QString("SSS→SRS : %1%").arg(rapport.tauxSSS_SRS * 100.0, 0, 'f', 1));
+    labelTauxSSS_SRS->setStyleSheet(styleT(rapport.tauxSSS_SRS * 100.0));
+
+    labelTauxSRS_SDD->setText(
+        QString("SRS→SDD : %1%").arg(rapport.tauxSRS_SDD * 100.0, 0, 'f', 1));
+    labelTauxSRS_SDD->setStyleSheet(styleT(rapport.tauxSRS_SDD * 100.0));
+
+    labelTauxGlobal->setText(
+        QString("Global : %1%").arg(rapport.tauxGlobal * 100.0, 0, 'f', 1));
+    labelTauxGlobal->setStyleSheet(styleT(rapport.tauxGlobal * 100.0));
+
+    labelTauxComplet->setText(
+        QString("Traçabilité complète : %1%")
+            .arg(rapport.tauxTracabiliteComplete * 100.0, 0, 'f', 1));
+    labelTauxComplet->setStyleSheet(styleT(rapport.tauxTracabiliteComplete * 100.0));
+
+    if (liensBrises.isEmpty()) {
+        labelLiensBrises->setText("✓ Aucun lien brisé");
+        labelLiensBrises->setStyleSheet(
+            "color:#27AE60; font-size:11px; font-weight:bold;");
+    } else {
+        labelLiensBrises->setText(
+            QString("⚠ %1 lien(s) brisé(s)").arg(liensBrises.size()));
+        labelLiensBrises->setStyleSheet(
+            "color:#E74C3C; font-size:11px; font-weight:bold;");
+        labelLiensBrises->setToolTip(liensBrises.join("\n"));
+    }
+
+    resizeEvent(nullptr);
+    update();
+}
+
+// ─── Dessin ───────────────────────────────────────────────────────────────────
+
+/**
+ * @brief Redessine tout le graphe.
+ */
+void VueGrapheTracabilite::paintEvent(QPaintEvent *)
+{
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.scale(niveauZoom, niveauZoom);
+
+    painter.fillRect(QRectF(0, 0, width() / niveauZoom, height() / niveauZoom),
+                     QColor("#EBF5FB"));
+
+    if (noeuds.empty()) {
+        painter.setPen(QColor("#AAAAAA"));
+        QFont font; font.setPointSize(13);
+        painter.setFont(font);
+        painter.drawText(
+            QRectF(0, 0, width() / niveauZoom, height() / niveauZoom),
+            Qt::AlignCenter,
+            "🔗  Lancez une analyse pour afficher le graphe de traçabilité");
+        return;
+    }
+
+    // Séparateurs en pointillés
+    painter.setPen(QPen(QColor("#AED6F1"), 1, Qt::DashLine));
+    painter.drawLine(QPointF(280, 10),
+                     QPointF(280, (height() - 50) / niveauZoom));
+    painter.drawLine(QPointF(580, 10),
+                     QPointF(580, (height() - 50) / niveauZoom));
+
+    // Message liens brisés
+    if (!liensBrises.isEmpty()) {
+        QFont fontLB; fontLB.setPointSize(9); fontLB.setBold(true);
+        painter.setFont(fontLB);
+        painter.setPen(QColor("#E74C3C"));
+        painter.drawText(
+            QRectF(0, 48, width() / niveauZoom, 20), Qt::AlignCenter,
+            QString("⚠  %1 lien(s) brisé(s)").arg(liensBrises.size()));
+    }
+
+    // Liens d'abord (sous les nœuds)
+    for (int j = 0; j < (int)liens.size(); j++)
+        dessinerLien(painter, liens[j], j == lienSurvole);
+
+    // Nœuds ensuite (par-dessus les liens)
+    for (int j = 0; j < (int)noeuds.size(); j++) {
+        if (filtreRapide > 0 && !noeudVisible(j)) {
+            painter.setOpacity(0.25);
+            dessinerNoeud(painter, noeuds[j], false, false);
+            painter.setOpacity(1.0);
+        } else {
+            dessinerNoeud(painter, noeuds[j],
+                          j == noeudSurvole, j == noeudSelectionne);
+        }
+    }
+}
+
+/**
+ * @brief Dessine un nœud fichier.
+ */
+void VueGrapheTracabilite::dessinerNoeud(QPainter &painter,
+                                         const NoeudFichier &noeud,
+                                         bool survole, bool selectionne)
+{
+    double w = 150, h = 90;
+    QRectF rect(noeud.position.x() - w/2, noeud.position.y() - h/2, w, h);
+
+    QColor couleur = noeud.couleur;
+    if (selectionne) couleur = couleur.darker(110);
+
+    // Ombre
+    painter.setBrush(QColor(0, 0, 0, 20));
+    painter.setPen(Qt::NoPen);
+    painter.drawRoundedRect(rect.adjusted(4, 4, 4, 4), 10, 10);
+
+    // Nœud principal
+    painter.setBrush(couleur);
+    painter.setPen(QPen(selectionne ? QColor("#F39C12") : couleur.darker(130),
+                        selectionne ? 3 : 1));
+    painter.drawRoundedRect(rect, 10, 10);
+
+    // Nom du fichier
+    QString nomAffiche = noeud.nomFichier;
+    if (nomAffiche.length() > 18)
+        nomAffiche = nomAffiche.left(15) + "...";
+
+    QFont fontNom; fontNom.setPointSize(8); fontNom.setBold(true);
+    painter.setFont(fontNom);
+    painter.setPen(Qt::white);
+    painter.drawText(
+        QRectF(rect.x() + 6, rect.y() + 8, rect.width() - 12, 20),
+        Qt::AlignCenter, nomAffiche);
+
+    // Séparateur
+    painter.setPen(QPen(QColor(255, 255, 255, 80), 1));
+    painter.drawLine(QPointF(rect.x() + 8, rect.y() + 32),
+                     QPointF(rect.x() + rect.width() - 8, rect.y() + 32));
+
+    // Pourcentage
+    QFont fontPct; fontPct.setPointSize(16); fontPct.setBold(true);
+    painter.setFont(fontPct);
+    painter.setPen(Qt::white);
+    painter.drawText(
+        QRectF(rect.x(), rect.y() + 34, rect.width(), 28),
+        Qt::AlignCenter,
+        QString("%1%").arg(noeud.pourcentage, 0, 'f', 0));
+
+    // Stats
+    QFont fontStats; fontStats.setPointSize(7);
+    painter.setFont(fontStats);
+    painter.setPen(QColor(255, 255, 255, 200));
+    painter.drawText(
+        QRectF(rect.x() + 6, rect.y() + 64, rect.width() - 12, 14),
+        Qt::AlignCenter,
+        QString("✓ %1  ✗ %2  / %3")
+            .arg(noeud.nbCouvertes)
+            .arg(noeud.nbTotal - noeud.nbCouvertes)
+            .arg(noeud.nbTotal));
+
+    if (survole) {
+        QFont fontClic; fontClic.setPointSize(6); fontClic.setItalic(true);
+        painter.setFont(fontClic);
+        painter.setPen(QColor(255, 255, 255, 150));
+        painter.drawText(
+            QRectF(rect.x(), rect.y() + rect.height() - 14, rect.width(), 12),
+            Qt::AlignCenter, "Cliquez pour les détails");
+    }
+}
+
+/**
+ * @brief Dessine un lien entre deux fichiers.
+ */
+void VueGrapheTracabilite::dessinerLien(QPainter &painter,
+                                        const LienFichier &lien,
+                                        bool survole)
+{
+    if (lien.indexSource < 0 || lien.indexSource >= (int)noeuds.size()) return;
+    if (lien.indexCible  < 0 || lien.indexCible  >= (int)noeuds.size()) return;
+
+    const NoeudFichier &source = noeuds[lien.indexSource];
+    const NoeudFichier &cible  = noeuds[lien.indexCible];
+
+    QColor couleur = noeuds[lien.indexSource].couleur;
+
+    QPointF debut(source.position.x() - 75, source.position.y());
+    QPointF fin(cible.position.x() + 75,    cible.position.y());
+
+    painter.setPen(QPen(couleur, survole ? 3 : 2));
+    painter.setBrush(Qt::NoBrush);
+    painter.drawLine(debut, fin);
+
+    // Flèche
+    double angle  = std::atan2(fin.y() - debut.y(), fin.x() - debut.x());
+    double taille = 12.0;
+    QPointF p1(fin.x() - taille * std::cos(angle - 0.4),
+               fin.y() - taille * std::sin(angle - 0.4));
+    QPointF p2(fin.x() - taille * std::cos(angle + 0.4),
+               fin.y() - taille * std::sin(angle + 0.4));
+    painter.setBrush(couleur);
+    painter.setPen(Qt::NoPen);
+    QPolygonF fleche;
+    fleche << fin << p1 << p2;
+    painter.drawPolygon(fleche);
+
+    // Badge pourcentage
+    QPointF milieu((debut.x() + fin.x()) / 2,
+                   (debut.y() + fin.y()) / 2);
+    QString texte = QString("%1%").arg(lien.pourcentage, 0, 'f', 0);
+    QFont fontBadge; fontBadge.setPointSize(survole ? 10 : 9);
+    fontBadge.setBold(true);
+    painter.setFont(fontBadge);
+    QFontMetrics fm(fontBadge);
+    int tw = fm.horizontalAdvance(texte) + 14;
+    int th = fm.height() + 8;
+    painter.setBrush(couleur);
+    painter.setPen(Qt::NoPen);
+    painter.drawRoundedRect(
+        QRectF(milieu.x() - tw/2, milieu.y() - th/2, tw, th), 6, 6);
+    painter.setPen(Qt::white);
+    painter.drawText(
+        QRectF(milieu.x() - tw/2, milieu.y() - th/2, tw, th),
+        Qt::AlignCenter, texte);
+}
+
+// ─── Interactions ─────────────────────────────────────────────────────────────
+
+/**
+ * @brief Gère le survol de la souris.
+ */
+void VueGrapheTracabilite::mouseMoveEvent(QMouseEvent *event)
+{
+    QPointF pos = QPointF(event->pos()) / niveauZoom;
+    int ancienNoeud = noeudSurvole;
+    int ancienLien  = lienSurvole;
+
+    noeudSurvole = noeudAPosition(pos);
+    lienSurvole  = (noeudSurvole < 0) ? lienAPosition(pos) : -1;
+
+    if (noeudSurvole >= 0) {
+        const NoeudFichier &n = noeuds[noeudSurvole];
+        QString tip = QString(
+                          "<b style='font-size:13px;'>%1</b><br/><hr/>"
+                          "%2 exigence(s) au total<br/>"
+                          "<span style='color:#27AE60;'>✓ %3 couvert(e)s</span><br/>"
+                          "<span style='color:#E74C3C;'>✗ %4 non couvert(e)s</span><br/>"
+                          "<b>Couverture : %5%</b>"
+                          ).arg(n.nomFichier).arg(n.nbTotal).arg(n.nbCouvertes)
+                          .arg(n.nbTotal - n.nbCouvertes)
+                          .arg(n.pourcentage, 0, 'f', 1);
+
+        if (!n.exigencesNonCouvertes.isEmpty()) {
+            tip += "<br/><i style='color:#E74C3C;'>Non couvertes : "
+                   + n.exigencesNonCouvertes.mid(0, 5).join(", ");
+            if (n.exigencesNonCouvertes.size() > 5)
+                tip += QString(" +%1 autres").arg(n.exigencesNonCouvertes.size() - 5);
+            tip += "</i>";
+        }
+        tip += "<br/><small style='color:#888;'>Cliquez pour voir la liste complète</small>";
+        QToolTip::showText(event->globalPosition().toPoint(), tip, this);
+
+    } else if (lienSurvole >= 0) {
+        const LienFichier &l = liens[lienSurvole];
+        QString tip = QString(
+                          "<b>%1 → %2</b><br/>Couverture : <b>%3%</b>"
+                          ).arg(noeuds[l.indexSource].nomFichier)
+                          .arg(noeuds[l.indexCible].nomFichier)
+                          .arg(l.pourcentage, 0, 'f', 1);
+        QToolTip::showText(event->globalPosition().toPoint(), tip, this);
+
+    } else {
+        QToolTip::hideText();
+    }
+
+    if (noeudSurvole != ancienNoeud || lienSurvole != ancienLien) update();
+}
+
+/**
+ * @brief Gère le clic sur un nœud.
+ */
+void VueGrapheTracabilite::mousePressEvent(QMouseEvent *event)
+{
+    QPointF pos = QPointF(event->pos()) / niveauZoom;
+    int clique = noeudAPosition(pos);
+
+    if (clique >= 0) {
+        noeudSelectionne = (clique == noeudSelectionne) ? -1 : clique;
+        if (noeudSelectionne >= 0) {
+            const NoeudFichier &n = noeuds[noeudSelectionne];
+            panneauDetail->setVisible(true);
+            labelDetailTitre->setText(n.nomFichier + " — Détails de couverture");
+            labelDetailStats->setText(
+                QString("%1 exigences  |  ✓ %2 couvertes  |  ✗ %3 non couvertes  |  %4%")
+                    .arg(n.nbTotal).arg(n.nbCouvertes)
+                    .arg(n.nbTotal - n.nbCouvertes)
+                    .arg(n.pourcentage, 0, 'f', 1));
+
+            listeDetailExigences->clear();
+            if (n.exigencesNonCouvertes.isEmpty()) {
+                QListWidgetItem *it = new QListWidgetItem("✓ Toutes les exigences sont couvertes !");
+                it->setForeground(QColor("#27AE60"));
+                listeDetailExigences->addItem(it);
+            } else {
+                for (const QString &id : n.exigencesNonCouvertes) {
+                    QListWidgetItem *it = new QListWidgetItem("✗ " + id);
+                    it->setForeground(QColor("#E74C3C"));
+                    listeDetailExigences->addItem(it);
+                }
+            }
+            resizeEvent(nullptr);
+        } else {
+            panneauDetail->setVisible(false);
+        }
+    } else {
+        noeudSelectionne = -1;
+        panneauDetail->setVisible(false);
+    }
+    update();
+}
+
+/**
+ * @brief Gère le zoom à la molette.
+ */
+void VueGrapheTracabilite::wheelEvent(QWheelEvent *event)
+{
+    if (event->angleDelta().y() > 0) niveauZoom *= 1.1;
+    else                              niveauZoom /= 1.1;
+    niveauZoom = qBound(0.3, niveauZoom, 3.0);
+    update();
+}
+
+/**
+ * @brief Retourne l'index du nœud à la position donnée, -1 sinon.
+ */
+int VueGrapheTracabilite::noeudAPosition(const QPointF &pos) const
+{
+    for (int j = 0; j < (int)noeuds.size(); j++) {
+        double dx = pos.x() - noeuds[j].position.x();
+        double dy = pos.y() - noeuds[j].position.y();
+        if (std::abs(dx) <= 75 && std::abs(dy) <= 45) return j;
+    }
+    return -1;
+}
+
+/**
+ * @brief Retourne l'index du lien à la position donnée, -1 sinon.
+ */
+int VueGrapheTracabilite::lienAPosition(const QPointF &pos) const
+{
+    for (int j = 0; j < (int)liens.size(); j++) {
+        const NoeudFichier &src = noeuds[liens[j].indexSource];
+        const NoeudFichier &cib = noeuds[liens[j].indexCible];
+        QPointF milieu(
+            (src.position.x() - 75 + cib.position.x() + 75) / 2,
+            (src.position.y() + cib.position.y()) / 2);
+        if (std::abs(pos.x() - milieu.x()) <= 30 &&
+            std::abs(pos.y() - milieu.y()) <= 20)
+            return j;
+    }
+    return -1;
+}
+
+/**
+ * @brief Applique un filtre avancé et redessine le graphe.
+ */
+void VueGrapheTracabilite::appliquerFiltre(const FiltreGUI &filtre)
+{
+    filtreActif = filtre;
+    update();
+}

@@ -1,0 +1,203 @@
+/**
+ * @file OngletRapport.h
+ * @brief Declaration de la classe OngletRapport.
+ * @author Lamia Arrahmane
+ * @date 02/04/2026
+ * @version 2.0 — exports CSV/HTML/PDF ameliores
+ */
+
+// Ce bloc evite que le fichier soit inclus deux fois dans le meme projet
+#ifndef ONGLETRAPPORT_H
+#define ONGLETRAPPORT_H
+
+// On inclut les outils Qt dont on a besoin pour construire l'interface graphique
+#include <QWidget>       // La classe de base pour tout element visible dans Qt
+#include <QTableWidget>  // Un tableau avec des lignes et des colonnes
+#include <QLabel>        // Un simple texte ou image affiche dans la fenetre
+#include <QVBoxLayout>   // Un layout qui empile les elements verticalement
+#include <QPushButton>   // Un bouton cliquable
+#include <QFrame>        // Un cadre rectangulaire qui peut contenir d'autres elements
+#include <QProgressBar>  // Une barre de progression (ex: afficher un pourcentage)
+#include <QTabWidget>    // Un systeme d'onglets (comme les onglets d'un navigateur)
+#include <QMenu>         // Un menu deroulant (liste de choix qui apparait au clic)
+#include <QToolButton>   // Un bouton special qui peut avoir un menu attache
+
+// Includes pour l'export PDF : ces classes permettent d'imprimer/generer un PDF
+#include <QPrinter>      // Represente une imprimante ou un fichier PDF de sortie
+#include <QPainter>      // Permet de dessiner des formes, textes, etc. sur une surface
+#include <QPageSize>     // Definit la taille de la page (A4, Letter, etc.)
+#include <QPageLayout>   // Definit la mise en page (marges, orientation, etc.)
+
+// Pour afficher la date et l'heure dans les exports
+#include <QDateTime>     // Donne acces a la date et l'heure actuelles du systeme
+
+// On inclut nos propres classes metier du projet
+#include "RapportTracabilite.h"    // La structure qui contient toutes les donnees du rapport
+#include "GestionnaireFiltresGUI.h"// Le panneau lateral avec les filtres de recherche
+#include "ExigenceSRS.h"           // La classe representant une exigence de type SRS
+#include "ExigenceSDD.h"           // La classe representant un element de conception SDD
+
+/**
+ * @class OngletRapport
+ * @brief Onglet Qt qui affiche le rapport de tracabilite complet produit par le Module 2.
+ *
+ * Cet onglet contient :
+ * - Les taux de couverture affiches avec des barres de progression
+ * - Des badges qui resument le nombre de couverts, non couverts, liens brises et orphelines
+ * - Deux matrices : SSS x SRS et SRS x SDD, avec un systeme de zoom
+ * - Un panneau de detail qui s'affiche quand on clique sur une exigence
+ * - Un menu deroulant pour exporter en CSV, HTML ou PDF
+ * - Un panneau de filtres qui glisse depuis le cote droit
+ * - Un panneau violet pour les exigences orphelines
+ */
+class OngletRapport : public QWidget  // OngletRapport herite de QWidget : c'est donc un widget Qt
+{
+    Q_OBJECT  // Macro obligatoire pour utiliser les signaux et slots de Qt
+
+public:
+
+    /**
+     * @brief Constructeur : cree l'onglet et initialise tous ses widgets.
+     * @param parent Le widget parent dans lequel cet onglet sera place (peut etre nullptr).
+     */
+    explicit OngletRapport(QWidget *parent = nullptr);
+
+    /**
+     * @brief Affiche un rapport sans les donnees detaillees SRS/SDD.
+     *        Appelle en interne afficherRapportComplet avec des vecteurs vides.
+     * @param rapport Le rapport produit par le moteur de tracabilite.
+     */
+    void afficherRapport(const RapportTracabilite& rapport);
+
+    /**
+     * @brief Affiche le rapport complet avec toutes les matrices et tous les panneaux.
+     * @param rapport    Le rapport produit par le moteur de tracabilite.
+     * @param srs        La liste des exigences SRS analysees.
+     * @param sdd        La liste des elements de conception SDD analyses.
+     * @param orphelines La liste des identifiants d'exigences orphelines (sans parent SSS).
+     */
+    void afficherRapportComplet(const RapportTracabilite& rapport,
+                                const std::vector<ExigenceSRS>& srs,
+                                const std::vector<ExigenceSDD>& sdd,
+                                const std::vector<std::string>& orphelines);
+
+private slots:
+    // Les slots sont des fonctions appelees automatiquement quand un signal Qt est emis
+
+    /// @brief Ouvre une boite de dialogue pour choisir ou sauver le CSV, puis ecrit le fichier.
+    void exporterCSV();
+
+    /// @brief Ouvre une boite de dialogue pour choisir ou sauver le HTML interactif, puis l'ecrit.
+    void exporterHTML();
+
+    /// @brief Nouveau (amie) : ouvre une boite de dialogue et genere un fichier PDF du rapport.
+    void exporterPDF();
+
+    /// @brief Affiche ou cache le panneau de filtres lateral quand on clique sur "Filtres".
+    void toggleFiltres();
+
+public slots:
+
+    /**
+     * @brief Applique les criteres de filtre sur les deux matrices du tableau.
+     *        Cache les lignes qui ne correspondent pas au filtre.
+     * @param filtre L'objet filtre contenant les criteres de recherche.
+     */
+    void appliquerFiltre(const FiltreGUI& filtre);
+
+    /**
+     * @brief Intercepte les evenements souris sur certains widgets (badges liens brises et orphelines).
+     *        Quand on clique sur ces badges, on affiche ou cache les panneaux correspondants.
+     * @param obj   Le widget sur lequel l'evenement s'est produit.
+     * @param event L'evenement intercepte (type clic, survol, etc.).
+     * @return true si l'evenement a ete traite ici, false sinon.
+     */
+    bool eventFilter(QObject* obj, QEvent* event) override;
+
+private:
+    // ── Taux de couverture ────────────────────────────────────────────────────
+
+    QLabel       *labelTauxSSS_SRS;  ///< Texte "Taux SSS->SRS : X %" a gauche de la barre
+    QLabel       *labelTauxSRS_SDD;  ///< Texte "Taux SRS->SDD : X %" a gauche de la barre
+    QLabel       *labelTauxGlobal;   ///< Texte "Taux global : X %" a gauche de la barre
+    QProgressBar *barreSSS_SRS;      ///< Barre de progression bleue pour le taux SSS->SRS
+    QProgressBar *barreSRS_SDD;      ///< Barre de progression bleue pour le taux SRS->SDD
+    QProgressBar *barreGlobal;       ///< Barre de progression bleue pour le taux global
+
+    // ── Badges resume en haut de l'ecran ──────────────────────────────────────
+
+    QLabel *labelBadgeCouverts;      ///< Badge vert : nombre d'exigences couvertes
+    QLabel *labelBadgeNonCouverts;   ///< Badge rouge : nombre d'exigences non couvertes
+    QLabel *labelBadgeLiensBrises;   ///< Badge orange cliquable : nombre de liens brises
+    QLabel *labelBadgeOrphelines;    ///< Badge violet cliquable : nombre d'exigences orphelines
+
+    // ── Tableaux (matrices) de tracabilite ────────────────────────────────────
+
+    QTableWidget *tableMatriceSSS_SRS;  ///< Tableau qui affiche les exigences SSS et leurs SRS liees
+    QTableWidget *tableMatriceSRS_SDD;  ///< Tableau qui affiche les exigences SRS et leurs SDD liees
+
+    // ── Panneau de detail : s'affiche quand on clique sur une ligne ───────────
+
+    QFrame  *panneauDetail;          ///< Cadre blanc en bas qui affiche les infos de l'exigence selectionnee
+    QLabel  *labelDetailId;          ///< Affiche l'identifiant de l'exigence selectionnee (ex: "EXIG_001")
+    QLabel  *labelDetailType;        ///< Badge qui indique le type : "SSS" ou "SRS"
+    QLabel  *labelDetailStatut;      ///< Badge colore qui indique le statut : couvert, non couvert, etc.
+    QLabel  *labelDetailLiens;       ///< Texte listant les identifiants des exigences liees
+    QLabel  *labelDetailFichier;     ///< Chemin du fichier source de l'exigence (en italique gris)
+    QLabel  *labelDetailDescription; ///< Contenu textuel de l'exigence (description complete)
+    QLabel  *labelDetailEtat;        ///< Indique si l'exigence est "Developpe" ou "Non developpe"
+
+    // ── Bouton et menu d'export ────────────────────────────────────────────────
+
+    QToolButton *boutonExport;  ///< Bouton vert "Exporter" avec une fleche pour derouler le menu
+    QMenu       *menuExport;    ///< Menu deroulant avec trois options : CSV, HTML, PDF
+
+    // ── Panneau de filtres (lateral droit) ────────────────────────────────────
+
+    QFrame                 *panneauFiltres;       ///< Cadre blanc qui contient les filtres (se glisse depuis la droite)
+    QPushButton            *boutonFiltres;        ///< Bouton "Filtres" qui ouvre/ferme le panneau lateral
+    GestionnaireFiltresGUI *gestionnaireFiltres;  ///< Widget interne qui gere les champs de filtre
+
+    // ── Donnees stockees pour les exports et le filtrage ─────────────────────
+
+    RapportTracabilite       rapportCourant;      ///< Copie du dernier rapport charge (taux, exigences SSS, liens brises)
+    std::vector<ExigenceSRS> srsAnalyses;         ///< Liste des exigences SRS du dernier rapport
+    std::vector<ExigenceSDD> sddAnalyses;         ///< Liste des elements SDD du dernier rapport
+    std::vector<std::string> orphelinesAnalyses;  ///< Liste des IDs des exigences orphelines du dernier rapport
+
+    // ── Panneau liens brises (orange, apparait au clic sur le badge) ──────────
+
+    QFrame      *panneauLiensBrises;  ///< Cadre orange qui liste les liens brises detectes
+    QWidget     *listeLiensBrises;    ///< Widget interne qui contient les lignes de la liste
+    QVBoxLayout *layoutListeLB;       ///< Layout vertical qui empile les lignes de liens brises
+
+    // ── Panneau orphelines (violet, apparait au clic sur le badge) ────────────
+
+    QFrame      *panneauOrphelines;   ///< Cadre violet qui liste les exigences orphelines detectees
+    QWidget     *listeOrphelines;     ///< Widget interne qui contient les lignes de la liste
+    QVBoxLayout *layoutListeOrph;     ///< Layout vertical qui empile les lignes d'orphelines
+
+    // ── Methodes privees utilitaires ──────────────────────────────────────────
+
+    /**
+     * @brief Cree et place tous les widgets dans l'onglet.
+     *        Appele une seule fois dans le constructeur.
+     */
+    void initialiserUI();
+
+    /**
+     * @brief Cree une barre de progression avec un style arrondi de la couleur donnee.
+     * @param couleur La couleur de remplissage de la barre (format hexadecimal, ex: "#4A90D9").
+     * @return Un pointeur vers la barre de progression nouvellement creee.
+     */
+    QProgressBar* creerBarre(const QString& couleur);
+
+    /**
+     * @brief Applique un style visuel coherent (couleurs, bordures, police) a un tableau.
+     * @param table Le tableau Qt a styliser.
+     */
+    void styliserTableau(QTableWidget* table);
+};
+
+// Fin du bloc de protection contre les inclusions multiples
+#endif // ONGLETRAPPORT_H

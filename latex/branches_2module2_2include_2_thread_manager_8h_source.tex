@@ -1,0 +1,43 @@
+\doxysection{Thread\+Manager.\+h}
+\hypertarget{branches_2module2_2include_2_thread_manager_8h_source}{}\label{branches_2module2_2include_2_thread_manager_8h_source}\index{branches/module2/include/ThreadManager.h@{branches/module2/include/ThreadManager.h}}
+\doxymbox{\hyperlink{branches_2module2_2include_2_thread_manager_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ ThreadManager.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 23\ mars\ 2026}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ yseulthelle}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ THREADMANAGER\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ THREADMANAGER\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2module2_2include_2_moteur_tracabilite_8h}{MoteurTracabilite.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_thread_manager}{ThreadManager}}\ \{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ MoteurTracabilite\&\ \doxymbox{\hyperlink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}};\ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ std::thread\ \doxymbox{\hyperlink{class_thread_manager_ad9572c1ed71075215e2e103979637538}{threadAnalyse}};\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ std::atomic<bool>\ \doxymbox{\hyperlink{class_thread_manager_a8f7aefd9c3f0892e82bb32b24f041b18}{analyseTerminee}};\ \ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00042\ \ \ \ \ \doxymbox{\hyperlink{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}{ThreadManager}}(\doxymbox{\hyperlink{class_moteur_tracabilite}{MoteurTracabilite}}\&\ \doxymbox{\hyperlink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00050\ \ \ \ \ \doxymbox{\hyperlink{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}{\string~ThreadManager}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}{lancerAnalyse}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}{attendreFinAnalyse}}();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}{estTerminee}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ THREADMANAGER\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+
+\end{DoxyCode}

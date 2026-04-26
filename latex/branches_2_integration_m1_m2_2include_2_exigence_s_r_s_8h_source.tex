@@ -1,0 +1,49 @@
+\doxysection{Exigence\+SRS.\+h}
+\hypertarget{branches_2_integration_m1_m2_2include_2_exigence_s_r_s_8h_source}{}\label{branches_2_integration_m1_m2_2include_2_exigence_s_r_s_8h_source}\index{branches/IntegrationM1M2/include/ExigenceSRS.h@{branches/IntegrationM1M2/include/ExigenceSRS.h}}
+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_s_r_s_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ ExigenceSRS.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 9\ mars\ 2026}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ yseulthelle}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ EXIGENCESRS\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ EXIGENCESRS\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h}{Exigence.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_exigence_s_r_s_af562c466a7cd32ed2277946d371aa961}{ExigenceSRS}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{class_exigence_a424c52cc2b9b13e088275a738db1ee98}{Exigence}}\ \{}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{class_exigence_s_r_s_a0375a05d7dd15dff25b6dbecc96f07ba}{tracabilite}};\ \ }
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{class_exigence_s_r_s_a1694aeb967bc1873b395ebd65d36c337}{cibles}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{class_exigence_s_r_s_a36014a708ba5b48bc83e4bd887913a0a}{necessaireA}};\ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_exigence_s_r_s_ae52acc5337dd02ad1e2c8c03d2456044}{developpe}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \doxymbox{\hyperlink{class_exigence_s_r_s_af562c466a7cd32ed2277946d371aa961}{ExigenceSRS}}(\textcolor{keyword}{const}\ std::string\&\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ std::string\&\ \doxymbox{\hyperlink{class_exigence_a2b11170f7f131cceb6926970b898aec0}{contenu}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ \doxymbox{\hyperlink{class_exigence_s_r_s_a81b58c6c988545543eb0c476e40d0f53}{getTracabilite}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ \doxymbox{\hyperlink{class_exigence_s_r_s_aa5a6dcb20e0a778e11093f79edfd99e7}{getCibles}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::string>\&\ \doxymbox{\hyperlink{class_exigence_s_r_s_ae4d354ed4025536d00e8bab3a3ec9550}{getNecessaireA}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_exigence_s_r_s_a45421e960753968be3e46d04c04f80b1}{setTracabilite}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ \doxymbox{\hyperlink{class_exigence_s_r_s_a0375a05d7dd15dff25b6dbecc96f07ba}{tracabilite}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_exigence_s_r_s_ac8bc0b7831cee09c5490688d13c92a00}{setCibles}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ \doxymbox{\hyperlink{class_exigence_s_r_s_a1694aeb967bc1873b395ebd65d36c337}{cibles}});}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_exigence_s_r_s_aa19f760cd691dcc8c212e567c49e30cc}{setNecessaireA}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ \doxymbox{\hyperlink{class_exigence_s_r_s_a36014a708ba5b48bc83e4bd887913a0a}{necessaireA}});}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_exigence_s_r_s_a726d6978d8de77d47ddab5d35704896e}{getDeveloppe}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_exigence_s_r_s_a6b161936abdf0170eb1e09f57f79fbce}{setDeveloppe}}(\textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_exigence_s_r_s_ae52acc5337dd02ad1e2c8c03d2456044}{developpe}});}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ EXIGENCESRS\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ }
+
+\end{DoxyCode}

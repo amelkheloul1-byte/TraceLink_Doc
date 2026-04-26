@@ -1,0 +1,839 @@
+\doxysection{Référence de la classe Extracteur\+Fichier}
+\hypertarget{class_extracteur_fichier}{}\label{class_extracteur_fichier}\index{ExtracteurFichier@{ExtracteurFichier}}
+
+
+{\ttfamily \+\#include $<$Extracteur\+Fichier.\+h$>$}
+
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f}{Extracteur\+Fichier}} (const std::\+string \&chemin, const std::\+string \&motif)
+\begin{DoxyCompactList}\small\item\em Constructeur de l\textquotesingle{}extracteur de fichier. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}{extraire}} ()
+\begin{DoxyCompactList}\small\item\em Orchestre l\textquotesingle{}extraction complète :\+ \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b}{get\+Nombre\+Exigences\+Detectees}} () const
+\begin{DoxyCompactList}\small\item\em Retourne le nombre d\textquotesingle{}exigences détectées lors de la dernière extraction. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964}{detecter\+Extension}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}extension du fichier en minuscules. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f}{Extracteur\+Fichier}} (const std::\+string \&chemin, const std::\+string \&motif)
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}{extraire}} ()
+\item 
+int \doxymbox{\hyperlink{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b}{get\+Nombre\+Exigences\+Detectees}} () const
+\item 
+\doxymbox{\hyperlink{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f}{Extracteur\+Fichier}} (const std::\+string \&chemin, const std::\+string \&motif)
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}{extraire}} ()
+\item 
+int \doxymbox{\hyperlink{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b}{get\+Nombre\+Exigences\+Detectees}} () const
+\item 
+\doxymbox{\hyperlink{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f}{Extracteur\+Fichier}} (const std::\+string \&chemin, const std::\+string \&motif)
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}{extraire}} ()
+\item 
+int \doxymbox{\hyperlink{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b}{get\+Nombre\+Exigences\+Detectees}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Fonctions membres privées}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1}{verifier\+Existence}} () const
+\begin{DoxyCompactList}\small\item\em Vérifie si le fichier source est présent sur le disque. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lire\+CSV}} (const std::\+string \&extension) const
+\begin{DoxyCompactList}\small\item\em Lit un fichier CSV/\+\+XLS ligne par ligne. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lire\+Docx}} () const
+\begin{DoxyCompactList}\small\item\em Extrait le texte brut d\textquotesingle{}un fichier .docx paragraphe par paragraphe. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_abf07cbaf6e600f9ee8afc0390209ccb9}{lire\+Xlsx}} () const
+\begin{DoxyCompactList}\small\item\em Extrait le texte brut d\textquotesingle{}un fichier .xlsx ligne par ligne. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a464fe6d8dcbbe1645d0622e50d31fb37}{charger\+Shared\+Strings}} (zip\+\_\+t \texorpdfstring{$\ast$}{*}archive) const
+\begin{DoxyCompactList}\small\item\em Charge le dictionnaire des textes partagés d\textquotesingle{}Excel. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}{filtrer\+Lignes}} (const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&lignes, const std::\+string \&format) const
+\begin{DoxyCompactList}\small\item\em Filtre les lignes CSV/\+\+XLS colonne par colonne. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a2916fa8d77e709c79201e8277008d7ac}{parser\+Blocs\+Docx}} (const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&paragraphes) const
+\begin{DoxyCompactList}\small\item\em Regroupe les paragraphes docx en blocs et extrait les métadonnées. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a9d7cd87c1922517d4c14d2f7ff98f243}{decouper}} (const std::\+string \&ligne) const
+\begin{DoxyCompactList}\small\item\em Découpe une chaîne "{}val1, val2, val3"{} en vecteur de tokens nettoyés. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a42819eb55db02a5f023fc0bbc3a11871}{lire\+Doc}} () const
+\begin{DoxyCompactList}\small\item\em Convertit un fichier .doc en .docx puis l\textquotesingle{}analyse. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a01f028467b271dacab393f14643b27bb}{lire\+Xls}} () const
+\begin{DoxyCompactList}\small\item\em Convertit un fichier .xls en .xlsx puis l\textquotesingle{}analyse. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964}{detecter\+Extension}} () const
+\item 
+void \doxymbox{\hyperlink{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1}{verifier\+Existence}} () const
+\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lire\+CSV}} (const std::\+string \&extension) const
+\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lire\+Docx}} () const
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}{filtrer\+Lignes}} (const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&lignes, const std::\+string \&format) const
+\item 
+std::\+string \doxymbox{\hyperlink{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964}{detecter\+Extension}} () const
+\item 
+void \doxymbox{\hyperlink{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1}{verifier\+Existence}} () const
+\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lire\+CSV}} (const std::\+string \&extension) const
+\begin{DoxyCompactList}\small\item\em Lit un fichier CSV/\+\+XLS ligne par ligne. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lire\+Docx}} () const
+\begin{DoxyCompactList}\small\item\em Extrait le texte brut d\textquotesingle{}un fichier .docx paragraphe par paragraphe. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}{filtrer\+Lignes}} (const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&lignes, const std::\+string \&format) const
+\begin{DoxyCompactList}\small\item\em Filtre les lignes CSV/\+\+XLS colonne par colonne. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a2916fa8d77e709c79201e8277008d7ac}{parser\+Blocs\+Docx}} (const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&paragraphes) const
+\begin{DoxyCompactList}\small\item\em Regroupe les paragraphes docx en blocs et extrait les métadonnées. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a9d7cd87c1922517d4c14d2f7ff98f243}{decouper}} (const std::\+string \&ligne) const
+\begin{DoxyCompactList}\small\item\em Découpe une chaîne "{}val1, val2, val3"{} en vecteur de tokens nettoyés. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964}{detecter\+Extension}} () const
+\item 
+void \doxymbox{\hyperlink{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1}{verifier\+Existence}} () const
+\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lire\+CSV}} (const std::\+string \&extension) const
+\begin{DoxyCompactList}\small\item\em Lit un fichier CSV/\+\+XLS ligne par ligne. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lire\+Docx}} () const
+\begin{DoxyCompactList}\small\item\em Extrait le texte brut d\textquotesingle{}un fichier .docx paragraphe par paragraphe. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_extracteur_fichier_abf07cbaf6e600f9ee8afc0390209ccb9}{lire\+Xlsx}} () const
+\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a464fe6d8dcbbe1645d0622e50d31fb37}{charger\+Shared\+Strings}} (zip\+\_\+t \texorpdfstring{$\ast$}{*}archive) const
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}{filtrer\+Lignes}} (const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&lignes, const std::\+string \&format) const
+\begin{DoxyCompactList}\small\item\em Filtre les lignes CSV/\+\+XLS colonne par colonne. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a2916fa8d77e709c79201e8277008d7ac}{parser\+Blocs\+Docx}} (const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&paragraphes) const
+\begin{DoxyCompactList}\small\item\em Regroupe les paragraphes docx en blocs et extrait les métadonnées. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_extracteur_fichier_a9d7cd87c1922517d4c14d2f7ff98f243}{decouper}} (const std::\+string \&ligne) const
+\begin{DoxyCompactList}\small\item\em Découpe une chaîne "{}val1, val2, val3"{} en vecteur de tokens nettoyés. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{class_extracteur_fichier_a50cbe3344c37f520b41362eff71271a9}{chemin\+Source}}
+\item 
+std::\+regex \doxymbox{\hyperlink{class_extracteur_fichier_a6e5584a4fabb6c76a3946b6bb2fe4656}{motif\+Regex}}
+\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_extracteur_fichier_ae1d89b6ba05749e55c8e512ba8ce6f4b}{liste\+Identifiants}}
+\item 
+int \doxymbox{\hyperlink{class_extracteur_fichier_ab228650dbafe4c9fc08bfb448afd2de0}{nb\+Detectees}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Classe principale :\+ \doxylink{class_extracteur_fichier}{Extracteur\+Fichier} 
+
+\label{doc-constructors}
+\Hypertarget{class_extracteur_fichier_doc-constructors}
+\doxysubsection{Documentation des constructeurs et destructeur}
+\Hypertarget{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f}\index{ExtracteurFichier@{ExtracteurFichier}!ExtracteurFichier@{ExtracteurFichier}}
+\index{ExtracteurFichier@{ExtracteurFichier}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{ExtracteurFichier()}{ExtracteurFichier()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f} 
+Extracteur\+Fichier::\+\+Extracteur\+Fichier (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{chemin}{, }\item[{const std::\+string \&}]{motif}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur de l\textquotesingle{}extracteur de fichier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chemin} & Chemin du fichier à analyser. \\
+\hline
+{\em motif} & Regex pour reconnaître les identifiants d\textquotesingle{}exigences. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f}\index{ExtracteurFichier@{ExtracteurFichier}!ExtracteurFichier@{ExtracteurFichier}}
+\index{ExtracteurFichier@{ExtracteurFichier}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{ExtracteurFichier()}{ExtracteurFichier()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f} 
+Extracteur\+Fichier::\+\+Extracteur\+Fichier (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{chemin}{, }\item[{const std::\+string \&}]{motif}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f}\index{ExtracteurFichier@{ExtracteurFichier}!ExtracteurFichier@{ExtracteurFichier}}
+\index{ExtracteurFichier@{ExtracteurFichier}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{ExtracteurFichier()}{ExtracteurFichier()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f} 
+Extracteur\+Fichier::\+\+Extracteur\+Fichier (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{chemin}{, }\item[{const std::\+string \&}]{motif}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f}\index{ExtracteurFichier@{ExtracteurFichier}!ExtracteurFichier@{ExtracteurFichier}}
+\index{ExtracteurFichier@{ExtracteurFichier}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{ExtracteurFichier()}{ExtracteurFichier()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f} 
+Extracteur\+Fichier::\+\+Extracteur\+Fichier (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{chemin}{, }\item[{const std::\+string \&}]{motif}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_extracteur_fichier_doc-func-members}
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{class_extracteur_fichier_a464fe6d8dcbbe1645d0622e50d31fb37}\index{ExtracteurFichier@{ExtracteurFichier}!chargerSharedStrings@{chargerSharedStrings}}
+\index{chargerSharedStrings@{chargerSharedStrings}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{chargerSharedStrings()}{chargerSharedStrings()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a464fe6d8dcbbe1645d0622e50d31fb37} 
+std::\+vector$<$ std::\+string $>$ Extracteur\+Fichier::\+charger\+Shared\+Strings (\begin{DoxyParamCaption}\item[{zip\+\_\+t \texorpdfstring{$\ast$}{*}}]{archive}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Charge le dictionnaire des textes partagés d\textquotesingle{}Excel. 
+
+
+\begin{DoxyItemize}
+\item Dans un .xlsx, les textes ne sont pas stockés directement dans les cellules pour gagner de la place. Ils sont regroupés dans \textquotesingle{}xl/\+shared\+Strings.\+xml\textquotesingle{}.
+\item Cette méthode :\+
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Ouvre le fichier de dictionnaire dans l\textquotesingle{}archive ZIP.
+\item Lit tout le contenu XML.
+\item Stocke chaque texte trouvé dans un vecteur où l\textquotesingle{}indice correspond à l\textquotesingle{}ID Excel.
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item 
+\begin{DoxyParams}{Paramètres}
+{\em archive} & Pointeur vers l\textquotesingle{}archive ZIP ouverte (libzip). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un vecteur de chaînes de caractères servant de table de correspondance. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{class_extracteur_fichier_a464fe6d8dcbbe1645d0622e50d31fb37}\index{ExtracteurFichier@{ExtracteurFichier}!chargerSharedStrings@{chargerSharedStrings}}
+\index{chargerSharedStrings@{chargerSharedStrings}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{chargerSharedStrings()}{chargerSharedStrings()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a464fe6d8dcbbe1645d0622e50d31fb37} 
+std::\+vector$<$ std::\+string $>$ Extracteur\+Fichier::\+charger\+Shared\+Strings (\begin{DoxyParamCaption}\item[{zip\+\_\+t \texorpdfstring{$\ast$}{*}}]{archive}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_extracteur_fichier_a9d7cd87c1922517d4c14d2f7ff98f243}\index{ExtracteurFichier@{ExtracteurFichier}!decouper@{decouper}}
+\index{decouper@{decouper}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{decouper()}{decouper()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a9d7cd87c1922517d4c14d2f7ff98f243} 
+std::\+vector$<$ std::\+string $>$ Extracteur\+Fichier::\+decouper (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ligne}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Découpe une chaîne "{}val1, val2, val3"{} en vecteur de tokens nettoyés. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ligne} & La chaîne à découper. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vecteur de tokens. 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_a9d7cd87c1922517d4c14d2f7ff98f243}\index{ExtracteurFichier@{ExtracteurFichier}!decouper@{decouper}}
+\index{decouper@{decouper}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{decouper()}{decouper()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a9d7cd87c1922517d4c14d2f7ff98f243} 
+std::\+vector$<$ std::\+string $>$ Extracteur\+Fichier::\+decouper (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ligne}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Découpe une chaîne "{}val1, val2, val3"{} en vecteur de tokens nettoyés. 
+
+\Hypertarget{class_extracteur_fichier_a9d7cd87c1922517d4c14d2f7ff98f243}\index{ExtracteurFichier@{ExtracteurFichier}!decouper@{decouper}}
+\index{decouper@{decouper}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{decouper()}{decouper()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a9d7cd87c1922517d4c14d2f7ff98f243} 
+std::\+vector$<$ std::\+string $>$ Extracteur\+Fichier::\+decouper (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ligne}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Découpe une chaîne "{}val1, val2, val3"{} en vecteur de tokens nettoyés. 
+
+\Hypertarget{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964}\index{ExtracteurFichier@{ExtracteurFichier}!detecterExtension@{detecterExtension}}
+\index{detecterExtension@{detecterExtension}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{detecterExtension()}{detecterExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964} 
+std::\+string Extracteur\+Fichier::\+detecter\+Extension (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}extension du fichier en minuscules. 
+
+Retourne l\textquotesingle{}extension du fichier en minuscules. \Hypertarget{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964}\index{ExtracteurFichier@{ExtracteurFichier}!detecterExtension@{detecterExtension}}
+\index{detecterExtension@{detecterExtension}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{detecterExtension()}{detecterExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964} 
+std::\+string Extracteur\+Fichier::\+detecter\+Extension (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Retourne l\textquotesingle{}extension du fichier en minuscules. \Hypertarget{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964}\index{ExtracteurFichier@{ExtracteurFichier}!detecterExtension@{detecterExtension}}
+\index{detecterExtension@{detecterExtension}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{detecterExtension()}{detecterExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964} 
+std::\+string Extracteur\+Fichier::\+detecter\+Extension (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Retourne l\textquotesingle{}extension du fichier en minuscules. \Hypertarget{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964}\index{ExtracteurFichier@{ExtracteurFichier}!detecterExtension@{detecterExtension}}
+\index{detecterExtension@{detecterExtension}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{detecterExtension()}{detecterExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964} 
+std::\+string Extracteur\+Fichier::\+detecter\+Extension (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Retourne l\textquotesingle{}extension du fichier en minuscules. \Hypertarget{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}\index{ExtracteurFichier@{ExtracteurFichier}!extraire@{extraire}}
+\index{extraire@{extraire}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{extraire()}{extraire()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+extraire (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Orchestre l\textquotesingle{}extraction complète :\+ 
+
+
+\begin{DoxyEnumerate}
+\item Vérifie l\textquotesingle{}existence du fichier
+\item Détecte l\textquotesingle{}extension
+\item Appelle le parseur adapté
+\item Retourne la liste structurée
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Vérifie l\textquotesingle{}existence du fichier
+\item Détecte l\textquotesingle{}extension
+\item Appelle le parseur adapté
+\item Filtre les identifiants par regex
+\item Retourne la liste structurée 
+\end{DoxyEnumerate}\Hypertarget{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}\index{ExtracteurFichier@{ExtracteurFichier}!extraire@{extraire}}
+\index{extraire@{extraire}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{extraire()}{extraire()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+extraire (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}\index{ExtracteurFichier@{ExtracteurFichier}!extraire@{extraire}}
+\index{extraire@{extraire}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{extraire()}{extraire()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+extraire (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}\index{ExtracteurFichier@{ExtracteurFichier}!extraire@{extraire}}
+\index{extraire@{extraire}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{extraire()}{extraire()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+extraire (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}\index{ExtracteurFichier@{ExtracteurFichier}!filtrerLignes@{filtrerLignes}}
+\index{filtrerLignes@{filtrerLignes}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{filtrerLignes()}{filtrerLignes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+filtrer\+Lignes (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&}]{lignes}{, }\item[{const std::\+string \&}]{format}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Filtre les lignes CSV/\+\+XLS colonne par colonne. 
+
+Cherche toutes les occurrences du motif regex dans chaque ligne.
+
+Pour chaque ligne :\+
+\begin{DoxyItemize}
+\item Colonne 1 :\+ identifiant (doit matcher la regex)
+\item Colonne 2 :\+ lien de traçabilité si c\textquotesingle{}est un identifiant, sinon contenu
+\item Colonnes suivantes :\+ contenu textuel
+\end{DoxyItemize}
+
+Cette méthode est partageable avec le DOCX pour un filtrage uniforme.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lignes} & Résultat de \doxylink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lire\+CSV()}. \\
+\hline
+{\em format} & "{}csv"{} ou "{}xls"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Liste des exigences extraites avec métadonnées.
+\end{DoxyReturn}
+Pour chaque ligne :\+
+\begin{DoxyItemize}
+\item Colonne 1 :\+ identifiant principal (doit matcher la regex)
+\item Colonne 2 :\+ lien de traçabilité si c\textquotesingle{}est un identifiant valide (commence par EXIGENCE\+\_\+ ou SDD\+\_\+)
+\item Colonnes suivantes :\+ contenu textuel ignoré
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lignes} & Résultat de \doxylink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lire\+CSV()}. \\
+\hline
+{\em format} & "{}csv"{} ou "{}xls"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Liste des exigences extraites avec métadonnées.
+\end{DoxyReturn}
+Algorithme :\+
+\begin{DoxyItemize}
+\item Pour chaque ligne du vecteur d\textquotesingle{}entrée, lance std::\+sregex\+\_\+search pour trouver le premier identifiant.
+\item Vérifie si l\textquotesingle{}identifiant trouvé existe déjà dans une liste de mémorisation afin de bloquer les doublons.
+\item Chaque match génère un objet \doxylink{struct_exigence_extraite}{Exigence\+Extraite} renseigné avec :\+ identifiant = chaîne matchée contenu\+Brut = ligne complète fichier\+Source, format\+Source, numero\+Ligne
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lignes} & Résultat de \doxylink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lire\+CSV()} ou \doxylink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lire\+Docx()}. \\
+\hline
+{\em format} & "{}csv"{}, "{}xls"{} ou "{}docx"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Liste de toutes les exigences détectées. 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}\index{ExtracteurFichier@{ExtracteurFichier}!filtrerLignes@{filtrerLignes}}
+\index{filtrerLignes@{filtrerLignes}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{filtrerLignes()}{filtrerLignes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+filtrer\+Lignes (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&}]{lignes}{, }\item[{const std::\+string \&}]{format}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Applique le motif regex sur une liste de lignes texte. \Hypertarget{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}\index{ExtracteurFichier@{ExtracteurFichier}!filtrerLignes@{filtrerLignes}}
+\index{filtrerLignes@{filtrerLignes}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{filtrerLignes()}{filtrerLignes()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+filtrer\+Lignes (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&}]{lignes}{, }\item[{const std::\+string \&}]{format}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Filtre les lignes CSV/\+\+XLS colonne par colonne. 
+
+Pour chaque ligne :\+
+\begin{DoxyItemize}
+\item Colonne 1 :\+ identifiant (doit matcher la regex)
+\item Colonne 2 :\+ lien de traçabilité si c\textquotesingle{}est un identifiant, sinon contenu
+\item Colonnes suivantes :\+ contenu textuel
+\end{DoxyItemize}
+
+Cette méthode est partageable avec le DOCX pour un filtrage uniforme.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lignes} & Résultat de \doxylink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lire\+CSV()}. \\
+\hline
+{\em format} & "{}csv"{} ou "{}xls"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Liste des exigences extraites avec métadonnées. 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}\index{ExtracteurFichier@{ExtracteurFichier}!filtrerLignes@{filtrerLignes}}
+\index{filtrerLignes@{filtrerLignes}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{filtrerLignes()}{filtrerLignes()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+filtrer\+Lignes (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&}]{lignes}{, }\item[{const std::\+string \&}]{format}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Filtre les lignes CSV/\+\+XLS colonne par colonne. 
+
+Pour chaque ligne :\+
+\begin{DoxyItemize}
+\item Colonne 1 :\+ identifiant (doit matcher la regex)
+\item Colonne 2 :\+ lien de traçabilité si c\textquotesingle{}est un identifiant, sinon contenu
+\item Colonnes suivantes :\+ contenu textuel
+\end{DoxyItemize}
+
+Cette méthode est partageable avec le DOCX pour un filtrage uniforme.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lignes} & Résultat de \doxylink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lire\+CSV()}. \\
+\hline
+{\em format} & "{}csv"{} ou "{}xls"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Liste des exigences extraites avec métadonnées. 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b}\index{ExtracteurFichier@{ExtracteurFichier}!getNombreExigencesDetectees@{getNombreExigencesDetectees}}
+\index{getNombreExigencesDetectees@{getNombreExigencesDetectees}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{getNombreExigencesDetectees()}{getNombreExigencesDetectees()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b} 
+int Extracteur\+Fichier::\+get\+Nombre\+Exigences\+Detectees (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne le nombre d\textquotesingle{}exigences détectées lors de la dernière extraction. 
+
+\Hypertarget{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b}\index{ExtracteurFichier@{ExtracteurFichier}!getNombreExigencesDetectees@{getNombreExigencesDetectees}}
+\index{getNombreExigencesDetectees@{getNombreExigencesDetectees}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{getNombreExigencesDetectees()}{getNombreExigencesDetectees()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b} 
+int Extracteur\+Fichier::\+get\+Nombre\+Exigences\+Detectees (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b}\index{ExtracteurFichier@{ExtracteurFichier}!getNombreExigencesDetectees@{getNombreExigencesDetectees}}
+\index{getNombreExigencesDetectees@{getNombreExigencesDetectees}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{getNombreExigencesDetectees()}{getNombreExigencesDetectees()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b} 
+int Extracteur\+Fichier::\+get\+Nombre\+Exigences\+Detectees (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b}\index{ExtracteurFichier@{ExtracteurFichier}!getNombreExigencesDetectees@{getNombreExigencesDetectees}}
+\index{getNombreExigencesDetectees@{getNombreExigencesDetectees}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{getNombreExigencesDetectees()}{getNombreExigencesDetectees()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b} 
+int Extracteur\+Fichier::\+get\+Nombre\+Exigences\+Detectees (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}\index{ExtracteurFichier@{ExtracteurFichier}!lireCSV@{lireCSV}}
+\index{lireCSV@{lireCSV}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireCSV()}{lireCSV()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+CSV (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{extension}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lit un fichier CSV/\+\+XLS ligne par ligne. 
+
+Lit un fichier texte tabulaire (.csv ou .xls).
+
+Lit un fichier texte tabulaire (.csv ou .xls) ligne par ligne.
+
+Retourne un vecteur de (numéro\+Ligne, ligne brute) sans filtrage. Le délimiteur (virgule ou point-\/virgule) est auto-\/détecté. Les colonnes sont séparées mais la ligne est retournée brute pour que \doxylink{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}{filtrer\+Lignes()} puisse la traiter colonne par colonne.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em extension} & "{}csv"{} ou "{}xls"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, contenu brut de la ligne).
+\end{DoxyReturn}
+Retourne chaque ligne brute (sans concaténation des colonnes) pour que \doxylink{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}{filtrer\+Lignes()} puisse traiter les colonnes séparément. Le délimiteur (virgule ou point-\/virgule) est auto-\/détecté. Les lignes entièrement vides sont ignorées.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em extension} & "{}csv"{} ou "{}xls"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, ligne brute).
+\end{DoxyReturn}
+Algorithme :\+
+\begin{DoxyItemize}
+\item Ouvre le fichier en mode texte.
+\item Lit ligne par ligne avec std::\+getline.
+\item Pour chaque ligne, teste les délimiteurs \textquotesingle{};\textquotesingle{} et \textquotesingle{},\textquotesingle{} et choisit celui qui génère le plus de colonnes (auto-\/détection).
+\item Concatène toutes les cellules en une chaîne unique par ligne.
+\item Ignore les lignes entièrement vides.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, texte concaténé). 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}\index{ExtracteurFichier@{ExtracteurFichier}!lireCSV@{lireCSV}}
+\index{lireCSV@{lireCSV}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireCSV()}{lireCSV()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+CSV (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{extension}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Extrait les lignes de texte d\textquotesingle{}un fichier .csv ou .xls \Hypertarget{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}\index{ExtracteurFichier@{ExtracteurFichier}!lireCSV@{lireCSV}}
+\index{lireCSV@{lireCSV}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireCSV()}{lireCSV()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+CSV (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{extension}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lit un fichier CSV/\+\+XLS ligne par ligne. 
+
+Retourne un vecteur de (numéro\+Ligne, ligne brute) sans filtrage. Le délimiteur (virgule ou point-\/virgule) est auto-\/détecté. Les colonnes sont séparées mais la ligne est retournée brute pour que \doxylink{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}{filtrer\+Lignes()} puisse la traiter colonne par colonne.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em extension} & "{}csv"{} ou "{}xls"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, contenu brut de la ligne). 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}\index{ExtracteurFichier@{ExtracteurFichier}!lireCSV@{lireCSV}}
+\index{lireCSV@{lireCSV}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireCSV()}{lireCSV()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+CSV (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{extension}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lit un fichier CSV/\+\+XLS ligne par ligne. 
+
+Retourne un vecteur de (numéro\+Ligne, ligne brute) sans filtrage. Le délimiteur (virgule ou point-\/virgule) est auto-\/détecté. Les colonnes sont séparées mais la ligne est retournée brute pour que \doxylink{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}{filtrer\+Lignes()} puisse la traiter colonne par colonne.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em extension} & "{}csv"{} ou "{}xls"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, contenu brut de la ligne). 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_a42819eb55db02a5f023fc0bbc3a11871}\index{ExtracteurFichier@{ExtracteurFichier}!lireDoc@{lireDoc}}
+\index{lireDoc@{lireDoc}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireDoc()}{lireDoc()}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a42819eb55db02a5f023fc0bbc3a11871} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+Doc (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Convertit un fichier .doc en .docx puis l\textquotesingle{}analyse. 
+
+Convertit un fichier .doc en .docx puis l\textquotesingle{}analyse.
+
+Un fichier .doc est un format binaire propriétaire (BIFF). Il ne peut pas être lu directement comme un ZIP. On utilise Libre\+Office en ligne de commande pour le convertir en .docx, puis on appelle \doxylink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lire\+Docx()} sur le résultat.
+
+Prérequis :\+ Libre\+Office installé sur le système mac\+OS :\+ brew install libreoffice Linux :\+ sudo apt install libreoffice Windows :\+ télécharger sur libreoffice.\+org
+
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, texte du paragraphe). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_file_format_exception}{File\+Format\+Exception}} & si la conversion échoue. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}\index{ExtracteurFichier@{ExtracteurFichier}!lireDocx@{lireDocx}}
+\index{lireDocx@{lireDocx}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireDocx()}{lireDocx()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+Docx (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Extrait le texte brut d\textquotesingle{}un fichier .docx paragraphe par paragraphe. 
+
+Extrait le texte brut d\textquotesingle{}un fichier .docx.
+
+Décompresse l\textquotesingle{}archive ZIP, lit word/\+document.\+xml avec tinyxml2, et retourne un vecteur de (numéro\+Ligne, texte du paragraphe).
+
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, texte du paragraphe). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_file_format_exception}{File\+Format\+Exception}} & si le fichier n\textquotesingle{}est pas un ZIP valide.\\
+\hline
+\end{DoxyExceptions}
+Un fichier .docx est une archive ZIP contenant word/\+document.\+xml. Ouvre l\textquotesingle{}archive avec libzip, parse le XML avec pugixml, et retourne un vecteur de (numéro\+Ligne, texte du paragraphe).
+
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, texte du paragraphe). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_file_format_exception}{File\+Format\+Exception}} & si le fichier n\textquotesingle{}est pas un ZIP valide.\\
+\hline
+\end{DoxyExceptions}
+Un fichier .docx est en réalité une archive ZIP. À l\textquotesingle{}intérieur, il y a un fichier word/\+document.\+xml qui contient tout le texte.
+
+Algorithme :\+
+\begin{DoxyItemize}
+\item Ouvre l\textquotesingle{}archive ZIP avec libzip
+\item Localise word/\+document.\+xml dans l\textquotesingle{}archive
+\item Lit le contenu XML et on le met en mémoire
+\item Parse le XML avec pugixml
+\item Extrait le texte de chaque paragraphe 
+\end{DoxyItemize}\Hypertarget{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}\index{ExtracteurFichier@{ExtracteurFichier}!lireDocx@{lireDocx}}
+\index{lireDocx@{lireDocx}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireDocx()}{lireDocx()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+Docx (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Extrait le texte brut d\textquotesingle{}un fichier .docx. \Hypertarget{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}\index{ExtracteurFichier@{ExtracteurFichier}!lireDocx@{lireDocx}}
+\index{lireDocx@{lireDocx}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireDocx()}{lireDocx()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+Docx (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Extrait le texte brut d\textquotesingle{}un fichier .docx paragraphe par paragraphe. 
+
+Décompresse l\textquotesingle{}archive ZIP, lit word/\+document.\+xml avec tinyxml2, et retourne un vecteur de (numéro\+Ligne, texte du paragraphe).
+
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, texte du paragraphe). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_file_format_exception}{File\+Format\+Exception}} & si le fichier n\textquotesingle{}est pas un ZIP valide. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}\index{ExtracteurFichier@{ExtracteurFichier}!lireDocx@{lireDocx}}
+\index{lireDocx@{lireDocx}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireDocx()}{lireDocx()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+Docx (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Extrait le texte brut d\textquotesingle{}un fichier .docx paragraphe par paragraphe. 
+
+Décompresse l\textquotesingle{}archive ZIP, lit word/\+document.\+xml avec tinyxml2, et retourne un vecteur de (numéro\+Ligne, texte du paragraphe).
+
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, texte du paragraphe). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_file_format_exception}{File\+Format\+Exception}} & si le fichier n\textquotesingle{}est pas un ZIP valide. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_extracteur_fichier_a01f028467b271dacab393f14643b27bb}\index{ExtracteurFichier@{ExtracteurFichier}!lireXls@{lireXls}}
+\index{lireXls@{lireXls}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireXls()}{lireXls()}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a01f028467b271dacab393f14643b27bb} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+Xls (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Convertit un fichier .xls en .xlsx puis l\textquotesingle{}analyse. 
+
+Convertit un fichier .xls en .xlsx puis l\textquotesingle{}analyse.
+
+Un fichier .xls est un format binaire propriétaire (BIFF). On utilise Libre\+Office en ligne de commande pour le convertir en .xlsx, puis on appelle \doxylink{class_extracteur_fichier_abf07cbaf6e600f9ee8afc0390209ccb9}{lire\+Xlsx()} sur le résultat.
+
+\begin{DoxyReturn}{Renvoie}
+Vecteur de (numéro\+Ligne, texte du paragraphe). 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_file_format_exception}{File\+Format\+Exception}} & si la conversion échoue. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_extracteur_fichier_abf07cbaf6e600f9ee8afc0390209ccb9}\index{ExtracteurFichier@{ExtracteurFichier}!lireXlsx@{lireXlsx}}
+\index{lireXlsx@{lireXlsx}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireXlsx()}{lireXlsx()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_abf07cbaf6e600f9ee8afc0390209ccb9} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+Xlsx (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Extrait le texte brut d\textquotesingle{}un fichier .xlsx ligne par ligne. 
+
+
+\begin{DoxyItemize}
+\item Un fichier .xlsx est une archive ZIP contenant xl/\+worksheets/\+sheet1.\+xml. Cette méthode décompresse l\textquotesingle{}archive, charge le dictionnaire de textes, et reconstruit les lignes du tableau. 
+\end{DoxyItemize}\Hypertarget{class_extracteur_fichier_abf07cbaf6e600f9ee8afc0390209ccb9}\index{ExtracteurFichier@{ExtracteurFichier}!lireXlsx@{lireXlsx}}
+\index{lireXlsx@{lireXlsx}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{lireXlsx()}{lireXlsx()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_abf07cbaf6e600f9ee8afc0390209ccb9} 
+std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ Extracteur\+Fichier::\+lire\+Xlsx (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_extracteur_fichier_a2916fa8d77e709c79201e8277008d7ac}\index{ExtracteurFichier@{ExtracteurFichier}!parserBlocsDocx@{parserBlocsDocx}}
+\index{parserBlocsDocx@{parserBlocsDocx}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{parserBlocsDocx()}{parserBlocsDocx()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a2916fa8d77e709c79201e8277008d7ac} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+parser\+Blocs\+Docx (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&}]{paragraphes}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Regroupe les paragraphes docx en blocs et extrait les métadonnées. 
+
+Un bloc commence sur un identifiant (matché par regex) et se termine sur "{}\+\#"{}. Extrait :\+ tracabilite, cibles, necessaireA, alloueA, developpe.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em paragraphes} & Résultat de \doxylink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lire\+Docx()}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Liste des exigences extraites avec métadonnées. 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_a2916fa8d77e709c79201e8277008d7ac}\index{ExtracteurFichier@{ExtracteurFichier}!parserBlocsDocx@{parserBlocsDocx}}
+\index{parserBlocsDocx@{parserBlocsDocx}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{parserBlocsDocx()}{parserBlocsDocx()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a2916fa8d77e709c79201e8277008d7ac} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+parser\+Blocs\+Docx (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&}]{paragraphes}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Regroupe les paragraphes docx en blocs et extrait les métadonnées. 
+
+Un bloc commence sur un identifiant (matché par regex) et se termine sur "{}\+\#"{}. Extrait :\+ tracabilite, cibles, necessaireA, alloueA, developpe.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em paragraphes} & Résultat de \doxylink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lire\+Docx()}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Liste des exigences extraites avec métadonnées. 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_a2916fa8d77e709c79201e8277008d7ac}\index{ExtracteurFichier@{ExtracteurFichier}!parserBlocsDocx@{parserBlocsDocx}}
+\index{parserBlocsDocx@{parserBlocsDocx}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{parserBlocsDocx()}{parserBlocsDocx()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a2916fa8d77e709c79201e8277008d7ac} 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}} $>$ Extracteur\+Fichier::\+parser\+Blocs\+Docx (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ std::\+pair$<$ int, std::\+string $>$ $>$ \&}]{paragraphes}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Regroupe les paragraphes docx en blocs et extrait les métadonnées. 
+
+Un bloc commence sur un identifiant (matché par regex) et se termine sur "{}\+\#"{}. Extrait :\+ tracabilite, cibles, necessaireA, alloueA, developpe.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em paragraphes} & Résultat de \doxylink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lire\+Docx()}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Liste des exigences extraites avec métadonnées. 
+\end{DoxyReturn}
+\Hypertarget{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1}\index{ExtracteurFichier@{ExtracteurFichier}!verifierExistence@{verifierExistence}}
+\index{verifierExistence@{verifierExistence}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{verifierExistence()}{verifierExistence()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1} 
+void Extracteur\+Fichier::\+verifier\+Existence (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Vérifie si le fichier source est présent sur le disque. 
+
+Vérifie que le fichier existe et est lisible.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{class_file_not_found_exception}{File\+Not\+Found\+Exception}} & Si le fichier n\textquotesingle{}existe pas ou n\textquotesingle{}est pas accessible. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1}\index{ExtracteurFichier@{ExtracteurFichier}!verifierExistence@{verifierExistence}}
+\index{verifierExistence@{verifierExistence}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{verifierExistence()}{verifierExistence()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1} 
+void Extracteur\+Fichier::\+verifier\+Existence (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Vérifie que le fichier existe et est lisible. \Hypertarget{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1}\index{ExtracteurFichier@{ExtracteurFichier}!verifierExistence@{verifierExistence}}
+\index{verifierExistence@{verifierExistence}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{verifierExistence()}{verifierExistence()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1} 
+void Extracteur\+Fichier::\+verifier\+Existence (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Vérifie que le fichier existe et est lisible. \Hypertarget{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1}\index{ExtracteurFichier@{ExtracteurFichier}!verifierExistence@{verifierExistence}}
+\index{verifierExistence@{verifierExistence}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{verifierExistence()}{verifierExistence()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1} 
+void Extracteur\+Fichier::\+verifier\+Existence (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Vérifie que le fichier existe et est lisible. 
+
+\label{doc-variable-members}
+\Hypertarget{class_extracteur_fichier_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{class_extracteur_fichier_a50cbe3344c37f520b41362eff71271a9}\index{ExtracteurFichier@{ExtracteurFichier}!cheminSource@{cheminSource}}
+\index{cheminSource@{cheminSource}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{cheminSource}{cheminSource}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a50cbe3344c37f520b41362eff71271a9} 
+std::\+string Extracteur\+Fichier::\+chemin\+Source\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_extracteur_fichier_ae1d89b6ba05749e55c8e512ba8ce6f4b}\index{ExtracteurFichier@{ExtracteurFichier}!listeIdentifiants@{listeIdentifiants}}
+\index{listeIdentifiants@{listeIdentifiants}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{listeIdentifiants}{listeIdentifiants}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ae1d89b6ba05749e55c8e512ba8ce6f4b} 
+std::\+vector$<$ std::\+string $>$ Extracteur\+Fichier::\+liste\+Identifiants\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_extracteur_fichier_a6e5584a4fabb6c76a3946b6bb2fe4656}\index{ExtracteurFichier@{ExtracteurFichier}!motifRegex@{motifRegex}}
+\index{motifRegex@{motifRegex}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{motifRegex}{motifRegex}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_a6e5584a4fabb6c76a3946b6bb2fe4656} 
+std::\+regex Extracteur\+Fichier::\+motif\+Regex\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_extracteur_fichier_ab228650dbafe4c9fc08bfb448afd2de0}\index{ExtracteurFichier@{ExtracteurFichier}!nbDetectees@{nbDetectees}}
+\index{nbDetectees@{nbDetectees}!ExtracteurFichier@{ExtracteurFichier}}
+\doxysubsubsection{\texorpdfstring{nbDetectees}{nbDetectees}}
+{\footnotesize\ttfamily \label{class_extracteur_fichier_ab228650dbafe4c9fc08bfb448afd2de0} 
+int Extracteur\+Fichier::\+nb\+Detectees\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants :\+\begin{DoxyCompactItemize}
+\item 
+branches/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_extracteur_fichier_8h}{Extracteur\+Fichier.\+h}}\item 
+branches/\+module1/\+\doxymbox{\hyperlink{branches_2module1_2_extracteur_fichier_8h}{Extracteur\+Fichier.\+h}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2include_2_extracteur_fichier_8h}{Extracteur\+Fichier.\+h}}\item 
+trunk/\+headers/\+\doxymbox{\hyperlink{trunk_2headers_2_extracteur_fichier_8h}{Extracteur\+Fichier.\+h}}\item 
+branches/\+\+Integration\+M1\+M2/\+src/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2src_2_extracteur_fichier_8cpp}{Extracteur\+Fichier.\+cpp}}\item 
+branches/\+module1/\+\doxymbox{\hyperlink{branches_2module1_2_extracteur_fichier_8cpp}{Extracteur\+Fichier.\+cpp}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+src/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2src_2_extracteur_fichier_8cpp}{Extracteur\+Fichier.\+cpp}}\item 
+trunk/\+sources/\+\doxymbox{\hyperlink{trunk_2sources_2_extracteur_fichier_8cpp}{Extracteur\+Fichier.\+cpp}}\end{DoxyCompactItemize}

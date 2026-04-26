@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Rapport TraceLink</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; background: #EBF5FB; color: #333; }
+.header { background: linear-gradient(135deg, #1A5276, #2E86C1); color: white; padding: 24px 32px; }
+.header h1 { font-size: 26px; font-weight: 900; letter-spacing: 3px; }
+.header p { font-size: 11px; opacity: 0.75; margin-top: 4px; }
+.container { max-width: 1100px; margin: 0 auto; padding: 24px 32px; }
+.badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.badge-sum { padding: 6px 14px; border-radius: 20px; color: white; font-size: 12px; font-weight: bold; }
+.taux-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
+.taux-card { background: white; border-radius: 12px; padding: 18px; border: 1px solid #AED6F1; }
+.taux-label { color: #888; font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 6px; }
+.taux-value { font-size: 32px; font-weight: 900; margin-bottom: 8px; }
+.progress { background: #D6EAF8; border-radius: 6px; height: 8px; overflow: hidden; }
+.progress-bar { height: 8px; border-radius: 6px; width: 0%; transition: width 1s ease; }
+.toolbar { background: white; border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; border: 1px solid #AED6F1; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.toolbar input { flex: 1; min-width: 200px; padding: 8px 12px; border: 1px solid #AED6F1; border-radius: 6px; font-size: 12px; color: #333; outline: none; }
+.toolbar input:focus { border-color: #2E86C1; }
+.filter-btn { padding: 7px 14px; border-radius: 6px; border: 1px solid #AED6F1; background: white; color: #555; cursor: pointer; font-size: 11px; font-weight: bold; }
+.filter-btn:hover { background: #EBF5FB; }
+.filter-btn.active { background: #2E86C1; color: white; border-color: #2E86C1; }
+.compteur { color: #888; font-size: 11px; margin-left: auto; white-space: nowrap; }
+.tabs { display: flex; gap: 4px; margin-bottom: -1px; }
+.tab-btn { padding: 8px 20px; border: 1px solid #AED6F1; border-bottom: none; border-radius: 6px 6px 0 0; background: #EBF5FB; color: #555; cursor: pointer; font-size: 12px; font-weight: bold; }
+.tab-btn.active { background: #2E86C1; color: white; border-color: #2E86C1; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.tab-wrapper { border: 1px solid #AED6F1; border-radius: 0 10px 10px 10px; background: white; overflow: hidden; margin-bottom: 20px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+thead { background: #EBF5FB; }
+th { padding: 12px 14px; text-align: left; color: #1A5276; font-size: 11px; font-weight: bold; border-bottom: 1px solid #AED6F1; }
+td { padding: 10px 14px; border-bottom: 1px solid #F0F0F0; vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #F8FCFF; }
+.row-hidden { display: none; }
+.id-col { font-weight: bold; color: #1A5276; min-width: 200px; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+.badge.couvert    { background: #E8F8F0; color: #27AE60; border: 1px solid #27AE60; }
+.badge.noncouvert { background: #FDECEA; color: #E74C3C; border: 1px solid #E74C3C; }
+.badge.lienbrise  { background: #FEF9F0; color: #E67E22; border: 1px solid #E67E22; }
+.badge.orpheline  { background: #F5EEF8; color: #7D3C98; border: 1px solid #7D3C98; }
+.vide { color: #AAAAAA; }
+.lb-item   { background:#FEF9F0; border:1px solid #F0B27A; border-radius:6px; padding:8px 12px; margin:4px 0; color:#A04000; font-size:11px; }
+.orph-item { background:#F5EEF8; border:1px solid #A569BD; border-radius:6px; padding:8px 12px; margin:4px 0; color:#7D3C98; font-size:11px; }
+h2 { color: #1A5276; margin: 20px 0 10px; font-size: 14px; }
+.no-result { text-align: center; padding: 30px; color: #AAAAAA; font-size: 13px; display: none; }
+.footer { text-align: center; padding: 16px; color: #AAAAAA; font-size: 10px; }
+@media (max-width: 768px) { .taux-grid { grid-template-columns: 1fr; } .container { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>TraceLink</h1>
+  <p>RAPPORT DE TRACABILITE - L2G1 - UNIVERSITE PARIS CITE</p>
+</div>
+<div class="container">
+<div class="badges">
+  <span class="badge-sum" style="background:#27AE60;">0 Couvert(s)</span>
+  <span class="badge-sum" style="background:#E74C3C;">0 Non couvert(s)</span>
+  <span class="badge-sum" style="background:#E67E22;">2 Lien(s) brise(s)</span>
+  <span class="badge-sum" style="background:#7D3C98;">0 Orpheline(s)</span>
+</div>
+<h2>Taux de couverture</h2>
+<div class="taux-grid">
+  <div class="taux-card">
+    <div class="taux-label">Taux SSS vers SRS</div>
+    <div class="taux-value" style="color:#E74C3C">0%</div>
+    <div class="progress"><div class="progress-bar" id="barSSS" style="background:#E74C3C"></div></div>
+  </div>
+  <div class="taux-card">
+    <div class="taux-label">Taux SRS vers SDD</div>
+    <div class="taux-value" style="color:#E74C3C">0%</div>
+    <div class="progress"><div class="progress-bar" id="barSRS" style="background:#E74C3C"></div></div>
+  </div>
+  <div class="taux-card">
+    <div class="taux-label">Taux Global</div>
+    <div class="taux-value" style="color:#E74C3C">0%</div>
+    <div class="progress"><div class="progress-bar" id="barGlb" style="background:#E74C3C"></div></div>
+  </div>
+</div>
+<h2>Liens brises</h2><div class="lb-item">Avertissement : aucune exigence SSS trouvée</div>
+<div class="lb-item">Avertissement : aucune exigence SRS trouvée</div>
+<h2>Matrices de tracabilite</h2>
+<div class="toolbar">
+  <input type="text" id="recherche" placeholder="Rechercher un identifiant..." oninput="filtrer()">
+  <button class="filter-btn active" onclick="setFiltre('tous', this)">Tout</button>
+  <button class="filter-btn" onclick="setFiltre('couvert', this)">Couvert</button>
+  <button class="filter-btn" onclick="setFiltre('noncouvert', this)">Non couvert</button>
+  <button class="filter-btn" onclick="setFiltre('lienbrise', this)">Lien brise</button>
+  <button class="filter-btn" onclick="setFiltre('orpheline', this)">Orpheline</button>
+  <span class="compteur" id="compteur"></span>
+</div>
+<div class="tabs">
+  <div class="tab-btn active" onclick="showTab('sss', this)">SSS vers SRS</div>
+  <div class="tab-btn" onclick="showTab('srs', this)">SRS vers SDD</div>
+</div>
+<div class="tab-wrapper">
+  <div class="tab-content active" id="tab-sss">
+  <table><thead><tr>
+    <th style="width:35%">Exigence SSS</th>
+    <th style="width:20%">Statut</th>
+    <th>Couverte par (SRS)</th>
+  </tr></thead><tbody id="bodySSS">
+  </tbody></table>
+  <div class="no-result" id="noSSS">Aucune exigence ne correspond.</div>
+  </div>
+  <div class="tab-content" id="tab-srs">
+  <table><thead><tr>
+    <th style="width:35%">Exigence SRS</th>
+    <th style="width:20%">Statut</th>
+    <th>Couverte par (SDD)</th>
+  </tr></thead><tbody id="bodySRS">
+  </tbody></table>
+  <div class="no-result" id="noSRS">Aucune exigence ne correspond.</div>
+  </div>
+</div>
+<div class="footer">TraceLink - L2G1 - Genere le 26/04/2026 03:41</div>
+<script>
+var filtreActif = 'tous';
+var tabActif = 'sss';
+
+function setFiltre(f, btn) {
+  filtreActif = f;
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  filtrer();
+}
+
+function filtrer() {
+  var recherche = document.getElementById('recherche').value.toLowerCase();
+  var idBody = tabActif === 'sss' ? 'bodySSS' : 'bodySRS';
+  var noId   = tabActif === 'sss' ? 'noSSS'   : 'noSRS';
+  var tbody  = document.getElementById(idBody);
+  var rows   = tbody.querySelectorAll('tr');
+  var nb = 0;
+  rows.forEach(function(tr) {
+    var id     = tr.querySelector('td') ? tr.querySelector('td').textContent.toLowerCase() : '';
+    var statut = tr.getAttribute('data-statut') || '';
+    var matchR = recherche === '' || id.indexOf(recherche) >= 0;
+    var matchF = filtreActif === 'tous' || statut === filtreActif;
+    if (matchR && matchF) { tr.classList.remove('row-hidden'); nb++; }
+    else                  { tr.classList.add('row-hidden'); }
+  });
+  document.getElementById('compteur').textContent = nb + ' exigence(s) affichee(s)';
+  document.getElementById(noId).style.display = nb === 0 ? 'block' : 'none';
+}
+
+function showTab(tab, btn) {
+  tabActif = tab;
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('tab-sss').classList.toggle('active', tab === 'sss');
+  document.getElementById('tab-srs').classList.toggle('active', tab === 'srs');
+  filtrer();
+}
+
+window.addEventListener('load', function() {
+  document.getElementById('barSSS').style.width = '0%';
+  document.getElementById('barSRS').style.width = '0%';
+  document.getElementById('barGlb').style.width = '0%';
+  filtrer();
+});
+</script>
+</body>
+</html>

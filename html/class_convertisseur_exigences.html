@@ -1,0 +1,1044 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TraceLink: Référence de la classe ConvertisseurExigences</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TraceLink
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_convertisseur_exigences.html','','class_convertisseur_exigences-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence de la classe ConvertisseurExigences</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Adaptateur qui transforme les structures brutes (Module 1) en objets C++ typés (Module 2) prêts pour l'analyse de traçabilité.  
+ <a href="#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="branches_2_integration_m1_m2_2include_2_convertisseur_exigence_8h_source.html">ConvertisseurExigence.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Fonctions membres publiques</h2></td></tr>
+<tr class="memitem:ad011e004c7e7f51882eebe92f7738dde" id="r_ad011e004c7e7f51882eebe92f7738dde"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#ad011e004c7e7f51882eebe92f7738dde">ConvertisseurExigences</a> (const std::string &amp;motif=&quot;[A-Z][A-Z0-9_]+&quot;, const std::string &amp;pSSS=&quot;CLIENT&quot;, const std::string &amp;pSRS=&quot;PROJET&quot;, const std::string &amp;pSDD=&quot;SDD&quot;)</td></tr>
+<tr class="memdesc:ad011e004c7e7f51882eebe92f7738dde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur avec préfixes multiples séparés par virgules.  <br /></td></tr>
+<tr class="memitem:af602bb0f5d061033ef8ad7e5d281a368" id="r_af602bb0f5d061033ef8ad7e5d281a368"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af602bb0f5d061033ef8ad7e5d281a368">convertir</a> (const std::vector&lt; <a class="el" href="struct_exigence_extraite.html">ExigenceExtraite</a> &gt; &amp;extraites)</td></tr>
+<tr class="memdesc:af602bb0f5d061033ef8ad7e5d281a368"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit une liste d'exigences extraites en objets SSS, SRS et SDD.  <br /></td></tr>
+<tr class="memitem:a8acab90f49dea1bad8a591534064fd97" id="r_a8acab90f49dea1bad8a591534064fd97"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_exigence_s_s_s.html">ExigenceSSS</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a8acab90f49dea1bad8a591534064fd97">getSSS</a> () const</td></tr>
+<tr class="memdesc:a8acab90f49dea1bad8a591534064fd97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les exigences de type SSS.  <br /></td></tr>
+<tr class="memitem:a3573e23357776321417fd0ccc672528d" id="r_a3573e23357776321417fd0ccc672528d"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_exigence_s_r_s.html">ExigenceSRS</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a3573e23357776321417fd0ccc672528d">getSRS</a> () const</td></tr>
+<tr class="memdesc:a3573e23357776321417fd0ccc672528d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les exigences de type SRS.  <br /></td></tr>
+<tr class="memitem:ac251169e6a562407731f9e7fdb0daef8" id="r_ac251169e6a562407731f9e7fdb0daef8"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_exigence_s_d_d.html">ExigenceSDD</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ac251169e6a562407731f9e7fdb0daef8">getSDD</a> () const</td></tr>
+<tr class="memdesc:ac251169e6a562407731f9e7fdb0daef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère les exigences de type SDD.  <br /></td></tr>
+<tr class="memitem:a474736016ee9053aadab7d05722dec34" id="r_a474736016ee9053aadab7d05722dec34"><td class="memItemLeft">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a474736016ee9053aadab7d05722dec34">getIgnorees</a> () const</td></tr>
+<tr class="memdesc:a474736016ee9053aadab7d05722dec34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la liste des identifiants ignorés lors de la conversion.  <br /></td></tr>
+<tr class="memitem:a97f33e76e2c5ccfb9308de0ee5ecfd98" id="r_a97f33e76e2c5ccfb9308de0ee5ecfd98"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a97f33e76e2c5ccfb9308de0ee5ecfd98">ConvertisseurExigences</a> (const std::string &amp;motif=&quot;EXIGENCE_[A-Z0-9_]+&quot;)</td></tr>
+<tr class="memdesc:a97f33e76e2c5ccfb9308de0ee5ecfd98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit un vecteur de <a class="el" href="struct_exigence_extraite.html" title="Structure représentant une exigence extraite d&#39;un fichier source.">ExigenceExtraite</a> en objets typés.  <br /></td></tr>
+<tr class="memitem:af602bb0f5d061033ef8ad7e5d281a368" id="r_af602bb0f5d061033ef8ad7e5d281a368"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af602bb0f5d061033ef8ad7e5d281a368">convertir</a> (const std::vector&lt; <a class="el" href="struct_exigence_extraite.html">ExigenceExtraite</a> &gt; &amp;extraites)</td></tr>
+<tr class="memitem:a8acab90f49dea1bad8a591534064fd97" id="r_a8acab90f49dea1bad8a591534064fd97"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_exigence_s_s_s.html">ExigenceSSS</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a8acab90f49dea1bad8a591534064fd97">getSSS</a> () const</td></tr>
+<tr class="memdesc:a8acab90f49dea1bad8a591534064fd97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les exigences SSS converties.  <br /></td></tr>
+<tr class="memitem:a3573e23357776321417fd0ccc672528d" id="r_a3573e23357776321417fd0ccc672528d"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_exigence_s_r_s.html">ExigenceSRS</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a3573e23357776321417fd0ccc672528d">getSRS</a> () const</td></tr>
+<tr class="memdesc:a3573e23357776321417fd0ccc672528d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les exigences SRS converties.  <br /></td></tr>
+<tr class="memitem:ac251169e6a562407731f9e7fdb0daef8" id="r_ac251169e6a562407731f9e7fdb0daef8"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_exigence_s_d_d.html">ExigenceSDD</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ac251169e6a562407731f9e7fdb0daef8">getSDD</a> () const</td></tr>
+<tr class="memdesc:ac251169e6a562407731f9e7fdb0daef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les exigences SDD converties.  <br /></td></tr>
+<tr class="memitem:a474736016ee9053aadab7d05722dec34" id="r_a474736016ee9053aadab7d05722dec34"><td class="memItemLeft">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a474736016ee9053aadab7d05722dec34">getIgnorees</a> () const</td></tr>
+<tr class="memdesc:a474736016ee9053aadab7d05722dec34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les identifiants ignorés (type non reconnu).  <br /></td></tr>
+<tr class="memitem:a97f33e76e2c5ccfb9308de0ee5ecfd98" id="r_a97f33e76e2c5ccfb9308de0ee5ecfd98"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a97f33e76e2c5ccfb9308de0ee5ecfd98">ConvertisseurExigences</a> (const std::string &amp;motif=&quot;EXIGENCE_[A-Z0-9_]+&quot;)</td></tr>
+<tr class="memdesc:a97f33e76e2c5ccfb9308de0ee5ecfd98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertit un vecteur de <a class="el" href="struct_exigence_extraite.html" title="Structure représentant une exigence extraite d&#39;un fichier source.">ExigenceExtraite</a> en objets typés.  <br /></td></tr>
+<tr class="memitem:af602bb0f5d061033ef8ad7e5d281a368" id="r_af602bb0f5d061033ef8ad7e5d281a368"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af602bb0f5d061033ef8ad7e5d281a368">convertir</a> (const std::vector&lt; <a class="el" href="struct_exigence_extraite.html">ExigenceExtraite</a> &gt; &amp;extraites)</td></tr>
+<tr class="memitem:a8acab90f49dea1bad8a591534064fd97" id="r_a8acab90f49dea1bad8a591534064fd97"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_exigence_s_s_s.html">ExigenceSSS</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a8acab90f49dea1bad8a591534064fd97">getSSS</a> () const</td></tr>
+<tr class="memdesc:a8acab90f49dea1bad8a591534064fd97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les exigences SSS converties.  <br /></td></tr>
+<tr class="memitem:a3573e23357776321417fd0ccc672528d" id="r_a3573e23357776321417fd0ccc672528d"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_exigence_s_r_s.html">ExigenceSRS</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a3573e23357776321417fd0ccc672528d">getSRS</a> () const</td></tr>
+<tr class="memdesc:a3573e23357776321417fd0ccc672528d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les exigences SRS converties.  <br /></td></tr>
+<tr class="memitem:ac251169e6a562407731f9e7fdb0daef8" id="r_ac251169e6a562407731f9e7fdb0daef8"><td class="memItemLeft">const std::vector&lt; <a class="el" href="class_exigence_s_d_d.html">ExigenceSDD</a> &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#ac251169e6a562407731f9e7fdb0daef8">getSDD</a> () const</td></tr>
+<tr class="memdesc:ac251169e6a562407731f9e7fdb0daef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les exigences SDD converties.  <br /></td></tr>
+<tr class="memitem:a474736016ee9053aadab7d05722dec34" id="r_a474736016ee9053aadab7d05722dec34"><td class="memItemLeft">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight"><a class="el" href="#a474736016ee9053aadab7d05722dec34">getIgnorees</a> () const</td></tr>
+<tr class="memdesc:a474736016ee9053aadab7d05722dec34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne les identifiants ignorés (type non reconnu).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Fonctions membres privées</h2></td></tr>
+<tr class="memitem:a4d4ed19528a773a283dd46cfd8c25837" id="r_a4d4ed19528a773a283dd46cfd8c25837"><td class="memItemLeft"><a class="el" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4d4ed19528a773a283dd46cfd8c25837">detecterType</a> (const std::string &amp;identifiant) const</td></tr>
+<tr class="memdesc:a4d4ed19528a773a283dd46cfd8c25837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détecte le type SSS/SRS/SDD depuis l'identifiant. AJOUT : supporte plusieurs préfixes par niveau.  <br /></td></tr>
+<tr class="memitem:aafd9a9b8cc8a11450bb30a23393f39dd" id="r_aafd9a9b8cc8a11450bb30a23393f39dd"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aafd9a9b8cc8a11450bb30a23393f39dd">estTypeConnu</a> (const std::string &amp;identifiant) const</td></tr>
+<tr class="memdesc:aafd9a9b8cc8a11450bb30a23393f39dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si l'identifiant contient au moins un mot-clé SSS, SRS ou SDD. AJOUT : supporte plusieurs préfixes par niveau.  <br /></td></tr>
+<tr class="memitem:a4d4ed19528a773a283dd46cfd8c25837" id="r_a4d4ed19528a773a283dd46cfd8c25837"><td class="memItemLeft"><a class="el" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4d4ed19528a773a283dd46cfd8c25837">detecterType</a> (const std::string &amp;identifiant) const</td></tr>
+<tr class="memdesc:a4d4ed19528a773a283dd46cfd8c25837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détermine le type d'une exigence depuis son identifiant.  <br /></td></tr>
+<tr class="memitem:aafd9a9b8cc8a11450bb30a23393f39dd" id="r_aafd9a9b8cc8a11450bb30a23393f39dd"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aafd9a9b8cc8a11450bb30a23393f39dd">estTypeConnu</a> (const std::string &amp;identifiant) const</td></tr>
+<tr class="memdesc:aafd9a9b8cc8a11450bb30a23393f39dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si l'identifiant contient un mot-clé de type reconnu.  <br /></td></tr>
+<tr class="memitem:a4d4ed19528a773a283dd46cfd8c25837" id="r_a4d4ed19528a773a283dd46cfd8c25837"><td class="memItemLeft"><a class="el" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a>&#160;</td><td class="memItemRight"><a class="el" href="#a4d4ed19528a773a283dd46cfd8c25837">detecterType</a> (const std::string &amp;identifiant) const</td></tr>
+<tr class="memdesc:a4d4ed19528a773a283dd46cfd8c25837"><td class="mdescLeft">&#160;</td><td class="mdescRight">Détermine le type d'une exigence depuis son identifiant.  <br /></td></tr>
+<tr class="memitem:aafd9a9b8cc8a11450bb30a23393f39dd" id="r_aafd9a9b8cc8a11450bb30a23393f39dd"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aafd9a9b8cc8a11450bb30a23393f39dd">estTypeConnu</a> (const std::string &amp;identifiant) const</td></tr>
+<tr class="memdesc:aafd9a9b8cc8a11450bb30a23393f39dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si l'identifiant contient un mot-clé de type reconnu.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-static-methods" class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
+Fonctions membres privées statiques</h2></td></tr>
+<tr class="memitem:ae9f2eb390f488cf6e028ae2e360b59e1" id="r_ae9f2eb390f488cf6e028ae2e360b59e1"><td class="memItemLeft">static std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#ae9f2eb390f488cf6e028ae2e360b59e1">splitVirgule</a> (const std::string &amp;s)</td></tr>
+<tr class="memdesc:ae9f2eb390f488cf6e028ae2e360b59e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Découpe une chaîne par virgule et nettoie les espaces.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Attributs privés</h2></td></tr>
+<tr class="memitem:a6b0e39a2bbaa2d1424c0827f8c2fa789" id="r_a6b0e39a2bbaa2d1424c0827f8c2fa789"><td class="memItemLeft">std::vector&lt; <a class="el" href="class_exigence_s_s_s.html">ExigenceSSS</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a6b0e39a2bbaa2d1424c0827f8c2fa789">exigencesSSS</a></td></tr>
+<tr class="memdesc:a6b0e39a2bbaa2d1424c0827f8c2fa789"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exigences de niveau SSS converties.  <br /></td></tr>
+<tr class="memitem:a35294e17920031d6884a17c54a55e2ea" id="r_a35294e17920031d6884a17c54a55e2ea"><td class="memItemLeft">std::vector&lt; <a class="el" href="class_exigence_s_r_s.html">ExigenceSRS</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a35294e17920031d6884a17c54a55e2ea">exigencesSRS</a></td></tr>
+<tr class="memdesc:a35294e17920031d6884a17c54a55e2ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exigences de niveau SRS converties.  <br /></td></tr>
+<tr class="memitem:a8334e252e68d76069c79d0e5c5776456" id="r_a8334e252e68d76069c79d0e5c5776456"><td class="memItemLeft">std::vector&lt; <a class="el" href="class_exigence_s_d_d.html">ExigenceSDD</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8334e252e68d76069c79d0e5c5776456">exigencesSDD</a></td></tr>
+<tr class="memdesc:a8334e252e68d76069c79d0e5c5776456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exigences de niveau SDD converties.  <br /></td></tr>
+<tr class="memitem:a02fce824cf7832ea08ceaf1d47e40708" id="r_a02fce824cf7832ea08ceaf1d47e40708"><td class="memItemLeft">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a02fce824cf7832ea08ceaf1d47e40708">ignorees</a></td></tr>
+<tr class="memdesc:a02fce824cf7832ea08ceaf1d47e40708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifiants dont le type n'a pas pu être déterminé.  <br /></td></tr>
+<tr class="memitem:ac0b592b7548ed5afbc8ed8440e2650ec" id="r_ac0b592b7548ed5afbc8ed8440e2650ec"><td class="memItemLeft">std::string&#160;</td><td class="memItemRight"><a class="el" href="#ac0b592b7548ed5afbc8ed8440e2650ec">motifRegex</a></td></tr>
+<tr class="memitem:a8195c54b0e6ccad6746203ffb9b632a6" id="r_a8195c54b0e6ccad6746203ffb9b632a6"><td class="memItemLeft">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a8195c54b0e6ccad6746203ffb9b632a6">prefixesSSS</a></td></tr>
+<tr class="memdesc:a8195c54b0e6ccad6746203ffb9b632a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mots-clés SSS (ex: ["CLIENT", "A"]).  <br /></td></tr>
+<tr class="memitem:a68151ecc0f0ac4aea64adeb1f0c5cf01" id="r_a68151ecc0f0ac4aea64adeb1f0c5cf01"><td class="memItemLeft">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a68151ecc0f0ac4aea64adeb1f0c5cf01">prefixesSRS</a></td></tr>
+<tr class="memdesc:a68151ecc0f0ac4aea64adeb1f0c5cf01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mots-clés SRS (ex: ["PROJET", "B"]).  <br /></td></tr>
+<tr class="memitem:a4b0691eadfa705210e0c8e3474b57d0b" id="r_a4b0691eadfa705210e0c8e3474b57d0b"><td class="memItemLeft">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a4b0691eadfa705210e0c8e3474b57d0b">prefixesSDD</a></td></tr>
+<tr class="memdesc:a4b0691eadfa705210e0c8e3474b57d0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mots-clés SDD (ex: ["SDD", "C"]).  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Adaptateur qui transforme les structures brutes (Module 1) en objets C++ typés (Module 2) prêts pour l'analyse de traçabilité. </p>
+<p>AJOUT : les préfixes SSS/SRS/SDD acceptent désormais plusieurs valeurs séparées par des virgules (ex: "CLIENT, A, SSS"). Le préfixe global accepte aussi plusieurs valeurs (ex: "SPEC_, EX_, REQ_"). </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a id="ad011e004c7e7f51882eebe92f7738dde" name="ad011e004c7e7f51882eebe92f7738dde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad011e004c7e7f51882eebe92f7738dde">&#9670;&#160;</a></span>ConvertisseurExigences() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConvertisseurExigences::ConvertisseurExigences </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>motif</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;[A-Z][A-Z0-9_]+&quot;</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>pSSS</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;CLIENT&quot;</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>pSRS</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;PROJET&quot;</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>pSDD</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;SDD&quot;</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructeur avec préfixes multiples séparés par virgules. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">motif</td><td>Regex pour matcher les identifiants </td></tr>
+    <tr><td class="paramname">pSSS</td><td>Mots-clés SSS séparés par virgules (ex: "CLIENT, A") </td></tr>
+    <tr><td class="paramname">pSRS</td><td>Mots-clés SRS séparés par virgules (ex: "PROJET, B") </td></tr>
+    <tr><td class="paramname">pSDD</td><td>Mots-clés SDD séparés par virgules (ex: "SDD, C") </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a97f33e76e2c5ccfb9308de0ee5ecfd98" name="a97f33e76e2c5ccfb9308de0ee5ecfd98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97f33e76e2c5ccfb9308de0ee5ecfd98">&#9670;&#160;</a></span>ConvertisseurExigences() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConvertisseurExigences::ConvertisseurExigences </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>motif</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;EXIGENCE_[A-Z0-9_]+&quot;</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convertit un vecteur de <a class="el" href="struct_exigence_extraite.html" title="Structure représentant une exigence extraite d&#39;un fichier source.">ExigenceExtraite</a> en objets typés. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">extraites</td><td>Liste issue de <a class="el" href="class_extracteur_fichier.html#a52aaddb474e67d61fccf0caac02d6d50" title="Orchestre l&#39;extraction complète :">ExtracteurFichier::extraire()</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Réinitialise les résultats précédents à chaque appel. Transfère automatiquement les métadonnées (tracabilite, cibles, necessaireA, alloueA, developpe) dans les objets créés. </p>
+
+</div>
+</div>
+<a id="a97f33e76e2c5ccfb9308de0ee5ecfd98" name="a97f33e76e2c5ccfb9308de0ee5ecfd98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97f33e76e2c5ccfb9308de0ee5ecfd98">&#9670;&#160;</a></span>ConvertisseurExigences() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConvertisseurExigences::ConvertisseurExigences </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>motif</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;EXIGENCE_[A-Z0-9_]+&quot;</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Convertit un vecteur de <a class="el" href="struct_exigence_extraite.html" title="Structure représentant une exigence extraite d&#39;un fichier source.">ExigenceExtraite</a> en objets typés. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">extraites</td><td>Liste issue de <a class="el" href="class_extracteur_fichier.html#a52aaddb474e67d61fccf0caac02d6d50" title="Orchestre l&#39;extraction complète :">ExtracteurFichier::extraire()</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Réinitialise les résultats précédents à chaque appel. Transfère automatiquement les métadonnées (tracabilite, cibles, necessaireA, alloueA, developpe) dans les objets créés. </p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions membres</h2>
+<a id="af602bb0f5d061033ef8ad7e5d281a368" name="af602bb0f5d061033ef8ad7e5d281a368"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af602bb0f5d061033ef8ad7e5d281a368">&#9670;&#160;</a></span>convertir() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConvertisseurExigences::convertir </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_exigence_extraite.html">ExigenceExtraite</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>extraites</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convertit une liste d'exigences extraites en objets SSS, SRS et SDD. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">extraites</td><td>Liste des exigences extraites par le Module 1 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af602bb0f5d061033ef8ad7e5d281a368" name="af602bb0f5d061033ef8ad7e5d281a368"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af602bb0f5d061033ef8ad7e5d281a368">&#9670;&#160;</a></span>convertir() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConvertisseurExigences::convertir </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_exigence_extraite.html">ExigenceExtraite</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>extraites</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af602bb0f5d061033ef8ad7e5d281a368" name="af602bb0f5d061033ef8ad7e5d281a368"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af602bb0f5d061033ef8ad7e5d281a368">&#9670;&#160;</a></span>convertir() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConvertisseurExigences::convertir </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_exigence_extraite.html">ExigenceExtraite</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>extraites</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d4ed19528a773a283dd46cfd8c25837" name="a4d4ed19528a773a283dd46cfd8c25837"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4ed19528a773a283dd46cfd8c25837">&#9670;&#160;</a></span>detecterType() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a> ConvertisseurExigences::detecterType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>identifiant</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Détecte le type SSS/SRS/SDD depuis l'identifiant. AJOUT : supporte plusieurs préfixes par niveau. </p>
+<p>Détecte le type d'exigence à partir de son identifiant.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifiant</td><td>L'identifiant de l'exigence </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd><a class="el" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6" title="Définit le niveau hiérarchique d&#39;une exigence.">TypeExigence</a> Type détecté (SSS, SRS, SDD) </dd></dl>
+
+</div>
+</div>
+<a id="a4d4ed19528a773a283dd46cfd8c25837" name="a4d4ed19528a773a283dd46cfd8c25837"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4ed19528a773a283dd46cfd8c25837">&#9670;&#160;</a></span>detecterType() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a> ConvertisseurExigences::detecterType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>identifiant</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Détermine le type d'une exigence depuis son identifiant. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifiant</td><td>Identifiant extrait par le module 1. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>SSS, SRS ou SDD. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Appeler <a class="el" href="#aafd9a9b8cc8a11450bb30a23393f39dd" title="Vérifie si l&#39;identifiant contient au moins un mot-clé SSS, SRS ou SDD. AJOUT : supporte plusieurs pré...">estTypeConnu()</a> avant pour éviter un résultat invalide. </dd></dl>
+
+</div>
+</div>
+<a id="a4d4ed19528a773a283dd46cfd8c25837" name="a4d4ed19528a773a283dd46cfd8c25837"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4ed19528a773a283dd46cfd8c25837">&#9670;&#160;</a></span>detecterType() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a> ConvertisseurExigences::detecterType </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>identifiant</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Détermine le type d'une exigence depuis son identifiant. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifiant</td><td>Identifiant extrait par le module 1. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>SSS, SRS ou SDD. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Appeler <a class="el" href="#aafd9a9b8cc8a11450bb30a23393f39dd" title="Vérifie si l&#39;identifiant contient au moins un mot-clé SSS, SRS ou SDD. AJOUT : supporte plusieurs pré...">estTypeConnu()</a> avant pour éviter un résultat invalide. </dd></dl>
+
+</div>
+</div>
+<a id="aafd9a9b8cc8a11450bb30a23393f39dd" name="aafd9a9b8cc8a11450bb30a23393f39dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd9a9b8cc8a11450bb30a23393f39dd">&#9670;&#160;</a></span>estTypeConnu() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ConvertisseurExigences::estTypeConnu </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>identifiant</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vérifie si l'identifiant contient au moins un mot-clé SSS, SRS ou SDD. AJOUT : supporte plusieurs préfixes par niveau. </p>
+<p>Vérifie si un identifiant correspond à un type d'exigence connu.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifiant</td><td>L'identifiant de l'exigence </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si le type est SSS, SRS ou SDD </dd>
+<dd>
+false sinon </dd></dl>
+
+</div>
+</div>
+<a id="aafd9a9b8cc8a11450bb30a23393f39dd" name="aafd9a9b8cc8a11450bb30a23393f39dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd9a9b8cc8a11450bb30a23393f39dd">&#9670;&#160;</a></span>estTypeConnu() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ConvertisseurExigences::estTypeConnu </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>identifiant</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indique si l'identifiant contient un mot-clé de type reconnu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifiant</td><td>L'identifiant à tester. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si "CLIENT", "PROJET" ou "SDD" est présent (insensible à la casse). </dd></dl>
+
+</div>
+</div>
+<a id="aafd9a9b8cc8a11450bb30a23393f39dd" name="aafd9a9b8cc8a11450bb30a23393f39dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd9a9b8cc8a11450bb30a23393f39dd">&#9670;&#160;</a></span>estTypeConnu() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ConvertisseurExigences::estTypeConnu </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>identifiant</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indique si l'identifiant contient un mot-clé de type reconnu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">identifiant</td><td>L'identifiant à tester. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>true si "CLIENT", "PROJET" ou "SDD" est présent (insensible à la casse). </dd></dl>
+
+</div>
+</div>
+<a id="a474736016ee9053aadab7d05722dec34" name="a474736016ee9053aadab7d05722dec34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a474736016ee9053aadab7d05722dec34">&#9670;&#160;</a></span>getIgnorees() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::string &gt; &amp; ConvertisseurExigences::getIgnorees </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère la liste des identifiants ignorés lors de la conversion. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>const std::vector&lt;std::string&gt;&amp; Liste des identifiants ignorés </dd></dl>
+
+</div>
+</div>
+<a id="a474736016ee9053aadab7d05722dec34" name="a474736016ee9053aadab7d05722dec34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a474736016ee9053aadab7d05722dec34">&#9670;&#160;</a></span>getIgnorees() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::string &gt; &amp; ConvertisseurExigences::getIgnorees </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne les identifiants ignorés (type non reconnu). </p>
+
+</div>
+</div>
+<a id="a474736016ee9053aadab7d05722dec34" name="a474736016ee9053aadab7d05722dec34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a474736016ee9053aadab7d05722dec34">&#9670;&#160;</a></span>getIgnorees() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; std::string &gt; &amp; ConvertisseurExigences::getIgnorees </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne les identifiants ignorés (type non reconnu). </p>
+
+</div>
+</div>
+<a id="ac251169e6a562407731f9e7fdb0daef8" name="ac251169e6a562407731f9e7fdb0daef8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac251169e6a562407731f9e7fdb0daef8">&#9670;&#160;</a></span>getSDD() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_exigence_s_d_d.html">ExigenceSDD</a> &gt; &amp; ConvertisseurExigences::getSDD </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les exigences de type SDD. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>const std::vector&lt;ExigenceSDD&gt;&amp; Liste des exigences SDD </dd></dl>
+
+</div>
+</div>
+<a id="ac251169e6a562407731f9e7fdb0daef8" name="ac251169e6a562407731f9e7fdb0daef8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac251169e6a562407731f9e7fdb0daef8">&#9670;&#160;</a></span>getSDD() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_exigence_s_d_d.html">ExigenceSDD</a> &gt; &amp; ConvertisseurExigences::getSDD </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne les exigences SDD converties. </p>
+
+</div>
+</div>
+<a id="ac251169e6a562407731f9e7fdb0daef8" name="ac251169e6a562407731f9e7fdb0daef8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac251169e6a562407731f9e7fdb0daef8">&#9670;&#160;</a></span>getSDD() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_exigence_s_d_d.html">ExigenceSDD</a> &gt; &amp; ConvertisseurExigences::getSDD </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne les exigences SDD converties. </p>
+
+</div>
+</div>
+<a id="a3573e23357776321417fd0ccc672528d" name="a3573e23357776321417fd0ccc672528d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3573e23357776321417fd0ccc672528d">&#9670;&#160;</a></span>getSRS() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_exigence_s_r_s.html">ExigenceSRS</a> &gt; &amp; ConvertisseurExigences::getSRS </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les exigences de type SRS. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>const std::vector&lt;ExigenceSRS&gt;&amp; Liste des exigences SRS </dd></dl>
+
+</div>
+</div>
+<a id="a3573e23357776321417fd0ccc672528d" name="a3573e23357776321417fd0ccc672528d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3573e23357776321417fd0ccc672528d">&#9670;&#160;</a></span>getSRS() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_exigence_s_r_s.html">ExigenceSRS</a> &gt; &amp; ConvertisseurExigences::getSRS </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne les exigences SRS converties. </p>
+
+</div>
+</div>
+<a id="a3573e23357776321417fd0ccc672528d" name="a3573e23357776321417fd0ccc672528d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3573e23357776321417fd0ccc672528d">&#9670;&#160;</a></span>getSRS() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_exigence_s_r_s.html">ExigenceSRS</a> &gt; &amp; ConvertisseurExigences::getSRS </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne les exigences SRS converties. </p>
+
+</div>
+</div>
+<a id="a8acab90f49dea1bad8a591534064fd97" name="a8acab90f49dea1bad8a591534064fd97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8acab90f49dea1bad8a591534064fd97">&#9670;&#160;</a></span>getSSS() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_exigence_s_s_s.html">ExigenceSSS</a> &gt; &amp; ConvertisseurExigences::getSSS </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère les exigences de type SSS. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>const std::vector&lt;ExigenceSSS&gt;&amp; Liste des exigences SSS </dd></dl>
+
+</div>
+</div>
+<a id="a8acab90f49dea1bad8a591534064fd97" name="a8acab90f49dea1bad8a591534064fd97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8acab90f49dea1bad8a591534064fd97">&#9670;&#160;</a></span>getSSS() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_exigence_s_s_s.html">ExigenceSSS</a> &gt; &amp; ConvertisseurExigences::getSSS </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne les exigences SSS converties. </p>
+
+</div>
+</div>
+<a id="a8acab90f49dea1bad8a591534064fd97" name="a8acab90f49dea1bad8a591534064fd97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8acab90f49dea1bad8a591534064fd97">&#9670;&#160;</a></span>getSSS() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; <a class="el" href="class_exigence_s_s_s.html">ExigenceSSS</a> &gt; &amp; ConvertisseurExigences::getSSS </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne les exigences SSS converties. </p>
+
+</div>
+</div>
+<a id="ae9f2eb390f488cf6e028ae2e360b59e1" name="ae9f2eb390f488cf6e028ae2e360b59e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9f2eb390f488cf6e028ae2e360b59e1">&#9670;&#160;</a></span>splitVirgule()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; ConvertisseurExigences::splitVirgule </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>s</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Découpe une chaîne par virgule et nettoie les espaces. </p>
+<p>Découpe une chaîne par virgule et nettoie les espaces. Ex: "CLIENT, A, SSS" → ["CLIENT", "A", "SSS"]. </p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentation des données membres</h2>
+<a id="a8334e252e68d76069c79d0e5c5776456" name="a8334e252e68d76069c79d0e5c5776456"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8334e252e68d76069c79d0e5c5776456">&#9670;&#160;</a></span>exigencesSDD</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_exigence_s_d_d.html">ExigenceSDD</a> &gt; ConvertisseurExigences::exigencesSDD</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exigences de niveau SDD converties. </p>
+
+</div>
+</div>
+<a id="a35294e17920031d6884a17c54a55e2ea" name="a35294e17920031d6884a17c54a55e2ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35294e17920031d6884a17c54a55e2ea">&#9670;&#160;</a></span>exigencesSRS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_exigence_s_r_s.html">ExigenceSRS</a> &gt; ConvertisseurExigences::exigencesSRS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exigences de niveau SRS converties. </p>
+
+</div>
+</div>
+<a id="a6b0e39a2bbaa2d1424c0827f8c2fa789" name="a6b0e39a2bbaa2d1424c0827f8c2fa789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b0e39a2bbaa2d1424c0827f8c2fa789">&#9670;&#160;</a></span>exigencesSSS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="class_exigence_s_s_s.html">ExigenceSSS</a> &gt; ConvertisseurExigences::exigencesSSS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Exigences de niveau SSS converties. </p>
+
+</div>
+</div>
+<a id="a02fce824cf7832ea08ceaf1d47e40708" name="a02fce824cf7832ea08ceaf1d47e40708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02fce824cf7832ea08ceaf1d47e40708">&#9670;&#160;</a></span>ignorees</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::string &gt; ConvertisseurExigences::ignorees</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Identifiants dont le type n'a pas pu être déterminé. </p>
+
+</div>
+</div>
+<a id="ac0b592b7548ed5afbc8ed8440e2650ec" name="ac0b592b7548ed5afbc8ed8440e2650ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0b592b7548ed5afbc8ed8440e2650ec">&#9670;&#160;</a></span>motifRegex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ConvertisseurExigences::motifRegex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b0691eadfa705210e0c8e3474b57d0b" name="a4b0691eadfa705210e0c8e3474b57d0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b0691eadfa705210e0c8e3474b57d0b">&#9670;&#160;</a></span>prefixesSDD</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; ConvertisseurExigences::prefixesSDD</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mots-clés SDD (ex: ["SDD", "C"]). </p>
+
+</div>
+</div>
+<a id="a68151ecc0f0ac4aea64adeb1f0c5cf01" name="a68151ecc0f0ac4aea64adeb1f0c5cf01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68151ecc0f0ac4aea64adeb1f0c5cf01">&#9670;&#160;</a></span>prefixesSRS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; ConvertisseurExigences::prefixesSRS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mots-clés SRS (ex: ["PROJET", "B"]). </p>
+
+</div>
+</div>
+<a id="a8195c54b0e6ccad6746203ffb9b632a6" name="a8195c54b0e6ccad6746203ffb9b632a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8195c54b0e6ccad6746203ffb9b632a6">&#9670;&#160;</a></span>prefixesSSS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; ConvertisseurExigences::prefixesSSS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mots-clés SSS (ex: ["CLIENT", "A"]). </p>
+
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<li>branches/IntegrationM1M2/include/<a class="el" href="branches_2_integration_m1_m2_2include_2_convertisseur_exigence_8h_source.html">ConvertisseurExigence.h</a></li>
+<li>tags/A0/IntegrationM1M2/include/<a class="el" href="tags_2_a0_2_integration_m1_m2_2include_2_convertisseur_exigence_8h_source.html">ConvertisseurExigence.h</a></li>
+<li>trunk/headers/<a class="el" href="trunk_2headers_2_convertisseur_exigence_8h_source.html">ConvertisseurExigence.h</a></li>
+<li>branches/IntegrationM1M2/src/<a class="el" href="branches_2_integration_m1_m2_2src_2_convertisseur_exigence_8cpp.html">ConvertisseurExigence.cpp</a></li>
+<li>tags/A0/IntegrationM1M2/src/<a class="el" href="tags_2_a0_2_integration_m1_m2_2src_2_convertisseur_exigence_8cpp.html">ConvertisseurExigence.cpp</a></li>
+<li>trunk/sources/<a class="el" href="trunk_2sources_2_convertisseur_exigence_8cpp.html">ConvertisseurExigence.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_convertisseur_exigences.html">ConvertisseurExigences</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,295 @@
+\doxysection{Référence de la classe Thread\+Manager}
+\hypertarget{class_thread_manager}{}\label{class_thread_manager}\index{ThreadManager@{ThreadManager}}
+
+
+Gère l\textquotesingle{}exécution asynchrone de l\textquotesingle{}analyse de traçabilité.  
+
+
+
+
+{\ttfamily \+\#include $<$Thread\+Manager.\+h$>$}
+
+\doxysubsubsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}{Thread\+Manager}} (\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \&\doxymbox{\hyperlink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}})
+\begin{DoxyCompactList}\small\item\em Initialise la référence au moteur et positionne {\ttfamily analyse\+Terminee} à {\ttfamily false}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}{\texorpdfstring{$\sim$}{\string~}\+Thread\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Joint le thread s\textquotesingle{}il est encore actif, empêchant l\textquotesingle{}appel à {\ttfamily std::\+terminate()}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}{lancer\+Analyse}} ()
+\begin{DoxyCompactList}\small\item\em Crée un thread d\textquotesingle{}arrière-\/plan qui exécute {\ttfamily analyser\+Tracabilite()} puis {\ttfamily calculer\+Taux()}, et positionne {\ttfamily analyse\+Terminee} à {\ttfamily true}. Sans effet si un thread est déjà actif. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}{attendre\+Fin\+Analyse}} ()
+\begin{DoxyCompactList}\small\item\em Appelle {\ttfamily std::\+thread::\+join()} pour bloquer jusqu\textquotesingle{}à la fin du thread. Sans effet si aucun thread n\textquotesingle{}est actif. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}{est\+Terminee}} () const
+\begin{DoxyCompactList}\small\item\em Retourne l\textquotesingle{}état de {\ttfamily analyse\+Terminee} sans bloquer le thread appelant. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}{Thread\+Manager}} (\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \&\doxymbox{\hyperlink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}})
+\begin{DoxyCompactList}\small\item\em Construit le gestionnaire de thread. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}{\texorpdfstring{$\sim$}{\string~}\+Thread\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destructeur :\+ joint le thread s\textquotesingle{}il est encore actif. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}{lancer\+Analyse}} ()
+\begin{DoxyCompactList}\small\item\em Lance l\textquotesingle{}analyse dans un thread séparé. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}{attendre\+Fin\+Analyse}} ()
+\begin{DoxyCompactList}\small\item\em Bloque le thread appelant jusqu\textquotesingle{}à la fin de l\textquotesingle{}analyse. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}{est\+Terminee}} () const
+\begin{DoxyCompactList}\small\item\em Indique si l\textquotesingle{}analyse est terminée, sans bloquer. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}{Thread\+Manager}} (\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \&\doxymbox{\hyperlink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}})
+\item 
+\doxymbox{\hyperlink{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}{\texorpdfstring{$\sim$}{\string~}\+Thread\+Manager}} ()
+\item 
+void \doxymbox{\hyperlink{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}{lancer\+Analyse}} ()
+\item 
+void \doxymbox{\hyperlink{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}{attendre\+Fin\+Analyse}} ()
+\item 
+bool \doxymbox{\hyperlink{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}{est\+Terminee}} () const
+\item 
+\doxymbox{\hyperlink{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}{Thread\+Manager}} (\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \&\doxymbox{\hyperlink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}})
+\item 
+\doxymbox{\hyperlink{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}{\texorpdfstring{$\sim$}{\string~}\+Thread\+Manager}} ()
+\item 
+void \doxymbox{\hyperlink{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}{lancer\+Analyse}} ()
+\item 
+void \doxymbox{\hyperlink{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}{attendre\+Fin\+Analyse}} ()
+\item 
+bool \doxymbox{\hyperlink{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}{est\+Terminee}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Attributs privés}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \& \doxymbox{\hyperlink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}}
+\begin{DoxyCompactList}\small\item\em Référence au moteur de traçabilité (pas de copie). \end{DoxyCompactList}\item 
+std::\+thread \doxymbox{\hyperlink{class_thread_manager_ad9572c1ed71075215e2e103979637538}{thread\+Analyse}}
+\begin{DoxyCompactList}\small\item\em Thread d\textquotesingle{}arrière-\/plan exécutant l\textquotesingle{}analyse. \end{DoxyCompactList}\item 
+std::\+atomic$<$ bool $>$ \doxymbox{\hyperlink{class_thread_manager_a8f7aefd9c3f0892e82bb32b24f041b18}{analyse\+Terminee}}
+\begin{DoxyCompactList}\small\item\em Indicateur atomique de fin d\textquotesingle{}analyse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gère l\textquotesingle{}exécution asynchrone de l\textquotesingle{}analyse de traçabilité. 
+
+Encapsule un {\ttfamily std::\+thread} qui exécute séquentiellement {\ttfamily \doxylink{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}{Moteur\+Tracabilite::\+analyser\+Tracabilite()}} puis {\ttfamily \doxylink{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}{Moteur\+Tracabilite::\+calculer\+Taux()}}. Un {\ttfamily std::\+atomic$<$bool$>$} permet de consulter l\textquotesingle{}état d\textquotesingle{}avancement sans bloquer le thread principal.
+
+Le destructeur garantit que le thread est joint avant la destruction de l\textquotesingle{}objet, évitant ainsi l\textquotesingle{}appel à {\ttfamily std::\+terminate()}. 
+
+\label{doc-constructors}
+\Hypertarget{class_thread_manager_doc-constructors}
+\doxysubsection{Documentation des constructeurs et destructeur}
+\Hypertarget{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}\index{ThreadManager@{ThreadManager}!ThreadManager@{ThreadManager}}
+\index{ThreadManager@{ThreadManager}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{ThreadManager()}{ThreadManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c} 
+Thread\+Manager::\+\+Thread\+Manager (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \&}]{moteur}{}\end{DoxyParamCaption})}
+
+
+
+Initialise la référence au moteur et positionne {\ttfamily analyse\+Terminee} à {\ttfamily false}. 
+
+\Hypertarget{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}\index{ThreadManager@{ThreadManager}!````~ThreadManager@{\texorpdfstring{$\sim$}{\string~}ThreadManager}}
+\index{````~ThreadManager@{\texorpdfstring{$\sim$}{\string~}ThreadManager}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ThreadManager()}{\string~ThreadManager()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b} 
+Thread\+Manager::\+\texorpdfstring{$\sim$}{\string~}\+Thread\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Joint le thread s\textquotesingle{}il est encore actif, empêchant l\textquotesingle{}appel à {\ttfamily std::\+terminate()}. 
+
+\Hypertarget{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}\index{ThreadManager@{ThreadManager}!ThreadManager@{ThreadManager}}
+\index{ThreadManager@{ThreadManager}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{ThreadManager()}{ThreadManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c} 
+Thread\+Manager::\+\+Thread\+Manager (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \&}]{moteur}{}\end{DoxyParamCaption})}
+
+
+
+Construit le gestionnaire de thread. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em \doxylink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}} & Référence au {\ttfamily \doxylink{class_moteur_tracabilite}{Moteur\+Tracabilite}} déjà alimenté par {\ttfamily set\+Donnees()}.\\
+\hline
+\end{DoxyParams}
+{\ttfamily analyse\+Terminee} est initialisé à {\ttfamily false}. \Hypertarget{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}\index{ThreadManager@{ThreadManager}!````~ThreadManager@{\texorpdfstring{$\sim$}{\string~}ThreadManager}}
+\index{````~ThreadManager@{\texorpdfstring{$\sim$}{\string~}ThreadManager}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ThreadManager()}{\string~ThreadManager()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b} 
+Thread\+Manager::\+\texorpdfstring{$\sim$}{\string~}\+Thread\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Destructeur :\+ joint le thread s\textquotesingle{}il est encore actif. 
+
+Empêche l\textquotesingle{}appel à {\ttfamily std::\+terminate()} lors de la destruction d\textquotesingle{}un {\ttfamily std::\+thread} encore joignable. \Hypertarget{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}\index{ThreadManager@{ThreadManager}!ThreadManager@{ThreadManager}}
+\index{ThreadManager@{ThreadManager}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{ThreadManager()}{ThreadManager()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c} 
+Thread\+Manager::\+\+Thread\+Manager (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \&}]{moteur}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}\index{ThreadManager@{ThreadManager}!````~ThreadManager@{\texorpdfstring{$\sim$}{\string~}ThreadManager}}
+\index{````~ThreadManager@{\texorpdfstring{$\sim$}{\string~}ThreadManager}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ThreadManager()}{\string~ThreadManager()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b} 
+Thread\+Manager::\+\texorpdfstring{$\sim$}{\string~}\+Thread\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}\index{ThreadManager@{ThreadManager}!ThreadManager@{ThreadManager}}
+\index{ThreadManager@{ThreadManager}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{ThreadManager()}{ThreadManager()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c} 
+Thread\+Manager::\+\+Thread\+Manager (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \&}]{moteur}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}\index{ThreadManager@{ThreadManager}!````~ThreadManager@{\texorpdfstring{$\sim$}{\string~}ThreadManager}}
+\index{````~ThreadManager@{\texorpdfstring{$\sim$}{\string~}ThreadManager}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}ThreadManager()}{\string~ThreadManager()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b} 
+Thread\+Manager::\+\texorpdfstring{$\sim$}{\string~}\+Thread\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_thread_manager_doc-func-members}
+\doxysubsection{Documentation des fonctions membres}
+\Hypertarget{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}\index{ThreadManager@{ThreadManager}!attendreFinAnalyse@{attendreFinAnalyse}}
+\index{attendreFinAnalyse@{attendreFinAnalyse}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{attendreFinAnalyse()}{attendreFinAnalyse()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836} 
+void Thread\+Manager::\+attendre\+Fin\+Analyse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Appelle {\ttfamily std::\+thread::\+join()} pour bloquer jusqu\textquotesingle{}à la fin du thread. Sans effet si aucun thread n\textquotesingle{}est actif. 
+
+\Hypertarget{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}\index{ThreadManager@{ThreadManager}!attendreFinAnalyse@{attendreFinAnalyse}}
+\index{attendreFinAnalyse@{attendreFinAnalyse}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{attendreFinAnalyse()}{attendreFinAnalyse()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836} 
+void Thread\+Manager::\+attendre\+Fin\+Analyse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Bloque le thread appelant jusqu\textquotesingle{}à la fin de l\textquotesingle{}analyse. 
+
+Appelle {\ttfamily std::\+thread::\+join()} sur le thread d\textquotesingle{}analyse. Sans effet si aucun thread n\textquotesingle{}est actif. \Hypertarget{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}\index{ThreadManager@{ThreadManager}!attendreFinAnalyse@{attendreFinAnalyse}}
+\index{attendreFinAnalyse@{attendreFinAnalyse}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{attendreFinAnalyse()}{attendreFinAnalyse()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836} 
+void Thread\+Manager::\+attendre\+Fin\+Analyse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}\index{ThreadManager@{ThreadManager}!attendreFinAnalyse@{attendreFinAnalyse}}
+\index{attendreFinAnalyse@{attendreFinAnalyse}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{attendreFinAnalyse()}{attendreFinAnalyse()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836} 
+void Thread\+Manager::\+attendre\+Fin\+Analyse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}\index{ThreadManager@{ThreadManager}!estTerminee@{estTerminee}}
+\index{estTerminee@{estTerminee}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{estTerminee()}{estTerminee()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864} 
+bool Thread\+Manager::\+est\+Terminee (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retourne l\textquotesingle{}état de {\ttfamily analyse\+Terminee} sans bloquer le thread appelant. 
+
+\Hypertarget{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}\index{ThreadManager@{ThreadManager}!estTerminee@{estTerminee}}
+\index{estTerminee@{estTerminee}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{estTerminee()}{estTerminee()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864} 
+bool Thread\+Manager::\+est\+Terminee (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Indique si l\textquotesingle{}analyse est terminée, sans bloquer. 
+
+\begin{DoxyReturn}{Renvoie}
+{\ttfamily true} si {\ttfamily analyse\+Terminee} vaut {\ttfamily true}, {\ttfamily false} sinon. 
+\end{DoxyReturn}
+\Hypertarget{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}\index{ThreadManager@{ThreadManager}!estTerminee@{estTerminee}}
+\index{estTerminee@{estTerminee}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{estTerminee()}{estTerminee()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864} 
+bool Thread\+Manager::\+est\+Terminee (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}\index{ThreadManager@{ThreadManager}!estTerminee@{estTerminee}}
+\index{estTerminee@{estTerminee}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{estTerminee()}{estTerminee()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864} 
+bool Thread\+Manager::\+est\+Terminee (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}\index{ThreadManager@{ThreadManager}!lancerAnalyse@{lancerAnalyse}}
+\index{lancerAnalyse@{lancerAnalyse}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{lancerAnalyse()}{lancerAnalyse()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a926d04dbefb3d908659dd86209ed0008} 
+void Thread\+Manager::\+lancer\+Analyse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Crée un thread d\textquotesingle{}arrière-\/plan qui exécute {\ttfamily analyser\+Tracabilite()} puis {\ttfamily calculer\+Taux()}, et positionne {\ttfamily analyse\+Terminee} à {\ttfamily true}. Sans effet si un thread est déjà actif. 
+
+\Hypertarget{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}\index{ThreadManager@{ThreadManager}!lancerAnalyse@{lancerAnalyse}}
+\index{lancerAnalyse@{lancerAnalyse}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{lancerAnalyse()}{lancerAnalyse()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a926d04dbefb3d908659dd86209ed0008} 
+void Thread\+Manager::\+lancer\+Analyse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Lance l\textquotesingle{}analyse dans un thread séparé. 
+
+Crée un {\ttfamily std::\+thread} qui exécute successivement {\ttfamily \doxylink{class_moteur_tracabilite_ad2fad491850ace8d8092eabc4e6b61b5}{Moteur\+Tracabilite::\+analyser\+Tracabilite()}} et {\ttfamily \doxylink{class_moteur_tracabilite_aebf35cbed81371cefd10246ae6aa89cd}{Moteur\+Tracabilite::\+calculer\+Taux()}}, puis positionne {\ttfamily analyse\+Terminee} à {\ttfamily true}. Sans effet si un thread est déjà en cours d\textquotesingle{}exécution. \Hypertarget{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}\index{ThreadManager@{ThreadManager}!lancerAnalyse@{lancerAnalyse}}
+\index{lancerAnalyse@{lancerAnalyse}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{lancerAnalyse()}{lancerAnalyse()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a926d04dbefb3d908659dd86209ed0008} 
+void Thread\+Manager::\+lancer\+Analyse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}\index{ThreadManager@{ThreadManager}!lancerAnalyse@{lancerAnalyse}}
+\index{lancerAnalyse@{lancerAnalyse}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{lancerAnalyse()}{lancerAnalyse()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_thread_manager_a926d04dbefb3d908659dd86209ed0008} 
+void Thread\+Manager::\+lancer\+Analyse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_thread_manager_doc-variable-members}
+\doxysubsection{Documentation des données membres}
+\Hypertarget{class_thread_manager_a8f7aefd9c3f0892e82bb32b24f041b18}\index{ThreadManager@{ThreadManager}!analyseTerminee@{analyseTerminee}}
+\index{analyseTerminee@{analyseTerminee}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{analyseTerminee}{analyseTerminee}}
+{\footnotesize\ttfamily \label{class_thread_manager_a8f7aefd9c3f0892e82bb32b24f041b18} 
+std::\+atomic$<$ bool $>$ Thread\+Manager::\+analyse\+Terminee\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Indicateur atomique de fin d\textquotesingle{}analyse. 
+
+\Hypertarget{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}\index{ThreadManager@{ThreadManager}!moteur@{moteur}}
+\index{moteur@{moteur}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{moteur}{moteur}}
+{\footnotesize\ttfamily \label{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d} 
+\doxymbox{\hyperlink{class_moteur_tracabilite}{Moteur\+Tracabilite}} \& Thread\+Manager::\+moteur\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Référence au moteur de traçabilité (pas de copie). 
+
+\Hypertarget{class_thread_manager_ad9572c1ed71075215e2e103979637538}\index{ThreadManager@{ThreadManager}!threadAnalyse@{threadAnalyse}}
+\index{threadAnalyse@{threadAnalyse}!ThreadManager@{ThreadManager}}
+\doxysubsubsection{\texorpdfstring{threadAnalyse}{threadAnalyse}}
+{\footnotesize\ttfamily \label{class_thread_manager_ad9572c1ed71075215e2e103979637538} 
+std::\+thread Thread\+Manager::\+thread\+Analyse\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Thread d\textquotesingle{}arrière-\/plan exécutant l\textquotesingle{}analyse. 
+
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants :\+\begin{DoxyCompactItemize}
+\item 
+branches/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_thread_manager_8h}{Thread\+Manager.\+h}}\item 
+branches/\+module2/\+include/\+\doxymbox{\hyperlink{branches_2module2_2include_2_thread_manager_8h}{Thread\+Manager.\+h}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+include/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2include_2_thread_manager_8h}{Thread\+Manager.\+h}}\item 
+trunk/\+headers/\+\doxymbox{\hyperlink{trunk_2headers_2_thread_manager_8h}{Thread\+Manager.\+h}}\item 
+branches/\+\+Integration\+M1\+M2/\+src/\+\doxymbox{\hyperlink{branches_2_integration_m1_m2_2src_2_thread_manager_8cpp}{Thread\+Manager.\+cpp}}\item 
+branches/\+module2/\+src/\+\doxymbox{\hyperlink{branches_2module2_2src_2_thread_manager_8cpp}{Thread\+Manager.\+cpp}}\item 
+tags/\+\+A0/\+\+Integration\+M1\+M2/\+src/\+\doxymbox{\hyperlink{tags_2_a0_2_integration_m1_m2_2src_2_thread_manager_8cpp}{Thread\+Manager.\+cpp}}\item 
+trunk/\+sources/\+\doxymbox{\hyperlink{trunk_2sources_2_thread_manager_8cpp}{Thread\+Manager.\+cpp}}\end{DoxyCompactItemize}

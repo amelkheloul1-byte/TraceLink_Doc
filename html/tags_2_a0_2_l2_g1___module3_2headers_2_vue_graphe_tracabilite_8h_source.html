@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TraceLink:  Fichier source de tags/A0/L2G1_Module3/headers/VueGrapheTracabilite.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TraceLink
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('tags_2_a0_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">VueGrapheTracabilite.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="tags_2_a0_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef VUEGRAPHETRACABILITE_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define VUEGRAPHETRACABILITE_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;QWidget&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;QWheelEvent&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;QMouseEvent&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;QFrame&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;QPushButton&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;QLabel&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;RapportTracabilite.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;ExigenceSRS.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;ExigenceSDD.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="tags_2_a0_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html">GestionnaireFiltresGUI.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="struct_noeud_graphe.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_noeud_graphe.html">NoeudGraphe</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="struct_noeud_graphe.html#ae33fc41b370bc56207570799e0286628">   18</a></span>    std::string <a class="code hl_variable" href="struct_noeud_graphe.html#ae33fc41b370bc56207570799e0286628">id</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="struct_noeud_graphe.html#a48ab2b7eae2fdcca15cf6211e68cc282">   19</a></span>    <a class="code hl_enumeration" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a> <a class="code hl_variable" href="struct_noeud_graphe.html#a48ab2b7eae2fdcca15cf6211e68cc282">type</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="struct_noeud_graphe.html#a8cc5d9f59d261b7a411b3bf9521c3678">   20</a></span>    <a class="code hl_enumeration" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a51cc5d61d45bf71507aceec544ad1667">Statut</a> <a class="code hl_variable" href="struct_noeud_graphe.html#a8cc5d9f59d261b7a411b3bf9521c3678">statut</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="struct_noeud_graphe.html#a2daff2b1ba155caa7af2fff4c702e67c">   21</a></span>    QPointF <a class="code hl_variable" href="struct_noeud_graphe.html#a2daff2b1ba155caa7af2fff4c702e67c">position</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
+</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct_arete_graphe.html">   24</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_arete_graphe.html">AreteGraphe</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="struct_arete_graphe.html#a022a0b9c1dc790b8af5a05b19f40b8b0">   25</a></span>    std::string <a class="code hl_variable" href="struct_arete_graphe.html#a022a0b9c1dc790b8af5a05b19f40b8b0">idSource</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="struct_arete_graphe.html#a7196a0eabe52f0103fd7a919304d305b">   26</a></span>    std::string <a class="code hl_variable" href="struct_arete_graphe.html#a7196a0eabe52f0103fd7a919304d305b">idCible</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="struct_arete_graphe.html#af78ac886bd29444d17ab7ed3eae637b3">   27</a></span>    <span class="keywordtype">bool</span> <a class="code hl_variable" href="struct_arete_graphe.html#af78ac886bd29444d17ab7ed3eae637b3">estBrise</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="struct_arete_graphe.html#a57c82f41570ac4bacd1558eff682b19a">   28</a></span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="struct_arete_graphe.html#a57c82f41570ac4bacd1558eff682b19a">pourcentage</a>; <span class="comment">// Pourcentage de couverture affiché sur l&#39;arête.</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">class </span><a class="code hl_class" href="class_vue_graphe_tracabilite.html">VueGrapheTracabilite</a> : <span class="keyword">public</span> QWidget</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    Q_OBJECT</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a50627b63c0bbccb353391654fb73548e">   36</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#a50627b63c0bbccb353391654fb73548e">VueGrapheTracabilite</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a622fe8509b1dc367eeb14c0ffbe39ac6">   38</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#a622fe8509b1dc367eeb14c0ffbe39ac6">construireGraphe</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_rapport_tracabilite.html">RapportTracabilite</a>&amp; rapport,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                          <span class="keyword">const</span> std::vector&lt;ExigenceSRS&gt;&amp; srs,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>                          <span class="keyword">const</span> std::vector&lt;ExigenceSDD&gt;&amp; sdd);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">public</span> slots:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a1122405deca5ad0d9d3445d3f544099a">   43</a></span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_vue_graphe_tracabilite.html#a1122405deca5ad0d9d3445d3f544099a">appliquerFiltre</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_filtre_g_u_i.html">FiltreGUI</a>&amp; filtre);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#abe202613fbe24b80864e2583f3f1ed75">   44</a></span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_vue_graphe_tracabilite.html#abe202613fbe24b80864e2583f3f1ed75">toggleFiltres</a>();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#ad0bf2b370814e30a7883bbca845a9bb3">   47</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#ad0bf2b370814e30a7883bbca845a9bb3">paintEvent</a>(QPaintEvent *event) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a4fdbb3c917a134b925148393637cca31">   48</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#a4fdbb3c917a134b925148393637cca31">wheelEvent</a>(QWheelEvent *event) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a488948f46b434a25eb2100b9c6690ff6">   49</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#a488948f46b434a25eb2100b9c6690ff6">mousePressEvent</a>(QMouseEvent *event) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a06838e8aa5184acf3fa9e07e3dd8e94e">   50</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#a06838e8aa5184acf3fa9e07e3dd8e94e">resizeEvent</a>(QResizeEvent *event) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a24b3dac0ab7c5ccc3c10a3c13463af07">   53</a></span>    std::vector&lt;NoeudGraphe&gt; <a class="code hl_variable" href="class_vue_graphe_tracabilite.html#ab11f8857cef31d33d5ec682349a73b76">noeuds</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a66cbc93466da7969a8cb8b19bc63b43b">   54</a></span>    std::vector&lt;AreteGraphe&gt; <a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a66cbc93466da7969a8cb8b19bc63b43b">aretes</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    std::vector&lt;ExigenceSRS&gt; <a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a04eb2dd4252fa09a757cd6aa23ed4941">srsAnalyses</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    std::vector&lt;ExigenceSDD&gt; <a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a0b7755a1a1d4b534a1ec6a6a3c6eb937">sddAnalyses</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_struct" href="struct_rapport_tracabilite.html">RapportTracabilite</a> <a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a9aba5251058a2b1c25ac246209ef2f48">rapportCourant</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">double</span> <a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a63380973a0fc8f367a0319127319afdf">niveauZoom</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a15c70b7cd10acd0d180a81c7a23dc67e">   59</a></span>    std::string <a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a15c70b7cd10acd0d180a81c7a23dc67e">noeudSelectionne</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_struct" href="struct_filtre_g_u_i.html">FiltreGUI</a> <a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a87800b9bdabc40fb959201655458a8f2">filtreActif</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// Panneau détail</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    QFrame      *<a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a8303ba54328986dfcb40909de817205d">panneauDetail</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a07145e2d227022e84e6984de9447f595">   64</a></span>    QLabel      *<a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a07145e2d227022e84e6984de9447f595">labelDetailId</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a03e6bb15dbf6c49a4c2e61c6f4618521">   65</a></span>    QLabel      *<a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a03e6bb15dbf6c49a4c2e61c6f4618521">labelDetailType</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#a4fbb40d45201528f9527d94f3dbd0c90">   66</a></span>    QLabel      *<a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a4fbb40d45201528f9527d94f3dbd0c90">labelDetailStatut</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#ad828a8539e6c2f5f054e19d9fdbd520f">   67</a></span>    QLabel      *<a class="code hl_variable" href="class_vue_graphe_tracabilite.html#ad828a8539e6c2f5f054e19d9fdbd520f">labelDetailLiens</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Filtres</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    QFrame                 *<a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a8584f67e4345860d52e6a1fcab1f4175">panneauFiltres</a>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    QPushButton            *<a class="code hl_variable" href="class_vue_graphe_tracabilite.html#a6d11a251abd00165fc5309b22df79240">boutonFiltres</a>;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_class" href="class_gestionnaire_filtres_g_u_i.html">GestionnaireFiltresGUI</a> *<a class="code hl_variable" href="class_vue_graphe_tracabilite.html#acaf18939d7b8664c60aa42fddfd64c33">gestionnaireFiltres</a>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#a66353430fd5e258a991fa9a011c0495b">dessinerNoeud</a>(QPainter&amp; painter, <span class="keyword">const</span> <a class="code hl_struct" href="struct_noeud_graphe.html">NoeudGraphe</a>&amp; noeud);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#a6b783657aeae6805a044e207bba5c510">dessinerArete</a>(QPainter&amp; painter, <span class="keyword">const</span> <a class="code hl_struct" href="struct_arete_graphe.html">AreteGraphe</a>&amp; arete);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#a9bb3ab4027d789a07571ff9cce39fde0">afficherDetailNoeud</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_noeud_graphe.html">NoeudGraphe</a>&amp; noeud);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    QColor <a class="code hl_function" href="class_vue_graphe_tracabilite.html#a3294526d59df6b342ba621d79f5a066a">couleurStatut</a>(<a class="code hl_enumeration" href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a51cc5d61d45bf71507aceec544ad1667">Statut</a> statut) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_vue_graphe_tracabilite.html#aa11b599dd0fba3ece9a56a8423e44dc4">   78</a></span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct_noeud_graphe.html">NoeudGraphe</a>* <a class="code hl_function" href="class_vue_graphe_tracabilite.html#aa11b599dd0fba3ece9a56a8423e44dc4">noeudAPosition</a>(<span class="keyword">const</span> QPointF&amp; pos) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_vue_graphe_tracabilite.html#ae30aaadfb55ff2bcba802ed13329239c">noeudVisible</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_noeud_graphe.html">NoeudGraphe</a>&amp; n) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="preprocessor">#endif </span><span class="comment">// VUEGRAPHETRACABILITE_H</span></div>
+<div class="ttc" id="abranches_2_integration_m1_m2_2include_2_exigence_8h_html_a51cc5d61d45bf71507aceec544ad1667"><div class="ttname"><a href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a51cc5d61d45bf71507aceec544ad1667">Statut</a></div><div class="ttdeci">Statut</div><div class="ttdoc">Définit l&#39;état de couverture d&#39;une exigence après analyse de traçabilité.</div><div class="ttdef"><b>Definition</b> Exigence.h:37</div></div>
+<div class="ttc" id="abranches_2_integration_m1_m2_2include_2_exigence_8h_html_a6587a9ed4154b322d20722b0bdce15a6"><div class="ttname"><a href="branches_2_integration_m1_m2_2include_2_exigence_8h.html#a6587a9ed4154b322d20722b0bdce15a6">TypeExigence</a></div><div class="ttdeci">TypeExigence</div><div class="ttdoc">Définit le niveau hiérarchique d&#39;une exigence.</div><div class="ttdef"><b>Definition</b> Exigence.h:21</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html">GestionnaireFiltresGUI</a></div><div class="ttdoc">Widget Qt gérant les trois filtres d&#39;affichage.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:39</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html"><div class="ttname"><a href="class_vue_graphe_tracabilite.html">VueGrapheTracabilite</a></div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:52</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a03e6bb15dbf6c49a4c2e61c6f4618521"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a03e6bb15dbf6c49a4c2e61c6f4618521">VueGrapheTracabilite::labelDetailType</a></div><div class="ttdeci">QLabel * labelDetailType</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:65</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a04eb2dd4252fa09a757cd6aa23ed4941"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a04eb2dd4252fa09a757cd6aa23ed4941">VueGrapheTracabilite::srsAnalyses</a></div><div class="ttdeci">std::vector&lt; ExigenceSRS &gt; srsAnalyses</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:80</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a06838e8aa5184acf3fa9e07e3dd8e94e"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a06838e8aa5184acf3fa9e07e3dd8e94e">VueGrapheTracabilite::resizeEvent</a></div><div class="ttdeci">void resizeEvent(QResizeEvent *event) override</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a07145e2d227022e84e6984de9447f595"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a07145e2d227022e84e6984de9447f595">VueGrapheTracabilite::labelDetailId</a></div><div class="ttdeci">QLabel * labelDetailId</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:64</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a0b7755a1a1d4b534a1ec6a6a3c6eb937"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a0b7755a1a1d4b534a1ec6a6a3c6eb937">VueGrapheTracabilite::sddAnalyses</a></div><div class="ttdeci">std::vector&lt; ExigenceSDD &gt; sddAnalyses</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:81</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a1122405deca5ad0d9d3445d3f544099a"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a1122405deca5ad0d9d3445d3f544099a">VueGrapheTracabilite::appliquerFiltre</a></div><div class="ttdeci">void appliquerFiltre(const FiltreGUI &amp;filtre)</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a15c70b7cd10acd0d180a81c7a23dc67e"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a15c70b7cd10acd0d180a81c7a23dc67e">VueGrapheTracabilite::noeudSelectionne</a></div><div class="ttdeci">int noeudSelectionne</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:88</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a3294526d59df6b342ba621d79f5a066a"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a3294526d59df6b342ba621d79f5a066a">VueGrapheTracabilite::couleurStatut</a></div><div class="ttdeci">QColor couleurStatut(Statut statut) const</div><div class="ttdoc">Retourne la couleur d&#39;un nœud selon son statut de couverture.</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.cpp:427</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a488948f46b434a25eb2100b9c6690ff6"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a488948f46b434a25eb2100b9c6690ff6">VueGrapheTracabilite::mousePressEvent</a></div><div class="ttdeci">void mousePressEvent(QMouseEvent *event) override</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a4fbb40d45201528f9527d94f3dbd0c90"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a4fbb40d45201528f9527d94f3dbd0c90">VueGrapheTracabilite::labelDetailStatut</a></div><div class="ttdeci">QLabel * labelDetailStatut</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:66</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a4fdbb3c917a134b925148393637cca31"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a4fdbb3c917a134b925148393637cca31">VueGrapheTracabilite::wheelEvent</a></div><div class="ttdeci">void wheelEvent(QWheelEvent *event) override</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a50627b63c0bbccb353391654fb73548e"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a50627b63c0bbccb353391654fb73548e">VueGrapheTracabilite::VueGrapheTracabilite</a></div><div class="ttdeci">VueGrapheTracabilite(QWidget *parent=nullptr)</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a622fe8509b1dc367eeb14c0ffbe39ac6"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a622fe8509b1dc367eeb14c0ffbe39ac6">VueGrapheTracabilite::construireGraphe</a></div><div class="ttdeci">void construireGraphe(const RapportTracabilite &amp;rapport, const std::vector&lt; ExigenceSRS &gt; &amp;srs, const std::vector&lt; ExigenceSDD &gt; &amp;sdd)</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a63380973a0fc8f367a0319127319afdf"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a63380973a0fc8f367a0319127319afdf">VueGrapheTracabilite::niveauZoom</a></div><div class="ttdeci">double niveauZoom</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:86</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a66353430fd5e258a991fa9a011c0495b"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a66353430fd5e258a991fa9a011c0495b">VueGrapheTracabilite::dessinerNoeud</a></div><div class="ttdeci">void dessinerNoeud(QPainter &amp;painter, const NoeudFichier &amp;noeud, bool survole, bool selectionne)</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.cpp:569</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a66cbc93466da7969a8cb8b19bc63b43b"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a66cbc93466da7969a8cb8b19bc63b43b">VueGrapheTracabilite::aretes</a></div><div class="ttdeci">std::vector&lt; AreteGraphe &gt; aretes</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:54</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a6b783657aeae6805a044e207bba5c510"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a6b783657aeae6805a044e207bba5c510">VueGrapheTracabilite::dessinerArete</a></div><div class="ttdeci">void dessinerArete(QPainter &amp;painter, const AreteGraphe &amp;arete)</div><div class="ttdoc">Dessine une arête avec une flèche et le pourcentage de couverture au milieu.</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.cpp:358</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a6d11a251abd00165fc5309b22df79240"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a6d11a251abd00165fc5309b22df79240">VueGrapheTracabilite::boutonFiltres</a></div><div class="ttdeci">QPushButton * boutonFiltres</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:100</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a8303ba54328986dfcb40909de817205d"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a8303ba54328986dfcb40909de817205d">VueGrapheTracabilite::panneauDetail</a></div><div class="ttdeci">QFrame * panneauDetail</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:108</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a8584f67e4345860d52e6a1fcab1f4175"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a8584f67e4345860d52e6a1fcab1f4175">VueGrapheTracabilite::panneauFiltres</a></div><div class="ttdeci">QFrame * panneauFiltres</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:99</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a87800b9bdabc40fb959201655458a8f2"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a87800b9bdabc40fb959201655458a8f2">VueGrapheTracabilite::filtreActif</a></div><div class="ttdeci">FiltreGUI filtreActif</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:85</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a9aba5251058a2b1c25ac246209ef2f48"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a9aba5251058a2b1c25ac246209ef2f48">VueGrapheTracabilite::rapportCourant</a></div><div class="ttdeci">RapportTracabilite rapportCourant</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:79</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_a9bb3ab4027d789a07571ff9cce39fde0"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#a9bb3ab4027d789a07571ff9cce39fde0">VueGrapheTracabilite::afficherDetailNoeud</a></div><div class="ttdeci">void afficherDetailNoeud(const NoeudGraphe &amp;noeud)</div><div class="ttdoc">Affiche les détails d&#39;un nœud dans le panneau de détail.</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.cpp:474</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_aa11b599dd0fba3ece9a56a8423e44dc4"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#aa11b599dd0fba3ece9a56a8423e44dc4">VueGrapheTracabilite::noeudAPosition</a></div><div class="ttdeci">const NoeudGraphe * noeudAPosition(const QPointF &amp;pos) const</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_ab11f8857cef31d33d5ec682349a73b76"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#ab11f8857cef31d33d5ec682349a73b76">VueGrapheTracabilite::noeuds</a></div><div class="ttdeci">std::vector&lt; NoeudFichier &gt; noeuds</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:76</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_abe202613fbe24b80864e2583f3f1ed75"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#abe202613fbe24b80864e2583f3f1ed75">VueGrapheTracabilite::toggleFiltres</a></div><div class="ttdeci">void toggleFiltres()</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_acaf18939d7b8664c60aa42fddfd64c33"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#acaf18939d7b8664c60aa42fddfd64c33">VueGrapheTracabilite::gestionnaireFiltres</a></div><div class="ttdeci">GestionnaireFiltresGUI * gestionnaireFiltres</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:101</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_ad0bf2b370814e30a7883bbca845a9bb3"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#ad0bf2b370814e30a7883bbca845a9bb3">VueGrapheTracabilite::paintEvent</a></div><div class="ttdeci">void paintEvent(QPaintEvent *event) override</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_ad828a8539e6c2f5f054e19d9fdbd520f"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#ad828a8539e6c2f5f054e19d9fdbd520f">VueGrapheTracabilite::labelDetailLiens</a></div><div class="ttdeci">QLabel * labelDetailLiens</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:67</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html_ae30aaadfb55ff2bcba802ed13329239c"><div class="ttname"><a href="class_vue_graphe_tracabilite.html#ae30aaadfb55ff2bcba802ed13329239c">VueGrapheTracabilite::noeudVisible</a></div><div class="ttdeci">bool noeudVisible(int index) const</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.cpp:224</div></div>
+<div class="ttc" id="astruct_arete_graphe_html"><div class="ttname"><a href="struct_arete_graphe.html">AreteGraphe</a></div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:24</div></div>
+<div class="ttc" id="astruct_arete_graphe_html_a022a0b9c1dc790b8af5a05b19f40b8b0"><div class="ttname"><a href="struct_arete_graphe.html#a022a0b9c1dc790b8af5a05b19f40b8b0">AreteGraphe::idSource</a></div><div class="ttdeci">std::string idSource</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:25</div></div>
+<div class="ttc" id="astruct_arete_graphe_html_a57c82f41570ac4bacd1558eff682b19a"><div class="ttname"><a href="struct_arete_graphe.html#a57c82f41570ac4bacd1558eff682b19a">AreteGraphe::pourcentage</a></div><div class="ttdeci">double pourcentage</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:28</div></div>
+<div class="ttc" id="astruct_arete_graphe_html_a7196a0eabe52f0103fd7a919304d305b"><div class="ttname"><a href="struct_arete_graphe.html#a7196a0eabe52f0103fd7a919304d305b">AreteGraphe::idCible</a></div><div class="ttdeci">std::string idCible</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:26</div></div>
+<div class="ttc" id="astruct_arete_graphe_html_af78ac886bd29444d17ab7ed3eae637b3"><div class="ttname"><a href="struct_arete_graphe.html#af78ac886bd29444d17ab7ed3eae637b3">AreteGraphe::estBrise</a></div><div class="ttdeci">bool estBrise</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:27</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html"><div class="ttname"><a href="struct_filtre_g_u_i.html">FiltreGUI</a></div><div class="ttdoc">Combinaison des trois filtres actifs.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:29</div></div>
+<div class="ttc" id="astruct_noeud_graphe_html"><div class="ttname"><a href="struct_noeud_graphe.html">NoeudGraphe</a></div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:17</div></div>
+<div class="ttc" id="astruct_noeud_graphe_html_a2daff2b1ba155caa7af2fff4c702e67c"><div class="ttname"><a href="struct_noeud_graphe.html#a2daff2b1ba155caa7af2fff4c702e67c">NoeudGraphe::position</a></div><div class="ttdeci">QPointF position</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:21</div></div>
+<div class="ttc" id="astruct_noeud_graphe_html_a48ab2b7eae2fdcca15cf6211e68cc282"><div class="ttname"><a href="struct_noeud_graphe.html#a48ab2b7eae2fdcca15cf6211e68cc282">NoeudGraphe::type</a></div><div class="ttdeci">TypeExigence type</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:19</div></div>
+<div class="ttc" id="astruct_noeud_graphe_html_a8cc5d9f59d261b7a411b3bf9521c3678"><div class="ttname"><a href="struct_noeud_graphe.html#a8cc5d9f59d261b7a411b3bf9521c3678">NoeudGraphe::statut</a></div><div class="ttdeci">Statut statut</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:20</div></div>
+<div class="ttc" id="astruct_noeud_graphe_html_ae33fc41b370bc56207570799e0286628"><div class="ttname"><a href="struct_noeud_graphe.html#ae33fc41b370bc56207570799e0286628">NoeudGraphe::id</a></div><div class="ttdeci">std::string id</div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:18</div></div>
+<div class="ttc" id="astruct_rapport_tracabilite_html"><div class="ttname"><a href="struct_rapport_tracabilite.html">RapportTracabilite</a></div><div class="ttdoc">Structure de transfert des résultats de l&#39;analyse vers le module 3.</div><div class="ttdef"><b>Definition</b> RapportTracabilite.h:14</div></div>
+<div class="ttc" id="atags_2_a0_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_html"><div class="ttname"><a href="tags_2_a0_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html">GestionnaireFiltresGUI.h</a></div><div class="ttdoc">Déclaration de la classe GestionnaireFiltresGUI.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_f409502ee6998d6b48588958fde3cd6f.html">tags</a></li><li class="navelem"><a href="dir_f01a85a028e3d56c551a5de04b5c0c1f.html">A0</a></li><li class="navelem"><a href="dir_57d5d60b2130a04003a5a238d92798a0.html">L2G1_Module3</a></li><li class="navelem"><a href="dir_1aa043c432757960c3272e6cb25234a8.html">headers</a></li><li class="navelem"><a href="tags_2_a0_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h.html">VueGrapheTracabilite.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

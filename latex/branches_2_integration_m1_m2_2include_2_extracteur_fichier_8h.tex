@@ -1,0 +1,28 @@
+\doxysection{Référence du fichier branches/\+\+Integration\+M1\+M2/\+include/\+\+Extracteur\+Fichier.h}
+\hypertarget{branches_2_integration_m1_m2_2include_2_extracteur_fichier_8h}{}\label{branches_2_integration_m1_m2_2include_2_extracteur_fichier_8h}\index{branches/IntegrationM1M2/include/ExtracteurFichier.h@{branches/IntegrationM1M2/include/ExtracteurFichier.h}}
+
+
+Module 1 :\+ Import \& Parsing Convertit un fichier physique (Word/\+\+CSV/\+\+XLS) en liste d\textquotesingle{}exigences exploitables par le Moteur de Traçabilité (Module 2). Entrées :\+ chemin du fichier + motif regex Sorties :\+ liste d\textquotesingle{}objets \doxylink{class_exigence}{Exigence} structurés.  
+
+
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$regex$>$}\newline
+{\ttfamily \+\#include $<$stdexcept$>$}\newline
+{\ttfamily \+\#include $<$zip.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_exigence_extraite}{Exigence\+Extraite}}
+\begin{DoxyCompactList}\small\item\em Structure représentant une exigence extraite d\textquotesingle{}un fichier source. \end{DoxyCompactList}\item 
+class \doxymbox{\hyperlink{class_extracteur_fichier}{Extracteur\+Fichier}}
+\item 
+class \doxymbox{\hyperlink{class_file_not_found_exception}{File\+Not\+Found\+Exception}}
+\item 
+class \doxymbox{\hyperlink{class_file_format_exception}{File\+Format\+Exception}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module 1 :\+ Import \& Parsing Convertit un fichier physique (Word/\+\+CSV/\+\+XLS) en liste d\textquotesingle{}exigences exploitables par le Moteur de Traçabilité (Module 2). Entrées :\+ chemin du fichier + motif regex Sorties :\+ liste d\textquotesingle{}objets \doxylink{class_exigence}{Exigence} structurés. 
+

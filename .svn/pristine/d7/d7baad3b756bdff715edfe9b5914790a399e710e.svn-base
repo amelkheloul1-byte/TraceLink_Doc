@@ -1,0 +1,160 @@
+#ifndef VUEGRAPHETRACABILITE_H
+#define VUEGRAPHETRACABILITE_H
+/**
+ * @file VueGrapheTracabilite.h
+ * @brief Vue graphe de traçabilité — un nœud par fichier importé,
+ *        avec liens et pourcentages entre fichiers SSS, SRS et SDD.
+ * @author Lamia Arrahmane, Emilie Huang
+ * @version 5.0
+ */
+#include <QWidget>
+#include <QWheelEvent>
+#include <QMouseEvent>
+#include <QFrame>
+#include <QPushButton>
+#include <QLabel>
+#include <QListWidget>
+#include <QComboBox>
+#include <QStringList>
+#include <QMap>
+#include <vector>
+#include <string>
+#include "RapportTracabilite.h"
+#include "ExigenceSRS.h"
+#include "ExigenceSDD.h"
+#include "GestionnaireFiltresGUI.h"
+
+/**
+ * @struct NoeudFichier
+ * @brief Représente un fichier importé (SSS, SRS ou SDD) comme nœud du graphe.
+ *
+ * Chaque fichier importé devient un nœud avec son nom, son type,
+ * le nombre d'exigences qu'il contient et son pourcentage de couverture.
+ */
+struct NoeudFichier {
+    QString      nomFichier;       ///< Nom court du fichier (sans le chemin).
+    QString      cheminComplet;    ///< Chemin complet du fichier source.
+    TypeExigence type;             ///< Type du fichier : SSS, SRS ou SDD.
+    QPointF      position;         ///< Position du nœud sur le graphe.
+    QColor       couleur;          ///< Couleur du nœud selon le type.
+    int          nbTotal;          ///< Nombre total d'exigences dans ce fichier.
+    int          nbCouvertes;      ///< Nombre d'exigences avec chaîne complète.
+    double       pourcentage;      ///< Pourcentage de couverture du fichier.
+    QStringList  exigencesCouvertes;    ///< Liste des exigences couvertes.
+    QStringList  exigencesNonCouvertes; ///< Liste des exigences non couvertes.
+};
+
+/**
+ * @struct LienFichier
+ * @brief Lien entre deux fichiers avec le pourcentage de couverture.
+ *
+ * Représente la relation de traçabilité entre un fichier source (SRS ou SDD)
+ * et un fichier cible (SSS ou SRS) avec le pourcentage d'exigences couvertes.
+ */
+struct LienFichier {
+    int     indexSource;  ///< Index du nœud source dans le vecteur noeuds.
+    int     indexCible;   ///< Index du nœud cible dans le vecteur noeuds.
+    double  pourcentage;  ///< % d'exigences du fichier cible couvertes par ce fichier source.
+    bool    estBrise;     ///< true si ce lien contient des liens brisés.
+};
+
+class VueGrapheTracabilite : public QWidget
+{
+    Q_OBJECT
+public:
+    /**
+     * @brief Constructeur de la vue graphe.
+     * @param parent Widget parent Qt.
+     */
+    explicit VueGrapheTracabilite(QWidget *parent = nullptr);
+
+    /**
+     * @brief Construit le graphe à partir du rapport et des exigences analysées.
+     * @param rapport Le rapport produit par le MoteurTracabilite.
+     * @param srs     Vecteur des exigences SRS analysées.
+     * @param sdd     Vecteur des exigences SDD analysées.
+     */
+    void construireGraphe(const RapportTracabilite& rapport,
+                          const std::vector<ExigenceSRS>& srs,
+                          const std::vector<ExigenceSDD>& sdd);
+
+public slots:
+    void appliquerFiltre(const FiltreGUI& filtre);
+    void toggleFiltres();
+    void onFiltreRapideChange(int index);
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
+    void wheelEvent(QWheelEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
+
+private:
+    // ── Données ───────────────────────────────────────────────────────────────
+    std::vector<NoeudFichier>  noeuds;        ///< Liste des nœuds (un par fichier).
+    std::vector<LienFichier>   liens;         ///< Liste des liens entre fichiers.
+    QStringList                liensBrises;   ///< Messages de liens brisés.
+    RapportTracabilite         rapportCourant;
+    std::vector<ExigenceSRS>   srsAnalyses;
+    std::vector<ExigenceSDD>   sddAnalyses;
+
+    // ── Filtres ───────────────────────────────────────────────────────────────
+    int       filtreRapide;   ///< 0=Tout, 1=Non couvertes, 2=Liens brisés.
+    FiltreGUI filtreActif;
+
+    // ── Zoom et interactions ──────────────────────────────────────────────────
+    double niveauZoom;
+    int    noeudSurvole;
+    int    noeudSelectionne;
+    int    lienSurvole;
+
+    // ── Widgets UI ────────────────────────────────────────────────────────────
+    QComboBox              *comboFiltreRapide;
+    QFrame                 *panneauFiltres;
+    QPushButton            *boutonFiltres;
+    GestionnaireFiltresGUI *gestionnaireFiltres;
+    QFrame                 *panneauInfo;
+    QLabel                 *labelTauxSSS_SRS;
+    QLabel                 *labelTauxSRS_SDD;
+    QLabel                 *labelTauxGlobal;
+    QLabel                 *labelTauxComplet;  ///< AJOUT : taux traçabilité complète.
+    QLabel                 *labelLiensBrises;
+    QFrame                 *panneauDetail;
+    QLabel                 *labelDetailTitre;
+    QLabel                 *labelDetailStats;
+    QListWidget            *listeDetailExigences;
+
+    // ── Méthodes de dessin ────────────────────────────────────────────────────
+    /**
+     * @brief Dessine un nœud fichier avec son nom, son type et son pourcentage.
+     * @param painter    Le QPainter actif.
+     * @param noeud      Le nœud à dessiner.
+     * @param survole    true si la souris est dessus.
+     * @param selectionne true si le nœud est sélectionné.
+     */
+    void dessinerNoeud(QPainter &painter, const NoeudFichier &noeud,
+                       bool survole, bool selectionne);
+
+    /**
+     * @brief Dessine un lien entre deux fichiers avec le pourcentage au milieu.
+     * @param painter Le QPainter actif.
+     * @param lien    Le lien à dessiner.
+     * @param survole true si la souris est dessus.
+     */
+    void dessinerLien(QPainter &painter, const LienFichier &lien, bool survole);
+
+    // ── Utilitaires ───────────────────────────────────────────────────────────
+    int  noeudAPosition(const QPointF &pos) const;
+    int  lienAPosition(const QPointF &pos) const;
+    bool noeudVisible(int index) const;
+
+    /**
+     * @brief Extrait le nom court d'un fichier depuis son chemin complet.
+     * @param chemin Chemin complet du fichier.
+     * @return Nom du fichier seul.
+     */
+    QString nomCourtFichier(const std::string& chemin) const;
+};
+
+#endif // VUEGRAPHETRACABILITE_H

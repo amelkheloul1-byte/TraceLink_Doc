@@ -1,0 +1,126 @@
+\doxysection{Vue\+Graphe\+Tracabilite.\+h}
+\hypertarget{branches_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h_source}{}\label{branches_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h_source}\index{branches/L2G1\_Module3/headers/VueGrapheTracabilite.h@{branches/L2G1\_Module3/headers/VueGrapheTracabilite.h}}
+\doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VUEGRAPHETRACABILITE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VUEGRAPHETRACABILITE\_H}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <QWidget>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <QWheelEvent>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <QMouseEvent>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <QFrame>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <QPushButton>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <QLabel>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <QListWidget>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <QComboBox>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <QStringList>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <QMap>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}RapportTracabilite.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}ExigenceSRS.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}ExigenceSDD.h"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h}{GestionnaireFiltresGUI.h}}"{}}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_noeud_fichier}{NoeudFichier}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ QString\ \ \ \ \ \ \doxymbox{\hyperlink{struct_noeud_fichier_a73f51603638757d2dae290cc0eb55532}{nomFichier}};}
+\DoxyCodeLine{00028\ \ \ \ \ QString\ \ \ \ \ \ \doxymbox{\hyperlink{struct_noeud_fichier_ae329e437d35fb31c7a96c64519adb086}{cheminComplet}};}
+\DoxyCodeLine{00029\ \ \ \ \ \doxymbox{\hyperlink{branches_2_integration_m1_m2_2include_2_exigence_8h_a6587a9ed4154b322d20722b0bdce15a6}{TypeExigence}}\ \doxymbox{\hyperlink{struct_noeud_fichier_ad3a1ec3c2dfec175b42defaf78574459}{type}};}
+\DoxyCodeLine{00030\ \ \ \ \ QPointF\ \ \ \ \ \ \doxymbox{\hyperlink{struct_noeud_fichier_ab62947adbdde3a10436ad5baee37bc78}{position}};}
+\DoxyCodeLine{00031\ \ \ \ \ QColor\ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_noeud_fichier_a6fd976e357797308431cf206c138bbca}{couleur}};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_noeud_fichier_a0e980861ed38aca602656e8607581021}{nbTotal}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_noeud_fichier_ada4f0a83a7009698554b623ec12be9f5}{nbCouvertes}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_noeud_fichier_ab89446020290614dee01fe38182c7e1c}{nbCouvertesIndirect}};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_noeud_fichier_a23c8fc55672496536e2b4682f5b84bf9}{pourcentage}};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{double}\ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_noeud_fichier_af12d123eb9e26bfec00a24b1a0d85a38}{pourcentageIndirect}};}
+\DoxyCodeLine{00037\ \ \ \ \ QStringList\ \ \doxymbox{\hyperlink{struct_noeud_fichier_a4705bee31fbab44f3a7cf957a7fdf2d6}{exigencesCouvertes}};}
+\DoxyCodeLine{00038\ \ \ \ \ QStringList\ \ \doxymbox{\hyperlink{struct_noeud_fichier_a1106fcd8de12f5df2f93ffcfe87d389a}{exigencesNonCouvertes}};}
+\DoxyCodeLine{00039\ \ \ \ \ QStringList\ \ \doxymbox{\hyperlink{struct_noeud_fichier_a800e5fa3cfa21a5d3cdafed1b5256fa9}{exigencesCouvertesIndirect}};}
+\DoxyCodeLine{00040\ \ \ \ \ QStringList\ \ \doxymbox{\hyperlink{struct_noeud_fichier_afd913b9d618fb608abdf2b56322f884f}{exigencesNonCouvertesIndirect}};}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_lien_fichier}{LienFichier}}\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \doxymbox{\hyperlink{struct_lien_fichier_a89ddeeb09168948a46d31422e8883e33}{indexSource}};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \doxymbox{\hyperlink{struct_lien_fichier_ac7c4153aa3d5ea1953aeab2dbbdc2114}{indexCible}};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_lien_fichier_a3108c6c511c402f03fc331b4f8215a1a}{pourcentage}};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{struct_lien_fichier_acc9f49ca3462fd20ec818834984e2783}{pourcentageIndirect}};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \doxymbox{\hyperlink{struct_lien_fichier_aa5c7b3f05713b1ca1104826948773f1c}{estBrise}};}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e}{VueGrapheTracabilite}}\ :\ \textcolor{keyword}{public}\ QWidget}
+\DoxyCodeLine{00052\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00054\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a50627b63c0bbccb353391654fb73548e}{VueGrapheTracabilite}}(QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a622fe8509b1dc367eeb14c0ffbe39ac6}{construireGraphe}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_rapport_tracabilite}{RapportTracabilite}}\&\ rapport,}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSRS>\&\ srs,}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<ExigenceSDD>\&\ sdd);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa042e5fd69ce9fe954f7d46894c87b02}{setListeNomsFichiers}}(\textcolor{keyword}{const}\ QStringList\&\ noms);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{public}\ slots:}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a1122405deca5ad0d9d3445d3f544099a}{appliquerFiltre}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_filtre_g_u_i}{FiltreGUI}}\&\ filtre);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_abe202613fbe24b80864e2583f3f1ed75}{toggleFiltres}}();}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a73442ef30572e2cabaff828a8a7590a8}{onFiltreRapideChange}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ad0bf2b370814e30a7883bbca845a9bb3}{paintEvent}}(QPaintEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a4fdbb3c917a134b925148393637cca31}{wheelEvent}}(QWheelEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0a3d4ecb04e059edf208e9704103a3b5}{mouseMoveEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a488948f46b434a25eb2100b9c6690ff6}{mousePressEvent}}(QMouseEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a06838e8aa5184acf3fa9e07e3dd8e94e}{resizeEvent}}(QResizeEvent\ *event)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00076\ \ \ \ \ std::vector<NoeudFichier>\ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ab11f8857cef31d33d5ec682349a73b76}{noeuds}};}
+\DoxyCodeLine{00077\ \ \ \ \ std::vector<LienFichier>\ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa0cedb7d27a6217ce91e3e0396eaa612}{liens}};}
+\DoxyCodeLine{00078\ \ \ \ \ QStringList\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a1ddb6526a6c23d8067aab910e771c4b1}{liensBrises}};}
+\DoxyCodeLine{00079\ \ \ \ \ \doxymbox{\hyperlink{struct_rapport_tracabilite}{RapportTracabilite}}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a9aba5251058a2b1c25ac246209ef2f48}{rapportCourant}};}
+\DoxyCodeLine{00080\ \ \ \ \ std::vector<ExigenceSRS>\ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a04eb2dd4252fa09a757cd6aa23ed4941}{srsAnalyses}};}
+\DoxyCodeLine{00081\ \ \ \ \ std::vector<ExigenceSDD>\ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0b7755a1a1d4b534a1ec6a6a3c6eb937}{sddAnalyses}};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_abe598f5f9007e5e8ce768f8f93f149ab}{vueIndirecte}};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a5976aec884d3e66c9769c69be05b22e4}{filtreRapide}};}
+\DoxyCodeLine{00085\ \ \ \ \ \doxymbox{\hyperlink{struct_filtre_g_u_i}{FiltreGUI}}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a87800b9bdabc40fb959201655458a8f2}{filtreActif}};}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{double}\ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a63380973a0fc8f367a0319127319afdf}{niveauZoom}};}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aefc179e03628042521686511e8527a5d}{noeudSurvole}};}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a15c70b7cd10acd0d180a81c7a23dc67e}{noeudSelectionne}};}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a8802cee259d32e570d4fa985fad0ebe3}{lienSurvole}};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ Couleurs\ des\ 3\ niveaux}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ QColor\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0931f3824473e4929936fc07b7deb11b}{COULEUR\_SSS}};\ \textcolor{comment}{//\ bleu\ marine\ foncé}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ QColor\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a93345d0e8b0e5590eb8170ca92463256}{COULEUR\_SRS}};\ \textcolor{comment}{//\ bleu\ moyen}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ QColor\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ae8f1d2c36683ef8edfdeaf22d8cd64fc}{COULEUR\_SDD}};\ \textcolor{comment}{//\ bleu\ clair}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ QPushButton\ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0d6baa1906b123a11a6ca39478d0d2ee}{boutonVueDirecte}};}
+\DoxyCodeLine{00097\ \ \ \ \ QPushButton\ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a610aae075295c89aadae3dfa0442b113}{boutonVueIndirecte}};}
+\DoxyCodeLine{00098\ \ \ \ \ QComboBox\ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a449e2156cb4833f530787be8d86047d2}{comboFiltreRapide}};}
+\DoxyCodeLine{00099\ \ \ \ \ QFrame\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a8584f67e4345860d52e6a1fcab1f4175}{panneauFiltres}};}
+\DoxyCodeLine{00100\ \ \ \ \ QPushButton\ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a6d11a251abd00165fc5309b22df79240}{boutonFiltres}};}
+\DoxyCodeLine{00101\ \ \ \ \ \doxymbox{\hyperlink{class_gestionnaire_filtres_g_u_i}{GestionnaireFiltresGUI}}\ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_acaf18939d7b8664c60aa42fddfd64c33}{gestionnaireFiltres}};}
+\DoxyCodeLine{00102\ \ \ \ \ QFrame\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a4dc99fa5df2b6393f2272af0b9604e4d}{panneauInfo}};}
+\DoxyCodeLine{00103\ \ \ \ \ QLabel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a44ee56c335a09c8c6d98797b979fe81b}{labelTauxSSS\_SRS}};}
+\DoxyCodeLine{00104\ \ \ \ \ QLabel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_aec5fc5d2141209f60a495c19a3b3270f}{labelTauxSRS\_SDD}};}
+\DoxyCodeLine{00105\ \ \ \ \ QLabel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a2e83aa102edccd5f110102c2e4a04018}{labelTauxGlobal}};}
+\DoxyCodeLine{00106\ \ \ \ \ QLabel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a0dcdd24009dea4da3bab34b55acac081}{labelTauxComplet}};}
+\DoxyCodeLine{00107\ \ \ \ \ QLabel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa7a50a18b4945aaa300234da8d12db77}{labelLiensBrises}};}
+\DoxyCodeLine{00108\ \ \ \ \ QFrame\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a8303ba54328986dfcb40909de817205d}{panneauDetail}};}
+\DoxyCodeLine{00109\ \ \ \ \ QLabel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_adadefd96f0ad0963fa637785756872f5}{labelDetailTitre}};}
+\DoxyCodeLine{00110\ \ \ \ \ QLabel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_afe1e63d73f6f9c61514d76051f7d78a1}{labelDetailStats}};}
+\DoxyCodeLine{00111\ \ \ \ \ QListWidget\ \ \ \ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{class_vue_graphe_tracabilite_a267d850bb86a972552c20c7bc90c18ca}{listeDetailExigences}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a66353430fd5e258a991fa9a011c0495b}{dessinerNoeud}}(QPainter\ \&painter,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_noeud_fichier}{NoeudFichier}}\ \&noeud,}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ survole,\ \textcolor{keywordtype}{bool}\ selectionne);}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aed631ceecdc101800c087b50c29a66f9}{dessinerLien}}(QPainter\ \&painter,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_lien_fichier}{LienFichier}}\ \&lien,\ \textcolor{keywordtype}{bool}\ survole);}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a2c304c9229ea427953e3a72a82f96907}{dessinerBadgePct}}(QPainter\ \&painter,\ QPointF\ centre,\ \textcolor{keywordtype}{double}\ pct,\ QColor\ couleur);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_aa11b599dd0fba3ece9a56a8423e44dc4}{noeudAPosition}}(\textcolor{keyword}{const}\ QPointF\ \&pos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a2e4835baf95fa3994366a7e41354c990}{lienAPosition}}(\textcolor{keyword}{const}\ QPointF\ \&pos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_ae30aaadfb55ff2bcba802ed13329239c}{noeudVisible}}(\textcolor{keywordtype}{int}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00121\ \ \ \ \ QString\ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a79d1c974f5ad101e76faad3bcb853fbf}{nomCourtFichier}}(\textcolor{keyword}{const}\ std::string\&\ chemin)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordtype}{void}\ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a21769a5c8e50bbd04efd5f2cdf29ea52}{styleBoutonActif}}(QPushButton*\ btn,\ QColor\ couleur);}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \ \ \ \doxymbox{\hyperlink{class_vue_graphe_tracabilite_a8134f852dfdf4f9dc059d5a8a3922c14}{styleBoutonInactif}}(QPushButton*\ btn);}
+\DoxyCodeLine{00124\ \};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ VUEGRAPHETRACABILITE\_H}}
+
+\end{DoxyCode}

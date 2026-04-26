@@ -1,0 +1,46 @@
+\doxysection{Thread\+Manager.\+h}
+\hypertarget{trunk_2headers_2_thread_manager_8h_source}{}\label{trunk_2headers_2_thread_manager_8h_source}\index{trunk/headers/ThreadManager.h@{trunk/headers/ThreadManager.h}}
+\doxymbox{\hyperlink{trunk_2headers_2_thread_manager_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *\ ThreadManager.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *\ \ Created\ on:\ 23\ mars\ 2026}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *\ \ \ \ \ \ Author:\ yseulthelle}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ THREADMANAGER\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ THREADMANAGER\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{trunk_2headers_2_moteur_tracabilite_8h}{MoteurTracabilite.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_thread_manager}{ThreadManager}}\ \{}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ MoteurTracabilite\&\ \doxymbox{\hyperlink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}};\ \textcolor{comment}{//le\ \&\ nous\ permet\ de\ travailler\ sur\ le\ moteur,\ et\ non\ sur\ une\ copie\ -\/>\ permettera\ au\ thread\ de\ modifier\ le\ moteur}}
+\DoxyCodeLine{00020\ \ \ \ \ std::thread\ \doxymbox{\hyperlink{class_thread_manager_ad9572c1ed71075215e2e103979637538}{threadAnalyse}};\ \textcolor{comment}{//le\ thread\ d'arrière-\/plan\ qui\ va\ lancer\ l'analyse}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ std::atomic<bool>\ \doxymbox{\hyperlink{class_thread_manager_a8f7aefd9c3f0892e82bb32b24f041b18}{analyseTerminee}};\ \textcolor{comment}{//booléen\ qui\ permettera\ de\ savoir\ si\ l'analyse\ est\ terminee}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//Constructeur}}
+\DoxyCodeLine{00026\ \ \ \ \ \doxymbox{\hyperlink{class_thread_manager_aa71d481c0225f7ac18d5ebe3aac5936c}{ThreadManager}}(\doxymbox{\hyperlink{class_moteur_tracabilite}{MoteurTracabilite}}\&\ \doxymbox{\hyperlink{class_thread_manager_ad401d3bb503e0fc98ca0beba45fc357d}{moteur}});\ \textcolor{comment}{//le\ moteur\ est\ déjà\ rempli\ par\ setDonnees()}}
+\DoxyCodeLine{00027\ \ \ \ \ \doxymbox{\hyperlink{class_thread_manager_a18eb12d3d752075318c3672c8efffd5b}{\string~ThreadManager}}();\ \textcolor{comment}{//destructeur\ pour\ joindre\ le\ thread\ automatiquement\ si\ nécessaire}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//Méthodes}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//lance\ le\ thread\ d'analyse\ en\ arrière-\/plan}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_thread_manager_a926d04dbefb3d908659dd86209ed0008}{lancerAnalyse}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//attend\ que\ le\ thread\ soit\ fini\ avant\ de\ continuer}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_thread_manager_a84a6ac12b8d5b88c3669c1e64262b836}{attendreFinAnalyse}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//aetourne\ true\ si\ l'analyse\ est\ terminée}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_thread_manager_a2746ccc87d26d8de34597b4b432a5864}{estTerminee}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ THREADMANAGER\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

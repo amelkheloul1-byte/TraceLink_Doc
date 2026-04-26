@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TraceLink:  Fichier source de trunk/headers/Ongletrapport.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TraceLink
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('trunk_2headers_2_ongletrapport_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Ongletrapport.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="trunk_2headers_2_ongletrapport_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef ONGLETRAPPORT_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define ONGLETRAPPORT_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;QWidget&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;QTableWidget&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;QLabel&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;QVBoxLayout&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;QPushButton&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;QFrame&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;QProgressBar&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;QTabWidget&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;QMenu&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;QToolButton&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="trunk_2headers_2_rapport_tracabilite_8h.html">RapportTracabilite.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="trunk_2headers_2_gestionnaire_filtres_g_u_i_8h.html">GestionnaireFiltresGUI.h</a>&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="trunk_2headers_2_exigence_s_r_s_8h.html">ExigenceSRS.h</a>&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="trunk_2headers_2_exigence_s_d_d_8h.html">ExigenceSDD.h</a>&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">class </span><a class="code hl_class" href="class_onglet_rapport.html">OngletRapport</a> : <span class="keyword">public</span> QWidget</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>{</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    Q_OBJECT</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#a519fe0235f5fb41432fa772782b7f818">   51</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="class_onglet_rapport.html#a519fe0235f5fb41432fa772782b7f818">OngletRapport</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#a5c0a66eaaced228c416ceefcab373eb6">   57</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_onglet_rapport.html#a5c0a66eaaced228c416ceefcab373eb6">afficherRapport</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_rapport_tracabilite.html">RapportTracabilite</a>&amp; rapport);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#a0a05dec64300b1063034cec4dd143888">   65</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_onglet_rapport.html#a0a05dec64300b1063034cec4dd143888">afficherRapportComplet</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_rapport_tracabilite.html">RapportTracabilite</a>&amp; rapport,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                                <span class="keyword">const</span> std::vector&lt;ExigenceSRS&gt;&amp; srs,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                                <span class="keyword">const</span> std::vector&lt;ExigenceSDD&gt;&amp; sdd);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keyword">private</span> slots:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#ac22c36aed05993e180d240661f6f07b4">   73</a></span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_onglet_rapport.html#ac22c36aed05993e180d240661f6f07b4">exporterCSV</a>();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#a6dccd55774251782f8fb092695d8f1d8">   78</a></span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_onglet_rapport.html#a6dccd55774251782f8fb092695d8f1d8">exporterHTML</a>();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#ac9941f52ef0b753220475b1f091109a3">   83</a></span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_onglet_rapport.html#ac9941f52ef0b753220475b1f091109a3">toggleFiltres</a>();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="keyword">public</span> slots:</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#a13d77d5b2ad3e0dde3c7ec57bf3cc2ba">   90</a></span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_onglet_rapport.html#a13d77d5b2ad3e0dde3c7ec57bf3cc2ba">appliquerFiltre</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_filtre_g_u_i.html">FiltreGUI</a>&amp; filtre);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// ── Taux de couverture ────────────────────────────────────────────────────</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    QLabel       *<a class="code hl_variable" href="class_onglet_rapport.html#af7f370e171006d74535cd3f54c938a47">labelTauxSSS_SRS</a>; </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    QLabel       *<a class="code hl_variable" href="class_onglet_rapport.html#a1912bd0119c1e6ee4619d807e468e11d">labelTauxSRS_SDD</a>; </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    QLabel       *<a class="code hl_variable" href="class_onglet_rapport.html#a82f8f2cdb7ac56b6364162a5d3c02325">labelTauxGlobal</a>;  </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    QProgressBar *<a class="code hl_variable" href="class_onglet_rapport.html#a08600dce6969bb44417df5d5f8282f30">barreSSS_SRS</a>;     </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    QProgressBar *<a class="code hl_variable" href="class_onglet_rapport.html#a1b3867e58380cf22da33fb65fab0615c">barreSRS_SDD</a>;     </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    QProgressBar *<a class="code hl_variable" href="class_onglet_rapport.html#a6a47ec106861b2b1eecd7b34d7aa4e50">barreGlobal</a>;      </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// ── Badges résumé ─────────────────────────────────────────────────────────</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    QLabel *<a class="code hl_variable" href="class_onglet_rapport.html#a44a30164fcb71c6e9d9437a0b02350ed">labelBadgeCouverts</a>;    </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    QLabel *<a class="code hl_variable" href="class_onglet_rapport.html#a3c24ab7fe5d0e85eab63f74158c5eeba">labelBadgeNonCouverts</a>; </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    QLabel *<a class="code hl_variable" href="class_onglet_rapport.html#a9d9818f3b333c4d82d7d35e5ef16f82d">labelBadgeLiensBrises</a>; </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="comment">// ── Matrices de traçabilité ───────────────────────────────────────────────</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    QTableWidget *<a class="code hl_variable" href="class_onglet_rapport.html#a9febc078f7c7c585bd07fccd3e5a0ce6">tableMatriceSSS_SRS</a>; </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    QTableWidget *<a class="code hl_variable" href="class_onglet_rapport.html#ab7ae76a7fbdcce24d43c327bd544fee6">tableMatriceSRS_SDD</a>; </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="comment">// ── Panneau détail exigence sélectionnée ──────────────────────────────────</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    QFrame  *<a class="code hl_variable" href="class_onglet_rapport.html#a6b2128766e24629ca56027af6cd1a8c3">panneauDetail</a>;      </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    QLabel  *<a class="code hl_variable" href="class_onglet_rapport.html#ad9a888355f5ed489e24ba3fed114d0be">labelDetailId</a>;      </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    QLabel  *<a class="code hl_variable" href="class_onglet_rapport.html#a5d640bfa67288baa93a100f9406f4bc3">labelDetailType</a>;    </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    QLabel  *<a class="code hl_variable" href="class_onglet_rapport.html#a36271cc1572f979177a7dfdf1027101d">labelDetailStatut</a>;  </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    QLabel  *<a class="code hl_variable" href="class_onglet_rapport.html#ad85c99840ac1f829a3339b38ee7abcf3">labelDetailLiens</a>;   </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="comment">// ── Export ────────────────────────────────────────────────────────────────</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    QToolButton *<a class="code hl_variable" href="class_onglet_rapport.html#a37325c6c7892d1ed774761efc58e48e3">boutonExport</a>; </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    QMenu       *<a class="code hl_variable" href="class_onglet_rapport.html#ab3a6c2c747381058a25d871ae92d3374">menuExport</a>;   </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="comment">// ── Filtres ───────────────────────────────────────────────────────────────</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    QFrame                 *<a class="code hl_variable" href="class_onglet_rapport.html#ac3d2cedd4765281542c8aeed0e42daa4">panneauFiltres</a>;     </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    QPushButton            *<a class="code hl_variable" href="class_onglet_rapport.html#a39c4cea08e8afe1a7265389a08ca590c">boutonFiltres</a>;      </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <a class="code hl_class" href="class_gestionnaire_filtres_g_u_i.html">GestionnaireFiltresGUI</a> *<a class="code hl_variable" href="class_onglet_rapport.html#ada2b30c0663b8d386e3314038d9b9349">gestionnaireFiltres</a>; </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="comment">// ── Données ───────────────────────────────────────────────────────────────</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <a class="code hl_struct" href="struct_rapport_tracabilite.html">RapportTracabilite</a>       <a class="code hl_variable" href="class_onglet_rapport.html#ab4ff6350ad14a8d11cc5d7c2150bc286">rapportCourant</a>; </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    std::vector&lt;ExigenceSRS&gt; <a class="code hl_variable" href="class_onglet_rapport.html#a65a64cad20ad7b9d386e23cd5bc1525b">srsAnalyses</a>;   </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    std::vector&lt;ExigenceSDD&gt; <a class="code hl_variable" href="class_onglet_rapport.html#a4c245859a692c4678b072920f10383af">sddAnalyses</a>;   </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="comment">//Liens brisés</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    QFrame      *<a class="code hl_variable" href="class_onglet_rapport.html#af36529bc577117a2c613937ad3085b8e">panneauLiensBrises</a>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    QWidget     *<a class="code hl_variable" href="class_onglet_rapport.html#a29846db8e7ec124501f1bf2a4177d387">listeLiensBrises</a>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    QVBoxLayout *<a class="code hl_variable" href="class_onglet_rapport.html#a10beacaa38c62655de993ff0734ace18">layoutListeLB</a>;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#a1c4673e01953875944c20aea6e8bf804">  139</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_onglet_rapport.html#a1c4673e01953875944c20aea6e8bf804">initialiserUI</a>();</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#a761820647193743906d8a29a35531415">  146</a></span>    QProgressBar* <a class="code hl_function" href="class_onglet_rapport.html#a761820647193743906d8a29a35531415">creerBarre</a>(<span class="keyword">const</span> QString&amp; couleur);</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="class_onglet_rapport.html#ac8b5203545aade91354b45a910426c3c">  152</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_onglet_rapport.html#ac8b5203545aade91354b45a910426c3c">styliserTableau</a>(QTableWidget* table);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>};</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="preprocessor">#endif </span><span class="comment">// ONGLETRAPPORT_H</span></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html">GestionnaireFiltresGUI</a></div><div class="ttdoc">Widget Qt gérant les trois filtres d&#39;affichage.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:39</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html"><div class="ttname"><a href="class_onglet_rapport.html">OngletRapport</a></div><div class="ttdoc">Onglet Qt qui affiche le rapport de tracabilite complet produit par le Module 2.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:57</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a08600dce6969bb44417df5d5f8282f30"><div class="ttname"><a href="class_onglet_rapport.html#a08600dce6969bb44417df5d5f8282f30">OngletRapport::barreSSS_SRS</a></div><div class="ttdeci">QProgressBar * barreSSS_SRS</div><div class="ttdoc">Barre de progression pour le taux SSS-&gt;SRS.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:141</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a0a05dec64300b1063034cec4dd143888"><div class="ttname"><a href="class_onglet_rapport.html#a0a05dec64300b1063034cec4dd143888">OngletRapport::afficherRapportComplet</a></div><div class="ttdeci">void afficherRapportComplet(const RapportTracabilite &amp;rapport, const std::vector&lt; ExigenceSRS &gt; &amp;srs, const std::vector&lt; ExigenceSDD &gt; &amp;sdd)</div><div class="ttdoc">AJOUT : Charge et affiche le rapport avec les vraies matrices bidimensionnelles.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a10beacaa38c62655de993ff0734ace18"><div class="ttname"><a href="class_onglet_rapport.html#a10beacaa38c62655de993ff0734ace18">OngletRapport::layoutListeLB</a></div><div class="ttdeci">QVBoxLayout * layoutListeLB</div><div class="ttdoc">Layout vertical des lignes de liens brises.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:193</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a13d77d5b2ad3e0dde3c7ec57bf3cc2ba"><div class="ttname"><a href="class_onglet_rapport.html#a13d77d5b2ad3e0dde3c7ec57bf3cc2ba">OngletRapport::appliquerFiltre</a></div><div class="ttdeci">void appliquerFiltre(const FiltreGUI &amp;filtre)</div><div class="ttdoc">AJOUT : Applique un filtre sur les matrices.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a1912bd0119c1e6ee4619d807e468e11d"><div class="ttname"><a href="class_onglet_rapport.html#a1912bd0119c1e6ee4619d807e468e11d">OngletRapport::labelTauxSRS_SDD</a></div><div class="ttdeci">QLabel * labelTauxSRS_SDD</div><div class="ttdoc">Label &quot;Taux SRS-&gt;SDD : X %&quot; a gauche de la barre.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:139</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a1b3867e58380cf22da33fb65fab0615c"><div class="ttname"><a href="class_onglet_rapport.html#a1b3867e58380cf22da33fb65fab0615c">OngletRapport::barreSRS_SDD</a></div><div class="ttdeci">QProgressBar * barreSRS_SDD</div><div class="ttdoc">Barre de progression pour le taux SRS-&gt;SDD.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:142</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a1c4673e01953875944c20aea6e8bf804"><div class="ttname"><a href="class_onglet_rapport.html#a1c4673e01953875944c20aea6e8bf804">OngletRapport::initialiserUI</a></div><div class="ttdeci">void initialiserUI()</div><div class="ttdoc">Initialise la mise en page et tous les widgets de l&#39;onglet.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a29846db8e7ec124501f1bf2a4177d387"><div class="ttname"><a href="class_onglet_rapport.html#a29846db8e7ec124501f1bf2a4177d387">OngletRapport::listeLiensBrises</a></div><div class="ttdeci">QWidget * listeLiensBrises</div><div class="ttdoc">Conteneur interne des lignes.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:192</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a36271cc1572f979177a7dfdf1027101d"><div class="ttname"><a href="class_onglet_rapport.html#a36271cc1572f979177a7dfdf1027101d">OngletRapport::labelDetailStatut</a></div><div class="ttdeci">QLabel * labelDetailStatut</div><div class="ttdoc">Badge statut colore selon la couverture.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:165</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a37325c6c7892d1ed774761efc58e48e3"><div class="ttname"><a href="class_onglet_rapport.html#a37325c6c7892d1ed774761efc58e48e3">OngletRapport::boutonExport</a></div><div class="ttdeci">QToolButton * boutonExport</div><div class="ttdoc">Bouton vert &quot;Exporter&quot; avec menu deroulant.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:173</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a39c4cea08e8afe1a7265389a08ca590c"><div class="ttname"><a href="class_onglet_rapport.html#a39c4cea08e8afe1a7265389a08ca590c">OngletRapport::boutonFiltres</a></div><div class="ttdeci">QPushButton * boutonFiltres</div><div class="ttdoc">Bouton &quot;Filtres&quot; ouvre/ferme le panneau.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:179</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a3c24ab7fe5d0e85eab63f74158c5eeba"><div class="ttname"><a href="class_onglet_rapport.html#a3c24ab7fe5d0e85eab63f74158c5eeba">OngletRapport::labelBadgeNonCouverts</a></div><div class="ttdeci">QLabel * labelBadgeNonCouverts</div><div class="ttdoc">Badge rouge : nombre d&#39;exigences non couvertes.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:148</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a44a30164fcb71c6e9d9437a0b02350ed"><div class="ttname"><a href="class_onglet_rapport.html#a44a30164fcb71c6e9d9437a0b02350ed">OngletRapport::labelBadgeCouverts</a></div><div class="ttdeci">QLabel * labelBadgeCouverts</div><div class="ttdoc">Badge vert : nombre d&#39;exigences couvertes (SSS + SRS).</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:147</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a4c245859a692c4678b072920f10383af"><div class="ttname"><a href="class_onglet_rapport.html#a4c245859a692c4678b072920f10383af">OngletRapport::sddAnalyses</a></div><div class="ttdeci">std::vector&lt; ExigenceSDD &gt; sddAnalyses</div><div class="ttdoc">Elements SDD du dernier rapport.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:186</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a519fe0235f5fb41432fa772782b7f818"><div class="ttname"><a href="class_onglet_rapport.html#a519fe0235f5fb41432fa772782b7f818">OngletRapport::OngletRapport</a></div><div class="ttdeci">OngletRapport(QWidget *parent=nullptr)</div><div class="ttdoc">Constructeur.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a5c0a66eaaced228c416ceefcab373eb6"><div class="ttname"><a href="class_onglet_rapport.html#a5c0a66eaaced228c416ceefcab373eb6">OngletRapport::afficherRapport</a></div><div class="ttdeci">void afficherRapport(const RapportTracabilite &amp;rapport)</div><div class="ttdoc">Charge et affiche un rapport de traçabilité sans données SRS/SDD détaillées.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a5d640bfa67288baa93a100f9406f4bc3"><div class="ttname"><a href="class_onglet_rapport.html#a5d640bfa67288baa93a100f9406f4bc3">OngletRapport::labelDetailType</a></div><div class="ttdeci">QLabel * labelDetailType</div><div class="ttdoc">Badge type : &quot;SSS&quot; (bleu) ou &quot;SRS&quot; (orange).</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:164</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a65a64cad20ad7b9d386e23cd5bc1525b"><div class="ttname"><a href="class_onglet_rapport.html#a65a64cad20ad7b9d386e23cd5bc1525b">OngletRapport::srsAnalyses</a></div><div class="ttdeci">std::vector&lt; ExigenceSRS &gt; srsAnalyses</div><div class="ttdoc">Exigences SRS du dernier rapport.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:185</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a6a47ec106861b2b1eecd7b34d7aa4e50"><div class="ttname"><a href="class_onglet_rapport.html#a6a47ec106861b2b1eecd7b34d7aa4e50">OngletRapport::barreGlobal</a></div><div class="ttdeci">QProgressBar * barreGlobal</div><div class="ttdoc">Barre de progression pour le taux global.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:143</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a6b2128766e24629ca56027af6cd1a8c3"><div class="ttname"><a href="class_onglet_rapport.html#a6b2128766e24629ca56027af6cd1a8c3">OngletRapport::panneauDetail</a></div><div class="ttdeci">QFrame * panneauDetail</div><div class="ttdoc">Cadre qui s&#39;affiche au clic sur une ligne de matrice.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:162</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a6dccd55774251782f8fb092695d8f1d8"><div class="ttname"><a href="class_onglet_rapport.html#a6dccd55774251782f8fb092695d8f1d8">OngletRapport::exporterHTML</a></div><div class="ttdeci">void exporterHTML()</div><div class="ttdoc">Exporte le rapport au format HTML.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a761820647193743906d8a29a35531415"><div class="ttname"><a href="class_onglet_rapport.html#a761820647193743906d8a29a35531415">OngletRapport::creerBarre</a></div><div class="ttdeci">QProgressBar * creerBarre(const QString &amp;couleur)</div><div class="ttdoc">AJOUT : Crée une barre de progression stylisée.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a82f8f2cdb7ac56b6364162a5d3c02325"><div class="ttname"><a href="class_onglet_rapport.html#a82f8f2cdb7ac56b6364162a5d3c02325">OngletRapport::labelTauxGlobal</a></div><div class="ttdeci">QLabel * labelTauxGlobal</div><div class="ttdoc">Label &quot;Taux global : X %&quot; a gauche de la barre.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:140</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a9d9818f3b333c4d82d7d35e5ef16f82d"><div class="ttname"><a href="class_onglet_rapport.html#a9d9818f3b333c4d82d7d35e5ef16f82d">OngletRapport::labelBadgeLiensBrises</a></div><div class="ttdeci">QLabel * labelBadgeLiensBrises</div><div class="ttdoc">Badge orange cliquable : nombre de liens brises.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:149</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_a9febc078f7c7c585bd07fccd3e5a0ce6"><div class="ttname"><a href="class_onglet_rapport.html#a9febc078f7c7c585bd07fccd3e5a0ce6">OngletRapport::tableMatriceSSS_SRS</a></div><div class="ttdeci">QTableWidget * tableMatriceSSS_SRS</div><div class="ttdoc">Matrice SSS x SRS — 3 colonnes : Exigence | Statut | Couverte par (SRS).</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:155</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ab3a6c2c747381058a25d871ae92d3374"><div class="ttname"><a href="class_onglet_rapport.html#ab3a6c2c747381058a25d871ae92d3374">OngletRapport::menuExport</a></div><div class="ttdeci">QMenu * menuExport</div><div class="ttdoc">Menu : CSV, HTML interactif, PDF.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:174</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ab4ff6350ad14a8d11cc5d7c2150bc286"><div class="ttname"><a href="class_onglet_rapport.html#ab4ff6350ad14a8d11cc5d7c2150bc286">OngletRapport::rapportCourant</a></div><div class="ttdeci">RapportTracabilite rapportCourant</div><div class="ttdoc">Copie du dernier rapport charge.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:184</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ab7ae76a7fbdcce24d43c327bd544fee6"><div class="ttname"><a href="class_onglet_rapport.html#ab7ae76a7fbdcce24d43c327bd544fee6">OngletRapport::tableMatriceSRS_SDD</a></div><div class="ttdeci">QTableWidget * tableMatriceSRS_SDD</div><div class="ttdoc">Matrice SRS x SDD — 3 colonnes : Exigence | Statut | Couverte par (SDD).</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:158</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ac22c36aed05993e180d240661f6f07b4"><div class="ttname"><a href="class_onglet_rapport.html#ac22c36aed05993e180d240661f6f07b4">OngletRapport::exporterCSV</a></div><div class="ttdeci">void exporterCSV()</div><div class="ttdoc">Exporte le rapport au format CSV.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ac3d2cedd4765281542c8aeed0e42daa4"><div class="ttname"><a href="class_onglet_rapport.html#ac3d2cedd4765281542c8aeed0e42daa4">OngletRapport::panneauFiltres</a></div><div class="ttdeci">QFrame * panneauFiltres</div><div class="ttdoc">Cadre lateral qui se glisse depuis la droite.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:178</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ac8b5203545aade91354b45a910426c3c"><div class="ttname"><a href="class_onglet_rapport.html#ac8b5203545aade91354b45a910426c3c">OngletRapport::styliserTableau</a></div><div class="ttdeci">void styliserTableau(QTableWidget *table)</div><div class="ttdoc">AJOUT : Applique un style cohérent à un QTableWidget.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ac9941f52ef0b753220475b1f091109a3"><div class="ttname"><a href="class_onglet_rapport.html#ac9941f52ef0b753220475b1f091109a3">OngletRapport::toggleFiltres</a></div><div class="ttdeci">void toggleFiltres()</div><div class="ttdoc">AJOUT : Affiche ou masque le panneau de filtres latéral.</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ad85c99840ac1f829a3339b38ee7abcf3"><div class="ttname"><a href="class_onglet_rapport.html#ad85c99840ac1f829a3339b38ee7abcf3">OngletRapport::labelDetailLiens</a></div><div class="ttdeci">QLabel * labelDetailLiens</div><div class="ttdoc">Liste des identifiants des exigences liees.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:166</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ad9a888355f5ed489e24ba3fed114d0be"><div class="ttname"><a href="class_onglet_rapport.html#ad9a888355f5ed489e24ba3fed114d0be">OngletRapport::labelDetailId</a></div><div class="ttdeci">QLabel * labelDetailId</div><div class="ttdoc">Identifiant de l&#39;exigence selectionnee.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:163</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_ada2b30c0663b8d386e3314038d9b9349"><div class="ttname"><a href="class_onglet_rapport.html#ada2b30c0663b8d386e3314038d9b9349">OngletRapport::gestionnaireFiltres</a></div><div class="ttdeci">GestionnaireFiltresGUI * gestionnaireFiltres</div><div class="ttdoc">Widget interne avec les champs de filtre.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:180</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_af36529bc577117a2c613937ad3085b8e"><div class="ttname"><a href="class_onglet_rapport.html#af36529bc577117a2c613937ad3085b8e">OngletRapport::panneauLiensBrises</a></div><div class="ttdeci">QFrame * panneauLiensBrises</div><div class="ttdoc">Cadre orange listant les liens brises.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:191</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html_af7f370e171006d74535cd3f54c938a47"><div class="ttname"><a href="class_onglet_rapport.html#af7f370e171006d74535cd3f54c938a47">OngletRapport::labelTauxSSS_SRS</a></div><div class="ttdeci">QLabel * labelTauxSSS_SRS</div><div class="ttdoc">Label &quot;Taux SSS-&gt;SRS : X %&quot; a gauche de la barre.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:138</div></div>
+<div class="ttc" id="astruct_filtre_g_u_i_html"><div class="ttname"><a href="struct_filtre_g_u_i.html">FiltreGUI</a></div><div class="ttdoc">Combinaison des trois filtres actifs.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:29</div></div>
+<div class="ttc" id="astruct_rapport_tracabilite_html"><div class="ttname"><a href="struct_rapport_tracabilite.html">RapportTracabilite</a></div><div class="ttdoc">Structure de transfert des résultats de l&#39;analyse vers le module 3.</div><div class="ttdef"><b>Definition</b> RapportTracabilite.h:14</div></div>
+<div class="ttc" id="atrunk_2headers_2_exigence_s_d_d_8h_html"><div class="ttname"><a href="trunk_2headers_2_exigence_s_d_d_8h.html">ExigenceSDD.h</a></div></div>
+<div class="ttc" id="atrunk_2headers_2_exigence_s_r_s_8h_html"><div class="ttname"><a href="trunk_2headers_2_exigence_s_r_s_8h.html">ExigenceSRS.h</a></div></div>
+<div class="ttc" id="atrunk_2headers_2_gestionnaire_filtres_g_u_i_8h_html"><div class="ttname"><a href="trunk_2headers_2_gestionnaire_filtres_g_u_i_8h.html">GestionnaireFiltresGUI.h</a></div><div class="ttdoc">Déclaration de la classe GestionnaireFiltresGUI.</div></div>
+<div class="ttc" id="atrunk_2headers_2_rapport_tracabilite_8h_html"><div class="ttname"><a href="trunk_2headers_2_rapport_tracabilite_8h.html">RapportTracabilite.h</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_4e3a55e2a9734425e24eb78aa4793941.html">trunk</a></li><li class="navelem"><a href="dir_c3fc8ee92b5dc48d673393671412e2a1.html">headers</a></li><li class="navelem"><a href="trunk_2headers_2_ongletrapport_8h.html">Ongletrapport.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TraceLink:  Fichier source de branches/L2G1_Module3/headers/mainwindow.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">TraceLink
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('branches_2_l2_g1___module3_2headers_2mainwindow_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">mainwindow.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="branches_2_l2_g1___module3_2headers_2mainwindow_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef MAINWINDOW_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define MAINWINDOW_H</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;QMainWindow&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;QTabWidget&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;QWidget&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;QPushButton&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;QLineEdit&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;QLabel&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;QVBoxLayout&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;QHBoxLayout&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;QTextEdit&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;QListWidget&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;QProgressBar&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;QStringList&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;QTimer&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;<a class="code" href="branches_2_l2_g1___module3_2headers_2_ongletrapport_8h.html">OngletRapport.h</a>&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="branches_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h.html">VueGrapheTracabilite.h</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html">GestionnaireFiltresGUI.h</a>&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;ExtracteurFichier.h&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;ConvertisseurExigence.h&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;MoteurTracabilite.h&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;ThreadManager.h&quot;</span></div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_main_window.html">   29</a></span><span class="keyword">class </span><a class="code hl_function" href="class_main_window.html#a996c5a2b6f77944776856f08ec30858d">MainWindow</a> : <span class="keyword">public</span> QMainWindow</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    Q_OBJECT</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_function" href="class_main_window.html#a996c5a2b6f77944776856f08ec30858d">MainWindow</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_function" href="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7">~MainWindow</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">private</span> slots:</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_main_window.html#a6546156c5f72113ea02598362994d79f">parcourirSSS</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_main_window.html#ab39e24654e1e3289f1019926d3cd9e1b">parcourirSRS</a>();</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_main_window.html#a65c6d1b51f3e1c474d71e336b5dfc07c">parcourirSDD</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_main_window.html#adc8d59bb4989482f4563f78fa75c36a6">verifierFichiersSelectionnes</a>();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_main_window.html#ae4b8723fa8add1a24180ef2b63751699">reinitialiser</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_main_window.html#a2c6cd85de787b78a91cd43a240e8f65c">lancerAnalyse</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">void</span> <a class="code hl_slot" href="class_main_window.html#a3f2e4a9c8cb7495cf48151db88996206">filtrerApercu</a>(<span class="keyword">const</span> QString &amp;texte);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="comment">// Onglets principaux</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_main_window.html#ac6080f95dd35faed65fa56d6f0e15829">   45</a></span>    QTabWidget             *<a class="code hl_variable" href="class_main_window.html#ac6080f95dd35faed65fa56d6f0e15829">tabWidget</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_main_window.html#a9e186beefb05a94d292827856f74a93f">   46</a></span>    QWidget                *<a class="code hl_variable" href="class_main_window.html#a9e186beefb05a94d292827856f74a93f">ongletImport</a>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_main_window.html#a88798284ca8df1d76f1b9d1ef9d44dee">   47</a></span>    <a class="code hl_class" href="class_onglet_rapport.html">OngletRapport</a>          *<a class="code hl_variable" href="class_main_window.html#a88798284ca8df1d76f1b9d1ef9d44dee">ongletRapport</a>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_main_window.html#a844047afd3a23a03d5a1d39162d79455">   48</a></span>    <a class="code hl_class" href="class_vue_graphe_tracabilite.html">VueGrapheTracabilite</a>   *<a class="code hl_variable" href="class_main_window.html#a844047afd3a23a03d5a1d39162d79455">ongletGraphe</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="class_main_window.html#a4b53f543a4d3ddf0f99ad96fac689962">   49</a></span>    <a class="code hl_class" href="class_gestionnaire_filtres_g_u_i.html">GestionnaireFiltresGUI</a> *<a class="code hl_variable" href="class_main_window.html#a4b53f543a4d3ddf0f99ad96fac689962">gestionnaireFiltres</a>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_main_window.html#a3ae22b2eae2558a3cad689a458450e0b">   50</a></span>    QWidget                *<a class="code hl_variable" href="class_main_window.html#a3ae22b2eae2558a3cad689a458450e0b">ongletGrapheConteneur</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_main_window.html#a183bb814f2f81045c5d1592a37aaa066">   51</a></span>    QWidget                *<a class="code hl_variable" href="class_main_window.html#a183bb814f2f81045c5d1592a37aaa066">ongletRapportConteneur</a>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// Onglets fichiers SSS/SRS/SDD</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_main_window.html#a7a1cf69dd9ef5b074f44c5314770f0b9">   53</a></span>    QTabWidget  *<a class="code hl_variable" href="class_main_window.html#a7a1cf69dd9ef5b074f44c5314770f0b9">ongletsFichiers</a>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_main_window.html#a29c06208edf21f267effd9bfd57199f8">   54</a></span>    QLineEdit   *<a class="code hl_variable" href="class_main_window.html#a29c06208edf21f267effd9bfd57199f8">champSSS</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_main_window.html#ae615075e8b603a4e5b60faee454fdb8d">   55</a></span>    QLineEdit   *<a class="code hl_variable" href="class_main_window.html#ae615075e8b603a4e5b60faee454fdb8d">champSRS</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="class_main_window.html#ab412b6c0593423f4f9f9edb49006e6c6">   56</a></span>    QLineEdit   *<a class="code hl_variable" href="class_main_window.html#ab412b6c0593423f4f9f9edb49006e6c6">champSDD</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_main_window.html#a3d36978afc9116f40fa8ce153a487b33">   57</a></span>    QPushButton *<a class="code hl_variable" href="class_main_window.html#a3d36978afc9116f40fa8ce153a487b33">btnParcourirSSS</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_main_window.html#a67672d72bba34301e2364a41267862af">   58</a></span>    QPushButton *<a class="code hl_variable" href="class_main_window.html#a67672d72bba34301e2364a41267862af">btnParcourirSRS</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_main_window.html#a2f158425426e8e82c3c3cc65b5eab8c5">   59</a></span>    QPushButton *<a class="code hl_variable" href="class_main_window.html#a2f158425426e8e82c3c3cc65b5eab8c5">btnParcourirSDD</a>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="class_main_window.html#adbd902ab10419242511bbf66bb1b3ded">   60</a></span>    QLabel      *<a class="code hl_variable" href="class_main_window.html#adbd902ab10419242511bbf66bb1b3ded">badgeSSS</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_main_window.html#a93b38f90a5c9823f1e83d7f85095782b">   61</a></span>    QLabel      *<a class="code hl_variable" href="class_main_window.html#a93b38f90a5c9823f1e83d7f85095782b">badgeSRS</a>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_main_window.html#a0ff09376639eb7fc8b4d4ea7c929c3ec">   62</a></span>    QLabel      *<a class="code hl_variable" href="class_main_window.html#a0ff09376639eb7fc8b4d4ea7c929c3ec">badgeSDD</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_main_window.html#ab61dc516291879fc11662d781312caa0">   63</a></span>    QLabel      *<a class="code hl_variable" href="class_main_window.html#ab61dc516291879fc11662d781312caa0">erreurSSS</a>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_main_window.html#a532a25a469d7ff9ddf7a77e1365e2c1e">   64</a></span>    QLabel      *<a class="code hl_variable" href="class_main_window.html#a532a25a469d7ff9ddf7a77e1365e2c1e">erreurSRS</a>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_main_window.html#ab21775ba46eb6ccf9dd9d082ef7564b8">   65</a></span>    QLabel      *<a class="code hl_variable" href="class_main_window.html#ab21775ba46eb6ccf9dd9d082ef7564b8">erreurSDD</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_main_window.html#aebaf5f8357d6b7e8bf89bdcf4c99beb6">   66</a></span>    QListWidget *<a class="code hl_variable" href="class_main_window.html#aebaf5f8357d6b7e8bf89bdcf4c99beb6">listeSSS</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_main_window.html#ab7eb40d0003c656ce5b3adaacb50c4d0">   67</a></span>    QListWidget *<a class="code hl_variable" href="class_main_window.html#ab7eb40d0003c656ce5b3adaacb50c4d0">listeSRS</a>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="class_main_window.html#a3019ea7c00b55c0ab88ed870ebd578b0">   68</a></span>    QListWidget *<a class="code hl_variable" href="class_main_window.html#a3019ea7c00b55c0ab88ed870ebd578b0">listeSDD</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Préfixes configurables par l&#39;utilisateur</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="class_main_window.html#af369a34cf876ff881097967fea701104">   70</a></span>    QLineEdit   *<a class="code hl_variable" href="class_main_window.html#af369a34cf876ff881097967fea701104">champPrefixeGlobal</a>; </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="class_main_window.html#acfb5606b548ed5e3172d296abaa104a7">   71</a></span>    QLineEdit   *<a class="code hl_variable" href="class_main_window.html#acfb5606b548ed5e3172d296abaa104a7">champPrefixeSSS</a>;    </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="class_main_window.html#af4cfa08cd6fb82d858c406f5572354bd">   72</a></span>    QLineEdit   *<a class="code hl_variable" href="class_main_window.html#af4cfa08cd6fb82d858c406f5572354bd">champPrefixeSRS</a>;    </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_main_window.html#ad1fd3c58a5653d37597d7ec9b7d8c17d">   73</a></span>    QLineEdit   *<a class="code hl_variable" href="class_main_window.html#ad1fd3c58a5653d37597d7ec9b7d8c17d">champPrefixeSDD</a>;    </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// Boutons + statut</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="class_main_window.html#a505bc104df38e1c0540f4d450fd0f17b">   75</a></span>    QPushButton *<a class="code hl_variable" href="class_main_window.html#a505bc104df38e1c0540f4d450fd0f17b">btnLancer</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_main_window.html#ae0af91469db80afd4c4c4438386f4232">   76</a></span>    QPushButton *<a class="code hl_variable" href="class_main_window.html#ae0af91469db80afd4c4c4438386f4232">btnReinitialiser</a>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="class_main_window.html#a5b835797808104379708d7bad103a0a5">   77</a></span>    QLabel      *<a class="code hl_variable" href="class_main_window.html#a5b835797808104379708d7bad103a0a5">labelStatut</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">// Terminal + progression</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="class_main_window.html#a655af4ce2e2b60ff0e32485bf81c70c1">   79</a></span>    QTextEdit    *<a class="code hl_variable" href="class_main_window.html#a655af4ce2e2b60ff0e32485bf81c70c1">terminal</a>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_main_window.html#a625733ab96553e187e95052cd64c4ae9">   80</a></span>    QProgressBar *<a class="code hl_variable" href="class_main_window.html#a625733ab96553e187e95052cd64c4ae9">barreProgression</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">// Aperçu exigences</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="class_main_window.html#ac55dfe1fdfe6f84410af91032305a2fb">   82</a></span>    QListWidget *<a class="code hl_variable" href="class_main_window.html#ac55dfe1fdfe6f84410af91032305a2fb">listeExigences</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="class_main_window.html#a6de28aac7fce489f08aa87d89614a7b8">   83</a></span>    QLineEdit   *<a class="code hl_variable" href="class_main_window.html#a6de28aac7fce489f08aa87d89614a7b8">champRechercheId</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="class_main_window.html#aa9ae6fcb02bd4d870afa95115615308d">   84</a></span>    QLabel      *<a class="code hl_variable" href="class_main_window.html#aa9ae6fcb02bd4d870afa95115615308d">labelNbExigences</a>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="class_main_window.html#a7b3473d7aafed5812236cea604978198">   85</a></span>    QStringList  <a class="code hl_variable" href="class_main_window.html#a7b3473d7aafed5812236cea604978198">toutesExigences</a>;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">// Chemins : listes pour sélection multiple</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="class_main_window.html#a186e3a3094553b67568b559e8e862030">   87</a></span>    QStringList <a class="code hl_variable" href="class_main_window.html#a186e3a3094553b67568b559e8e862030">cheminsSSS</a>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="class_main_window.html#a36c9d629cdad5d183106f9216175f964">   88</a></span>    QStringList <a class="code hl_variable" href="class_main_window.html#a36c9d629cdad5d183106f9216175f964">cheminsSRS</a>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="class_main_window.html#abc5b6f2d71207d9d5288c3ae7d8a958b">   89</a></span>    QStringList <a class="code hl_variable" href="class_main_window.html#abc5b6f2d71207d9d5288c3ae7d8a958b">cheminsSDD</a>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">// Thread</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_main_window.html#a068af2d3a2c4dc660471b9aa2fbe4697">   91</a></span>    <a class="code hl_class" href="class_moteur_tracabilite.html">MoteurTracabilite</a> *<a class="code hl_variable" href="class_main_window.html#a068af2d3a2c4dc660471b9aa2fbe4697">moteurAnalyse</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="class_main_window.html#a985e4521472041f5e00193872a619d01">   92</a></span>    <a class="code hl_class" href="class_thread_manager.html">ThreadManager</a>     *<a class="code hl_variable" href="class_main_window.html#a985e4521472041f5e00193872a619d01">threadManager</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">// Méthodes</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_main_window.html#ac9ecc19342cfbe10ce582c96c04a01e0">construireOngletImport</a>();</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_main_window.html#ac9bc4ed35a651ba4c2ce72ed179044be">construireOngletGraphe</a>();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_main_window.html#ad419fdfc3443880fb564a63827a110f1">construireOngletRapport</a>();</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_main_window.html#aa3c0c8baa5625b112c9870157c8c375f">formatAccepte</a>(<span class="keyword">const</span> QString &amp;chemin);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_main_window.html#a64de1d418f1afb2bf0fdfe5c1c311dd8">mettreAJourOngletFichier</a>(<span class="keywordtype">int</span> index, <span class="keyword">const</span> QString &amp;etat);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_main_window.html#adfb08a1d7d4711163137aaa69798280a">logTerminal</a>(<span class="keyword">const</span> QString &amp;message, <span class="keyword">const</span> QString &amp;couleur = <span class="stringliteral">&quot;#D4D4D4&quot;</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_main_window.html#ac552ded8e5621ffa0e3f8e4b5e041fb6">afficherApercuExigences</a>(<span class="keyword">const</span> std::vector&lt;ExigenceExtraite&gt; &amp;sss,</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                                 <span class="keyword">const</span> std::vector&lt;ExigenceExtraite&gt; &amp;srs,</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                                 <span class="keyword">const</span> std::vector&lt;ExigenceExtraite&gt; &amp;sdd);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_main_window.html#a664924215614811f1afd1d4c08b6b2f1">ajouterItemVide</a>(QListWidget *liste);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>};</div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="preprocessor">#endif </span><span class="comment">// MAINWINDOW_H</span></div>
+<div class="ttc" id="abranches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h_html"><div class="ttname"><a href="branches_2_l2_g1___module3_2headers_2_gestionnaire_filtres_g_u_i_8h.html">GestionnaireFiltresGUI.h</a></div><div class="ttdoc">Déclaration de la classe GestionnaireFiltresGUI.</div></div>
+<div class="ttc" id="abranches_2_l2_g1___module3_2headers_2_ongletrapport_8h_html"><div class="ttname"><a href="branches_2_l2_g1___module3_2headers_2_ongletrapport_8h.html">Ongletrapport.h</a></div><div class="ttdoc">Declaration de la classe OngletRapport.</div></div>
+<div class="ttc" id="abranches_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h_html"><div class="ttname"><a href="branches_2_l2_g1___module3_2headers_2_vue_graphe_tracabilite_8h.html">VueGrapheTracabilite.h</a></div><div class="ttdoc">Vue graphe de traçabilité — design amélioré avec 2 vues.</div></div>
+<div class="ttc" id="aclass_gestionnaire_filtres_g_u_i_html"><div class="ttname"><a href="class_gestionnaire_filtres_g_u_i.html">GestionnaireFiltresGUI</a></div><div class="ttdoc">Widget Qt gérant les trois filtres d&#39;affichage.</div><div class="ttdef"><b>Definition</b> GestionnaireFiltresGUI.h:39</div></div>
+<div class="ttc" id="aclass_main_window_html_a068af2d3a2c4dc660471b9aa2fbe4697"><div class="ttname"><a href="class_main_window.html#a068af2d3a2c4dc660471b9aa2fbe4697">MainWindow::moteurAnalyse</a></div><div class="ttdeci">MoteurTracabilite * moteurAnalyse</div><div class="ttdef"><b>Definition</b> mainwindow.h:91</div></div>
+<div class="ttc" id="aclass_main_window_html_a0ff09376639eb7fc8b4d4ea7c929c3ec"><div class="ttname"><a href="class_main_window.html#a0ff09376639eb7fc8b4d4ea7c929c3ec">MainWindow::badgeSDD</a></div><div class="ttdeci">QLabel * badgeSDD</div><div class="ttdef"><b>Definition</b> mainwindow.h:62</div></div>
+<div class="ttc" id="aclass_main_window_html_a183bb814f2f81045c5d1592a37aaa066"><div class="ttname"><a href="class_main_window.html#a183bb814f2f81045c5d1592a37aaa066">MainWindow::ongletRapportConteneur</a></div><div class="ttdeci">QWidget * ongletRapportConteneur</div><div class="ttdef"><b>Definition</b> mainwindow.h:51</div></div>
+<div class="ttc" id="aclass_main_window_html_a186e3a3094553b67568b559e8e862030"><div class="ttname"><a href="class_main_window.html#a186e3a3094553b67568b559e8e862030">MainWindow::cheminsSSS</a></div><div class="ttdeci">QStringList cheminsSSS</div><div class="ttdef"><b>Definition</b> mainwindow.h:87</div></div>
+<div class="ttc" id="aclass_main_window_html_a29c06208edf21f267effd9bfd57199f8"><div class="ttname"><a href="class_main_window.html#a29c06208edf21f267effd9bfd57199f8">MainWindow::champSSS</a></div><div class="ttdeci">QLineEdit * champSSS</div><div class="ttdef"><b>Definition</b> mainwindow.h:54</div></div>
+<div class="ttc" id="aclass_main_window_html_a2c6cd85de787b78a91cd43a240e8f65c"><div class="ttname"><a href="class_main_window.html#a2c6cd85de787b78a91cd43a240e8f65c">MainWindow::lancerAnalyse</a></div><div class="ttdeci">void lancerAnalyse()</div><div class="ttdoc">Lance le pipeline complet d&#39;analyse de traçabilité.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:713</div></div>
+<div class="ttc" id="aclass_main_window_html_a2f158425426e8e82c3c3cc65b5eab8c5"><div class="ttname"><a href="class_main_window.html#a2f158425426e8e82c3c3cc65b5eab8c5">MainWindow::btnParcourirSDD</a></div><div class="ttdeci">QPushButton * btnParcourirSDD</div><div class="ttdef"><b>Definition</b> mainwindow.h:59</div></div>
+<div class="ttc" id="aclass_main_window_html_a3019ea7c00b55c0ab88ed870ebd578b0"><div class="ttname"><a href="class_main_window.html#a3019ea7c00b55c0ab88ed870ebd578b0">MainWindow::listeSDD</a></div><div class="ttdeci">QListWidget * listeSDD</div><div class="ttdef"><b>Definition</b> mainwindow.h:68</div></div>
+<div class="ttc" id="aclass_main_window_html_a36c9d629cdad5d183106f9216175f964"><div class="ttname"><a href="class_main_window.html#a36c9d629cdad5d183106f9216175f964">MainWindow::cheminsSRS</a></div><div class="ttdeci">QStringList cheminsSRS</div><div class="ttdef"><b>Definition</b> mainwindow.h:88</div></div>
+<div class="ttc" id="aclass_main_window_html_a3ae22b2eae2558a3cad689a458450e0b"><div class="ttname"><a href="class_main_window.html#a3ae22b2eae2558a3cad689a458450e0b">MainWindow::ongletGrapheConteneur</a></div><div class="ttdeci">QWidget * ongletGrapheConteneur</div><div class="ttdef"><b>Definition</b> mainwindow.h:50</div></div>
+<div class="ttc" id="aclass_main_window_html_a3d36978afc9116f40fa8ce153a487b33"><div class="ttname"><a href="class_main_window.html#a3d36978afc9116f40fa8ce153a487b33">MainWindow::btnParcourirSSS</a></div><div class="ttdeci">QPushButton * btnParcourirSSS</div><div class="ttdef"><b>Definition</b> mainwindow.h:57</div></div>
+<div class="ttc" id="aclass_main_window_html_a3f2e4a9c8cb7495cf48151db88996206"><div class="ttname"><a href="class_main_window.html#a3f2e4a9c8cb7495cf48151db88996206">MainWindow::filtrerApercu</a></div><div class="ttdeci">void filtrerApercu(const QString &amp;texte)</div><div class="ttdoc">Filtre l&#39;aperçu des exigences par ID en temps réel.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:681</div></div>
+<div class="ttc" id="aclass_main_window_html_a4b53f543a4d3ddf0f99ad96fac689962"><div class="ttname"><a href="class_main_window.html#a4b53f543a4d3ddf0f99ad96fac689962">MainWindow::gestionnaireFiltres</a></div><div class="ttdeci">GestionnaireFiltresGUI * gestionnaireFiltres</div><div class="ttdef"><b>Definition</b> mainwindow.h:49</div></div>
+<div class="ttc" id="aclass_main_window_html_a505bc104df38e1c0540f4d450fd0f17b"><div class="ttname"><a href="class_main_window.html#a505bc104df38e1c0540f4d450fd0f17b">MainWindow::btnLancer</a></div><div class="ttdeci">QPushButton * btnLancer</div><div class="ttdef"><b>Definition</b> mainwindow.h:75</div></div>
+<div class="ttc" id="aclass_main_window_html_a532a25a469d7ff9ddf7a77e1365e2c1e"><div class="ttname"><a href="class_main_window.html#a532a25a469d7ff9ddf7a77e1365e2c1e">MainWindow::erreurSRS</a></div><div class="ttdeci">QLabel * erreurSRS</div><div class="ttdef"><b>Definition</b> mainwindow.h:64</div></div>
+<div class="ttc" id="aclass_main_window_html_a5b835797808104379708d7bad103a0a5"><div class="ttname"><a href="class_main_window.html#a5b835797808104379708d7bad103a0a5">MainWindow::labelStatut</a></div><div class="ttdeci">QLabel * labelStatut</div><div class="ttdef"><b>Definition</b> mainwindow.h:77</div></div>
+<div class="ttc" id="aclass_main_window_html_a625733ab96553e187e95052cd64c4ae9"><div class="ttname"><a href="class_main_window.html#a625733ab96553e187e95052cd64c4ae9">MainWindow::barreProgression</a></div><div class="ttdeci">QProgressBar * barreProgression</div><div class="ttdef"><b>Definition</b> mainwindow.h:80</div></div>
+<div class="ttc" id="aclass_main_window_html_a64de1d418f1afb2bf0fdfe5c1c311dd8"><div class="ttname"><a href="class_main_window.html#a64de1d418f1afb2bf0fdfe5c1c311dd8">MainWindow::mettreAJourOngletFichier</a></div><div class="ttdeci">void mettreAJourOngletFichier(int index, const QString &amp;etat)</div><div class="ttdoc">Met à jour le titre et la couleur de l&#39;onglet SSS/SRS/SDD.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:434</div></div>
+<div class="ttc" id="aclass_main_window_html_a6546156c5f72113ea02598362994d79f"><div class="ttname"><a href="class_main_window.html#a6546156c5f72113ea02598362994d79f">MainWindow::parcourirSSS</a></div><div class="ttdeci">void parcourirSSS()</div><div class="ttdoc">Ouvre un sélecteur de fichiers multiples pour les fichiers SSS.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:465</div></div>
+<div class="ttc" id="aclass_main_window_html_a655af4ce2e2b60ff0e32485bf81c70c1"><div class="ttname"><a href="class_main_window.html#a655af4ce2e2b60ff0e32485bf81c70c1">MainWindow::terminal</a></div><div class="ttdeci">QTextEdit * terminal</div><div class="ttdef"><b>Definition</b> mainwindow.h:79</div></div>
+<div class="ttc" id="aclass_main_window_html_a65c6d1b51f3e1c474d71e336b5dfc07c"><div class="ttname"><a href="class_main_window.html#a65c6d1b51f3e1c474d71e336b5dfc07c">MainWindow::parcourirSDD</a></div><div class="ttdeci">void parcourirSDD()</div><div class="ttdoc">Ouvre un sélecteur de fichiers multiples pour les fichiers SDD.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:541</div></div>
+<div class="ttc" id="aclass_main_window_html_a664924215614811f1afd1d4c08b6b2f1"><div class="ttname"><a href="class_main_window.html#a664924215614811f1afd1d4c08b6b2f1">MainWindow::ajouterItemVide</a></div><div class="ttdeci">void ajouterItemVide(QListWidget *liste)</div><div class="ttdoc">Ajoute l&#39;item &quot;Aucun fichier sélectionné&quot; par défaut dans une liste.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:92</div></div>
+<div class="ttc" id="aclass_main_window_html_a67672d72bba34301e2364a41267862af"><div class="ttname"><a href="class_main_window.html#a67672d72bba34301e2364a41267862af">MainWindow::btnParcourirSRS</a></div><div class="ttdeci">QPushButton * btnParcourirSRS</div><div class="ttdef"><b>Definition</b> mainwindow.h:58</div></div>
+<div class="ttc" id="aclass_main_window_html_a6de28aac7fce489f08aa87d89614a7b8"><div class="ttname"><a href="class_main_window.html#a6de28aac7fce489f08aa87d89614a7b8">MainWindow::champRechercheId</a></div><div class="ttdeci">QLineEdit * champRechercheId</div><div class="ttdef"><b>Definition</b> mainwindow.h:83</div></div>
+<div class="ttc" id="aclass_main_window_html_a7a1cf69dd9ef5b074f44c5314770f0b9"><div class="ttname"><a href="class_main_window.html#a7a1cf69dd9ef5b074f44c5314770f0b9">MainWindow::ongletsFichiers</a></div><div class="ttdeci">QTabWidget * ongletsFichiers</div><div class="ttdef"><b>Definition</b> mainwindow.h:53</div></div>
+<div class="ttc" id="aclass_main_window_html_a7b3473d7aafed5812236cea604978198"><div class="ttname"><a href="class_main_window.html#a7b3473d7aafed5812236cea604978198">MainWindow::toutesExigences</a></div><div class="ttdeci">QStringList toutesExigences</div><div class="ttdef"><b>Definition</b> mainwindow.h:85</div></div>
+<div class="ttc" id="aclass_main_window_html_a844047afd3a23a03d5a1d39162d79455"><div class="ttname"><a href="class_main_window.html#a844047afd3a23a03d5a1d39162d79455">MainWindow::ongletGraphe</a></div><div class="ttdeci">VueGrapheTracabilite * ongletGraphe</div><div class="ttdef"><b>Definition</b> mainwindow.h:48</div></div>
+<div class="ttc" id="aclass_main_window_html_a88798284ca8df1d76f1b9d1ef9d44dee"><div class="ttname"><a href="class_main_window.html#a88798284ca8df1d76f1b9d1ef9d44dee">MainWindow::ongletRapport</a></div><div class="ttdeci">OngletRapport * ongletRapport</div><div class="ttdef"><b>Definition</b> mainwindow.h:47</div></div>
+<div class="ttc" id="aclass_main_window_html_a93b38f90a5c9823f1e83d7f85095782b"><div class="ttname"><a href="class_main_window.html#a93b38f90a5c9823f1e83d7f85095782b">MainWindow::badgeSRS</a></div><div class="ttdeci">QLabel * badgeSRS</div><div class="ttdef"><b>Definition</b> mainwindow.h:61</div></div>
+<div class="ttc" id="aclass_main_window_html_a985e4521472041f5e00193872a619d01"><div class="ttname"><a href="class_main_window.html#a985e4521472041f5e00193872a619d01">MainWindow::threadManager</a></div><div class="ttdeci">ThreadManager * threadManager</div><div class="ttdef"><b>Definition</b> mainwindow.h:92</div></div>
+<div class="ttc" id="aclass_main_window_html_a996c5a2b6f77944776856f08ec30858d"><div class="ttname"><a href="class_main_window.html#a996c5a2b6f77944776856f08ec30858d">MainWindow::MainWindow</a></div><div class="ttdeci">MainWindow(QWidget *parent=nullptr)</div><div class="ttdoc">Constructeur de la fenêtre principale.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:43</div></div>
+<div class="ttc" id="aclass_main_window_html_a9e186beefb05a94d292827856f74a93f"><div class="ttname"><a href="class_main_window.html#a9e186beefb05a94d292827856f74a93f">MainWindow::ongletImport</a></div><div class="ttdeci">QWidget * ongletImport</div><div class="ttdef"><b>Definition</b> mainwindow.h:46</div></div>
+<div class="ttc" id="aclass_main_window_html_aa3c0c8baa5625b112c9870157c8c375f"><div class="ttname"><a href="class_main_window.html#aa3c0c8baa5625b112c9870157c8c375f">MainWindow::formatAccepte</a></div><div class="ttdeci">bool formatAccepte(const QString &amp;chemin)</div><div class="ttdoc">Vérifie si l&#39;extension du fichier est acceptée par l&#39;application.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:452</div></div>
+<div class="ttc" id="aclass_main_window_html_aa9ae6fcb02bd4d870afa95115615308d"><div class="ttname"><a href="class_main_window.html#aa9ae6fcb02bd4d870afa95115615308d">MainWindow::labelNbExigences</a></div><div class="ttdeci">QLabel * labelNbExigences</div><div class="ttdef"><b>Definition</b> mainwindow.h:84</div></div>
+<div class="ttc" id="aclass_main_window_html_ab21775ba46eb6ccf9dd9d082ef7564b8"><div class="ttname"><a href="class_main_window.html#ab21775ba46eb6ccf9dd9d082ef7564b8">MainWindow::erreurSDD</a></div><div class="ttdeci">QLabel * erreurSDD</div><div class="ttdef"><b>Definition</b> mainwindow.h:65</div></div>
+<div class="ttc" id="aclass_main_window_html_ab39e24654e1e3289f1019926d3cd9e1b"><div class="ttname"><a href="class_main_window.html#ab39e24654e1e3289f1019926d3cd9e1b">MainWindow::parcourirSRS</a></div><div class="ttdeci">void parcourirSRS()</div><div class="ttdoc">Ouvre un sélecteur de fichiers multiples pour les fichiers SRS.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:503</div></div>
+<div class="ttc" id="aclass_main_window_html_ab412b6c0593423f4f9f9edb49006e6c6"><div class="ttname"><a href="class_main_window.html#ab412b6c0593423f4f9f9edb49006e6c6">MainWindow::champSDD</a></div><div class="ttdeci">QLineEdit * champSDD</div><div class="ttdef"><b>Definition</b> mainwindow.h:56</div></div>
+<div class="ttc" id="aclass_main_window_html_ab61dc516291879fc11662d781312caa0"><div class="ttname"><a href="class_main_window.html#ab61dc516291879fc11662d781312caa0">MainWindow::erreurSSS</a></div><div class="ttdeci">QLabel * erreurSSS</div><div class="ttdef"><b>Definition</b> mainwindow.h:63</div></div>
+<div class="ttc" id="aclass_main_window_html_ab7eb40d0003c656ce5b3adaacb50c4d0"><div class="ttname"><a href="class_main_window.html#ab7eb40d0003c656ce5b3adaacb50c4d0">MainWindow::listeSRS</a></div><div class="ttdeci">QListWidget * listeSRS</div><div class="ttdef"><b>Definition</b> mainwindow.h:67</div></div>
+<div class="ttc" id="aclass_main_window_html_abc5b6f2d71207d9d5288c3ae7d8a958b"><div class="ttname"><a href="class_main_window.html#abc5b6f2d71207d9d5288c3ae7d8a958b">MainWindow::cheminsSDD</a></div><div class="ttdeci">QStringList cheminsSDD</div><div class="ttdef"><b>Definition</b> mainwindow.h:89</div></div>
+<div class="ttc" id="aclass_main_window_html_ac552ded8e5621ffa0e3f8e4b5e041fb6"><div class="ttname"><a href="class_main_window.html#ac552ded8e5621ffa0e3f8e4b5e041fb6">MainWindow::afficherApercuExigences</a></div><div class="ttdeci">void afficherApercuExigences(const std::vector&lt; ExigenceExtraite &gt; &amp;sss, const std::vector&lt; ExigenceExtraite &gt; &amp;srs, const std::vector&lt; ExigenceExtraite &gt; &amp;sdd)</div><div class="ttdoc">Affiche les exigences extraites dans l&#39;aperçu à droite.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:650</div></div>
+<div class="ttc" id="aclass_main_window_html_ac55dfe1fdfe6f84410af91032305a2fb"><div class="ttname"><a href="class_main_window.html#ac55dfe1fdfe6f84410af91032305a2fb">MainWindow::listeExigences</a></div><div class="ttdeci">QListWidget * listeExigences</div><div class="ttdef"><b>Definition</b> mainwindow.h:82</div></div>
+<div class="ttc" id="aclass_main_window_html_ac6080f95dd35faed65fa56d6f0e15829"><div class="ttname"><a href="class_main_window.html#ac6080f95dd35faed65fa56d6f0e15829">MainWindow::tabWidget</a></div><div class="ttdeci">QTabWidget * tabWidget</div><div class="ttdef"><b>Definition</b> mainwindow.h:45</div></div>
+<div class="ttc" id="aclass_main_window_html_ac9bc4ed35a651ba4c2ce72ed179044be"><div class="ttname"><a href="class_main_window.html#ac9bc4ed35a651ba4c2ce72ed179044be">MainWindow::construireOngletGraphe</a></div><div class="ttdeci">void construireOngletGraphe()</div><div class="ttdoc">Construit l&#39;onglet Graphe de traçabilité.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:401</div></div>
+<div class="ttc" id="aclass_main_window_html_ac9ecc19342cfbe10ce582c96c04a01e0"><div class="ttname"><a href="class_main_window.html#ac9ecc19342cfbe10ce582c96c04a01e0">MainWindow::construireOngletImport</a></div><div class="ttdeci">void construireOngletImport()</div><div class="ttdoc">Construit l&#39;onglet Import en 3 colonnes :</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:106</div></div>
+<div class="ttc" id="aclass_main_window_html_acfb5606b548ed5e3172d296abaa104a7"><div class="ttname"><a href="class_main_window.html#acfb5606b548ed5e3172d296abaa104a7">MainWindow::champPrefixeSSS</a></div><div class="ttdeci">QLineEdit * champPrefixeSSS</div><div class="ttdoc">Préfixe identifiant les exigences SSS.</div><div class="ttdef"><b>Definition</b> mainwindow.h:71</div></div>
+<div class="ttc" id="aclass_main_window_html_ad1fd3c58a5653d37597d7ec9b7d8c17d"><div class="ttname"><a href="class_main_window.html#ad1fd3c58a5653d37597d7ec9b7d8c17d">MainWindow::champPrefixeSDD</a></div><div class="ttdeci">QLineEdit * champPrefixeSDD</div><div class="ttdoc">Préfixe identifiant les exigences SDD.</div><div class="ttdef"><b>Definition</b> mainwindow.h:73</div></div>
+<div class="ttc" id="aclass_main_window_html_ad419fdfc3443880fb564a63827a110f1"><div class="ttname"><a href="class_main_window.html#ad419fdfc3443880fb564a63827a110f1">MainWindow::construireOngletRapport</a></div><div class="ttdeci">void construireOngletRapport()</div><div class="ttdoc">Construit l&#39;onglet Rapport &amp; Taux.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:417</div></div>
+<div class="ttc" id="aclass_main_window_html_adbd902ab10419242511bbf66bb1b3ded"><div class="ttname"><a href="class_main_window.html#adbd902ab10419242511bbf66bb1b3ded">MainWindow::badgeSSS</a></div><div class="ttdeci">QLabel * badgeSSS</div><div class="ttdef"><b>Definition</b> mainwindow.h:60</div></div>
+<div class="ttc" id="aclass_main_window_html_adc8d59bb4989482f4563f78fa75c36a6"><div class="ttname"><a href="class_main_window.html#adc8d59bb4989482f4563f78fa75c36a6">MainWindow::verifierFichiersSelectionnes</a></div><div class="ttdeci">void verifierFichiersSelectionnes()</div><div class="ttdoc">Active le bouton Lancer si SSS et SRS sont valides.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:577</div></div>
+<div class="ttc" id="aclass_main_window_html_adfb08a1d7d4711163137aaa69798280a"><div class="ttname"><a href="class_main_window.html#adfb08a1d7d4711163137aaa69798280a">MainWindow::logTerminal</a></div><div class="ttdeci">void logTerminal(const QString &amp;message, const QString &amp;couleur=&quot;#D4D4D4&quot;)</div><div class="ttdoc">Ajoute un message coloré dans le terminal d&#39;analyse.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:635</div></div>
+<div class="ttc" id="aclass_main_window_html_ae0af91469db80afd4c4c4438386f4232"><div class="ttname"><a href="class_main_window.html#ae0af91469db80afd4c4c4438386f4232">MainWindow::btnReinitialiser</a></div><div class="ttdeci">QPushButton * btnReinitialiser</div><div class="ttdef"><b>Definition</b> mainwindow.h:76</div></div>
+<div class="ttc" id="aclass_main_window_html_ae4b8723fa8add1a24180ef2b63751699"><div class="ttname"><a href="class_main_window.html#ae4b8723fa8add1a24180ef2b63751699">MainWindow::reinitialiser</a></div><div class="ttdeci">void reinitialiser()</div><div class="ttdoc">Vide toutes les zones et remet l&#39;interface à l&#39;état initial.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:596</div></div>
+<div class="ttc" id="aclass_main_window_html_ae615075e8b603a4e5b60faee454fdb8d"><div class="ttname"><a href="class_main_window.html#ae615075e8b603a4e5b60faee454fdb8d">MainWindow::champSRS</a></div><div class="ttdeci">QLineEdit * champSRS</div><div class="ttdef"><b>Definition</b> mainwindow.h:55</div></div>
+<div class="ttc" id="aclass_main_window_html_ae98d00a93bc118200eeef9f9bba1dba7"><div class="ttname"><a href="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7">MainWindow::~MainWindow</a></div><div class="ttdeci">~MainWindow()</div><div class="ttdoc">Destructeur — libère le thread et le moteur si encore actifs.</div><div class="ttdef"><b>Definition</b> mainwindow.cpp:75</div></div>
+<div class="ttc" id="aclass_main_window_html_aebaf5f8357d6b7e8bf89bdcf4c99beb6"><div class="ttname"><a href="class_main_window.html#aebaf5f8357d6b7e8bf89bdcf4c99beb6">MainWindow::listeSSS</a></div><div class="ttdeci">QListWidget * listeSSS</div><div class="ttdef"><b>Definition</b> mainwindow.h:66</div></div>
+<div class="ttc" id="aclass_main_window_html_af369a34cf876ff881097967fea701104"><div class="ttname"><a href="class_main_window.html#af369a34cf876ff881097967fea701104">MainWindow::champPrefixeGlobal</a></div><div class="ttdeci">QLineEdit * champPrefixeGlobal</div><div class="ttdoc">Préfixe commun ex: SPEC_, REQ_, EX_.</div><div class="ttdef"><b>Definition</b> mainwindow.h:70</div></div>
+<div class="ttc" id="aclass_main_window_html_af4cfa08cd6fb82d858c406f5572354bd"><div class="ttname"><a href="class_main_window.html#af4cfa08cd6fb82d858c406f5572354bd">MainWindow::champPrefixeSRS</a></div><div class="ttdeci">QLineEdit * champPrefixeSRS</div><div class="ttdoc">Préfixe identifiant les exigences SRS.</div><div class="ttdef"><b>Definition</b> mainwindow.h:72</div></div>
+<div class="ttc" id="aclass_moteur_tracabilite_html"><div class="ttname"><a href="class_moteur_tracabilite.html">MoteurTracabilite</a></div><div class="ttdoc">Orchestre l&#39;analyse de traçabilité sur les trois niveaux d&#39;exigences.</div><div class="ttdef"><b>Definition</b> MoteurTracabilite.h:18</div></div>
+<div class="ttc" id="aclass_onglet_rapport_html"><div class="ttname"><a href="class_onglet_rapport.html">OngletRapport</a></div><div class="ttdoc">Onglet Qt qui affiche le rapport de tracabilite complet produit par le Module 2.</div><div class="ttdef"><b>Definition</b> Ongletrapport.h:57</div></div>
+<div class="ttc" id="aclass_thread_manager_html"><div class="ttname"><a href="class_thread_manager.html">ThreadManager</a></div><div class="ttdoc">Gère l&#39;exécution asynchrone de l&#39;analyse de traçabilité.</div><div class="ttdef"><b>Definition</b> ThreadManager.h:16</div></div>
+<div class="ttc" id="aclass_vue_graphe_tracabilite_html"><div class="ttname"><a href="class_vue_graphe_tracabilite.html">VueGrapheTracabilite</a></div><div class="ttdef"><b>Definition</b> VueGrapheTracabilite.h:52</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_85c7096253a6235d051a53fdd615d53a.html">branches</a></li><li class="navelem"><a href="dir_99abb17956bc0d8deaf8920873908442.html">L2G1_Module3</a></li><li class="navelem"><a href="dir_feb3b8c928fdcf884b911aa3d3163021.html">headers</a></li><li class="navelem"><a href="branches_2_l2_g1___module3_2headers_2mainwindow_8h.html">mainwindow.h</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

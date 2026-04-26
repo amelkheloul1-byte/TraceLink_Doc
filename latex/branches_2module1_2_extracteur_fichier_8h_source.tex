@@ -1,0 +1,65 @@
+\doxysection{Extracteur\+Fichier.\+h}
+\hypertarget{branches_2module1_2_extracteur_fichier_8h_source}{}\label{branches_2module1_2_extracteur_fichier_8h_source}\index{branches/module1/ExtracteurFichier.h@{branches/module1/ExtracteurFichier.h}}
+\doxymbox{\hyperlink{branches_2module1_2_extracteur_fichier_8h}{Aller à la documentation de ce fichier.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ EXTRACTEURFICHIER\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ EXTRACTEURFICHIER\_H}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <regex>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdexcept>}\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_exigence_extraite}{ExigenceExtraite}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_exigence_extraite_a613bec95d74073192e7886f696acdf8f}{identifiant}};\ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_exigence_extraite_ab138ba1b24915bf37507a685859fb350}{contenuBrut}};\ \ }
+\DoxyCodeLine{00019\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_exigence_extraite_a1bfa6d0969a6c93a33e6a253172639a6}{fichierSource}};\ }
+\DoxyCodeLine{00020\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_exigence_extraite_a50253d94972e85f6f6bd48b1c1bfb471}{formatSource}};\ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{struct_exigence_extraite_aa572c617fa86e495c1405a86784783b8}{numeroLigne}};\ \ \ }
+\DoxyCodeLine{00022\ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_exigence_extraite_a164c04a1cbf74136c8f8ba9f404f68ca}{detecterExtension}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_extracteur_fichier}{ExtracteurFichier}}\ \{}
+\DoxyCodeLine{00028\ private\ :}
+\DoxyCodeLine{00029\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_extracteur_fichier_a50cbe3344c37f520b41362eff71271a9}{cheminSource}};}
+\DoxyCodeLine{00030\ \ \ \ \ std::regex\ \doxymbox{\hyperlink{class_extracteur_fichier_a6e5584a4fabb6c76a3946b6bb2fe4656}{motifRegex}};}
+\DoxyCodeLine{00031\ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{class_extracteur_fichier_ae1d89b6ba05749e55c8e512ba8ce6f4b}{listeIdentifiants}};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_extracteur_fichier_ab228650dbafe4c9fc08bfb448afd2de0}{nbDetectees}};\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_extracteur_fichier_af983a09177a7055185efcc070f4d3964}{detecterExtension}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_extracteur_fichier_ad34dfdfc31b6da5a52f09f5c66eec2e1}{verifierExistence}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00041\ \ \ \ \ std::vector<std::pair<int,std::string>>\ \doxymbox{\hyperlink{class_extracteur_fichier_a5a87b610e7bff17b0b7456cf5b5707e2}{lireCSV}}(\textcolor{keyword}{const}\ std::string\&\ extension)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00044\ \ \ \ \ std::vector<std::pair<int,\ std::string>>\ \doxymbox{\hyperlink{class_extracteur_fichier_aa5f8674039ed2662035059cdc955e1d1}{lireDocx}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00047\ \ \ \ \ std::vector<ExigenceExtraite>\ \doxymbox{\hyperlink{class_extracteur_fichier_a68deb1c725857e2b8d9fbc0e8d7f56cf}{filtrerLignes}}(}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<std::pair<int,\ std::string>>\&\ lignes,\ \textcolor{keyword}{const}\ std::string\&\ format)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \doxymbox{\hyperlink{class_extracteur_fichier_ab16411b6bcfed524ccc5814d351e7d9f}{ExtracteurFichier}}(\textcolor{keyword}{const}\ std::string\&\ chemin,\ \textcolor{keyword}{const}\ std::string\&\ motif);}
+\DoxyCodeLine{00052\ \ \ \ \ std::vector<ExigenceExtraite>\ \doxymbox{\hyperlink{class_extracteur_fichier_a52aaddb474e67d61fccf0caac02d6d50}{extraire}}();}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_extracteur_fichier_a6d25d8bb97eab2020a633b5d0915043b}{getNombreExigencesDetectees}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00054\ \ \ \ \ }
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_file_not_found_exception}{FileNotFoundException}}\ :\ \textcolor{keyword}{public}\ std::runtime\_error\{}
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_file_not_found_exception_a4571da183fd90b19662cfeae9f9dd780}{FileNotFoundException}}(\textcolor{keyword}{const}\ std::string\&\ chemin)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ :\ std::runtime\_error(\textcolor{stringliteral}{"{}Fichier\ introuvable\ :"{}}\ +\ chemin)\ \{\}}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00065\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_file_format_exception}{FileFormatException}}\ :\ \textcolor{keyword}{public}\ std::runtime\_error\ \{}
+\DoxyCodeLine{00066\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_file_format_exception_a91b1d40082be7a46a806b4b02e3a913c}{FileFormatException}}(\textcolor{keyword}{const}\ std::string\&\ detail)}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ :\ std::runtime\_error(\textcolor{stringliteral}{"{}Format\ non\ supporté\ :\ "{}}\ +\ detail)\ \{\}}
+\DoxyCodeLine{00069\ \};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
